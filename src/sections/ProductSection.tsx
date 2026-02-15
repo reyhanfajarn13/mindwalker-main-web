@@ -1,4 +1,33 @@
-const productCards = [1, 2, 3];
+type ProductCard = {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: null;
+  link: null;
+};
+
+const productCardData: ProductCard[] = [{
+  id: 1,
+  title: "MindOps",
+  description: "How smart insights execution, IT operations to zoom with integrations.",
+  imageUrl: null,
+  link: null
+},
+{
+  id: 2,
+  title: "MindSec",
+  description: "How smart insights execution, IT operations to zoom with integrations.",
+  imageUrl: null,
+  link: null
+},
+{
+  id: 3,
+  title: "VisionCraft",
+  description: "How smart insights execution, IT operations to zoom with integrations.",
+  imageUrl: null,
+  link: null
+}
+];
 
 export function ProductSection() {
   return (
@@ -10,14 +39,13 @@ export function ProductSection() {
         </h2>
 
         <div className="product-grid">
-          {productCards.map((item) => (
-            <article key={item} className="product-card">
+          {productCardData.map((item) => (
+            <article key={item.id} className="product-card">
               <div className="product-card-image" />
               <div className="product-card-body">
-                <h3>Mind Ops</h3>
+                <h3>{item.title}</h3>
                 <p>
-                  How smart insights execution, IT operations to zoom with
-                  integrations.
+                  {item.description}
                 </p>
                 <a href="#">Learn More</a>
               </div>

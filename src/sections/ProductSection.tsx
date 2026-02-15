@@ -51,12 +51,12 @@ export function ProductSection() {
           {productCardData.map((item) => (
             <article
               key={item.id}
-              className="relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] sm:min-h-[460px] lg:min-h-[495px]"
+              className="group relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-transform duration-400 ease-out hover:z-50 hover:scale-[1.05] sm:min-h-[460px] lg:min-h-[495px]"
             >
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full scale-100 object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:saturate-100"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,19,0.92)_10%,rgba(5,10,19,0.5)_44%,rgba(5,10,19,0.28)_66%,rgba(5,10,19,0.18)_100%)]" />
 

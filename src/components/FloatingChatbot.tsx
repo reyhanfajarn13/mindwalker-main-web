@@ -10,13 +10,12 @@ export function FloatingChatbot() {
       aria-label="Open chatbot"
       type="button"
     >
-      <span>
-        <DotLottieReact 
+    <DotLottieReact 
         src="https://lottie.host/5c062727-879d-4bda-bc52-d5b6b3b0aba1/i8Uao1FjN1.lottie"
         loop
         autoplay
-        />
-      </span>
+    />
+     
     </button>
   );
 }

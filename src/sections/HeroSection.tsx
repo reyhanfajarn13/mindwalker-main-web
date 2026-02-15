@@ -1,3 +1,5 @@
+import { DecryptedText } from "../components/ui/DecryptedText";
+
 export function HeroSection() {
   return (
     <section
@@ -5,9 +7,16 @@ export function HeroSection() {
       id="home"
     >
       <div className="relative z-[3] mx-auto grid w-[min(1120px,calc(100%-2rem))] self-center gap-7 lg:grid-cols-[1.05fr_1fr]">
-        <div>
-          <h1 className="max-w-[12ch] text-[clamp(2.2rem,5vw,4.1rem)] leading-[1.02] tracking-[-0.02em] text-white">
-            From Insights to Impact
+        <div className="flex min-h-[calc(100vh-7.75rem)] flex-col justify-center">
+          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
+            <span className="block font-semibold text-white">
+              From{" "}
+              <DecryptedText text="Insight" className="font-extrabold text-[#2f99ff]" />
+            </span>
+            <span className="block font-semibold text-white">
+              to{" "}
+              <DecryptedText text="Impact" className="font-extrabold text-[#2f99ff]" />
+            </span>
           </h1>
           <div className="mt-5 flex items-center gap-2.5 text-[0.96rem] text-[#d8e6f6]">
             <span>Part of</span>
@@ -17,18 +26,17 @@ export function HeroSection() {
           </div>
         </div>
 
-        <article className="overflow-hidden rounded-3xl border border-[rgba(255,255,255,0.24)] bg-[rgba(255,255,255,0.07)]">
-          <div className="min-h-[285px] bg-[linear-gradient(130deg,rgba(255,255,255,0.85),rgba(190,197,207,0.76)),repeating-linear-gradient(-45deg,rgba(80,90,105,0.2)_0_16px,rgba(216,222,230,0.2)_16px_32px)]" />
-          <div className="bg-[linear-gradient(to_top,rgba(6,13,24,0.92),rgba(6,13,24,0.58))] px-5 pb-5 pt-4">
-            <div className="flex items-center gap-[0.65rem]">
-              <h2 className="text-[2rem] leading-none text-white">Mind Ops</h2>
-              <span className="rounded-full bg-[rgba(255,255,255,0.16)] px-[0.55rem] py-[0.2rem] text-[0.72rem] text-[#d3e4ff]">
+        <article className="mx-auto w-full max-w-[560px] self-center h-fit overflow-hidden rounded-[28px] border border-[rgba(255,255,255,0.24)] bg-[rgba(255,255,255,0.07)]">
+          <div className="min-h-[240px] sm:min-h-[270px] lg:min-h-[300px] bg-[linear-gradient(130deg,rgba(255,255,255,0.85),rgba(190,197,207,0.76)),repeating-linear-gradient(-45deg,rgba(80,90,105,0.2)_0_16px,rgba(216,222,230,0.2)_16px_32px)]" />
+          <div className="bg-[linear-gradient(to_top,rgba(6,13,24,0.94),rgba(6,13,24,0.64))] px-5 py-4 sm:px-6 sm:py-5">
+            <div className="flex items-center gap-2.5">
+              <h2 className="text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-none text-white">Mind Ops</h2>
+              <span className="rounded-full bg-[rgba(255,255,255,0.18)] px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.02em] text-[#d3e4ff]">
                 News
               </span>
             </div>
-            <p className="mt-[0.65rem] text-[0.95rem] text-[#c0cfe1]">
-              Lorem ipsum dolor sit amet consectetur. Elementum amet metus lorem
-              id. Metus sem nam et platea quis dui aliquet.
+            <p className="mt-2 text-[0.9rem] leading-relaxed text-[#c7d4e3]">
+              Lorem ipsum dolor sit amet consectetur. Elementum amet metus lorem id. Metus sem nam et platea quis dui aliquet.
             </p>
           </div>
         </article>

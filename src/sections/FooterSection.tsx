@@ -34,15 +34,19 @@ export function FooterSection() {
           <div className="px-0 py-5 text-center">
             <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] text-[#2d98eb]">Ready to Discover?</h2>
             <p className="mt-1 text-[#95a2b3]">
-              Unleash your data with one powerful platform for modern analytics.
+              Looking for details? Leave your email, and we’ll reach out
             </p>
-            <div className="mt-3.5 flex justify-center gap-2">
-              <button className="cursor-pointer rounded-full border-0 bg-[#e8edf4] px-4 py-1.5 text-[0.76rem] font-bold text-[#3f5062]">
-                Learn More
-              </button>
-              <button className="cursor-pointer rounded-full border-0 bg-[#2a95f1] px-4 py-1.5 text-[0.76rem] font-bold text-[#f4faff]">
-                Demo
-              </button>
+            <div className="mt-3.5 flex justify-center">
+              <div className="flex w-full max-w-[420px] items-center overflow-hidden rounded-full border border-[#d6dbe5] bg-white">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-2 text-[0.76rem] text-[#3f5062] outline-none placeholder:text-[#95a2b3]"
+                />
+                <button className="cursor-pointer border-0 bg-[#2a95f1] px-4 py-2 text-[0.76rem] font-bold text-[#f4faff]">
+                  Send
+                </button>
+              </div>
             </div>
           </div>
           <div className="border-t border-[#dde2eb] pt-3 text-center">

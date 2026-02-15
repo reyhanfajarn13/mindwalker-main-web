@@ -1,5 +1,6 @@
 import { DecryptedText } from "../components/ui/DecryptedText";
 import StarBorder from "../components/ui/StarBorder";
+import FaultyTerminal from "../components/ui/FaultyTerminal";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
@@ -12,9 +13,31 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="relative grid min-h-screen snap-start snap-always grid-rows-1 overflow-hidden bg-[radial-gradient(circle_at_32%_34%,#0d2248_0%,#03070f_56%)] px-0 pb-8 pt-[5.75rem]"
+      className="relative grid min-h-screen snap-start snap-always grid-rows-1 overflow-hidden px-0 pb-8 pt-[5.75rem]"
       id="home"
     >
+          <div className="absolute inset-0 -z-10">
+        <FaultyTerminal
+          scale={2.1}
+          gridMul={[2, 1]}
+          digitSize={2}
+          timeScale={0.5}
+          pause={false}
+          scanlineIntensity={0.5}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
+          tint="#2f99ff"
+          mouseReact
+          mouseStrength={0.5}
+          pageLoadAnimation
+          brightness={0.5}
+        />
+      </div>  
+
       <div className="relative z-[3] mx-auto grid w-[min(1120px,calc(100%-2rem))] self-center gap-7 lg:grid-cols-[1.05fr_1fr]">
         <div className="flex min-h-[calc(100vh-7.75rem)] flex-col justify-center">
           <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
@@ -35,12 +58,7 @@ export function HeroSection({
           </div>
         </div>
 
-        <StarBorder
-          className="mx-auto h-fit w-full max-w-[560px] self-center rounded-[28px]"
-          color="rgba(255,255,255,0.95)"
-          speed="5s"
-        >
-          <article className="overflow-hidden rounded-[28px] border border-[rgba(255,255,255,0.24)] bg-[rgba(255,255,255,0.07)]">
+          <article className="w-full max-w-[560px] self-center h-fit overflow-hidden rounded-[28px] border border-[rgba(255,255,255,0.24)] bg-[rgba(255,255,255,0.07)]">
             {heroImageUrl ? (
               <img
                 src={heroImageUrl}
@@ -62,7 +80,6 @@ export function HeroSection({
               </p>
             </div>
           </article>
-        </StarBorder>
       </div>
     </section>
   );

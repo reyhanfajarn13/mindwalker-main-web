@@ -26,10 +26,10 @@ const footerGroups = [
 export function FooterSection() {
   return (
     <footer
-      className="grid min-h-screen snap-start snap-always items-center bg-white px-0 py-8"
+      className="grid min-h-screen snap-start snap-always items-center bg-white px-0 pt-10 pb-0"
       id="footer"
     >
-      <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] gap-8 lg:min-h-[calc(100vh-5rem)] lg:grid-rows-[3fr_2fr]">
+      <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center gap-8 pt-8 lg:min-h-[calc(100vh-5rem)] lg:grid-rows-[3fr_2fr]">
         <article className="rounded-2xl border border-[#d6dbe5] bg-[linear-gradient(120deg,#f0f1f5,#fdfdff_48%,#f0f1f5)] px-5 pb-4 pt-4 shadow-[0_9px_24px_rgba(88,103,126,0.24)]">
           <div className="px-0 py-5 text-center">
             <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] text-[#2d98eb]">Ready to Discover?</h2>
@@ -55,7 +55,7 @@ export function FooterSection() {
           </div>
         </article>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="self-end grid gap-5 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {footerGroups.map((group, groupIndex) => (
             <section key={`${group.title}-${groupIndex}`}>
               <h3 className="text-[0.78rem] text-[#3f546a]">{group.title}</h3>

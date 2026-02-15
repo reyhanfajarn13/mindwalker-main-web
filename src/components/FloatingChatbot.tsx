@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { cn } from "../lib/utils";
 
 const FAB_SIZE = 70;
 const EDGE_GAP = 16;
@@ -69,7 +70,10 @@ export function FloatingChatbot() {
 
   return (
     <button
-      className={`chatbot-fab${dragging ? " is-dragging" : ""}`}
+      className={cn(
+        "fixed z-[120] h-[70px] w-[70px] select-none rounded-full border-0 bg-[linear-gradient(150deg,#f4f8fd,#bfcce0)] font-extrabold tracking-[0.02em] text-[#1c3f6f] shadow-[0_16px_30px_rgba(0,0,0,0.45)] [touch-action:none]",
+        dragging ? "cursor-grabbing" : "cursor-grab"
+      )}
       aria-label="Open chatbot"
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       onPointerDown={handlePointerDown}

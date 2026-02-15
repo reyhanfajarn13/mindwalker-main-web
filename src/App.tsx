@@ -22,22 +22,16 @@ function App() {
       scrollRoot.querySelectorAll<HTMLElement>("section, footer")
     );
 
-    sections.forEach((section) => section.classList.add("section-animate"));
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const sectionId = (entry.target as HTMLElement).id;
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
             if (sectionId) {
               sectionRatiosRef.current[sectionId] = entry.intersectionRatio;
             }
-          } else {
-            entry.target.classList.remove("is-visible");
-            if (sectionId) {
-              sectionRatiosRef.current[sectionId] = 0;
-            }
+          } else if (sectionId) {
+            sectionRatiosRef.current[sectionId] = 0;
           }
         });
 
@@ -126,11 +120,18 @@ function App() {
   return (
     <>
       <Navbar
-        className={`navbar-floating${isNavbarVisible ? " is-visible" : " is-hidden"}`}
+        className={`fixed left-1/2 top-[0.9rem] z-[140] -translate-x-1/2 transition-[transform,opacity] duration-300 ${
+          isNavbarVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-[130%] opacity-0 pointer-events-none"
+        }`}
         activeSection={activeSection}
         onNavigate={handleNavbarNavigate}
       />
-      <main className="app-scroll" ref={scrollRootRef}>
+      <main
+        className="h-full overflow-x-hidden overflow-y-auto snap-y snap-mandatory scroll-smooth max-[720px]:snap-proximity motion-reduce:scroll-auto"
+        ref={scrollRootRef}
+      >
         <HeroSection />
         <ProductSection />
         <SolutionSection />

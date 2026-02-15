@@ -1,3 +1,6 @@
+import { InfoCard } from "../components/ui/InfoCard";
+import { SectionHeading } from "../components/ui/SectionHeading";
+
 type ProductCard = {
   id: number;
   title: string;
@@ -31,25 +34,29 @@ const productCardData: ProductCard[] = [{
 
 export function ProductSection() {
   return (
-    <section className="surface-section product-section" id="product">
-      <div className="content-wrap">
-        <p className="section-kicker">Product</p>
-        <h2 className="section-title">
-          The product that solves your toughest business problems.
-        </h2>
+    <section
+      className="grid min-h-screen snap-start snap-always items-center bg-[#ececf0] px-0 py-8"
+      id="product"
+    >
+      <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">
+        <SectionHeading
+          kicker="Product"
+          title="The product that solves your toughest business problems."
+        />
 
-        <div className="product-grid">
+        <div className="mt-6 grid gap-4 lg:grid-cols-3">
           {productCardData.map((item) => (
-            <article key={item.id} className="product-card">
-              <div className="product-card-image" />
-              <div className="product-card-body">
-                <h3>{item.title}</h3>
-                <p>
-                  {item.description}
-                </p>
-                <a href="#">Learn More</a>
-              </div>
-            </article>
+            <InfoCard
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              className="min-h-[470px] rounded-[18px] bg-[#091a2d] text-[#e8effa] shadow-[0_8px_18px_rgba(10,24,43,0.22),0_18px_40px_rgba(12,35,61,0.18),0_0_0_1px_rgba(177,209,244,0.06)]"
+              mediaClassName="min-h-[310px] bg-[radial-gradient(circle_at_30%_34%,#adb4bd,#4f5661_58%,#292f39_100%)]"
+              bodyClassName="px-[1.15rem] pb-[1.25rem] pt-[1.1rem]"
+              titleClassName="text-[1.35rem] text-[#e8effa]"
+              descriptionClassName="mt-[0.32rem] max-w-[58ch] text-[0.84rem] text-[#afc1d8]"
+              ctaClassName="mt-[0.6rem] rounded-full bg-[#e9f6ff] px-[0.72rem] py-[0.28rem] text-[0.7rem] text-[#158ced]"
+            />
           ))}
         </div>
       </div>

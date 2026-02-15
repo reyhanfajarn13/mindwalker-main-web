@@ -1,4 +1,11 @@
+import LogoLoop from "../components/ui/LogoLoop";
+
 const partners = ["ClickHouse", "NICE", "TechCrunch", "InfoWorld", "GitHouse"];
+const techLogos = [
+  { src: "/assets/image3.png", alt: "Company 1"},
+  { src: "/assets/image4.png", alt: "Company 2" },
+  { src: "/assets/image5.png", alt: "Company 3" },
+];
 
 const footerGroups = [
   {
@@ -51,11 +58,7 @@ export function FooterSection() {
           </div>
           <div className="border-t border-[#dde2eb] pt-3 text-center">
             <span className="text-[0.68rem] text-[#9aa8b9]">Technology Partners</span>
-            <ul className="mt-1.5 flex list-none flex-wrap justify-center gap-4 text-[0.76rem] font-bold text-[#6e7e90]">
-              {partners.map((partner) => (
-                <li key={partner}>{partner}</li>
-              ))}
-            </ul>
+            
           </div>
         </article>
 

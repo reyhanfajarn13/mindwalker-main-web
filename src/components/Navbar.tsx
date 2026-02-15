@@ -61,6 +61,10 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
         <button
           className="cursor-pointer rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-[0.92rem] py-[0.5rem] text-[0.8rem] font-bold text-white"
           type="button"
+          onClick={() =>
+    window.location.href =
+
+      "mailto:marketing@mindwalker.ai?subject=Permintaan%20Konsultasi%20Lebih%20Lanjut&body=Halo,%0A%0ASaya%20tertarik%20untuk%20konsultasi%20lebih%20lanjut%20dengan%20Mindwalker.%0A%0ANama:%20%0APerusahaan:%20%0ANomor%20HP:%20%0A%0ATerima%20kasih."}
         >
           Contact Us
         </button>

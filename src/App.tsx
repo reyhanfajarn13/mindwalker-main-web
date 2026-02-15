@@ -10,6 +10,7 @@ function App() {
   const scrollRootRef = useRef<HTMLElement | null>(null);
   const lastScrollTopRef = useRef(0);
   const idleTimerRef = useRef<number | null>(null);
+  const sectionRatiosRef = useRef<Record<string, number>>({});
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -25,24 +26,31 @@ function App() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        let topVisibleEntry: IntersectionObserverEntry | null = null;
-
         entries.forEach((entry) => {
+          const sectionId = (entry.target as HTMLElement).id;
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            if (
-              !topVisibleEntry ||
-              entry.intersectionRatio > topVisibleEntry.intersectionRatio
-            ) {
-              topVisibleEntry = entry;
+            if (sectionId) {
+              sectionRatiosRef.current[sectionId] = entry.intersectionRatio;
             }
           } else {
             entry.target.classList.remove("is-visible");
+            if (sectionId) {
+              sectionRatiosRef.current[sectionId] = 0;
+            }
           }
         });
 
-        if (topVisibleEntry && (topVisibleEntry.target as HTMLElement).id) {
-          setActiveSection((topVisibleEntry.target as HTMLElement).id);
+        const topSection = Object.entries(sectionRatiosRef.current).reduce<{
+          id: string;
+          ratio: number;
+        }>(
+          (best, [id, ratio]) => (ratio > best.ratio ? { id, ratio } : best),
+          { id: "home", ratio: 0 }
+        );
+
+        if (topSection.id) {
+          setActiveSection(topSection.id);
         }
       },
       {
@@ -53,7 +61,10 @@ function App() {
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      sectionRatiosRef.current = {};
+    };
   }, []);
 
   useEffect(() => {
@@ -105,6 +116,7 @@ function App() {
     const targetSection = scrollRoot.querySelector<HTMLElement>(`#${targetId}`);
     if (!targetSection) return;
 
+    setActiveSection(targetId);
     scrollRoot.scrollTo({
       top: targetSection.offsetTop,
       behavior: "smooth"

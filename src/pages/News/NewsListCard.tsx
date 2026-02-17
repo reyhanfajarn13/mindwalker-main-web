@@ -22,10 +22,11 @@ export function NewsListCard({ item, className = "", imageClassName = "" }: News
           {item.category} | {item.date}
         </p>
         <h3 className="mt-2 text-[1.95rem] leading-[1.2] text-[#232d3a]">{item.title}</h3>
-        <button type="button" className="mt-3 text-[0.82rem] font-semibold text-[#0f83e5]">
+        <button type="button" className="mt-3 ml-auto block text-[0.82rem] font-semibold text-[#0f83e5]">
           {item.excerpt} {"->"}
         </button>
       </div>
     </article>
   );
 }
+

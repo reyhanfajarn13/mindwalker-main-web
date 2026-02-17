@@ -1,6 +1,7 @@
 import { InfoCard } from "../components/ui/InfoCard";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
+import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 
 export function SolutionSection() {
   const { t } = useTranslation();
@@ -13,6 +14,12 @@ export function SolutionSection() {
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">
         <SectionHeading
           kicker={t("solutions.kicker")}
+          kickerSlot={
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(255,255,255,0.95)] px-3 py-2 shadow-[0_5px_14px_rgba(12,28,44,0.12)]">
+              <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-auto object-contain" />
+              <span className="text-[0.96rem] font-semibold text-[#2f3e4f]">{t("solutions.kicker")}</span>
+            </span>
+          }
           title={t("solutions.title")}
           description={t("solutions.description")}
           align="center"
@@ -23,7 +30,7 @@ export function SolutionSection() {
             title={t("solutions.cards.modelForge.title")}
             description={t("solutions.cards.description")}
             className="rounded-xl border bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)]"
-            mediaImageSrc="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+            mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327240594-032f5461e9736c25.jpeg"
             mediaImageAlt="Model Forge"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"
@@ -41,7 +48,7 @@ export function SolutionSection() {
             title={t("solutions.cards.agenticAi.title")}
             description={t("solutions.cards.description")}
             className="rounded-xl border bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)]"
-            mediaImageSrc="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80"
+            mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327700802-303fa21f6a6ba29b.jpeg"
             mediaImageAlt="Agentic AI Platform"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"

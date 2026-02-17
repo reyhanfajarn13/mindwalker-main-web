@@ -1,5 +1,6 @@
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
+import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 
 type ProductCard = {
   id: number;
@@ -65,6 +66,12 @@ export function ProductSection() {
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">
         <SectionHeading
           kicker={t("product.kicker")}
+          kickerSlot={
+            <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(255,255,255,0.95)] px-3 py-2 shadow-[0_5px_14px_rgba(12,28,44,0.12)]">
+              <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-auto object-contain" />
+              <span className="text-[0.96rem] font-semibold text-[#2f3e4f]">{t("product.kicker")}</span>
+            </span>
+          }
           title={t("product.title")}
         />
 

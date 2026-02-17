@@ -34,8 +34,8 @@ export function SolutionSection() {
             mediaImageAlt="Model Forge"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"
-            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#black]"
-            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#black]"
+            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e]"
+            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#4f5f72]"
             ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] font-semibold text-[#1b93ef]"
             ctaLabel={t("solutions.cards.learnMore")}
             backButtonLabel={t("solutions.cards.back")}
@@ -52,8 +52,8 @@ export function SolutionSection() {
             mediaImageAlt="Agentic AI Platform"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"
-            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[black]"
-            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#black]"
+            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e]"
+            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#4f5f72]"
             ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] font-semibold text-[#1b93ef]"
             ctaLabel={t("solutions.cards.learnMore")}
             backButtonLabel={t("solutions.cards.back")}

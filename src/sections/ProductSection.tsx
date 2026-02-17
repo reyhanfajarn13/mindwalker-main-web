@@ -29,7 +29,7 @@ const productCardData: ProductCard[] = [
   },
   {
     id: 3,
-    title: "Vision Craft",
+    title: "VisionCraft",
     label: "AI Intelligence",
     description: "Build insight pipelines that turn data signals into real operational impact.",
     imageUrl:

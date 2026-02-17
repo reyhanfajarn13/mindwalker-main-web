@@ -1,20 +1,40 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { HeroSection } from "./sections/HeroSection";
-import { ProductSection } from "./sections/ProductSection";
-import { SolutionSection } from "./sections/SolutionSection";
-import { FooterSection } from "./sections/FooterSection";
-import { FloatingChatbot } from "./components/FloatingChatbot";
 import { Navbar } from "./components/Navbar";
+
+const ProductSection = lazy(() =>
+  import("./sections/ProductSection").then((module) => ({ default: module.ProductSection }))
+);
+const SolutionSection = lazy(() =>
+  import("./sections/SolutionSection").then((module) => ({ default: module.SolutionSection }))
+);
+const FooterSection = lazy(() =>
+  import("./sections/FooterSection").then((module) => ({ default: module.FooterSection }))
+);
+const FloatingChatbot = lazy(() =>
+  import("./components/FloatingChatbot").then((module) => ({ default: module.FloatingChatbot }))
+);
+const NewsPage = lazy(() =>
+  import("./pages/News/NewsPage").then((module) => ({ default: module.NewsPage }))
+);
+
+function SectionFallback() {
+  return <div className="min-h-[48vh] w-full bg-transparent" />;
+}
 
 function App() {
   const scrollRootRef = useRef<HTMLElement | null>(null);
+  const pendingTargetRef = useRef<string | null>(null);
   const lastScrollTopRef = useRef(0);
   const idleTimerRef = useRef<number | null>(null);
   const sectionRatiosRef = useRef<Record<string, number>>({});
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [currentPage, setCurrentPage] = useState<"main" | "news">("main");
 
   useEffect(() => {
+    if (currentPage !== "main") return;
+
     const scrollRoot = scrollRootRef.current;
     if (!scrollRoot) return;
 
@@ -59,7 +79,7 @@ function App() {
       observer.disconnect();
       sectionRatiosRef.current = {};
     };
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     const scrollRoot = scrollRootRef.current;
@@ -103,7 +123,7 @@ function App() {
     };
   }, []);
 
-  const handleNavbarNavigate = (targetId: string) => {
+  const scrollToSection = (targetId: string) => {
     const scrollRoot = scrollRootRef.current;
     if (!scrollRoot) return;
 
@@ -117,6 +137,32 @@ function App() {
     });
   };
 
+  const handleNavbarNavigate = (targetId: string) => {
+    if (targetId === "news") {
+      setCurrentPage("news");
+      setActiveSection("news");
+      return;
+    }
+
+    if (currentPage !== "main") {
+      pendingTargetRef.current = targetId;
+      setCurrentPage("main");
+      return;
+    }
+
+    scrollToSection(targetId);
+  };
+
+  useEffect(() => {
+    if (currentPage !== "main" || !pendingTargetRef.current) return;
+
+    const targetId = pendingTargetRef.current;
+    pendingTargetRef.current = null;
+    window.requestAnimationFrame(() => {
+      scrollToSection(targetId);
+    });
+  }, [currentPage]);
+
   return (
     <>
       <Navbar
@@ -125,19 +171,31 @@ function App() {
             ? "translate-y-0 opacity-100"
             : "-translate-y-[130%] opacity-0 pointer-events-none"
         }`}
-        activeSection={activeSection}
+        activeSection={currentPage === "news" ? "news" : activeSection}
         onNavigate={handleNavbarNavigate}
       />
       <main
         className="h-full overflow-x-hidden overflow-y-auto snap-y snap-mandatory scroll-smooth max-[720px]:snap-proximity motion-reduce:scroll-auto"
         ref={scrollRootRef}
       >
-        <HeroSection />
-        <ProductSection />
-        <SolutionSection />
-        <FooterSection />
+        {currentPage === "news" ? (
+          <Suspense fallback={<SectionFallback />}>
+            <NewsPage />
+          </Suspense>
+        ) : (
+          <>
+            <HeroSection />
+            <Suspense fallback={<SectionFallback />}>
+              <ProductSection />
+              <SolutionSection />
+              <FooterSection />
+            </Suspense>
+          </>
+        )}
       </main>
-      <FloatingChatbot />
+      <Suspense fallback={null}>
+        <FloatingChatbot />
+      </Suspense>
     </>
   );
 }

@@ -10,7 +10,7 @@ const navItems = [
   { key: "product", target: "product", activeFor: ["product"] },
   { key: "solutions", target: "solutions", activeFor: ["solutions"] },
   { key: "aboutUs", target: "footer", activeFor: ["footer"] },
-  { key: "news", target: "footer", activeFor: ["footer"] }
+  { key: "news", target: "news", activeFor: ["news"] }
 ];
 
 type NavbarProps = {
@@ -66,7 +66,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
                     "inline-block cursor-pointer rounded-full border-0 px-[0.72rem] py-[0.34rem] text-[0.8rem] font-semibold transition-all duration-200",
                     isActive
                       ? "bg-[rgba(38,145,248,0.15)] text-[#1883eb] -translate-y-[1px] shadow-[inset_0_0_0_1px_rgba(36,138,241,0.12)]"
-                      : "bg-transparent text-[#black]]"
+                      : "bg-transparent text-[#243749]"
                   )}
                   onClick={() => onNavigate?.(item.target)}
                 >
@@ -80,7 +80,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
       <div className="flex items-center gap-[0.35rem]">
         <div className="relative" ref={languageRef}>
           <button
-            className="inline-flex items-center gap-1.5 rounded-full border-0 bg-transparent px-[0.65rem] py-[0.42rem] font-semibold text-[black] text-[0.8rem] transition-colors hover:bg-[rgba(36,55,77,0.08)]"
+            className="inline-flex items-center gap-1.5 rounded-full border-0 bg-transparent px-[0.65rem] py-[0.42rem] text-[0.8rem] font-semibold text-[#3e5163] transition-colors hover:bg-[rgba(36,55,77,0.08)]"
             type="button"
             onClick={() => setIsLanguageOpen((prev) => !prev)}
           >
@@ -99,7 +99,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
             <div className="absolute right-0 top-[calc(100%+0.35rem)] z-20 min-w-[124px] overflow-hidden rounded-xl border border-[#d6dbe5] bg-white p-1 shadow-[0_12px_24px_rgba(23,34,47,0.18)]">
               <button
                 type="button"
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[0.78rem] font-semibold text-[#black] transition-colors hover:bg-[#eef4fb]"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[0.78rem] font-semibold text-[#3e5163] transition-colors hover:bg-[#eef4fb]"
                 onClick={() => handleLanguageChange("id")}
               >
                 <span className="inline-flex items-center gap-2">
@@ -112,7 +112,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
               </button>
               <button
                 type="button"
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[0.78rem] font-semibold text-[#black] transition-colors hover:bg-[#eef4fb]"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-[0.78rem] font-semibold text-[#3e5163] transition-colors hover:bg-[#eef4fb]"
                 onClick={() => handleLanguageChange("en")}
               >
                 <span className="inline-flex items-center gap-2">

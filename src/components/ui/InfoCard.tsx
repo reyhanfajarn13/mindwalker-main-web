@@ -1,13 +1,17 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
 
 type InfoCardProps = {
   title: string;
   description: string;
-  href?: string;
   ctaLabel?: string;
+  backTitle?: string;
+  backDescription?: string;
+  backContent?: ReactNode;
   className?: string;
   mediaClassName?: string;
+  mediaImageSrc?: string;
+  mediaImageAlt?: string;
   bodyClassName?: string;
   titleClassName?: string;
   descriptionClassName?: string;
@@ -18,27 +22,84 @@ type InfoCardProps = {
 export function InfoCard({
   title,
   description,
-  href = "#",
   ctaLabel = "Learn More",
+  backTitle = "More Information",
+  backDescription = "",
+  backContent,
   className,
   mediaClassName,
+  mediaImageSrc,
+  mediaImageAlt = "Card media",
   bodyClassName,
   titleClassName,
   descriptionClassName,
   ctaClassName,
   mediaSlot
 }: InfoCardProps) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
   return (
-    <article className={cn("overflow-hidden", className)}>
-      {mediaSlot ?? <div className={cn("min-h-[215px]", mediaClassName)} />}
-      <div className={cn("px-4 pb-4 pt-3", bodyClassName)}>
-        <h3 className={cn("text-base text-[#2d3a49]", titleClassName)}>{title}</h3>
-        <p className={cn("mt-1.5 text-[0.72rem] leading-[1.45] text-[#818d9e]", descriptionClassName)}>
-          {description}
-        </p>
-        <a className={cn("mt-1.5 inline-block text-[0.7rem] font-bold text-[#1b93ef]", ctaClassName)} href={href}>
-          {ctaLabel}
-        </a>
+    <article
+      className={cn(
+        "group relative overflow-hidden transition-transform duration-300 ease-out hover:z-20 hover:scale-[1.03]",
+        className
+      )}
+      style={{ perspective: "1200px" }}
+    >
+      <div
+        className="relative min-h-[430px] w-full transition-transform duration-500"
+        style={{
+          transformStyle: "preserve-3d",
+          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"
+        }}
+      >
+        <div className="absolute inset-0" style={{ backfaceVisibility: "hidden" }}>
+          {mediaSlot ?? (
+            mediaImageSrc ? (
+              <img
+                src={mediaImageSrc}
+                alt={mediaImageAlt}
+                className={cn(
+                  "h-[220px] w-full object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 group-hover:saturate-100",
+                  mediaClassName
+                )}
+              />
+            ) : (
+              <div className={cn("h-[220px]", mediaClassName)} />
+            )
+          )}
+          <div className={cn("px-4 pb-4 pt-3", bodyClassName)}>
+            <h3 className={cn("text-base text-[#2d3a49]", titleClassName)}>{title}</h3>
+            <p className={cn("mt-1.5 text-[0.72rem] leading-[1.45] text-[#818d9e]", descriptionClassName)}>
+              {description}
+            </p>
+            <button
+              type="button"
+              className={cn("mt-1.5 inline-block text-[0.7rem] font-bold text-[#1b93ef]", ctaClassName)}
+              onClick={() => setIsFlipped(true)}
+            >
+              {ctaLabel}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="absolute inset-0 flex flex-col justify-between bg-[#f6f8fb] p-4"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <div>
+            <h3 className="text-base text-[#2d3a49]">{backTitle}</h3>
+            {backDescription ? <p className="mt-1.5 text-[0.76rem] leading-[1.5] text-[#7f8ea1]">{backDescription}</p> : null}
+            {backContent ? <div className="mt-2 text-[0.76rem] leading-[1.5] text-[#7f8ea1]">{backContent}</div> : null}
+          </div>
+          <button
+            type="button"
+            className="mt-3 inline-block self-start text-[0.8rem] font-bold text-[#1b93ef]"
+            onClick={() => setIsFlipped(false)}
+          >
+            Back
+          </button>
+        </div>
       </div>
     </article>
   );

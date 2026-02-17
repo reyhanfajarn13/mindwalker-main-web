@@ -1,4 +1,5 @@
 import { cn } from "../lib/utils";
+import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 
 const navItems = [
   { label: "Home", target: "home", activeFor: ["home"] },
@@ -25,8 +26,8 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
         className
       )}
     >
-      <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)] text-[0.8rem] font-bold text-[#0b6ad0]">
-        N
+      <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]">
+        <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" />
       </div>
       <nav>
         <ul className="m-0 flex list-none items-center gap-[0.1rem] p-0">

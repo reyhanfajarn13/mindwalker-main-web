@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { DecryptedText } from "../components/ui/DecryptedText";
 import FaultyTerminal from "../components/ui/FaultyTerminal";
+import { useTranslation } from "react-i18next";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
@@ -23,6 +24,7 @@ export function HeroSection({
   heroImageUrl = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
   heroImageAlt = "Hero visual"
 }: HeroSectionProps) {
+  const { t } = useTranslation();
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartYRef = useRef<number | null>(null);
@@ -34,18 +36,16 @@ export function HeroSection({
       {
         id: 1,
         title: "Mind Ops",
-        badge: "News",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Elementum amet metus lorem id. Metus sem nam et platea quis dui aliquet.",
+        badge: t("hero.slides.news"),
+        description: t("hero.slides.desc1"),
         imageUrl: heroImageUrl,
         imageAlt: heroImageAlt
       },
       {
         id: 2,
         title: "Mind Secure",
-        badge: "Update",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Nibh dictumst et volutpat fermentum, ornare lectus in tincidunt.",
+        badge: t("hero.slides.update"),
+        description: t("hero.slides.desc2"),
         imageUrl:
           "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1170&q=80",
         imageAlt: "Mountain valley"
@@ -53,15 +53,14 @@ export function HeroSection({
       {
         id: 3,
         title: "Mind Vision",
-        badge: "Case",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Euismod interdum egestas ac nunc eu, sed lacus semper ultricies.",
+        badge: t("hero.slides.case"),
+        description: t("hero.slides.desc3"),
         imageUrl:
           "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1170&q=80",
         imageAlt: "Forest lake"
       }
     ],
-    [heroImageUrl, heroImageAlt]
+    [heroImageUrl, heroImageAlt, t]
   );
 
   const totalSlides = heroCards.length;
@@ -139,22 +138,25 @@ export function HeroSection({
 
       <div className="relative z-[3] mx-auto grid w-[min(1120px,calc(100%-2rem))] self-center gap-7 lg:grid-cols-[1.05fr_1fr]">
         <div className="flex min-h-[calc(100vh-7.75rem)] flex-col justify-center">
-          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
-            <span className="block font-semibold text-white">
-              From{" "}
-              <DecryptedText text="Insight" className="font-extrabold text-[#2f99ff]" />
-            </span>
-            <span className="block font-semibold text-white">
-              to{" "}
-              <DecryptedText text="Impact" className="font-extrabold text-[#2f99ff]" />
-            </span>
-          </h1>
-          <div className="mt-5 flex items-center gap-2.5 text-[0.96rem] text-[#d8e6f6]">
-            <span>Part of</span>
-            <span className="rounded-[8px] bg-[#f0f6ff] px-[0.56rem] py-[0.28rem] text-[0.7rem] text-[#1e3554]">
-              NVIDIA Inception Program
+          <div className="mt-5 mb-5 flex items-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-[#76b900] text-[0.52rem] font-bold text-white">
+                NV
+              </span>
+              <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
             </span>
           </div>
+          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
+            <span className="block font-semibold text-white">
+              {t("hero.from")}{" "}
+              <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
+            </span>
+            <span className="block font-semibold text-white">
+              {t("hero.to")}{" "}
+              <DecryptedText text={t("hero.impact")} className="font-extrabold text-[#2f99ff]" />
+            </span>
+          </h1>
+          
         </div>
 
         <div className="relative w-full max-w-[560px] self-center">

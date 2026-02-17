@@ -5,6 +5,7 @@ type InfoCardProps = {
   title: string;
   description: string;
   ctaLabel?: string;
+  backButtonLabel?: string;
   backTitle?: string;
   backDescription?: string;
   backContent?: ReactNode;
@@ -23,6 +24,7 @@ export function InfoCard({
   title,
   description,
   ctaLabel = "Learn More",
+  backButtonLabel = "Back",
   backTitle = "More Information",
   backDescription = "",
   backContent,
@@ -97,7 +99,7 @@ export function InfoCard({
             className="mt-3 inline-block self-start text-[0.8rem] font-bold text-[#1b93ef]"
             onClick={() => setIsFlipped(false)}
           >
-            Back
+            {backButtonLabel}
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { SectionHeading } from "../components/ui/SectionHeading";
+import { useTranslation } from "react-i18next";
 
 type ProductCard = {
   id: number;
@@ -36,6 +37,26 @@ const productCardData: ProductCard[] = [
 ];
 
 export function ProductSection() {
+  const { t } = useTranslation();
+
+  const cards = [
+    {
+      ...productCardData[0],
+      label: t("product.cards.ops.label"),
+      description: t("product.cards.ops.description")
+    },
+    {
+      ...productCardData[1],
+      label: t("product.cards.sec.label"),
+      description: t("product.cards.sec.description")
+    },
+    {
+      ...productCardData[2],
+      label: t("product.cards.vision.label"),
+      description: t("product.cards.vision.description")
+    }
+  ];
+
   return (
     <section
       className="grid min-h-screen snap-start snap-always items-center bg-[#ececf0] px-0 py-8"
@@ -43,12 +64,12 @@ export function ProductSection() {
     >
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">
         <SectionHeading
-          kicker="Product"
-          title="The product that solves your toughest business problems."
+          kicker={t("product.kicker")}
+          title={t("product.title")}
         />
 
         <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {productCardData.map((item) => (
+          {cards.map((item) => (
             <article
               key={item.id}
               className="group relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-transform duration-400 ease-out hover:z-50 hover:scale-[1.05] sm:min-h-[460px] lg:min-h-[495px]"
@@ -76,7 +97,7 @@ export function ProductSection() {
                     type="button"
                     className="rounded-full border-0 bg-[rgba(240,247,255,0.95)] px-5 py-2.5 text-[1.05rem] font-semibold leading-none text-[#1976c5]"
                   >
-                    Learn More
+                    {t("product.learnMore")}
                   </button>
                 </div>
               </div>

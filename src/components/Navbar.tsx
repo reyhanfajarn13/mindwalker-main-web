@@ -1,12 +1,13 @@
 import { cn } from "../lib/utils";
 import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
-  { label: "Home", target: "home", activeFor: ["home"] },
-  { label: "Product", target: "product", activeFor: ["product"] },
-  { label: "Solutions", target: "solutions", activeFor: ["solutions"] },
-  { label: "About Us", target: "footer", activeFor: ["footer"] },
-  { label: "News", target: "footer", activeFor: ["footer"] }
+  { key: "home", target: "home", activeFor: ["home"] },
+  { key: "product", target: "product", activeFor: ["product"] },
+  { key: "solutions", target: "solutions", activeFor: ["solutions"] },
+  { key: "aboutUs", target: "footer", activeFor: ["footer"] },
+  { key: "news", target: "footer", activeFor: ["footer"] }
 ];
 
 type NavbarProps = {
@@ -16,8 +17,14 @@ type NavbarProps = {
 };
 
 export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
-  const activeLabel =
-    navItems.find((item) => item.activeFor.includes(activeSection ?? ""))?.label ?? "";
+  const { t, i18n } = useTranslation();
+  const activeKey =
+    navItems.find((item) => item.activeFor.includes(activeSection ?? ""))?.key ?? "";
+  const isIndonesian = i18n.resolvedLanguage !== "en";
+
+  const handleLanguageToggle = () => {
+    void i18n.changeLanguage(isIndonesian ? "en" : "id");
+  };
 
   return (
     <header
@@ -32,9 +39,9 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
       <nav>
         <ul className="m-0 flex list-none items-center gap-[0.1rem] p-0">
           {navItems.map((item) => {
-            const isActive = item.label === activeLabel;
+            const isActive = item.key === activeKey;
             return (
-              <li key={item.label}>
+              <li key={item.key}>
                 <button
                   type="button"
                   className={cn(
@@ -45,7 +52,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
                   )}
                   onClick={() => onNavigate?.(item.target)}
                 >
-                  {item.label}
+                  {t(`nav.${item.key}`)}
                 </button>
               </li>
             );
@@ -56,8 +63,9 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
         <button
           className="rounded-full border-0 bg-transparent px-[0.65rem] py-[0.42rem] font-semibold text-[#3e5163]"
           type="button"
+          onClick={handleLanguageToggle}
         >
-          IDN
+          {isIndonesian ? t("nav.langId") : t("nav.langEn")}
         </button>
         <button
           className="cursor-pointer rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-[0.92rem] py-[0.5rem] text-[0.8rem] font-bold text-white"
@@ -67,7 +75,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
 
       "mailto:marketing@mindwalker.ai?subject=Permintaan%20Konsultasi%20Lebih%20Lanjut&body=Halo,%0A%0ASaya%20tertarik%20untuk%20konsultasi%20lebih%20lanjut%20dengan%20Mindwalker.%0A%0ANama:%20%0APerusahaan:%20%0ANomor%20HP:%20%0A%0ATerima%20kasih."}
         >
-          Contact Us
+          {t("nav.contactUs")}
         </button>
       </div>
     </header>

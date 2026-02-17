@@ -70,8 +70,8 @@ export function HeroNewsSection({ items }: HeroNewsSectionProps) {
                   <p className="mt-4 text-[0.74rem] text-[#8a97a8]">
                     {item.category} | {item.date}
                   </p>
-                  <h2 className="mt-2 text-[2.8rem] leading-[1.22] text-[#27313e]">{item.title}</h2>
-                  <p className="mt-3 text-[0.9rem] leading-[1.6] text-[#6a7788]">{item.excerpt}</p>
+                  <h2 className="mt-2 text-[1.8rem] leading-[1.22] text-[#27313e]">{item.title}</h2>
+                  <p className="mt-3 text-[0.8rem] leading-[1.6] text-[#6a7788]">{item.excerpt}</p>
                   <button type="button" className="mt-6 text-[0.88rem] font-semibold text-[#0d84e6]">
                     Read More
                   </button>

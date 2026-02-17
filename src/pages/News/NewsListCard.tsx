@@ -21,7 +21,7 @@ export function NewsListCard({ item, className = "", imageClassName = "" }: News
         <p className="text-[0.68rem] text-[#8b97a6]">
           {item.category} | {item.date}
         </p>
-        <h3 className="mt-2 text-[1.95rem] leading-[1.2] text-[#232d3a]">{item.title}</h3>
+        <h3 className="mt-2 text-[1.2rem] leading-[1.2] text-[#232d3a]">{item.title}</h3>
         <button type="button" className="mt-3 ml-auto block text-[0.82rem] font-semibold text-[#0f83e5]">
           {item.excerpt} {"->"}
         </button>

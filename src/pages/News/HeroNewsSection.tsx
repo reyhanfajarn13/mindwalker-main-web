@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { NewsCard } from "./types";
 import ShinyText from "../../components/ui/ShinyText";
+import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
 
 type HeroNewsSectionProps = {
   items: NewsCard[];
@@ -29,29 +30,27 @@ export function HeroNewsSection({ items }: HeroNewsSectionProps) {
   return (
     <section
       id="news"
-      className="relative overflow-hidden bg-[radial-gradient(circle_at_30%_20%,#18325a_0%,#0d1c35_48%,#091326_100%)] px-4 pb-12 pt-[4.5rem] sm:px-6"
+      className="relative overflow-hidden bg-cover bg-center bg-no-repeat px-4 pb-12 pt-[4.5rem] sm:px-6"
+      style={{ backgroundImage: `url(${heroDetailsBackground})` }}
     >
       <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_70%_30%,#2f7ddf_0%,transparent_45%),radial-gradient(circle_at_80%_80%,#1b4f93_0%,transparent_40%)]" />
       <div className="relative mx-auto w-[min(1120px,100%)]">
         <ShinyText
-  text="MindWalker News"
-  speed={2}
-  delay={0}
-  color="#ffffff"
-  shineColor="#0d84e6"
-  spread={120}
-  direction="left"
-  yoyo={false}
-  pauseOnHover={false}
-  disabled={false}
-  className="relative left-1/2 block w-screen -translate-x-1/2 text-center text-[clamp(2rem,4vw,3.2rem)] font-bold"
-/>
+          text="MindWalker News"
+          speed={2}
+          delay={0}
+          color="#ffffff"
+          shineColor="#0d84e6"
+          spread={120}
+          direction="left"
+          yoyo={false}
+          pauseOnHover={false}
+          disabled={false}
+          className="relative left-1/2 block w-screen -translate-x-1/2 text-center text-[clamp(2rem,4vw,3.2rem)] font-bold"
+        />
 
         <div className="mt-4 overflow-hidden rounded-3xl border border-[rgba(255,255,255,0.12)] bg-white shadow-[0_24px_45px_rgba(6,15,29,0.35)]">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-          >
+          <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
             {carouselItems.map((item) => (
               <article key={item.id} className="group grid min-w-full lg:grid-cols-[1.35fr_1fr]">
                 <img
@@ -98,5 +97,3 @@ export function HeroNewsSection({ items }: HeroNewsSectionProps) {
     </section>
   );
 }
-
-

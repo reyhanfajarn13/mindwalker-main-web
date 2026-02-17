@@ -141,6 +141,10 @@ function App() {
     if (targetId === "news") {
       setCurrentPage("news");
       setActiveSection("news");
+      const scrollRoot = scrollRootRef.current;
+      if (scrollRoot) {
+        scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
+      }
       return;
     }
 
@@ -175,7 +179,11 @@ function App() {
         onNavigate={handleNavbarNavigate}
       />
       <main
-        className="h-full overflow-x-hidden overflow-y-auto snap-y snap-mandatory scroll-smooth max-[720px]:snap-proximity motion-reduce:scroll-auto"
+        className={`h-full overflow-x-hidden overflow-y-auto scroll-smooth motion-reduce:scroll-auto ${
+          currentPage === "news"
+            ? ""
+            : "snap-y snap-mandatory max-[720px]:snap-proximity"
+        }`}
         ref={scrollRootRef}
       >
         {currentPage === "news" ? (

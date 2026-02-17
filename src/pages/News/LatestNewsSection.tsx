@@ -16,7 +16,12 @@ export function LatestNewsSection({ items }: LatestNewsSectionProps) {
         </h2>
         <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => (
-            <NewsListCard key={item.id} item={item} />
+            <NewsListCard
+              key={item.id}
+              item={item}
+              className="group hover:scale-[1.03]"
+              imageClassName="grayscale group-hover:grayscale-0"
+            />
           ))}
         </div>
       </div>

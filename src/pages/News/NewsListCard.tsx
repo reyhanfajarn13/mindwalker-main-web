@@ -2,12 +2,21 @@ import type { NewsCard } from "./types";
 
 type NewsListCardProps = {
   item: NewsCard;
+  className?: string;
+  imageClassName?: string;
 };
 
-export function NewsListCard({ item }: NewsListCardProps) {
+export function NewsListCard({ item, className = "", imageClassName = "" }: NewsListCardProps) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#d7dee9] bg-[#eef4fb] shadow-[0_8px_20px_rgba(20,33,50,0.1)]">
-      <img src={item.imageUrl} alt={item.title} className="h-[230px] w-full object-cover" loading="lazy" />
+    <article
+      className={`overflow-hidden rounded-2xl border border-[#d7dee9] bg-[#eef4fb] shadow-[0_8px_20px_rgba(20,33,50,0.1)] transition-transform duration-300 ${className}`}
+    >
+      <img
+        src={item.imageUrl}
+        alt={item.title}
+        className={`h-[230px] w-full object-cover transition-all duration-300 ${imageClassName}`}
+        loading="lazy"
+      />
       <div className="p-4">
         <p className="text-[0.68rem] text-[#8b97a6]">
           {item.category} | {item.date}

@@ -163,6 +163,16 @@ export const productData: ProductItem[] = [
       {
         question: "Apakah VisionCraft aman untuk enterprise?",
         answer: "Ya, platform mendukung kebijakan akses, audit trail, dan opsi deployment sesuai kebutuhan keamanan organisasi."
+      },
+      {
+        question: "Apa yang membuat VisionCraft berbeda dari platform AI lain?",
+        answer:
+          "VisionCraft fokus untuk kebutuhan enterprise dengan kontrol kualitas, konsistensi brand, dan kolaborasi lintas tim."
+      },
+      {
+        question: "Apa yang membuat VisionCraft berbeda dari platform AI lain?",
+        answer:
+          "VisionCraft fokus untuk kebutuhan enterprise dengan kontrol kualitas, konsistensi brand, dan kolaborasi lintas tim."
       }
     ],
     useCases: [

@@ -294,7 +294,7 @@ function App() {
             {selectedProductSlug ? (
               <ProductDetailsPage
                 productSlug={selectedProductSlug}
-                onOpenProductDetails={handleOpenProductDetails}
+                onOpenNewsDetails={handleOpenNewsDetails}
               />
             ) : null}
           </Suspense>

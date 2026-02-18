@@ -2,13 +2,14 @@ import { useMemo, useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { FooterSection } from "../../sections/FooterSection";
 import { getProductBySlug } from "./productData";
+import { allNews } from "../News/newsData";
 
 type ProductDetailsPageProps = {
   productSlug: string;
-  onOpenProductDetails?: (slug: string) => void;
+  onOpenNewsDetails?: (id: number) => void;
 };
 
-export function ProductDetailsPage({ productSlug, onOpenProductDetails }: ProductDetailsPageProps) {
+export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDetailsPageProps) {
   const product = useMemo(() => getProductBySlug(productSlug), [productSlug]);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
@@ -23,7 +24,22 @@ export function ProductDetailsPage({ productSlug, onOpenProductDetails }: Produc
     );
   }
 
-  const relatedProducts = [product, ...product.useCases];
+  const heroNewsCards = useMemo(() => {
+    const matched = allNews.filter((item) =>
+      (item.tags ?? []).some((tag) => tag.toLowerCase() === product.title.toLowerCase())
+    );
+
+    const source = matched.length > 0 ? matched : allNews;
+    return source.slice(0, 4);
+  }, [product.title]);
+  const heroCardGridClass =
+    heroNewsCards.length <= 1
+      ? "grid-cols-1"
+      : heroNewsCards.length === 2
+        ? "grid-cols-1 sm:grid-cols-2"
+        : heroNewsCards.length === 3
+          ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
 
   return (
     <div className="bg-[#ececf0]">
@@ -43,27 +59,30 @@ export function ProductDetailsPage({ productSlug, onOpenProductDetails }: Produc
             {product.demoLabel}
           </button>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {relatedProducts.map((item, idx) => {
-              const cardTitle = "title" in item ? item.title : product.title;
-              const cardExcerpt = "excerpt" in item ? item.excerpt : product.description;
-              const cardImage = item.imageUrl;
-              const slug = "slug" in item ? item.slug : product.slug;
-
+          <div className={`mt-8 grid gap-3 ${heroCardGridClass}`}>
+            {heroNewsCards.map((item) => {
               return (
-                <article key={`${slug}-${idx}`} className="group overflow-hidden rounded-2xl bg-[rgba(15,26,42,0.7)]">
+                <article
+                  key={item.id}
+                  className="group relative overflow-hidden rounded-2xl bg-[rgba(15,26,42,0.78)] transition-transform duration-400 ease-out hover:scale-[1.03]"
+                >
                   <img
-                    src={cardImage}
-                    alt={cardTitle}
-                    className="h-32 w-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="h-40 w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
                   />
-                  <div className="p-3">
-                    <h3 className="line-clamp-1 text-[1.02rem] font-semibold text-white">{cardTitle}</h3>
-                    <p className="mt-1 line-clamp-2 text-[0.8rem] text-[rgba(225,236,249,0.9)]">{cardExcerpt}</p>
+                  <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] transition-colors duration-300" />
+                  <div className="relative rounded-b-2xl bg-transparent p-3 transition-colors duration-300 group-hover:bg-white">
+                    <h3 className="line-clamp-1 text-[clamp(1rem,1.4vw,1.1rem)] font-semibold text-white transition-colors duration-300 group-hover:text-[#0f1720]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 line-clamp-2 text-[0.8rem] text-[rgba(225,236,249,0.92)] transition-colors duration-300 group-hover:text-[#1f2a37]">
+                      {item.excerpt}
+                    </p>
                     <button
                       type="button"
-                      onClick={() => onOpenProductDetails?.(slug)}
-                      className="mt-2 text-[0.8rem] font-semibold text-[#8ec8ff]"
+                      onClick={() => onOpenNewsDetails?.(item.id)}
+                      className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf]"
                     >
                       Learn More -&gt;
                     </button>

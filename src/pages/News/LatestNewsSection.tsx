@@ -5,13 +5,14 @@ import type { NewsCard } from "./types";
 
 type LatestNewsSectionProps = {
   items: NewsCard[];
+  onOpenNewsDetails?: (id: number) => void;
 };
 
 const ITEMS_PER_PAGE = 3;
 
 type SlideDirection = "left" | "right";
 
-export function LatestNewsSection({ items }: LatestNewsSectionProps) {
+export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectionProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [slideDirection, setSlideDirection] = useState<SlideDirection>("left");
   const [slideClass, setSlideClass] = useState("translate-x-0 opacity-100");
@@ -73,6 +74,7 @@ export function LatestNewsSection({ items }: LatestNewsSectionProps) {
               item={item}
               className="group hover:scale-[1.03]"
               imageClassName="grayscale group-hover:grayscale-0"
+              onReadMore={onOpenNewsDetails}
             />
           ))}
         </div>

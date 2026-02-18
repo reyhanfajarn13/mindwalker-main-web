@@ -4,9 +4,10 @@ type NewsListCardProps = {
   item: NewsCard;
   className?: string;
   imageClassName?: string;
+  onReadMore?: (id: number) => void;
 };
 
-export function NewsListCard({ item, className = "", imageClassName = "" }: NewsListCardProps) {
+export function NewsListCard({ item, className = "", imageClassName = "", onReadMore }: NewsListCardProps) {
   return (
     <article
       className={`overflow-hidden rounded-2xl border border-[#d7dee9] bg-[#eef4fb] shadow-[0_8px_20px_rgba(20,33,50,0.1)] transition-transform duration-300 ${className}`}
@@ -22,11 +23,14 @@ export function NewsListCard({ item, className = "", imageClassName = "" }: News
           {item.category} | {item.date}
         </p>
         <h3 className="mt-2 text-[1.2rem] leading-[1.2] text-[#232d3a]">{item.title}</h3>
-        <button type="button" className="mt-3 ml-auto block text-[0.82rem] font-semibold text-[#0f83e5]">
+        <button
+          type="button"
+          className="mt-3 ml-auto block text-[0.82rem] font-semibold text-[#0f83e5]"
+          onClick={() => onReadMore?.(item.id)}
+        >
           {item.excerpt} {"->"}
         </button>
       </div>
     </article>
   );
 }
-

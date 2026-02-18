@@ -5,9 +5,10 @@ import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
 
 type HeroNewsSectionProps = {
   items: NewsCard[];
+  onOpenNewsDetails?: (id: number) => void;
 };
 
-export function HeroNewsSection({ items }: HeroNewsSectionProps) {
+export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionProps) {
   const carouselItems = useMemo(() => items.slice(0, 4), [items]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -74,7 +75,11 @@ export function HeroNewsSection({ items }: HeroNewsSectionProps) {
                   </p>
                   <h2 className="mt-2 text-[1.8rem] leading-[1.22] text-[#27313e]">{item.title}</h2>
                   <p className="mt-3 text-[0.8rem] leading-[1.6] text-[#6a7788]">{item.excerpt}</p>
-                  <button type="button" className="mt-6 text-[0.88rem] font-semibold text-[#0d84e6]">
+                  <button
+                    type="button"
+                    className="mt-6 text-[0.88rem] font-semibold text-[#0d84e6]"
+                    onClick={() => onOpenNewsDetails?.(item.id)}
+                  >
                     Read More
                   </button>
                 </div>

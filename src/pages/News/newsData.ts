@@ -151,3 +151,12 @@ export const trendingNews: NewsCard[] = [
       "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80"
   }
 ];
+
+const seenIds = new Set<number>();
+export const allNews: NewsCard[] = [...featuredNews, ...latestNews, ...trendingNews].filter((item) => {
+  if (seenIds.has(item.id)) {
+    return false;
+  }
+  seenIds.add(item.id);
+  return true;
+});

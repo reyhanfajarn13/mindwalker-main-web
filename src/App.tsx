@@ -17,6 +17,9 @@ const FloatingChatbot = lazy(() =>
 const NewsPage = lazy(() =>
   import("./pages/News/NewsPage").then((module) => ({ default: module.NewsPage }))
 );
+const NewsDetailsPage = lazy(() =>
+  import("./pages/News/NewsDetailsPage").then((module) => ({ default: module.NewsDetailsPage }))
+);
 
 function SectionFallback() {
   return <div className="min-h-[48vh] w-full bg-transparent" />;
@@ -24,6 +27,14 @@ function SectionFallback() {
 
 const getPageFromPathname = (pathname: string): "main" | "news" =>
   pathname.toLowerCase().startsWith("/news") ? "news" : "main";
+
+const getNewsIdFromPathname = (pathname: string): number | null => {
+  const match = pathname.match(/^\/news\/(\d+)$/i);
+  if (!match) return null;
+
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+};
 
 function App() {
   const scrollRootRef = useRef<HTMLElement | null>(null);
@@ -36,10 +47,14 @@ function App() {
   const [currentPage, setCurrentPage] = useState<"main" | "news">(() =>
     getPageFromPathname(window.location.pathname)
   );
+  const [selectedNewsId, setSelectedNewsId] = useState<number | null>(() =>
+    getNewsIdFromPathname(window.location.pathname)
+  );
 
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPage(getPageFromPathname(window.location.pathname));
+      setSelectedNewsId(getNewsIdFromPathname(window.location.pathname));
       if (getPageFromPathname(window.location.pathname) === "news") {
         setActiveSection("news");
       }
@@ -160,6 +175,7 @@ function App() {
         window.history.pushState({}, "", "/News");
       }
       setCurrentPage("news");
+      setSelectedNewsId(null);
       setActiveSection("news");
       const scrollRoot = scrollRootRef.current;
       if (scrollRoot) {
@@ -174,6 +190,7 @@ function App() {
         window.history.pushState({}, "", "/");
       }
       setCurrentPage("main");
+      setSelectedNewsId(null);
       return;
     }
 
@@ -189,6 +206,21 @@ function App() {
       scrollToSection(targetId);
     });
   }, [currentPage]);
+
+  const handleOpenNewsDetails = (id: number) => {
+    if (window.location.pathname !== `/News/${id}`) {
+      window.history.pushState({}, "", `/News/${id}`);
+    }
+
+    setCurrentPage("news");
+    setSelectedNewsId(id);
+    setActiveSection("news");
+
+    const scrollRoot = scrollRootRef.current;
+    if (scrollRoot) {
+      scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -211,7 +243,11 @@ function App() {
       >
         {currentPage === "news" ? (
           <Suspense fallback={<SectionFallback />}>
-            <NewsPage />
+            {selectedNewsId ? (
+              <NewsDetailsPage newsId={selectedNewsId} onOpenNewsDetails={handleOpenNewsDetails} />
+            ) : (
+              <NewsPage onOpenNewsDetails={handleOpenNewsDetails} />
+            )}
           </Suspense>
         ) : (
           <>

@@ -5,13 +5,14 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 type TrendingNewsSectionProps = {
   items: NewsCard[];
+  onOpenNewsDetails?: (id: number) => void;
 };
 
 const ITEMS_PER_PAGE = 3;
 
 type SlideDirection = "left" | "right";
 
-export function TrendingNewsSection({ items }: TrendingNewsSectionProps) {
+export function TrendingNewsSection({ items, onOpenNewsDetails }: TrendingNewsSectionProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [slideDirection, setSlideDirection] = useState<SlideDirection>("left");
   const [slideClass, setSlideClass] = useState("translate-x-0 opacity-100");
@@ -80,6 +81,7 @@ export function TrendingNewsSection({ items }: TrendingNewsSectionProps) {
               item={item}
               className="group hover:scale-[1.03]"
               imageClassName="grayscale group-hover:grayscale-0"
+              onReadMore={onOpenNewsDetails}
             />
           ))}
         </div>

@@ -27,7 +27,7 @@ export function ProductDetailsPage({ productSlug, onOpenProductDetails }: Produc
 
   return (
     <div className="bg-[#ececf0]">
-      <section className="relative snap-start overflow-hidden bg-[radial-gradient(circle_at_10%_20%,#1c3566_0%,#111b2f_42%,#0a101d_100%)] px-4 pb-12 pt-[6rem] sm:px-6">
+      <section className="relative snap-start min-h-screen overflow-hidden bg-[radial-gradient(circle_at_10%_20%,#1c3566_0%,#111b2f_42%,#0a101d_100%)] px-4 pb-12 pt-[6rem] sm:px-6">
         <div className="mx-auto w-[min(1120px,100%)]">
           <h1 className="text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[1.05] text-[#2f92ff]">
             <span className="text-white">{product.title.split(" ")[0]}</span>

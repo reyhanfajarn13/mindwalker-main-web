@@ -170,7 +170,7 @@ function App() {
   return (
     <>
       <Navbar
-        className={`fixed left-1/2 top-[0.9rem] z-[140] -translate-x-1/2 transition-[transform,opacity] duration-300 ${
+        className={`fixed left-1/2 top-[0.9rem] z-[140] -translate-x-1/2 transition-[transform,opacity] duration-300 max-[550px]:left-auto max-[550px]:right-4 max-[550px]:translate-x-0 ${
           isNavbarVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-[130%] opacity-0 pointer-events-none"

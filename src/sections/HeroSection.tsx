@@ -137,7 +137,7 @@ export function HeroSection({
       </div>
 
       <div className="relative z-[3] mx-auto grid w-[min(1120px,calc(100%-2rem))] self-center gap-7 lg:grid-cols-[1.05fr_1fr]">
-        <div className="flex min-h-[calc(100vh-7.75rem)] flex-col justify-center">
+        <div className="flex min-h-0 flex-col justify-center lg:min-h-[calc(100vh-7.75rem)]">
           <div className="mt-5 mb-5 flex items-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-[#76b900] text-[0.52rem] font-bold text-white">
@@ -146,7 +146,7 @@ export function HeroSection({
               <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
             </span>
           </div>
-          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
+          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white max-[1023px]:max-w-none">
             <span className="block font-semibold text-white">
               {t("hero.from")} <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
             </span>
@@ -156,7 +156,7 @@ export function HeroSection({
           </h1>
         </div>
 
-        <div className="relative w-full max-w-[560px] self-center">
+        <div className="relative w-full self-center lg:max-w-[560px]">
           <div
             className="w-full overflow-hidden rounded-[28px] border border-[rgba(255,255,255,0.24)] bg-[rgba(255,255,255,0.07)]"
             onMouseEnter={() => setIsPaused(true)}
@@ -216,4 +216,3 @@ export function HeroSection({
     </section>
   );
 }
-

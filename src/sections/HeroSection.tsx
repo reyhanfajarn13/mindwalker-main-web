@@ -128,7 +128,7 @@ export function HeroSection({
           chromaticAberration={0}
           dither={0}
           curvature={0.1}
-          tint="#2f99ff"
+          tint="#464646"
           mouseReact
           mouseStrength={0.5}
           pageLoadAnimation
@@ -187,7 +187,7 @@ export function HeroSection({
                         {card.badge}
                       </span>
                     </div>
-                    <h2 className="mt-2 text-[clamp(1.2rem,3.4vw,1.5rem)] font-semibold leading-[1.15] text-white">{card.title}</h2>
+                    <h2 className="mt-2 text-[clamp(1.2rem,3.4vw,1.5rem)] font-semibold leading-[1.15] text-white transition-colors duration-300 group-hover:text-[#2f99ff]">{card.title}</h2>
                     <p className="mt-2 text-[0.8rem] leading-relaxed text-[#d9e3ef]">{card.description}</p>
                   </div>
                 </article>

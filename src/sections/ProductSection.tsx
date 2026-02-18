@@ -102,7 +102,7 @@ export function ProductSection() {
                 <div className="mt-5 flex justify-end sm:mt-6">
                   <button
                     type="button"
-                    className="rounded-full border-0 bg-[rgba(240,247,255,0.95)] px-5 py-2.5 text-[1.05rem] font-semibold leading-none text-[#1976c5]"
+                    className="rounded-full border-0 bg-transparent px-5 py-2.5 text-[0.8rem] leading-none text-[rgba(236,244,255,0.94)] transition-colors duration-300 group-hover:bg-[rgba(240,247,255,0.95)] group-hover:text-[#1976c5]"
                   >
                     {t("product.learnMore")}
                   </button>

@@ -37,7 +37,7 @@ const resources = {
       product: {
         kicker: "Produk",
         title: "Produk yang menyelesaikan tantangan bisnis terberat Anda.",
-        learnMore: "Pelajari Lebih Lanjut",
+        learnMore: "Selengkapnya",
         cards: {
           ops: {
             label: "Operasional Sistem",
@@ -80,7 +80,7 @@ const resources = {
             backContent:
               "Dirancang agar kolaborasi tim data, engineering, dan bisnis menjadi lebih cepat dan konsisten."
           },
-          learnMore: "Pelajari Lebih Lanjut",
+          learnMore: "Selengkapnya",
           back: "Kembali"
         }
       },

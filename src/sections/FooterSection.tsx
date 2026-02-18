@@ -5,6 +5,8 @@ import image5 from "../assets/image5.png";
 import image6 from "../assets/image6.png";
 import image7 from "../assets/image7.png";
 import image8 from "../assets/image8.png";
+import footerHand from "../assets/footerHand.png";
+import footerHandRobot from "../assets/footerHandRobot.png";
 import mindwalkerLogoFull from "../assets/logo/mindwalker_logo_full.png";
 import { Github, Instagram, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -47,21 +49,34 @@ export function FooterSection() {
     >
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center gap-6 pt-6 max-[500px]:w-[calc(100%-1rem)] sm:gap-8 sm:pt-8 lg:min-h-[calc(100vh-5rem)] lg:grid-rows-[3fr_2fr]">
         <article className="rounded-2xl border border-[#d6dbe5] bg-[linear-gradient(120deg,#f0f1f5,#fdfdff_48%,#f0f1f5)] px-3 pb-4 pt-4 shadow-[0_9px_24px_rgba(88,103,126,0.24)] sm:px-5 md:px-6">
-          <div className="px-0 py-4 text-center sm:py-5">
-            <h2 className="text-[clamp(1.35rem,4.2vw,2.2rem)] text-[#2d98eb]">{t("footer.title")}</h2>
-            <p className="mx-auto mt-1 max-w-[52ch] text-[0.82rem] leading-relaxed text-[#95a2b3] sm:text-[0.9rem]">
-              {t("footer.subtitle")}
-            </p>
-            <div className="mt-3.5 flex justify-center">
-              <div className="flex w-full max-w-[560px] min-w-0 items-center overflow-hidden rounded-full border border-[#d6dbe5] bg-white">
-                <input
-                  type="email"
-                  placeholder={t("footer.emailPlaceholder")}
-                  className="min-w-0 w-full px-3 py-2 text-[0.78rem] text-[#3f5062] outline-none placeholder:text-[#95a2b3] sm:px-4 sm:py-2.5 sm:text-[0.84rem]"
-                />
-                <button className="shrink-0 cursor-pointer whitespace-nowrap border-0 bg-[#2a95f1] px-3 py-2 text-[0.78rem] font-bold text-[#f4faff] sm:px-4 sm:py-2.5 sm:text-[0.84rem]">
-                  {t("footer.send")}
-                </button>
+          <div className="relative flex min-h-[clamp(180px,28vw,240px)] items-center justify-center py-4 text-center sm:py-5">
+            <img
+              src={footerHand}
+              alt="Human hand"
+              className="pointer-events-none absolute -left-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain min-[700px]:block"
+            />
+            <img
+              src={footerHandRobot}
+              alt="Robot hand"
+              className="pointer-events-none absolute -right-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain min-[700px]:block"
+            />
+
+            <div className="w-full max-w-[560px] min-[700px]:max-w-[min(520px,58%)]">
+              <h2 className="text-[clamp(1.35rem,4.2vw,2.2rem)] text-[#2d98eb]">{t("footer.title")}</h2>
+              <p className="mx-auto mt-1 max-w-[52ch] text-[0.82rem] leading-relaxed text-[#95a2b3] sm:text-[0.9rem]">
+                {t("footer.subtitle")}
+              </p>
+              <div className="mt-3.5 flex justify-center">
+                <div className="flex w-full max-w-[560px] min-w-0 items-center overflow-hidden rounded-full border border-[#d6dbe5] bg-white">
+                  <input
+                    type="email"
+                    placeholder={t("footer.emailPlaceholder")}
+                    className="min-w-0 w-full px-3 py-2 text-[0.78rem] text-[#3f5062] outline-none placeholder:text-[#95a2b3] sm:px-4 sm:py-2.5 sm:text-[0.84rem]"
+                  />
+                  <button className="shrink-0 cursor-pointer whitespace-nowrap border-0 bg-[#2a95f1] px-3 py-2 text-[0.78rem] font-bold text-[#f4faff] sm:px-4 sm:py-2.5 sm:text-[0.84rem]">
+                    {t("footer.send")}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

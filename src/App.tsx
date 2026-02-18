@@ -22,6 +22,9 @@ function SectionFallback() {
   return <div className="min-h-[48vh] w-full bg-transparent" />;
 }
 
+const getPageFromPathname = (pathname: string): "main" | "news" =>
+  pathname.toLowerCase().startsWith("/news") ? "news" : "main";
+
 function App() {
   const scrollRootRef = useRef<HTMLElement | null>(null);
   const pendingTargetRef = useRef<string | null>(null);
@@ -30,7 +33,21 @@ function App() {
   const sectionRatiosRef = useRef<Record<string, number>>({});
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [currentPage, setCurrentPage] = useState<"main" | "news">("main");
+  const [currentPage, setCurrentPage] = useState<"main" | "news">(() =>
+    getPageFromPathname(window.location.pathname)
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getPageFromPathname(window.location.pathname));
+      if (getPageFromPathname(window.location.pathname) === "news") {
+        setActiveSection("news");
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   useEffect(() => {
     if (currentPage !== "main") return;
@@ -139,6 +156,9 @@ function App() {
 
   const handleNavbarNavigate = (targetId: string) => {
     if (targetId === "news") {
+      if (window.location.pathname !== "/News") {
+        window.history.pushState({}, "", "/News");
+      }
       setCurrentPage("news");
       setActiveSection("news");
       const scrollRoot = scrollRootRef.current;
@@ -150,6 +170,9 @@ function App() {
 
     if (currentPage !== "main") {
       pendingTargetRef.current = targetId;
+      if (window.location.pathname !== "/") {
+        window.history.pushState({}, "", "/");
+      }
       setCurrentPage("main");
       return;
     }

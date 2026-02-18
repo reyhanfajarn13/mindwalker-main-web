@@ -20,13 +20,20 @@ const NewsPage = lazy(() =>
 const NewsDetailsPage = lazy(() =>
   import("./pages/News/NewsDetailsPage").then((module) => ({ default: module.NewsDetailsPage }))
 );
+const ProductDetailsPage = lazy(() =>
+  import("./pages/Product/ProductDetailsPage").then((module) => ({ default: module.ProductDetailsPage }))
+);
 
 function SectionFallback() {
   return <div className="min-h-[48vh] w-full bg-transparent" />;
 }
 
-const getPageFromPathname = (pathname: string): "main" | "news" =>
-  pathname.toLowerCase().startsWith("/news") ? "news" : "main";
+const getPageFromPathname = (pathname: string): "main" | "news" | "product" => {
+  const normalized = pathname.toLowerCase();
+  if (normalized.startsWith("/news")) return "news";
+  if (normalized.startsWith("/product/")) return "product";
+  return "main";
+};
 
 const getNewsIdFromPathname = (pathname: string): number | null => {
   const match = pathname.match(/^\/news\/(\d+)$/i);
@@ -34,6 +41,13 @@ const getNewsIdFromPathname = (pathname: string): number | null => {
 
   const id = Number(match[1]);
   return Number.isFinite(id) ? id : null;
+};
+
+const getProductSlugFromPathname = (pathname: string): string | null => {
+  const match = pathname.match(/^\/product\/([^/]+)$/i);
+  if (!match) return null;
+
+  return decodeURIComponent(match[1]);
 };
 
 function App() {
@@ -44,19 +58,25 @@ function App() {
   const sectionRatiosRef = useRef<Record<string, number>>({});
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [currentPage, setCurrentPage] = useState<"main" | "news">(() =>
+  const [currentPage, setCurrentPage] = useState<"main" | "news" | "product">(() =>
     getPageFromPathname(window.location.pathname)
   );
   const [selectedNewsId, setSelectedNewsId] = useState<number | null>(() =>
     getNewsIdFromPathname(window.location.pathname)
+  );
+  const [selectedProductSlug, setSelectedProductSlug] = useState<string | null>(() =>
+    getProductSlugFromPathname(window.location.pathname)
   );
 
   useEffect(() => {
     const handlePopState = () => {
       setCurrentPage(getPageFromPathname(window.location.pathname));
       setSelectedNewsId(getNewsIdFromPathname(window.location.pathname));
+      setSelectedProductSlug(getProductSlugFromPathname(window.location.pathname));
       if (getPageFromPathname(window.location.pathname) === "news") {
         setActiveSection("news");
+      } else if (getPageFromPathname(window.location.pathname) === "product") {
+        setActiveSection("product");
       }
     };
 
@@ -176,6 +196,7 @@ function App() {
       }
       setCurrentPage("news");
       setSelectedNewsId(null);
+      setSelectedProductSlug(null);
       setActiveSection("news");
       const scrollRoot = scrollRootRef.current;
       if (scrollRoot) {
@@ -191,6 +212,7 @@ function App() {
       }
       setCurrentPage("main");
       setSelectedNewsId(null);
+      setSelectedProductSlug(null);
       return;
     }
 
@@ -214,7 +236,25 @@ function App() {
 
     setCurrentPage("news");
     setSelectedNewsId(id);
+    setSelectedProductSlug(null);
     setActiveSection("news");
+
+    const scrollRoot = scrollRootRef.current;
+    if (scrollRoot) {
+      scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleOpenProductDetails = (slug: string) => {
+    const targetPath = `/Product/${encodeURIComponent(slug)}`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({}, "", targetPath);
+    }
+
+    setCurrentPage("product");
+    setSelectedProductSlug(slug);
+    setSelectedNewsId(null);
+    setActiveSection("product");
 
     const scrollRoot = scrollRootRef.current;
     if (scrollRoot) {
@@ -230,14 +270,14 @@ function App() {
             ? "translate-y-0 opacity-100"
             : "-translate-y-[130%] opacity-0 pointer-events-none"
         }`}
-        activeSection={currentPage === "news" ? "news" : activeSection}
+        activeSection={currentPage === "news" ? "news" : currentPage === "product" ? "product" : activeSection}
         onNavigate={handleNavbarNavigate}
       />
       <main
         className={`h-full overflow-x-hidden overflow-y-auto scroll-smooth motion-reduce:scroll-auto ${
-          currentPage === "news"
-            ? ""
-            : "snap-y snap-mandatory max-[720px]:snap-proximity"
+          currentPage === "main" || currentPage === "product"
+            ? "snap-y snap-mandatory max-[720px]:snap-proximity"
+            : ""
         }`}
         ref={scrollRootRef}
       >
@@ -249,11 +289,20 @@ function App() {
               <NewsPage onOpenNewsDetails={handleOpenNewsDetails} />
             )}
           </Suspense>
+        ) : currentPage === "product" ? (
+          <Suspense fallback={<SectionFallback />}>
+            {selectedProductSlug ? (
+              <ProductDetailsPage
+                productSlug={selectedProductSlug}
+                onOpenProductDetails={handleOpenProductDetails}
+              />
+            ) : null}
+          </Suspense>
         ) : (
           <>
             <HeroSection />
             <Suspense fallback={<SectionFallback />}>
-              <ProductSection />
+              <ProductSection onOpenProductDetails={handleOpenProductDetails} />
               <SolutionSection />
               <FooterSection />
             </Suspense>

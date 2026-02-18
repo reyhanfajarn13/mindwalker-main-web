@@ -1,62 +1,42 @@
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
 import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
+import { productData } from "../pages/Product/productData";
 
-type ProductCard = {
-  id: number;
-  title: string;
-  label: string;
-  description: string;
-  imageUrl: string;
+type ProductSectionProps = {
+  onOpenProductDetails?: (slug: string) => void;
 };
 
-const productCardData: ProductCard[] = [
-  {
-    id: 1,
-    title: "Mind Ops",
-    label: "System Operations",
-    description: "From monitoring to resolution, IT operations must move with intelligence.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-  },
-  {
-    id: 2,
-    title: "Mind Sec",
-    label: "Threat Analysis",
-    description: "Detect risks early and orchestrate faster response across security workflows.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-  },
-  {
-    id: 3,
-    title: "VisionCraft",
-    label: "AI Intelligence",
-    description: "Build insight pipelines that turn data signals into real operational impact.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
-  }
-];
-
-export function ProductSection() {
+export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
   const { t } = useTranslation();
 
-  const cards = [
-    {
-      ...productCardData[0],
-      label: t("product.cards.ops.label"),
-      description: t("product.cards.ops.description")
-    },
-    {
-      ...productCardData[1],
-      label: t("product.cards.sec.label"),
-      description: t("product.cards.sec.description")
-    },
-    {
-      ...productCardData[2],
-      label: t("product.cards.vision.label"),
-      description: t("product.cards.vision.description")
+  const cards = productData.map((item) => {
+    if (item.slug === "mind-ops") {
+      return {
+        ...item,
+        label: t("product.cards.ops.label"),
+        description: t("product.cards.ops.description")
+      };
     }
-  ];
+
+    if (item.slug === "mind-sec") {
+      return {
+        ...item,
+        label: t("product.cards.sec.label"),
+        description: t("product.cards.sec.description")
+      };
+    }
+
+    if (item.slug === "visioncraft") {
+      return {
+        ...item,
+        label: t("product.cards.vision.label"),
+        description: t("product.cards.vision.description")
+      };
+    }
+
+    return item;
+  });
 
   return (
     <section
@@ -102,6 +82,7 @@ export function ProductSection() {
                 <div className="mt-5 flex justify-end sm:mt-6">
                   <button
                     type="button"
+                    onClick={() => onOpenProductDetails?.(item.slug)}
                     className="rounded-full border-0 bg-transparent px-5 py-2.5 text-[0.8rem] leading-none text-[rgba(236,244,255,0.94)] transition-colors duration-300 group-hover:bg-[rgba(240,247,255,0.95)] group-hover:text-[#1976c5]"
                   >
                     {t("product.learnMore")}

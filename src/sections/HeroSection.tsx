@@ -148,15 +148,12 @@ export function HeroSection({
           </div>
           <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white">
             <span className="block font-semibold text-white">
-              {t("hero.from")}{" "}
-              <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
+              {t("hero.from")} <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
             </span>
             <span className="block font-semibold text-white">
-              {t("hero.to")}{" "}
-              <DecryptedText text={t("hero.impact")} className="font-extrabold text-[#2f99ff]" />
+              {t("hero.to")} <DecryptedText text={t("hero.impact")} className="font-extrabold text-[#2f99ff]" />
             </span>
           </h1>
-          
         </div>
 
         <div className="relative w-full max-w-[560px] self-center">
@@ -173,26 +170,25 @@ export function HeroSection({
               style={{ transform: `translateY(-${activeSlide * 100}%)` }}
             >
               {heroCards.map((card) => (
-                <article key={card.id} className="grid h-full shrink-0 grid-rows-[1fr_auto] overflow-hidden">
+                <article key={card.id} className="group relative h-full shrink-0 overflow-hidden">
                   {card.imageUrl ? (
                     <img
                       src={card.imageUrl}
                       alt={card.imageAlt}
-                      className="h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
                     />
                   ) : (
-                    <div className="h-full bg-[linear-gradient(130deg,rgba(255,255,255,0.85),rgba(190,197,207,0.76)),repeating-linear-gradient(-45deg,rgba(80,90,105,0.2)_0_16px,rgba(216,222,230,0.2)_16px_32px)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(255,255,255,0.85),rgba(190,197,207,0.76)),repeating-linear-gradient(-45deg,rgba(80,90,105,0.2)_0_16px,rgba(216,222,230,0.2)_16px_32px)]" />
                   )}
-                  <div className="bg-[linear-gradient(to_top,rgba(6,13,24,0.94),rgba(6,13,24,0.64))] px-5 py-4 sm:px-6 sm:py-5">
-                    <div className="flex items-center gap-2.5">
-                      <h2 className="text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-none text-white">
-                        {card.title}
-                      </h2>
-                      <span className="rounded-full bg-[rgba(255,255,255,0.18)] px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.02em] text-[#d3e4ff]">
+
+                  <div className="absolute inset-x-4 bottom-4 rounded-[24px] bg-[rgba(10,14,22,0.4)] px-5 py-4 backdrop-blur-sm sm:inset-x-4 sm:bottom-2 sm:px-6 sm:py-5 hover:bg-[rgba(10,14,22,0)] hover:backdrop-blur duration-300">
+                    <div className="flex items-center gap-1.5">
+                      <span className="rounded-full bg-[rgba(255,255,255,0.3)] px-3 py-1 text-[0.8rem] font-semibold text-white">
                         {card.badge}
                       </span>
                     </div>
-                    <p className="mt-2 text-[0.9rem] leading-relaxed text-[#c7d4e3]">{card.description}</p>
+                    <h2 className="mt-2 text-[clamp(1.2rem,3.4vw,1.5rem)] font-semibold leading-[1.15] text-white">{card.title}</h2>
+                    <p className="mt-2 text-[0.8rem] leading-relaxed text-[#d9e3ef]">{card.description}</p>
                   </div>
                 </article>
               ))}
@@ -220,3 +216,4 @@ export function HeroSection({
     </section>
   );
 }
+

@@ -66,7 +66,7 @@ export function LatestNewsSection({ items }: LatestNewsSectionProps) {
           <Newspaper size={22} className="text-[#2792f0]" />
           Latest News
         </h2>
-        <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-2 xl:grid-cols-3 ${slideClass}`}>
+        <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-3 ${slideClass}`}>
           {paginatedItems.map((item) => (
             <NewsListCard
               key={item.id}
@@ -120,3 +120,4 @@ export function LatestNewsSection({ items }: LatestNewsSectionProps) {
     </section>
   );
 }
+

@@ -73,7 +73,7 @@ export function TrendingNewsSection({ items }: TrendingNewsSectionProps) {
           </span>
           Trending News
         </h2>
-        <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-2 xl:grid-cols-3 ${slideClass}`}>
+        <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-3 ${slideClass}`}>
           {paginatedItems.map((item) => (
             <NewsListCard
               key={item.id}
@@ -127,3 +127,4 @@ export function TrendingNewsSection({ items }: TrendingNewsSectionProps) {
     </section>
   );
 }
+

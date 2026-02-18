@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 type InfoCardProps = {
@@ -77,10 +78,11 @@ export function InfoCard({
             </p>
             <button
               type="button"
-              className={cn("mt-1.5 inline-block text-[0.7rem] text-[#1b93ef]", ctaClassName)}
+              className={cn("mt-1.5 inline-flex items-center gap-1 text-[0.7rem] text-[#1b93ef]", ctaClassName)}
               onClick={() => setIsFlipped(true)}
             >
-              {ctaLabel}
+              <span>{ctaLabel}</span>
+              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </div>

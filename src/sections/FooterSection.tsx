@@ -48,17 +48,17 @@ export function FooterSection() {
       id="footer"
     >
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center gap-6 pt-6 max-[500px]:w-[calc(100%-1rem)] sm:gap-8 sm:pt-8 lg:min-h-[calc(100vh-5rem)] lg:grid-rows-[3fr_2fr]">
-        <article className="rounded-2xl border border-[#d6dbe5] bg-[linear-gradient(120deg,#f0f1f5,#fdfdff_48%,#f0f1f5)] px-3 pb-4 pt-4 shadow-[0_9px_24px_rgba(88,103,126,0.24)] sm:px-5 md:px-6">
+        <article className="group rounded-2xl border border-[#d6dbe5] bg-[linear-gradient(120deg,#f0f1f5,#fdfdff_48%,#f0f1f5)] px-3 pb-4 pt-4 shadow-[0_9px_24px_rgba(88,103,126,0.24)] sm:px-5 md:px-6">
           <div className="relative flex min-h-[clamp(180px,28vw,240px)] items-center justify-center py-4 text-center sm:py-5">
             <img
               src={footerHand}
               alt="Human hand"
-              className="pointer-events-none absolute -left-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain min-[700px]:block"
+              className="pointer-events-none absolute -left-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain grayscale transition-[filter] duration-400 group-hover:grayscale-0 min-[700px]:block"
             />
             <img
               src={footerHandRobot}
               alt="Robot hand"
-              className="pointer-events-none absolute -right-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain min-[700px]:block"
+              className="pointer-events-none absolute -right-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain grayscale transition-[filter] duration-400 group-hover:grayscale-0 min-[700px]:block"
             />
 
             <div className="w-full max-w-[560px] min-[700px]:max-w-[min(520px,58%)]">

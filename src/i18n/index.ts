@@ -88,7 +88,7 @@ const resources = {
         pageTitle: "Berita MindWalker",
         latestTitle: "Berita Terbaru",
         trendingTitle: "Berita Populer",
-        readMore: "Selengkapnya",
+        readMore: "Lihat Selengkapnya",
         pagination: {
           prev: "Sebelumnya",
           next: "Berikutnya"

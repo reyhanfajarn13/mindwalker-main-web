@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Newspaper } from "lucide-react";
 import { NewsListCard } from "./NewsListCard";
 import type { NewsCard } from "./types";
+import { useTranslation } from "react-i18next";
 
 type LatestNewsSectionProps = {
   items: NewsCard[];
@@ -13,6 +14,7 @@ const ITEMS_PER_PAGE = 3;
 type SlideDirection = "left" | "right";
 
 export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectionProps) {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [slideDirection, setSlideDirection] = useState<SlideDirection>("left");
   const [slideClass, setSlideClass] = useState("translate-x-0 opacity-100");
@@ -65,7 +67,7 @@ export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectio
       <div className="mx-auto w-[min(1120px,100%)]">
         <h2 className="inline-flex items-center gap-2 text-[2rem] font-bold text-[#2b3644]">
           <Newspaper size={22} className="text-[#2792f0]" />
-          Latest News
+          {t("news.latestTitle")}
         </h2>
         <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-3 ${slideClass}`}>
           {paginatedItems.map((item) => (
@@ -87,7 +89,7 @@ export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectio
               disabled={currentPage === 1}
               className="rounded-full border border-[#ccd9ea] px-4 py-1.5 text-sm font-semibold text-[#355172] transition-colors hover:bg-[#e8f1fd] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Prev
+              {t("news.pagination.prev")}
             </button>
 
             {Array.from({ length: totalPages }, (_, index) => {
@@ -114,7 +116,7 @@ export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectio
               disabled={currentPage === totalPages}
               className="rounded-full border border-[#ccd9ea] px-4 py-1.5 text-sm font-semibold text-[#355172] transition-colors hover:bg-[#e8f1fd] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Next
+              {t("news.pagination.next")}
             </button>
           </div>
         ) : null}

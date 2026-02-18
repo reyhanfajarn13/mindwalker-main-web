@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { NewsListCard } from "./NewsListCard";
 import type { NewsCard } from "./types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useTranslation } from "react-i18next";
 
 type TrendingNewsSectionProps = {
   items: NewsCard[];
@@ -13,6 +14,7 @@ const ITEMS_PER_PAGE = 3;
 type SlideDirection = "left" | "right";
 
 export function TrendingNewsSection({ items, onOpenNewsDetails }: TrendingNewsSectionProps) {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [slideDirection, setSlideDirection] = useState<SlideDirection>("left");
   const [slideClass, setSlideClass] = useState("translate-x-0 opacity-100");
@@ -72,7 +74,7 @@ export function TrendingNewsSection({ items, onOpenNewsDetails }: TrendingNewsSe
               className="h-full w-full"
             />
           </span>
-          Trending News
+          {t("news.trendingTitle")}
         </h2>
         <div className={`mt-5 grid gap-5 transition-all duration-400 ease-out md:grid-cols-3 ${slideClass}`}>
           {paginatedItems.map((item) => (
@@ -94,7 +96,7 @@ export function TrendingNewsSection({ items, onOpenNewsDetails }: TrendingNewsSe
               disabled={currentPage === 1}
               className="rounded-full border border-[#ccd9ea] px-4 py-1.5 text-sm font-semibold text-[#355172] transition-colors hover:bg-[#e8f1fd] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Prev
+              {t("news.pagination.prev")}
             </button>
 
             {Array.from({ length: totalPages }, (_, index) => {
@@ -121,7 +123,7 @@ export function TrendingNewsSection({ items, onOpenNewsDetails }: TrendingNewsSe
               disabled={currentPage === totalPages}
               className="rounded-full border border-[#ccd9ea] px-4 py-1.5 text-sm font-semibold text-[#355172] transition-colors hover:bg-[#e8f1fd] disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Next
+              {t("news.pagination.next")}
             </button>
           </div>
         ) : null}

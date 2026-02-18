@@ -1,4 +1,5 @@
 import type { NewsCard } from "./types";
+import { useTranslation } from "react-i18next";
 
 type NewsListCardProps = {
   item: NewsCard;
@@ -8,6 +9,7 @@ type NewsListCardProps = {
 };
 
 export function NewsListCard({ item, className = "", imageClassName = "", onReadMore }: NewsListCardProps) {
+  const { t } = useTranslation();
   return (
     <article
       className={`overflow-hidden rounded-2xl border border-[#d7dee9] bg-[#eef4fb] shadow-[0_8px_20px_rgba(20,33,50,0.1)] transition-transform duration-300 ${className}`}
@@ -28,7 +30,7 @@ export function NewsListCard({ item, className = "", imageClassName = "", onRead
           className="mt-3 ml-auto block text-[0.82rem] font-semibold text-[#0f83e5]"
           onClick={() => onReadMore?.(item.id)}
         >
-          {item.excerpt} {"->"}
+          {t("news.readMore")} {"->"}
         </button>
       </div>
     </article>

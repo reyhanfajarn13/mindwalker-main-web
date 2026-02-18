@@ -84,6 +84,27 @@ const resources = {
           back: "Kembali"
         }
       },
+      news: {
+        pageTitle: "Berita MindWalker",
+        latestTitle: "Berita Terbaru",
+        trendingTitle: "Berita Populer",
+        readMore: "Selengkapnya",
+        pagination: {
+          prev: "Sebelumnya",
+          next: "Berikutnya"
+        },
+        details: {
+          notFoundTitle: "Berita Tidak Ditemukan",
+          notFoundMessage: "Berita yang diminta tidak tersedia.",
+          authorName: "Tim Mindwalker",
+          shareArticle: "Bagikan artikel ini",
+          latestNews: "Berita Terbaru",
+          paragraph1:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex nisi reprehenderit aliquam voluptatibus in, beatae odio ab iste facere, quisquam excepturi perspiciatis cupiditate.",
+          paragraph2:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde recusandae asperiores repudiandae nisi id quas explicabo porro, deserunt sequi voluptas eligendi sint."
+        }
+      },
       footer: {
         title: "Siap untuk Menjelajah?",
         subtitle: "Butuh detail? Tinggalkan email Anda, dan kami akan menghubungi.",
@@ -179,6 +200,27 @@ const resources = {
           },
           learnMore: "Learn More",
           back: "Back"
+        }
+      },
+      news: {
+        pageTitle: "MindWalker News",
+        latestTitle: "Latest News",
+        trendingTitle: "Trending News",
+        readMore: "Read More",
+        pagination: {
+          prev: "Prev",
+          next: "Next"
+        },
+        details: {
+          notFoundTitle: "News Not Found",
+          notFoundMessage: "The requested news item does not exist.",
+          authorName: "Mindwalker Team",
+          shareArticle: "Share this article",
+          latestNews: "Latest News",
+          paragraph1:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex nisi reprehenderit aliquam voluptatibus in, beatae odio ab iste facere, quisquam excepturi perspiciatis cupiditate.",
+          paragraph2:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde recusandae asperiores repudiandae nisi id quas explicabo porro, deserunt sequi voluptas eligendi sint."
         }
       },
       footer: {

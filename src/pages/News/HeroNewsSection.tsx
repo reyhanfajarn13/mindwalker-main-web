@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { NewsCard } from "./types";
 import ShinyText from "../../components/ui/ShinyText";
 import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
+import { useTranslation } from "react-i18next";
 
 type HeroNewsSectionProps = {
   items: NewsCard[];
@@ -9,6 +10,7 @@ type HeroNewsSectionProps = {
 };
 
 export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionProps) {
+  const { t } = useTranslation();
   const carouselItems = useMemo(() => items.slice(0, 4), [items]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -40,7 +42,7 @@ export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionPro
       <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_70%_30%,#2f7ddf_0%,transparent_45%),radial-gradient(circle_at_80%_80%,#1b4f93_0%,transparent_40%)]" />
       <div className="relative mx-auto w-[min(1120px,100%)]">
         <ShinyText
-          text="MindWalker News"
+          text={t("news.pageTitle")}
           speed={2}
           delay={0}
           color="#ffffff"
@@ -80,7 +82,7 @@ export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionPro
                     className="mt-6 text-[0.88rem] font-semibold text-[#0d84e6]"
                     onClick={() => onOpenNewsDetails?.(item.id)}
                   >
-                    Read More
+                    {t("news.readMore")}
                   </button>
                 </div>
               </article>

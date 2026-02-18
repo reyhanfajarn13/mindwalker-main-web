@@ -1,6 +1,7 @@
 import { Facebook, Linkedin, Link2, Twitter } from "lucide-react";
 import { allNews } from "./newsData";
 import { FooterSection } from "../../sections/FooterSection";
+import { useTranslation } from "react-i18next";
 
 type NewsDetailsPageProps = {
   newsId: number;
@@ -8,14 +9,15 @@ type NewsDetailsPageProps = {
 };
 
 export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPageProps) {
+  const { t } = useTranslation();
   const detail = allNews.find((item) => item.id === newsId);
 
   if (!detail) {
     return (
       <div className="bg-[#ececf0] px-4 pb-12 pt-[6rem] sm:px-6">
         <div className="mx-auto w-[min(1120px,100%)] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)]">
-          <h1 className="text-[1.8rem] font-bold text-[#243242]">News Not Found</h1>
-          <p className="mt-2 text-[#627489]">The requested news item does not exist.</p>
+          <h1 className="text-[1.8rem] font-bold text-[#243242]">{t("news.details.notFoundTitle")}</h1>
+          <p className="mt-2 text-[#627489]">{t("news.details.notFoundMessage")}</p>
         </div>
       </div>
     );
@@ -28,7 +30,9 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
     <div className="bg-[#ececf0]">
       <section className="px-4 pb-10 pt-[6rem] sm:px-6">
         <div className="mx-auto w-[min(1120px,100%)]">
-          <p className="text-[0.94rem] text-[#6c7b8f]">{detail.date} | Mindwalker Team</p>
+          <p className="text-[0.94rem] text-[#6c7b8f]">
+            {detail.date} | {t("news.details.authorName")}
+          </p>
           <h1 className="mt-2 max-w-[28ch] text-[clamp(2rem,4vw,3.2rem)] font-bold leading-[1.16] text-[#27313e]">{detail.title}</h1>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -45,20 +49,14 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
 
               <div className="mt-6 space-y-5 text-[1.02rem] leading-[1.8] text-[#3b4958]">
                 <p>{detail.excerpt}</p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex nisi reprehenderit aliquam
-                  voluptatibus in, beatae odio ab iste facere, quisquam excepturi perspiciatis cupiditate.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde recusandae asperiores repudiandae nisi
-                  id quas explicabo porro, deserunt sequi voluptas eligendi sint.
-                </p>
+                <p>{t("news.details.paragraph1")}</p>
+                <p>{t("news.details.paragraph2")}</p>
               </div>
             </div>
 
             <aside className="space-y-6">
               <div>
-                <h2 className="text-[1.25rem] font-semibold text-[#27313e]">Share this article</h2>
+                <h2 className="text-[1.25rem] font-semibold text-[#27313e]">{t("news.details.shareArticle")}</h2>
                 <div className="mt-2 flex items-center gap-2 text-[#1981dc]">
                   <button type="button" className="grid h-9 w-9 place-items-center rounded-md bg-white shadow-[0_3px_10px_rgba(16,31,51,0.14)]">
                     <Facebook size={16} />
@@ -76,7 +74,7 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
               </div>
 
               <div>
-                <h2 className="text-[1.25rem] font-semibold text-[#27313e]">Latest News</h2>
+                <h2 className="text-[1.25rem] font-semibold text-[#27313e]">{t("news.details.latestNews")}</h2>
                 <div className="mt-3 space-y-3">
                   {related.map((item) => (
                     <button

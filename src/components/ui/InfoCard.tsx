@@ -72,12 +72,12 @@ export function InfoCard({
           )}
           <div className={cn("px-4 pb-4 pt-3", bodyClassName)}>
             <h3 className={cn("text-base text-[#2d3a49]", titleClassName)}>{title}</h3>
-            <p className={cn("mt-1.5 text-[0.72rem] leading-[1.45] text-[#818d9e]", descriptionClassName)}>
+            <p className={cn("mt-1.5 text-[0.72rem] leading-[1.45] text-[#2d3a49]", descriptionClassName)}>
               {description}
             </p>
             <button
               type="button"
-              className={cn("mt-1.5 inline-block text-[0.7rem] font-bold text-[#1b93ef]", ctaClassName)}
+              className={cn("mt-1.5 inline-block text-[0.7rem] text-[#1b93ef]", ctaClassName)}
               onClick={() => setIsFlipped(true)}
             >
               {ctaLabel}

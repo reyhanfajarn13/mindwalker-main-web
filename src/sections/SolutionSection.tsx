@@ -29,14 +29,14 @@ export function SolutionSection() {
           <InfoCard
             title={t("solutions.cards.modelForge.title")}
             description={t("solutions.cards.description")}
-            className="rounded-xl border bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)]"
+            className="rounded-xl border border-[#d6dbe5] bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-300 hover:border-3 hover:border-[#2f99ff]"
             mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327240594-032f5461e9736c25.jpeg"
             mediaImageAlt="Model Forge"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"
-            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e]"
-            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#4f5f72]"
-            ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] font-semibold text-[#1b93ef]"
+            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e] transition-all duration-300 group-hover:bg-[linear-gradient(90deg,#2f99ff,#0b3f78)] group-hover:bg-clip-text group-hover:text-transparent"
+            descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#27313e]"
+            ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] text-[#0f141c] transition-colors duration-300 group-hover:text-[#1b93ef]"
             ctaLabel={t("solutions.cards.learnMore")}
             backButtonLabel={t("solutions.cards.back")}
             backTitle={t("solutions.cards.modelForge.backTitle")}
@@ -47,14 +47,14 @@ export function SolutionSection() {
           <InfoCard
             title={t("solutions.cards.agenticAi.title")}
             description={t("solutions.cards.description")}
-            className="rounded-xl border bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)]"
+            className="rounded-xl border border-[#d6dbe5] bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-300 hover:border-3 hover:border-[#2f99ff]"
             mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327700802-303fa21f6a6ba29b.jpeg"
             mediaImageAlt="Agentic AI Platform"
             mediaClassName="h-[220px] sm:h-[240px]"
             bodyClassName="px-4 pb-5 pt-4"
-            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e]"
+            titleClassName="text-[clamp(1.3rem,2.1vw,1.8rem)] font-semibold text-[#27313e] transition-all duration-300 group-hover:bg-[linear-gradient(90deg,#2f99ff,#0b3f78)] group-hover:bg-clip-text group-hover:text-transparent"
             descriptionClassName="mt-2 text-[0.9rem] leading-[1.55] text-[#4f5f72]"
-            ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] font-semibold text-[#1b93ef]"
+            ctaClassName="mt-3 inline-flex items-center gap-1 text-[0.82rem] text-[#0f141c] transition-colors duration-300 group-hover:text-[#1b93ef]"
             ctaLabel={t("solutions.cards.learnMore")}
             backButtonLabel={t("solutions.cards.back")}
             backTitle={t("solutions.cards.agenticAi.backTitle")}

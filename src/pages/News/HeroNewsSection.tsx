@@ -30,9 +30,12 @@ export function HeroNewsSection({ items }: HeroNewsSectionProps) {
   return (
     <section
       id="news"
-      className="relative overflow-hidden bg-cover bg-center bg-no-repeat px-4 pb-12 pt-[4.5rem] sm:px-6"
-      style={{ backgroundImage: `url(${heroDetailsBackground})` }}
+      className="group relative overflow-hidden px-4 pb-12 pt-[4.5rem] sm:px-6"
     >
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
+        style={{ backgroundImage: `url(${heroDetailsBackground})` }}
+      />
       <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_70%_30%,#2f7ddf_0%,transparent_45%),radial-gradient(circle_at_80%_80%,#1b4f93_0%,transparent_40%)]" />
       <div className="relative mx-auto w-[min(1120px,100%)]">
         <ShinyText

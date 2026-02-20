@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, Sparkles, Layers, Palette, UsersRound } from "lucide-react";
 import { FooterSection } from "../../sections/FooterSection";
 import { getProductBySlug } from "./productData";
 import { allNews } from "../News/newsData";
@@ -40,6 +40,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
         : heroNewsCards.length === 3
           ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
+  const featureIcons = [Sparkles, Layers, Palette, UsersRound];
 
   return (
     <div className="bg-[#ececf0]">
@@ -101,16 +102,24 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             {product.featureDescription}
           </p>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
-            <div className="overflow-hidden rounded-3xl bg-white p-3 shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
-              <img src={product.imageUrl} alt={product.title} className="h-[clamp(260px,40vw,420px)] w-full rounded-2xl object-cover" />
+          <div className="mt-8 grid items-center gap-6 lg:grid-cols-[1fr_280px] lg:gap-8">
+            <div className="overflow-hidden rounded-3xl border border-[#d8e2eb] bg-[#f1f3f6] p-2">
+              <img
+                src={product.imageUrl}
+                alt={product.title}
+                className="h-[clamp(240px,36vw,390px)] w-full rounded-2xl object-cover grayscale"
+              />
             </div>
-            <div className="space-y-4 rounded-3xl bg-white p-5 shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
-              {product.featurePoints.map((point) => (
-                <div key={point} className="rounded-xl border border-[#d8e2ef] px-4 py-3 text-[0.95rem] font-semibold text-[#2a3c51]">
-                  {point}
-                </div>
-              ))}
+            <div className="grid gap-5">
+              {product.featurePoints.map((point, index) => {
+                const Icon = featureIcons[index % featureIcons.length];
+                return (
+                  <div key={point} className="flex flex-col items-center text-center">
+                    <Icon size={25} className="text-[#27313e]" />
+                    <p className="mt-2 text-[0.98rem] font-medium text-[#3a4656]">{point}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

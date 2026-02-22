@@ -87,20 +87,37 @@ const resources = {
       industrialUsecases: {
         title: "Solusi Kami lewat Use Case Industri",
         industries: {
-          energy: {
-            label: "Energi & Utilitas",
+          governance: {
+            label: "Sektor Publik",
             cards: {
-              predictive: {
-                title: "Predictive Maintenance",
-                excerpt: "Deteksi potensi gangguan aset lebih awal untuk mencegah downtime operasional."
+              policy: {
+                title: "Kecerdasan Kebijakan",
+                excerpt: "AI memetakan dan merangkum kebijakan untuk mempercepat pengambilan keputusan manajerial."
               },
-              grid: {
-                title: "Grid Monitoring",
-                excerpt: "Pantau beban dan anomali jaringan listrik secara real-time lintas wilayah."
+              risk: {
+                title: "Monitoring Risiko AI",
+                excerpt: "Pemantauan indikator risiko real-time untuk deteksi dini potensi pelanggaran tata kelola."
               },
-              safety: {
-                title: "Safety Workflow",
-                excerpt: "Standarisasi prosedur keselamatan kerja lapangan dengan insight berbasis AI."
+              audit: {
+                title: "Copilot Audit",
+                excerpt: "Otomasi ringkasan bukti audit dan rekomendasi tindak lanjut untuk tim compliance."
+              }
+            }
+          },
+          financialServices: {
+            label: "Layanan Keuangan",
+            cards: {
+              fraud: {
+                title: "Deteksi Fraud AI",
+                excerpt: "Model anomali transaksi mendeteksi indikasi fraud lebih cepat dan akurat."
+              },
+              credit: {
+                title: "Skoring Risiko Kredit",
+                excerpt: "Skoring risiko kredit berbasis AI untuk meningkatkan kualitas keputusan pinjaman."
+              },
+              assistant: {
+                title: "Asisten Relationship Manager",
+                excerpt: "Asisten AI untuk insight nasabah dan rekomendasi produk finansial yang relevan."
               }
             }
           },
@@ -108,50 +125,33 @@ const resources = {
             label: "Manufaktur",
             cards: {
               quality: {
-                title: "Quality Inspection",
-                excerpt: "Pemeriksaan kualitas visual otomatis untuk menekan defect di lini produksi."
+                title: "Inspeksi Kualitas Visual",
+                excerpt: "Computer vision mendeteksi cacat produk secara otomatis di lini produksi."
               },
-              production: {
-                title: "Production Intelligence",
-                excerpt: "Analitik performa mesin untuk optimasi throughput dan efisiensi energi."
+              maintenance: {
+                title: "Predictive Maintenance",
+                excerpt: "Prediksi kerusakan mesin untuk mengurangi downtime dan meningkatkan ketersediaan aset."
               },
-              operator: {
-                title: "Operator Assistance",
-                excerpt: "Panduan kerja kontekstual untuk mengurangi human error di area produksi."
+              optimizer: {
+                title: "Optimasi Produksi",
+                excerpt: "Optimasi parameter proses produksi berbasis data untuk peningkatan throughput."
               }
             }
           },
-          finance: {
-            label: "Layanan Keuangan",
+          energyUtilities: {
+            label: "Energy & Utilities",
             cards: {
-              fraud: {
-                title: "Fraud Detection",
-                excerpt: "Identifikasi transaksi mencurigakan dengan model anomali adaptif."
+              forecast: {
+                title: "Demand Forecasting",
+                excerpt: "Prediksi konsumsi energi untuk perencanaan kapasitas dan efisiensi operasional."
               },
-              risk: {
-                title: "Risk Scoring",
-                excerpt: "Skor risiko kredit lebih akurat berbasis multi-sinyal operasional."
+              grid: {
+                title: "Smart Grid Monitoring",
+                excerpt: "Analitik AI untuk deteksi anomali jaringan dan respons insiden lebih cepat."
               },
-              customer: {
-                title: "Customer Insight",
-                excerpt: "Personalisasi layanan dengan segmentasi perilaku nasabah secara dinamis."
-              }
-            }
-          },
-          publicSector: {
-            label: "Sektor Publik",
-            cards: {
-              serviceDesk: {
-                title: "Service Desk AI",
-                excerpt: "Percepat respons layanan publik dengan triase tiket otomatis."
-              },
-              command: {
-                title: "Operational Command",
-                excerpt: "Dashboard terpadu untuk pemantauan operasi lintas instansi."
-              },
-              compliance: {
-                title: "Compliance Reporting",
-                excerpt: "Otomasi dokumentasi dan pelaporan kebijakan secara terstruktur."
+              asset: {
+                title: "Asset Health Analytics",
+                excerpt: "Pemantauan kesehatan aset kritikal berbasis AI untuk mengurangi risiko gangguan layanan."
               }
             }
           }
@@ -278,20 +278,37 @@ const resources = {
       industrialUsecases: {
         title: "Our Solutions through Industry Use Cases",
         industries: {
-          energy: {
-            label: "Energy & Utilities",
+          governance: {
+            label: "Public Sectors",
             cards: {
-              predictive: {
-                title: "Predictive Maintenance",
-                excerpt: "Detect potential asset failures early to prevent operational downtime."
+              policy: {
+                title: "Policy Intelligence",
+                excerpt: "AI maps and summarizes policies to accelerate managerial decision-making."
               },
-              grid: {
-                title: "Grid Monitoring",
-                excerpt: "Monitor load and network anomalies in real-time across regions."
+              risk: {
+                title: "Risk Monitoring AI",
+                excerpt: "Real-time risk indicator monitoring for early detection of governance issues."
               },
-              safety: {
-                title: "Safety Workflow",
-                excerpt: "Standardize field safety procedures with AI-powered operational insight."
+              audit: {
+                title: "Audit Copilot",
+                excerpt: "Automates audit evidence summaries and follow-up recommendations for compliance teams."
+              }
+            }
+          },
+          financialServices: {
+            label: "Financial Services",
+            cards: {
+              fraud: {
+                title: "Fraud Detection AI",
+                excerpt: "Transaction anomaly models detect fraud indications faster and more accurately."
+              },
+              credit: {
+                title: "Credit Risk Scoring",
+                excerpt: "AI-based credit risk scoring improves the quality of lending decisions."
+              },
+              assistant: {
+                title: "Relationship Manager Assistant",
+                excerpt: "AI assistant provides customer insights and relevant financial product recommendations."
               }
             }
           },
@@ -299,50 +316,33 @@ const resources = {
             label: "Manufacturing",
             cards: {
               quality: {
-                title: "Quality Inspection",
-                excerpt: "Automate visual quality checks to reduce defects on production lines."
+                title: "Visual Quality Inspection",
+                excerpt: "Computer vision detects product defects automatically on production lines."
               },
-              production: {
-                title: "Production Intelligence",
-                excerpt: "Analyze machine performance to optimize throughput and energy efficiency."
+              maintenance: {
+                title: "Predictive Maintenance",
+                excerpt: "Predict machine failures to reduce downtime and increase asset availability."
               },
-              operator: {
-                title: "Operator Assistance",
-                excerpt: "Provide contextual guidance to reduce human error on the shop floor."
+              optimizer: {
+                title: "Production Optimizer",
+                excerpt: "Optimizes production process parameters with data-driven AI insights."
               }
             }
           },
-          finance: {
-            label: "Financial Services",
+          energyUtilities: {
+            label: "Energy & Utilities",
             cards: {
-              fraud: {
-                title: "Fraud Detection",
-                excerpt: "Identify suspicious transactions with adaptive anomaly detection models."
+              forecast: {
+                title: "Demand Forecasting",
+                excerpt: "Predicts energy consumption for better capacity planning and operational efficiency."
               },
-              risk: {
-                title: "Risk Scoring",
-                excerpt: "Improve credit risk scoring accuracy with multi-signal operational data."
+              grid: {
+                title: "Smart Grid Monitoring",
+                excerpt: "AI analytics for anomaly detection and faster incident response across power networks."
               },
-              customer: {
-                title: "Customer Insight",
-                excerpt: "Personalize services through dynamic customer behavior segmentation."
-              }
-            }
-          },
-          publicSector: {
-            label: "Public Sector",
-            cards: {
-              serviceDesk: {
-                title: "Service Desk AI",
-                excerpt: "Speed up public service response with automated ticket triage."
-              },
-              command: {
-                title: "Operational Command",
-                excerpt: "Use a unified dashboard to monitor cross-agency operations."
-              },
-              compliance: {
-                title: "Compliance Reporting",
-                excerpt: "Automate policy documentation and structured compliance reporting."
+              asset: {
+                title: "Asset Health Analytics",
+                excerpt: "AI-based health monitoring for critical assets to reduce service disruption risks."
               }
             }
           }

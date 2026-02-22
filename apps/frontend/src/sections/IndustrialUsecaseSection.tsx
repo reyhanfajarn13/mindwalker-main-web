@@ -95,9 +95,6 @@ export function IndustrialUsecaseSection() {
                             <p className="mt-2 line-clamp-2 text-[0.9rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,244,255,0.94)]">
                               {t(card.excerptKey)}
                             </p>
-                            <button type="button" className="mt-3 text-[0.84rem] font-semibold text-[#1d8cf0] transition-colors duration-300 group-hover:text-white hover:text-white">
-                              {t("product.learnMore")} -&gt;
-                            </button>
                           </div>
                         </article>
                       ))}

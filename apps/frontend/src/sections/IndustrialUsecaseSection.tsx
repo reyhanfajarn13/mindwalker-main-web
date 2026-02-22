@@ -61,8 +61,8 @@ export function IndustrialUsecaseSection() {
                     isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:bg-[#198ef3] hover:text-white"
                   }`}
                 >
-                  <span className="text-[clamp(1.7rem,3.4vw,2.1rem)] leading-none">{industry.number}</span>
-                  <span className="text-[clamp(1.6rem,4.2vw,2.1rem)] leading-[1.06]">{t(industry.labelKey)}</span>
+                  <span className="text-[clamp(1.7rem,3.4vw,1.7rem)] leading-none">{industry.number}</span>
+                  <span className="text-[clamp(1.6rem,4.2vw,1.7rem)] leading-[1.06]">{t(industry.labelKey)}</span>
                   <ArrowRight
                     size={48}
                     className={`transition-transform duration-300 ${isOpen ? "rotate-90" : "group-hover:translate-x-1"}`}

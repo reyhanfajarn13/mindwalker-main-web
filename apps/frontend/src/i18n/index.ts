@@ -154,6 +154,40 @@ const resources = {
                 excerpt: "Pemantauan kesehatan aset kritikal berbasis AI untuk mengurangi risiko gangguan layanan."
               }
             }
+          },
+          retail: {
+            label: "Retail",
+            cards: {
+              recommendation: {
+                title: "Personalized Recommendation",
+                excerpt: "Rekomendasi produk berbasis AI untuk meningkatkan konversi dan nilai keranjang belanja."
+              },
+              inventory: {
+                title: "Smart Inventory Control",
+                excerpt: "Prediksi stok dan replenishment otomatis untuk mengurangi overstock maupun stockout."
+              },
+              demand: {
+                title: "Demand Forecasting",
+                excerpt: "Proyeksi permintaan lintas kanal untuk mendukung perencanaan promosi dan distribusi."
+              }
+            }
+          },
+          healthcare: {
+            label: "Healthcare",
+            cards: {
+              triage: {
+                title: "Clinical Triage Assistant",
+                excerpt: "Asisten AI membantu prioritisasi pasien berdasarkan gejala dan tingkat urgensi."
+              },
+              imaging: {
+                title: "Medical Imaging Support",
+                excerpt: "AI membantu deteksi pola pada citra medis untuk mempercepat proses diagnosis awal."
+              },
+              documentation: {
+                title: "Automated Clinical Documentation",
+                excerpt: "Ringkasan catatan medis otomatis untuk mengurangi beban administratif tenaga kesehatan."
+              }
+            }
           }
         }
       },
@@ -343,6 +377,40 @@ const resources = {
               asset: {
                 title: "Asset Health Analytics",
                 excerpt: "AI-based health monitoring for critical assets to reduce service disruption risks."
+              }
+            }
+          },
+          retail: {
+            label: "Retail",
+            cards: {
+              recommendation: {
+                title: "Personalized Recommendation",
+                excerpt: "AI-driven product recommendations to improve conversion and basket value."
+              },
+              inventory: {
+                title: "Smart Inventory Control",
+                excerpt: "Stock prediction and automated replenishment to reduce overstock and stockout."
+              },
+              demand: {
+                title: "Demand Forecasting",
+                excerpt: "Cross-channel demand projection to support promotion and distribution planning."
+              }
+            }
+          },
+          healthcare: {
+            label: "Healthcare",
+            cards: {
+              triage: {
+                title: "Clinical Triage Assistant",
+                excerpt: "AI assistant helps prioritize patients based on symptoms and urgency level."
+              },
+              imaging: {
+                title: "Medical Imaging Support",
+                excerpt: "AI assists pattern detection in medical imaging to accelerate early diagnosis."
+              },
+              documentation: {
+                title: "Automated Clinical Documentation",
+                excerpt: "Auto-generated clinical summaries to reduce administrative burden on care teams."
               }
             }
           }

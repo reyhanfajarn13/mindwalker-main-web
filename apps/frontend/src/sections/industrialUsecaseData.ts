@@ -112,5 +112,55 @@ export const industrialUsecaseData: IndustryItem[] = [
         imageUrl: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80"
       }
     ]
+  },
+  {
+    id: "retail",
+    number: "05",
+    labelKey: "industrialUsecases.industries.retail.label",
+    cards: [
+      {
+        id: "retail-1",
+        titleKey: "industrialUsecases.industries.retail.cards.recommendation.title",
+        excerptKey: "industrialUsecases.industries.retail.cards.recommendation.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "retail-2",
+        titleKey: "industrialUsecases.industries.retail.cards.inventory.title",
+        excerptKey: "industrialUsecases.industries.retail.cards.inventory.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "retail-3",
+        titleKey: "industrialUsecases.industries.retail.cards.demand.title",
+        excerptKey: "industrialUsecases.industries.retail.cards.demand.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+      }
+    ]
+  },
+  {
+    id: "healthcare",
+    number: "06",
+    labelKey: "industrialUsecases.industries.healthcare.label",
+    cards: [
+      {
+        id: "health-1",
+        titleKey: "industrialUsecases.industries.healthcare.cards.triage.title",
+        excerptKey: "industrialUsecases.industries.healthcare.cards.triage.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "health-2",
+        titleKey: "industrialUsecases.industries.healthcare.cards.imaging.title",
+        excerptKey: "industrialUsecases.industries.healthcare.cards.imaging.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "health-3",
+        titleKey: "industrialUsecases.industries.healthcare.cards.documentation.title",
+        excerptKey: "industrialUsecases.industries.healthcare.cards.documentation.excerpt",
+        imageUrl: "https://images.unsplash.com/photo-1584516150909-c43483ee793a?auto=format&fit=crop&w=900&q=80"
+      }
+    ]
   }
 ];

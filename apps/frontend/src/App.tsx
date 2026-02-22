@@ -8,6 +8,9 @@ const ProductSection = lazy(() =>
 const SolutionSection = lazy(() =>
   import("./sections/SolutionSection").then((module) => ({ default: module.SolutionSection }))
 );
+const IndustrialUsecaseSection = lazy(() =>
+  import("./sections/IndustrialUsecaseSection").then((module) => ({ default: module.IndustrialUsecaseSection }))
+);
 const FooterSection = lazy(() =>
   import("./sections/FooterSection").then((module) => ({ default: module.FooterSection }))
 );
@@ -304,6 +307,7 @@ function App() {
             <Suspense fallback={<SectionFallback />}>
               <ProductSection onOpenProductDetails={handleOpenProductDetails} />
               <SolutionSection />
+              <IndustrialUsecaseSection />
               <FooterSection />
             </Suspense>
           </>

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { industrialUsecaseData } from "./industrialUsecaseData";
+import { useTranslation } from "react-i18next";
 
 export function IndustrialUsecaseSection() {
+  const { t } = useTranslation();
   const [openIndustryId, setOpenIndustryId] = useState("");
   const [isManualMode, setIsManualMode] = useState(false);
   const autoIndexRef = useRef(0);
@@ -40,7 +42,9 @@ export function IndustrialUsecaseSection() {
   return (
     <section id="industrial-usecases" className="grid bg-[#ececf0] px-0 py-12 lg:py-16">
       <div className="mx-auto w-[min(1120px,calc(100%-2rem))]">
-        <h2 className="text-[clamp(2rem,5vw,2rem)] leading-[1.05] text-[#198ef3] font-semibold">Our Solutions through Industry Use Cases</h2>
+        <h2 className="text-[clamp(2rem,5vw,2rem)] leading-[1.05] text-[#198ef3] font-semibold">
+          {t("industrialUsecases.title")}
+        </h2>
 
         <div className="mt-6 border-y border-[#d8dee7]">
           {industrialUsecaseData.map((industry) => {
@@ -58,7 +62,7 @@ export function IndustrialUsecaseSection() {
                   }`}
                 >
                   <span className="text-[clamp(1.7rem,3.4vw,2.1rem)] leading-none">{industry.number}</span>
-                  <span className="text-[clamp(1.6rem,4.2vw,2.1rem)] leading-[1.06]">{industry.label}</span>
+                  <span className="text-[clamp(1.6rem,4.2vw,2.1rem)] leading-[1.06]">{t(industry.labelKey)}</span>
                   <ArrowRight
                     size={48}
                     className={`transition-transform duration-300 ${isOpen ? "rotate-90" : "group-hover:translate-x-1"}`}
@@ -86,13 +90,13 @@ export function IndustrialUsecaseSection() {
                           <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                           <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[#198ef3] group-hover:px-4 group-hover:pb-4 group-hover:pt-4">
                             <h3 className="line-clamp-1 text-[1.1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white">
-                              {card.title}
+                              {t(card.titleKey)}
                             </h3>
                             <p className="mt-2 line-clamp-2 text-[0.9rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,244,255,0.94)]">
-                              {card.excerpt}
+                              {t(card.excerptKey)}
                             </p>
                             <button type="button" className="mt-3 text-[0.84rem] font-semibold text-[#1d8cf0] transition-colors duration-300 group-hover:text-white hover:text-white">
-                              Learn More -&gt;
+                              {t("product.learnMore")} -&gt;
                             </button>
                           </div>
                         </article>

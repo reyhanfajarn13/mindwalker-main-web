@@ -84,6 +84,79 @@ const resources = {
           back: "Kembali"
         }
       },
+      industrialUsecases: {
+        title: "Solusi Kami lewat Use Case Industri",
+        industries: {
+          energy: {
+            label: "Energi & Utilitas",
+            cards: {
+              predictive: {
+                title: "Predictive Maintenance",
+                excerpt: "Deteksi potensi gangguan aset lebih awal untuk mencegah downtime operasional."
+              },
+              grid: {
+                title: "Grid Monitoring",
+                excerpt: "Pantau beban dan anomali jaringan listrik secara real-time lintas wilayah."
+              },
+              safety: {
+                title: "Safety Workflow",
+                excerpt: "Standarisasi prosedur keselamatan kerja lapangan dengan insight berbasis AI."
+              }
+            }
+          },
+          manufacturing: {
+            label: "Manufaktur",
+            cards: {
+              quality: {
+                title: "Quality Inspection",
+                excerpt: "Pemeriksaan kualitas visual otomatis untuk menekan defect di lini produksi."
+              },
+              production: {
+                title: "Production Intelligence",
+                excerpt: "Analitik performa mesin untuk optimasi throughput dan efisiensi energi."
+              },
+              operator: {
+                title: "Operator Assistance",
+                excerpt: "Panduan kerja kontekstual untuk mengurangi human error di area produksi."
+              }
+            }
+          },
+          finance: {
+            label: "Layanan Keuangan",
+            cards: {
+              fraud: {
+                title: "Fraud Detection",
+                excerpt: "Identifikasi transaksi mencurigakan dengan model anomali adaptif."
+              },
+              risk: {
+                title: "Risk Scoring",
+                excerpt: "Skor risiko kredit lebih akurat berbasis multi-sinyal operasional."
+              },
+              customer: {
+                title: "Customer Insight",
+                excerpt: "Personalisasi layanan dengan segmentasi perilaku nasabah secara dinamis."
+              }
+            }
+          },
+          publicSector: {
+            label: "Sektor Publik",
+            cards: {
+              serviceDesk: {
+                title: "Service Desk AI",
+                excerpt: "Percepat respons layanan publik dengan triase tiket otomatis."
+              },
+              command: {
+                title: "Operational Command",
+                excerpt: "Dashboard terpadu untuk pemantauan operasi lintas instansi."
+              },
+              compliance: {
+                title: "Compliance Reporting",
+                excerpt: "Otomasi dokumentasi dan pelaporan kebijakan secara terstruktur."
+              }
+            }
+          }
+        }
+      },
       news: {
         pageTitle: "Berita MindWalker",
         latestTitle: "Berita Terbaru",
@@ -200,6 +273,79 @@ const resources = {
           },
           learnMore: "Learn More",
           back: "Back"
+        }
+      },
+      industrialUsecases: {
+        title: "Our Solutions through Industry Use Cases",
+        industries: {
+          energy: {
+            label: "Energy & Utilities",
+            cards: {
+              predictive: {
+                title: "Predictive Maintenance",
+                excerpt: "Detect potential asset failures early to prevent operational downtime."
+              },
+              grid: {
+                title: "Grid Monitoring",
+                excerpt: "Monitor load and network anomalies in real-time across regions."
+              },
+              safety: {
+                title: "Safety Workflow",
+                excerpt: "Standardize field safety procedures with AI-powered operational insight."
+              }
+            }
+          },
+          manufacturing: {
+            label: "Manufacturing",
+            cards: {
+              quality: {
+                title: "Quality Inspection",
+                excerpt: "Automate visual quality checks to reduce defects on production lines."
+              },
+              production: {
+                title: "Production Intelligence",
+                excerpt: "Analyze machine performance to optimize throughput and energy efficiency."
+              },
+              operator: {
+                title: "Operator Assistance",
+                excerpt: "Provide contextual guidance to reduce human error on the shop floor."
+              }
+            }
+          },
+          finance: {
+            label: "Financial Services",
+            cards: {
+              fraud: {
+                title: "Fraud Detection",
+                excerpt: "Identify suspicious transactions with adaptive anomaly detection models."
+              },
+              risk: {
+                title: "Risk Scoring",
+                excerpt: "Improve credit risk scoring accuracy with multi-signal operational data."
+              },
+              customer: {
+                title: "Customer Insight",
+                excerpt: "Personalize services through dynamic customer behavior segmentation."
+              }
+            }
+          },
+          publicSector: {
+            label: "Public Sector",
+            cards: {
+              serviceDesk: {
+                title: "Service Desk AI",
+                excerpt: "Speed up public service response with automated ticket triage."
+              },
+              command: {
+                title: "Operational Command",
+                excerpt: "Use a unified dashboard to monitor cross-agency operations."
+              },
+              compliance: {
+                title: "Compliance Reporting",
+                excerpt: "Automate policy documentation and structured compliance reporting."
+              }
+            }
+          }
         }
       },
       news: {

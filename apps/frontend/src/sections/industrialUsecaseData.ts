@@ -1,14 +1,14 @@
 export type IndustrialUsecaseCard = {
   id: string;
-  title: string;
-  excerpt: string;
+  titleKey: string;
+  excerptKey: string;
   imageUrl: string;
 };
 
 export type IndustryItem = {
   id: string;
   number: string;
-  label: string;
+  labelKey: string;
   cards: IndustrialUsecaseCard[];
 };
 
@@ -16,24 +16,24 @@ export const industrialUsecaseData: IndustryItem[] = [
   {
     id: "energy",
     number: "01",
-    label: "Energy & Utilities",
+    labelKey: "industrialUsecases.industries.energy.label",
     cards: [
       {
         id: "energy-1",
-        title: "Predictive Maintenance",
-        excerpt: "Deteksi potensi gangguan aset lebih awal untuk mencegah downtime operasional.",
+        titleKey: "industrialUsecases.industries.energy.cards.predictive.title",
+        excerptKey: "industrialUsecases.industries.energy.cards.predictive.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "energy-2",
-        title: "Grid Monitoring",
-        excerpt: "Pantau beban dan anomali jaringan listrik secara real-time lintas wilayah.",
+        titleKey: "industrialUsecases.industries.energy.cards.grid.title",
+        excerptKey: "industrialUsecases.industries.energy.cards.grid.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "energy-3",
-        title: "Safety Workflow",
-        excerpt: "Standarisasi prosedur keselamatan kerja lapangan dengan insight berbasis AI.",
+        titleKey: "industrialUsecases.industries.energy.cards.safety.title",
+        excerptKey: "industrialUsecases.industries.energy.cards.safety.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
       }
     ]
@@ -41,24 +41,24 @@ export const industrialUsecaseData: IndustryItem[] = [
   {
     id: "manufacturing",
     number: "02",
-    label: "Manufacturing",
+    labelKey: "industrialUsecases.industries.manufacturing.label",
     cards: [
       {
         id: "manu-1",
-        title: "Quality Inspection",
-        excerpt: "Pemeriksaan kualitas visual otomatis untuk menekan defect di lini produksi.",
+        titleKey: "industrialUsecases.industries.manufacturing.cards.quality.title",
+        excerptKey: "industrialUsecases.industries.manufacturing.cards.quality.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "manu-2",
-        title: "Production Intelligence",
-        excerpt: "Analitik performa mesin untuk optimasi throughput dan efisiensi energi.",
+        titleKey: "industrialUsecases.industries.manufacturing.cards.production.title",
+        excerptKey: "industrialUsecases.industries.manufacturing.cards.production.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "manu-3",
-        title: "Operator Assistance",
-        excerpt: "Panduan kerja kontekstual untuk mengurangi human error di shop floor.",
+        titleKey: "industrialUsecases.industries.manufacturing.cards.operator.title",
+        excerptKey: "industrialUsecases.industries.manufacturing.cards.operator.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1581093588401-22d5c7f8f5ad?auto=format&fit=crop&w=900&q=80"
       }
     ]
@@ -66,24 +66,24 @@ export const industrialUsecaseData: IndustryItem[] = [
   {
     id: "finance",
     number: "03",
-    label: "Financial Services",
+    labelKey: "industrialUsecases.industries.finance.label",
     cards: [
       {
         id: "fin-1",
-        title: "Fraud Detection",
-        excerpt: "Identifikasi transaksi mencurigakan dengan model anomali adaptif.",
+        titleKey: "industrialUsecases.industries.finance.cards.fraud.title",
+        excerptKey: "industrialUsecases.industries.finance.cards.fraud.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1550565118-3a14e8d0386f?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "fin-2",
-        title: "Risk Scoring",
-        excerpt: "Skor risiko kredit lebih akurat berbasis multi-sinyal operasional.",
+        titleKey: "industrialUsecases.industries.finance.cards.risk.title",
+        excerptKey: "industrialUsecases.industries.finance.cards.risk.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "fin-3",
-        title: "Customer Insight",
-        excerpt: "Personalisasi layanan dengan segmentasi perilaku nasabah secara dinamis.",
+        titleKey: "industrialUsecases.industries.finance.cards.customer.title",
+        excerptKey: "industrialUsecases.industries.finance.cards.customer.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=900&q=80"
       }
     ]
@@ -91,24 +91,24 @@ export const industrialUsecaseData: IndustryItem[] = [
   {
     id: "public-sector",
     number: "04",
-    label: "Public Sector",
+    labelKey: "industrialUsecases.industries.publicSector.label",
     cards: [
       {
         id: "gov-1",
-        title: "Service Desk AI",
-        excerpt: "Percepat respons layanan publik dengan triase tiket otomatis.",
+        titleKey: "industrialUsecases.industries.publicSector.cards.serviceDesk.title",
+        excerptKey: "industrialUsecases.industries.publicSector.cards.serviceDesk.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "gov-2",
-        title: "Operational Command",
-        excerpt: "Dashboard terpadu untuk pemantauan operasi lintas instansi.",
+        titleKey: "industrialUsecases.industries.publicSector.cards.command.title",
+        excerptKey: "industrialUsecases.industries.publicSector.cards.command.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
       },
       {
         id: "gov-3",
-        title: "Compliance Reporting",
-        excerpt: "Otomasi dokumentasi dan pelaporan kebijakan secara terstruktur.",
+        titleKey: "industrialUsecases.industries.publicSector.cards.compliance.title",
+        excerptKey: "industrialUsecases.industries.publicSector.cards.compliance.excerpt",
         imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
       }
     ]

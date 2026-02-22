@@ -40,19 +40,22 @@ const resources = {
         learnMore: "Selengkapnya",
         cards: {
           ops: {
+            title: "Mind Ops",
             label: "Operasional Sistem",
             description:
-              "Dari monitoring hingga resolusi, operasi TI harus bergerak dengan kecerdasan."
+              "Pantau infrastruktur real-time, prioritaskan insiden kritikal, dan percepat resolusi operasional TI."
           },
           sec: {
+            title: "Mind Sec",
             label: "Analisis Ancaman",
             description:
-              "Deteksi risiko lebih awal dan orkestrasi respons lebih cepat di alur kerja keamanan."
+              "Deteksi ancaman lebih dini, korelasikan alert keamanan, dan orkestrasi respons insiden secara terukur."
           },
           vision: {
+            title: "VisionCraft",
             label: "Kecerdasan AI",
             description:
-              "Bangun pipeline insight yang mengubah sinyal data menjadi dampak operasional nyata."
+              "Hasilkan konten visual berbasis AI yang konsisten dengan brand untuk kebutuhan komunikasi dan kampanye."
           }
         }
       },
@@ -66,6 +69,8 @@ const resources = {
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
           modelForge: {
             title: "Model Forge",
+            description:
+              "Platform untuk membangun, menguji, dan deployment model AI enterprise dengan pipeline yang terukur dan cepat.",
             backTitle: "Detail Model Forge",
             backDescription:
               "Model Forge membantu tim membangun, menguji, dan menerapkan model AI secara terstruktur.",
@@ -74,6 +79,8 @@ const resources = {
           },
           agenticAi: {
             title: "Agentic AI",
+            description:
+              "Orkestrasi agent AI lintas workflow bisnis untuk otomatisasi keputusan, eksekusi tugas, dan kolaborasi tim.",
             backTitle: "Detail Agentic AI",
             backDescription:
               "Satu platform untuk orkestrasi data, eksperimen, dan deployment model lintas use case.",
@@ -223,6 +230,9 @@ const resources = {
           line1: "Sebagai pemimpin tepercaya dalam transformasi digital",
           line2: "Berfokus pada data, AI, dan operasional",
           line3: "Platform bisnis yang siap masa depan",
+          ourProduct: "Produk Kami",
+          ourSolution: "Solusi Kami",
+          aiFor: "AI untuk",
           lorem: "Lorem ipsum"
         }
       }
@@ -265,19 +275,22 @@ const resources = {
         learnMore: "Learn More",
         cards: {
           ops: {
+            title: "Mind Ops",
             label: "System Operations",
             description:
-              "From monitoring to resolution, IT operations must move with intelligence."
+              "Monitor infrastructure in real time, prioritize critical incidents, and accelerate IT operations resolution."
           },
           sec: {
+            title: "Mind Sec",
             label: "Threat Analysis",
             description:
-              "Detect risks early and orchestrate faster response across security workflows."
+              "Detect threats earlier, correlate security alerts, and orchestrate incident response with better control."
           },
           vision: {
+            title: "VisionCraft",
             label: "AI Intelligence",
             description:
-              "Build insight pipelines that turn data signals into real operational impact."
+              "Generate AI-powered visual content with strong brand consistency for communications and campaign needs."
           }
         }
       },
@@ -291,6 +304,8 @@ const resources = {
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
           modelForge: {
             title: "Model Forge",
+            description:
+              "A platform to build, test, and deploy enterprise AI models with fast, measurable pipelines.",
             backTitle: "Model Forge Details",
             backDescription:
               "Model Forge helps teams build, test, and deploy AI models in a structured way.",
@@ -299,6 +314,8 @@ const resources = {
           },
           agenticAi: {
             title: "Agentic AI",
+            description:
+              "Orchestrate AI agents across business workflows for decision automation, task execution, and team collaboration.",
             backTitle: "Agentic AI Details",
             backDescription:
               "A unified platform for orchestrating data, experimentation, and model deployment across use cases.",
@@ -448,6 +465,9 @@ const resources = {
           line1: "As a trusted leader in digital transformation",
           line2: "Focus on data, AI, and operations",
           line3: "Future-ready business platform",
+          ourProduct: "Our Product",
+          ourSolution: "Our Solution",
+          aiFor: "AI for",
           lorem: "Lorem ipsum"
         }
       }

@@ -7,6 +7,7 @@ export function IndustrialUsecaseSection() {
   const { t } = useTranslation();
   const [openIndustryId, setOpenIndustryId] = useState("");
   const [isManualMode, setIsManualMode] = useState(false);
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const autoIndexRef = useRef(0);
 
   useEffect(() => {
@@ -75,24 +76,32 @@ export function IndustrialUsecaseSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="grid gap-4 bg-[#edf2f8] px-3 pb-5 pt-4 sm:grid-cols-2 sm:px-5 lg:grid-cols-3">
+                    <div className="grid gap-4 bg-[#edf2f8] px-3 pb-5 pt-4 sm:grid-cols-2 sm:px-5 lg:flex lg:gap-5">
                       {industry.cards.map((card) => (
                         <article
                           key={card.id}
-                          className="group relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.03] group-hover:bg-[#198ef3] group-hover:shadow-[0_14px_32px_rgba(24,39,58,0.2)]"
+                          onMouseEnter={() => setHoveredCardId(card.id)}
+                          onMouseLeave={() => setHoveredCardId(null)}
+                          className={`group relative h-[440px] overflow-hidden rounded-[28px] bg-[#071224] shadow-[0_14px_32px_rgba(24,39,58,0.2)] transition-[flex,transform,filter] duration-500 ease-out lg:basis-0 ${
+                            hoveredCardId === null
+                              ? "lg:flex-[1]"
+                              : hoveredCardId === card.id
+                                ? "lg:flex-[1.65]"
+                                : "lg:flex-[0.72]"
+                          }`}
                         >
                           <img
                             src={card.imageUrl}
-                            alt={card.title}
-                            className="h-[170px] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
+                            alt={t(card.titleKey)}
+                            className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[#198ef3] group-hover:px-4 group-hover:pb-4 group-hover:pt-4">
-                            <h3 className="line-clamp-1 text-[1.1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white">
+                          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                          <div className="absolute inset-x-6 bottom-6">
+                            <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
                               {t(card.titleKey)}
                             </h3>
-                            <p className="mt-2 line-clamp-2 text-[0.9rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,244,255,0.94)]">
+                            <p className="mt-2 line-clamp-2 max-w-[36ch] text-[0.75rem] text-[rgba(229,237,248,0.92)]">
                               {t(card.excerptKey)}
                             </p>
                           </div>

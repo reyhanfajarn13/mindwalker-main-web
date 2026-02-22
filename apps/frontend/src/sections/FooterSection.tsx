@@ -10,6 +10,7 @@ import footerHandRobot from "../assets/footerHandRobot.png";
 import mindwalkerLogoFull from "../assets/logo/mindwalker_logo_full.png";
 import { Github, Instagram, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { industrialUsecaseData } from "./industrialUsecaseData";
 
 const techLogos = [
   { src: image3, alt: "Company 1" },
@@ -29,16 +30,16 @@ export function FooterSection() {
       items: [t("footer.groups.line1"), t("footer.groups.line2"), t("footer.groups.line3")]
     },
     {
-      title: t("footer.groups.lorem"),
-      items: [t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem")]
+      title: t("footer.groups.ourProduct"),
+      items: [t("product.cards.ops.title"), t("product.cards.sec.title"), t("product.cards.vision.title")]
     },
     {
-      title: t("footer.groups.lorem"),
-      items: [t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem")]
+      title: t("footer.groups.ourSolution"),
+      items: [t("solutions.cards.modelForge.title"), t("solutions.cards.agenticAi.title")]
     },
     {
-      title: t("footer.groups.lorem"),
-      items: [t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem"), t("footer.groups.lorem")]
+      title: t("footer.groups.aiFor"),
+      items: industrialUsecaseData.map((industry) => t(industry.labelKey))
     }
   ];
 

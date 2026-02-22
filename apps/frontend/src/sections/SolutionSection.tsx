@@ -28,7 +28,7 @@ export function SolutionSection() {
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           <InfoCard
             title={t("solutions.cards.modelForge.title")}
-            description={t("solutions.cards.description")}
+            description={t("solutions.cards.modelForge.description")}
             className="rounded-xl border border-[#d6dbe5] bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-300 hover:border-3 hover:border-[#2f99ff]"
             mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327240594-032f5461e9736c25.jpeg"
             mediaImageAlt="Model Forge"
@@ -46,7 +46,7 @@ export function SolutionSection() {
 
           <InfoCard
             title={t("solutions.cards.agenticAi.title")}
-            description={t("solutions.cards.description")}
+            description={t("solutions.cards.agenticAi.description")}
             className="rounded-xl border border-[#d6dbe5] bg-[#fdfdff_48%] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-300 hover:border-3 hover:border-[#2f99ff]"
             mediaImageSrc="https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327700802-303fa21f6a6ba29b.jpeg"
             mediaImageAlt="Agentic AI Platform"

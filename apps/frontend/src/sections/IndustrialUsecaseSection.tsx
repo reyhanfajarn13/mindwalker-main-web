@@ -1,9 +1,41 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { industrialUsecaseData } from "./industrialUsecaseData";
 
 export function IndustrialUsecaseSection() {
   const [openIndustryId, setOpenIndustryId] = useState("");
+  const [isManualMode, setIsManualMode] = useState(false);
+  const autoIndexRef = useRef(0);
+
+  useEffect(() => {
+    if (isManualMode || industrialUsecaseData.length === 0) return;
+
+    const collapseDelay = 300;
+    const expandedDelay = 3000;
+    let collapseTimer: number | null = null;
+    let nextTimer: number | null = null;
+
+    const runCycle = () => {
+      const current = industrialUsecaseData[autoIndexRef.current % industrialUsecaseData.length];
+      setOpenIndustryId(current.id);
+
+      collapseTimer = window.setTimeout(() => {
+        setOpenIndustryId("");
+
+        nextTimer = window.setTimeout(() => {
+          autoIndexRef.current = (autoIndexRef.current + 1) % industrialUsecaseData.length;
+          runCycle();
+        }, collapseDelay);
+      }, expandedDelay);
+    };
+
+    runCycle();
+
+    return () => {
+      if (collapseTimer !== null) window.clearTimeout(collapseTimer);
+      if (nextTimer !== null) window.clearTimeout(nextTimer);
+    };
+  }, [isManualMode]);
 
   return (
     <section id="industrial-usecases" className="grid min-h-screen snap-start snap-always bg-[#ececf0] px-0 py-8">
@@ -17,13 +49,16 @@ export function IndustrialUsecaseSection() {
               <div key={industry.id} className="border-b border-[#d8dee7] last:border-b-0">
                 <button
                   type="button"
-                  onClick={() => setOpenIndustryId((current) => (current === industry.id ? "" : industry.id))}
+                  onClick={() => {
+                    setIsManualMode(true);
+                    setOpenIndustryId(industry.id);
+                  }}
                   className={`group grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 px-3 py-4 text-left transition-colors duration-300 sm:grid-cols-[120px_1fr_auto] sm:px-5 sm:py-6 ${
                     isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:bg-[#198ef3] hover:text-white"
                   }`}
                 >
-                  <span className="text-[clamp(1.7rem,3.4vw,3.2rem)] leading-none">{industry.number}</span>
-                  <span className="text-[clamp(1.6rem,4.2vw,4rem)] leading-[1.06]">{industry.label}</span>
+                  <span className="text-[clamp(1.7rem,3.4vw,2.1rem)] leading-none">{industry.number}</span>
+                  <span className="text-[clamp(1.6rem,4.2vw,2.1rem)] leading-[1.06]">{industry.label}</span>
                   <ArrowRight
                     size={48}
                     className={`transition-transform duration-300 ${isOpen ? "rotate-90" : "group-hover:translate-x-1"}`}

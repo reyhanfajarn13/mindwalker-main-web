@@ -12,7 +12,7 @@ type ProductDetailsPageProps = {
 
 export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDetailsPageProps) {
   const product = useMemo(() => getProductBySlug(productSlug), [productSlug]);
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [openBenefitIndex, setOpenBenefitIndex] = useState(0);
 
   if (!product) {
     return (
@@ -42,9 +42,9 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
           ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
   const featureIcons = [Sparkles, Layers, Palette, UsersRound];
-  const activeFaqIndex = openFaqIndex >= 0 ? openFaqIndex : 0;
-  const activeFaqImage =
-    product.faqItems[activeFaqIndex]?.imageUrl || product.imageDetailsUrl || product.imageUrl;
+  const activeBenefitIndex = openBenefitIndex >= 0 ? openBenefitIndex : 0;
+  const activeBenefitImage =
+    product.enterpriseBenefits[activeBenefitIndex]?.imageUrl || product.imageDetailsUrl || product.imageUrl;
 
   return (
     <div className="bg-[#ececf0]">
@@ -140,27 +140,27 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
 
       <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4">
         <div className="mx-auto w-[min(1120px,100%)]">
-          <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">Pertanyaan Anda, Kami Jawab</h2>
+          <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">Dampak untuk Bisnis</h2>
           <div className="mt-6 grid gap-0 lg:grid-cols-[1fr_340px]">
             <div className="max-h-[min(62vh,620px)] overflow-y-auto rounded-l-3xl bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
-              {product.faqItems.map((faq, index) => {
-                const isOpen = openFaqIndex === index;
+              {product.enterpriseBenefits.map((benefit, index) => {
+                const isOpen = openBenefitIndex === index;
                 return (
                   <div
-                    key={faq.question}
+                    key={benefit.title}
                     className={`border-b border-[#d3dae5] transition-colors duration-300 last:border-b-0 ${
                       isOpen ? "bg-white" : "bg-[#ececf0]"
                     }`}
                   >
                     <button
                       type="button"
-                      onClick={() => setOpenFaqIndex((current) => (current === index ? -1 : index))}
+                      onClick={() => setOpenBenefitIndex((current) => (current === index ? -1 : index))}
                       className="flex w-full items-center justify-between px-4 py-3 text-left sm:px-5"
                     >
-                      <span className="text-[0.95rem] font-semibold text-[#2a3c51]">{faq.question}</span>
+                      <span className="text-[0.95rem] font-semibold text-[#2a3c51]">{benefit.title}</span>
                       {isOpen ? <ChevronDown size={18} className="text-[#248cf0]" /> : <ChevronRight size={18} className="text-[#788ba3]" />}
                     </button>
-                    {isOpen ? <p className="px-4 pb-4 text-[0.92rem] leading-[1.65] text-[#5f6f83] sm:px-5">{faq.answer}</p> : null}
+                    {isOpen ? <p className="px-4 pb-4 text-[0.92rem] leading-[1.65] text-[#5f6f83] sm:px-5">{benefit.description}</p> : null}
                   </div>
                 );
               })}
@@ -168,8 +168,8 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
 
             <div className="group overflow-hidden rounded-r-3xl shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
               <img
-                src={activeFaqImage}
-                alt={product.faqItems[activeFaqIndex]?.question ?? "FAQ visual"}
+                src={activeBenefitImage}
+                alt={product.enterpriseBenefits[activeBenefitIndex]?.title ?? "Enterprise benefit visual"}
                 className="h-[clamp(240px,42vh,420px)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
               />
             </div>

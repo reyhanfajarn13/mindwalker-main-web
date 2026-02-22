@@ -20,7 +20,7 @@ export type ProductItem = {
   featureHeading: string;
   featureDescription: string;
   featurePoints: string[];
-  faqItems: Array<{ question: string; answer: string; imageUrl: string }>;
+  enterpriseBenefits: Array<{ title: string; description: string; imageUrl: string }>;
   useCases: ProductArticle[];
 };
 
@@ -45,21 +45,21 @@ export const productData: ProductItem[] = [
       "Runbook Automation",
       "Cross-team Collaboration"
     ],
-    faqItems: [
+    enterpriseBenefits: [
       {
-        question: "Bagaimana Mind Ops membantu tim infrastruktur?",
-        answer:
-          "Mind Ops mengagregasi sinyal dari berbagai tool monitoring untuk memberi prioritas insiden dan rekomendasi tindakan cepat.",
+        title: "Penurunan Downtime Operasional",
+        description:
+          "Mind Ops memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas.",
         imageUrl: "https://images.unsplash.com/photo-1573164574472-797cdf4a583a?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Apakah Mind Ops bisa diintegrasikan dengan sistem existing?",
-        answer: "Ya, Mind Ops mendukung integrasi API dan webhook dengan stack monitoring serta ticketing umum.",
+        title: "Efisiensi Tim Lintas Fungsi",
+        description: "Integrasi ke tool existing mengurangi kerja manual dan mempercepat kolaborasi DevOps, NOC, dan Support.",
         imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Apakah ada dukungan otomasi?",
-        answer: "Ada, tim dapat membuat alur otomasi berbasis policy untuk mengeksekusi runbook secara otomatis.",
+        title: "Kecepatan Respon yang Konsisten",
+        description: "Otomasi runbook berbasis policy menjaga kualitas penanganan insiden tetap konsisten di berbagai skenario.",
         imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
       }
     ],
@@ -104,20 +104,20 @@ export const productData: ProductItem[] = [
       "Response Playbooks",
       "Compliance Reporting"
     ],
-    faqItems: [
+    enterpriseBenefits: [
       {
-        question: "Apakah Mind Sec cocok untuk enterprise?",
-        answer: "Cocok, Mind Sec dirancang untuk kebutuhan multi-tim dan tata kelola keamanan berskala enterprise.",
+        title: "Visibilitas Risiko Lebih Menyeluruh",
+        description: "Mind Sec mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas.",
         imageUrl: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Bisakah Mind Sec membantu audit compliance?",
-        answer: "Ya, data aktivitas keamanan dapat dikompilasi otomatis menjadi laporan compliance periodik.",
+        title: "Kesiapan Audit & Kepatuhan",
+        description: "Pelaporan keamanan otomatis membantu organisasi memenuhi kebutuhan audit dan kepatuhan lebih cepat.",
         imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Bagaimana dengan integrasi SIEM?",
-        answer: "Mind Sec dapat dihubungkan ke SIEM populer untuk ingest event dan orkestrasi incident response.",
+        title: "Penanganan Insiden Lebih Terkendali",
+        description: "Orkestrasi respons terintegrasi SIEM mempercepat containment insiden sekaligus menurunkan potensi dampak.",
         imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80"
       }
     ],
@@ -162,33 +162,33 @@ export const productData: ProductItem[] = [
       "Brand Pack Intelligence",
       "Collaborative Workflows"
     ],
-    faqItems: [
+    enterpriseBenefits: [
       {
-        question: "Apa yang membuat VisionCraft berbeda dari platform AI lain?",
-        answer:
-          "VisionCraft fokus untuk kebutuhan enterprise dengan kontrol kualitas, konsistensi brand, dan kolaborasi lintas tim.",
+        title: "Produksi Konten Lebih Cepat",
+        description:
+          "VisionCraft mempercepat alur produksi konten visual dari ide hingga hasil final untuk berbagai kebutuhan bisnis.",
         imageUrl: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Bagaimana VisionCraft menangani skala proyek besar?",
-        answer: "Arsitektur pipeline VisionCraft dirancang modular untuk beban tinggi dan proses paralel multi-tim.",
+        title: "Skalabilitas untuk Proyek Besar",
+        description: "Pipeline modular mendukung eksekusi paralel antar tim sehingga kapasitas produksi meningkat signifikan.",
         imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Apakah VisionCraft aman untuk enterprise?",
-        answer: "Ya, platform mendukung kebijakan akses, audit trail, dan opsi deployment sesuai kebutuhan keamanan organisasi.",
+        title: "Kontrol Brand yang Konsisten",
+        description: "Aturan brand pack memastikan setiap output visual tetap selaras dengan identitas perusahaan.",
         imageUrl: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Apa yang membuat VisionCraft berbeda dari platform AI lain?",
-        answer:
-          "VisionCraft fokus untuk kebutuhan enterprise dengan kontrol kualitas, konsistensi brand, dan kolaborasi lintas tim.",
+        title: "Kolaborasi Tim Lebih Efektif",
+        description:
+          "Workspace kolaboratif mempercepat review, approval, dan distribusi konten lintas departemen.",
         imageUrl: "https://images.unsplash.com/photo-1573496774426-fe3db3dd1731?auto=format&fit=crop&w=900&q=80"
       },
       {
-        question: "Apa yang membuat VisionCraft berbeda dari platform AI lain?",
-        answer:
-          "VisionCraft fokus untuk kebutuhan enterprise dengan kontrol kualitas, konsistensi brand, dan kolaborasi lintas tim.",
+        title: "Governance dan Keamanan Output",
+        description:
+          "Audit trail dan kontrol akses membantu organisasi menjaga keamanan aset kreatif dan kepatuhan internal.",
         imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
       }
     ],

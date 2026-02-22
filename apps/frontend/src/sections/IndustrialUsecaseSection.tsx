@@ -38,7 +38,7 @@ export function IndustrialUsecaseSection() {
   }, [isManualMode]);
 
   return (
-    <section id="industrial-usecases" className="grid min-h-screen snap-start snap-always bg-[#ececf0] px-0 py-8">
+    <section id="industrial-usecases" className="grid bg-[#ececf0] px-0 py-12 lg:py-16">
       <div className="mx-auto w-[min(1120px,calc(100%-2rem))]">
         <h2 className="text-[clamp(2rem,5vw,2rem)] leading-[1.05] text-[#198ef3] font-semibold">Our Solutions through Industry Use Cases</h2>
 

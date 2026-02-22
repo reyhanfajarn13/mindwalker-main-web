@@ -277,11 +277,7 @@ function App() {
         onNavigate={handleNavbarNavigate}
       />
       <main
-        className={`h-screen overflow-x-hidden overflow-y-auto scroll-smooth motion-reduce:scroll-auto ${
-          currentPage === "main"
-            ? "snap-y snap-mandatory max-[720px]:snap-proximity"
-            : ""
-        }`}
+        className="h-screen overflow-x-hidden overflow-y-auto scroll-smooth motion-reduce:scroll-auto"
         ref={scrollRootRef}
       >
         {currentPage === "news" ? (

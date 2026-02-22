@@ -40,7 +40,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
 
   return (
     <section
-      className="grid min-h-screen snap-start snap-always items-center bg-[#ececf0] px-0 py-8"
+      className="grid items-center bg-[#ececf0] px-0 py-12 lg:py-16"
       id="product"
     >
       <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">

@@ -112,7 +112,7 @@ export function HeroSection({
 
   return (
     <section
-      className="relative grid min-h-screen snap-start snap-always grid-rows-1 overflow-hidden px-0 pb-8 pt-[5.75rem]"
+      className="relative grid min-h-screen grid-rows-1 overflow-hidden px-0 pb-8 pt-[5.75rem]"
       id="home"
     >
       <div className="absolute inset-0 -z-10">

@@ -34,8 +34,8 @@ export const productData: ProductItem[] = [
     title: "Mind Ops",
     label: "System Operations",
     description: "From monitoring to resolution, IT operations must move with intelligence.",
-    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-    imageDetailsUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771973803680-0fca3e2a1c6d349d.jpeg",
+    imageDetailsUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771975136642-d786a96df15dbcaa.png",
     heroDescription:
       "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
     demoLabel: "Explore Demo",
@@ -45,7 +45,7 @@ export const productData: ProductItem[] = [
     featurePoints: [
       "Alert Prioritization",
       "Root Cause Suggestion",
-      "Runbook Automation",
+      "Issue-Based Action Recommendation",
       "Cross-team Collaboration"
     ],
     enterpriseBenefits: [
@@ -62,7 +62,8 @@ export const productData: ProductItem[] = [
       },
       {
         title: "Kecepatan Respon yang Konsisten",
-        description: "Otomasi runbook berbasis policy menjaga kualitas penanganan insiden tetap konsisten di berbagai skenario.",
+        description:
+          "Rekomendasi aksi berbasis issue membantu tim menjalankan langkah penanganan yang tepat dan konsisten di berbagai skenario.",
         imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
       },
       {
@@ -74,7 +75,7 @@ export const productData: ProductItem[] = [
       {
         title: "Biaya Operasional Lebih Terkendali",
         description:
-          "Automasi prioritas insiden dan alur remediasi menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien.",
+          "Prioritisasi insiden dan rekomendasi aksi kontekstual menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien.",
         imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
       }
     ],
@@ -93,8 +94,9 @@ export const productData: ProductItem[] = [
       },
       {
         id: 103,
-        title: "Automasi Remediasi",
-        excerpt: "Eksekusi runbook otomatis pada kondisi tertentu untuk mempercepat recovery.",
+        title: "Rekomendasi Aksi Berbasis Issue",
+        excerpt:
+          "Sistem merekomendasikan langkah penanganan berdasarkan konteks issue agar tim mempercepat recovery dengan keputusan yang tepat.",
         imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80"
       }
     ]
@@ -106,14 +108,14 @@ export const productData: ProductItem[] = [
     title: "Mind Sec",
     label: "Threat Analysis",
     description: "Detect risks early and orchestrate faster response across security workflows.",
-    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
-    imageDetailsUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771973696752-0dcd2bc6253e5e88.jpeg",
+    imageDetailsUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771974889163-8b9a17a531fe72dd.png",
     heroDescription:
       "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
     demoLabel: "Explore Demo",
-    featureHeading: "Mind Sec mengurangi risiko kebocoran data",
+    featureHeading: "MindSec, tools pintar berbasis AI untuk deteksi serangan siber",
     featureDescription:
-      "Platform ini menyatukan telemetry keamanan, policy engine, dan workflow investigasi dalam satu dashboard operasional.",
+      "MindSec mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
     featurePoints: [
       "Threat Correlation",
       "Attack Surface Visibility",
@@ -177,7 +179,7 @@ export const productData: ProductItem[] = [
     title: "VisionCraft",
     label: "AI Intelligence",
     description: "Build insight pipelines that turn data signals into real operational impact.",
-    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771974630762-3b5e6f8acfa61f76.png",
     imageDetailsUrl: visioncraftbasePict,
     heroDescription:
       "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",

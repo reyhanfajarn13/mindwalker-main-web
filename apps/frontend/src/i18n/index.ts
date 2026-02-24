@@ -242,7 +242,7 @@ const resources = {
             featurePoints: [
               "Prioritisasi Alert",
               "Saran Akar Masalah",
-              "Otomasi Runbook",
+              "Rekomendasi Aksi Berbasis Issue",
               "Kolaborasi Lintas Tim"
             ],
             enterpriseBenefits: [
@@ -259,7 +259,7 @@ const resources = {
               {
                 title: "Kecepatan Respon yang Konsisten",
                 description:
-                  "Otomasi runbook berbasis policy menjaga kualitas penanganan insiden tetap konsisten di berbagai skenario."
+                  "Rekomendasi aksi berbasis issue membantu tim menjalankan langkah penanganan yang tepat dan konsisten di berbagai skenario."
               },
               {
                 title: "Peningkatan Stabilitas Layanan",
@@ -269,7 +269,7 @@ const resources = {
               {
                 title: "Biaya Operasional Lebih Terkendali",
                 description:
-                  "Automasi prioritas insiden dan alur remediasi menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien."
+                  "Prioritisasi insiden dan rekomendasi aksi kontekstual menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien."
               }
             ],
             useCases: [
@@ -282,8 +282,9 @@ const resources = {
                 excerpt: "Deteksi dini anomali server untuk mencegah downtime layanan kritikal."
               },
               {
-                title: "Automasi Remediasi",
-                excerpt: "Eksekusi runbook otomatis pada kondisi tertentu untuk mempercepat recovery."
+                title: "Rekomendasi Aksi Berbasis Issue",
+                excerpt:
+                  "Sistem merekomendasikan langkah penanganan berdasarkan konteks issue agar tim mempercepat recovery dengan keputusan yang tepat."
               }
             ]
           },
@@ -293,9 +294,9 @@ const resources = {
             description: "Detect risks early and orchestrate faster response across security workflows.",
             heroDescription:
               "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
-            featureHeading: "Mind Sec mengurangi risiko kebocoran data",
+            featureHeading: "MindSec, tools pintar berbasis AI untuk deteksi serangan siber",
             featureDescription:
-              "Platform ini menyatukan telemetry keamanan, policy engine, dan workflow investigasi dalam satu dashboard operasional.",
+              "MindSec mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
             featurePoints: [
               "Korelasi Ancaman",
               "Visibilitas Attack Surface",
@@ -663,7 +664,7 @@ const resources = {
             featurePoints: [
               "Alert Prioritization",
               "Root Cause Suggestions",
-              "Runbook Automation",
+              "Issue-Based Action Recommendation",
               "Cross-team Collaboration"
             ],
             enterpriseBenefits: [
@@ -680,7 +681,7 @@ const resources = {
               {
                 title: "Consistent Response Speed",
                 description:
-                  "Policy-based runbook automation keeps incident handling quality consistent across scenarios."
+                  "Issue-based action recommendations help teams execute the right response steps with consistent quality across scenarios."
               },
               {
                 title: "Improved Service Stability",
@@ -690,7 +691,7 @@ const resources = {
               {
                 title: "Better Operational Cost Control",
                 description:
-                  "Automated incident prioritization and remediation workflows reduce repeated escalation and improve resource efficiency."
+                  "Incident prioritization and contextual action recommendations reduce repeated escalations and improve resource efficiency."
               }
             ],
             useCases: [
@@ -705,8 +706,9 @@ const resources = {
                   "Early detection of server anomalies to prevent downtime in critical services."
               },
               {
-                title: "Automated Remediation",
-                excerpt: "Execute automated runbooks under defined conditions to speed up recovery."
+                title: "Issue-Based Action Recommendation",
+                excerpt:
+                  "The system recommends response actions based on issue context so teams can accelerate recovery with better decisions."
               }
             ]
           },
@@ -716,9 +718,9 @@ const resources = {
             description: "Detect risks early and orchestrate faster response across security workflows.",
             heroDescription:
               "Mind Sec strengthens security operation centers with earlier threat detection and measurable response orchestration.",
-            featureHeading: "Mind Sec reduces data breach risk",
+            featureHeading: "MindSec, an AI-powered tool for cyberattack detection",
             featureDescription:
-              "The platform unifies security telemetry, policy engines, and investigation workflows into one operational dashboard.",
+              "MindSec detects cyber attacks earlier, correlates attack sources automatically, and helps security teams choose the most effective response in one integrated workflow.",
             featurePoints: [
               "Threat Correlation",
               "Attack Surface Visibility",

@@ -1,5 +1,18 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, ChevronRight, Sparkles, Layers, Palette, UsersRound } from "lucide-react";
+import {
+  BellRing,
+  ChevronDown,
+  ChevronRight,
+  FileCheck2,
+  Lightbulb,
+  Radar,
+  SearchCheck,
+  ShieldAlert,
+  ShieldCheck,
+  Sparkles,
+  UsersRound,
+  Workflow
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
 import { getLocalizedProductBySlug } from "./productData";
@@ -43,7 +56,17 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
         : heroNewsCards.length === 3
           ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
-  const featureIcons = [Sparkles, Layers, Palette, UsersRound];
+  const featureIcons = useMemo(() => {
+    if (product.slug === "mind-ops") {
+      return [BellRing, SearchCheck, Lightbulb, UsersRound];
+    }
+
+    if (product.slug === "mind-sec") {
+      return [ShieldAlert, Radar, ShieldCheck, FileCheck2];
+    }
+
+    return [Sparkles, Workflow, Lightbulb, UsersRound];
+  }, [product.slug]);
   const activeBenefitIndex = openBenefitIndex >= 0 ? openBenefitIndex : 0;
   const activeBenefitImage =
     product.enterpriseBenefits[activeBenefitIndex]?.imageUrl || product.imageDetailsUrl || product.imageUrl;

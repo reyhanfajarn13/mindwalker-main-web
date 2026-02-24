@@ -194,8 +194,8 @@ function App() {
 
   const handleNavbarNavigate = (targetId: string) => {
     if (targetId === "news") {
-      if (window.location.pathname !== "/News") {
-        window.history.pushState({}, "", "/News");
+      if (window.location.pathname !== "/news") {
+        window.history.pushState({}, "", "/news");
       }
       setCurrentPage("news");
       setSelectedNewsId(null);
@@ -233,8 +233,8 @@ function App() {
   }, [currentPage]);
 
   const handleOpenNewsDetails = (id: number) => {
-    if (window.location.pathname !== `/News/${id}`) {
-      window.history.pushState({}, "", `/News/${id}`);
+    if (window.location.pathname !== `/news/${id}`) {
+      window.history.pushState({}, "", `/news/${id}`);
     }
 
     setCurrentPage("news");
@@ -249,7 +249,7 @@ function App() {
   };
 
   const handleOpenProductDetails = (slug: string) => {
-    const targetPath = `/Product/${encodeURIComponent(slug)}`;
+    const targetPath = `/product/${encodeURIComponent(slug)}`;
     if (window.location.pathname !== targetPath) {
       window.history.pushState({}, "", targetPath);
     }

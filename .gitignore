@@ -33,3 +33,5 @@ Thumbs.db
 .idea/
 
 *.local
+.vercel
+.env*.local

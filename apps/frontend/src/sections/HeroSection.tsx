@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { DecryptedText } from "../components/ui/DecryptedText";
 import FaultyTerminal from "../components/ui/FaultyTerminal";
 import { useTranslation } from "react-i18next";
-import nvidiaLogo from "../assets/logo/NvidiaLogo.png";
+import nvidiaLogo from "../assets/logo/logoNvidia.png";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
@@ -141,8 +141,8 @@ export function HeroSection({
         <div className="flex min-h-0 flex-col justify-center lg:min-h-[calc(100vh-7.75rem)]">
           <div className="mt-5 mb-5 flex items-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
-              <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[#76b900]">
-                <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-cover" />
+              <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[rgba(159,232,112,0.35)] p-[1px]">
+                <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" />
               </span>
               <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
             </span>

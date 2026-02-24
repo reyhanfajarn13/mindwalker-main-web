@@ -475,6 +475,10 @@ const resources = {
   }
 } as const;
 
+if (typeof window !== "undefined") {
+  window.localStorage.setItem("mindwalker_lang", "id");
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -483,7 +487,7 @@ i18n
     fallbackLng: "id",
     supportedLngs: ["id", "en"],
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["localStorage"],
       caches: ["localStorage"],
       lookupLocalStorage: "mindwalker_lang"
     },
@@ -493,3 +497,5 @@ i18n
   });
 
 export default i18n;
+
+

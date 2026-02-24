@@ -1,4 +1,5 @@
 import visioncraftbasePict from "../../assets/visioncraftBasePict.png";
+import type { TFunction } from "i18next";
 
 export type ProductArticle = {
   id: number;
@@ -9,6 +10,7 @@ export type ProductArticle = {
 
 export type ProductItem = {
   id: number;
+  i18nKey: "mindOps" | "mindSec" | "visioncraft";
   slug: string;
   title: string;
   label: string;
@@ -27,6 +29,7 @@ export type ProductItem = {
 export const productData: ProductItem[] = [
   {
     id: 1,
+    i18nKey: "mindOps",
     slug: "mind-ops",
     title: "Mind Ops",
     label: "System Operations",
@@ -61,6 +64,18 @@ export const productData: ProductItem[] = [
         title: "Kecepatan Respon yang Konsisten",
         description: "Otomasi runbook berbasis policy menjaga kualitas penanganan insiden tetap konsisten di berbagai skenario.",
         imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Peningkatan Stabilitas Layanan",
+        description:
+          "Pemantauan real-time membantu tim operasi mendeteksi degradasi performa lebih awal sebelum berdampak pada pengguna.",
+        imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Biaya Operasional Lebih Terkendali",
+        description:
+          "Automasi prioritas insiden dan alur remediasi menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien.",
+        imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
       }
     ],
     useCases: [
@@ -86,6 +101,7 @@ export const productData: ProductItem[] = [
   },
   {
     id: 2,
+    i18nKey: "mindSec",
     slug: "mind-sec",
     title: "Mind Sec",
     label: "Threat Analysis",
@@ -119,6 +135,18 @@ export const productData: ProductItem[] = [
         title: "Penanganan Insiden Lebih Terkendali",
         description: "Orkestrasi respons terintegrasi SIEM mempercepat containment insiden sekaligus menurunkan potensi dampak.",
         imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Reduksi Risiko Kebocoran Data",
+        description:
+          "Deteksi ancaman lebih dini dan korelasi alert lintas sumber membantu mencegah eksfiltrasi data sensitif.",
+        imageUrl: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Pengambilan Keputusan Security Lebih Cepat",
+        description:
+          "Konteks ancaman yang terpusat mempercepat triage alert dan membantu SOC menentukan tindakan paling efektif.",
+        imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
       }
     ],
     useCases: [
@@ -144,6 +172,7 @@ export const productData: ProductItem[] = [
   },
   {
     id: 3,
+    i18nKey: "visioncraft",
     slug: "visioncraft",
     title: "VisionCraft",
     label: "AI Intelligence",
@@ -217,3 +246,45 @@ export const productData: ProductItem[] = [
 
 export const getProductBySlug = (slug: string) =>
   productData.find((item) => item.slug.toLowerCase() === slug.toLowerCase());
+
+export const getLocalizedProductBySlug = (slug: string, t: TFunction): ProductItem | undefined => {
+  const product = getProductBySlug(slug);
+  if (!product) return undefined;
+
+  const baseKey = `productDetails.products.${product.i18nKey}`;
+
+  const translatedFeaturePoints = t(`${baseKey}.featurePoints`, { returnObjects: true }) as string[];
+  const translatedBenefits = t(`${baseKey}.enterpriseBenefits`, { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>;
+  const translatedUseCases = t(`${baseKey}.useCases`, { returnObjects: true }) as Array<{
+    title: string;
+    excerpt: string;
+  }>;
+
+  return {
+    ...product,
+    title: t(`${baseKey}.title`),
+    label: t(`${baseKey}.label`),
+    description: t(`${baseKey}.description`),
+    heroDescription: t(`${baseKey}.heroDescription`),
+    demoLabel: t("productDetails.common.demoLabel"),
+    featureHeading: t(`${baseKey}.featureHeading`),
+    featureDescription: t(`${baseKey}.featureDescription`),
+    featurePoints:
+      Array.isArray(translatedFeaturePoints) && translatedFeaturePoints.length > 0
+        ? translatedFeaturePoints
+        : product.featurePoints,
+    enterpriseBenefits: product.enterpriseBenefits.map((benefit, index) => ({
+      ...benefit,
+      title: translatedBenefits?.[index]?.title ?? benefit.title,
+      description: translatedBenefits?.[index]?.description ?? benefit.description
+    })),
+    useCases: product.useCases.map((useCase, index) => ({
+      ...useCase,
+      title: translatedUseCases?.[index]?.title ?? useCase.title,
+      excerpt: translatedUseCases?.[index]?.excerpt ?? useCase.excerpt
+    }))
+  };
+};

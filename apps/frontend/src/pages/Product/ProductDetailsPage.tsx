@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, ChevronRight, Sparkles, Layers, Palette, UsersRound } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
-import { getProductBySlug } from "./productData";
+import { getLocalizedProductBySlug } from "./productData";
 import { allNews } from "../News/newsData";
 import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
 
@@ -11,15 +12,16 @@ type ProductDetailsPageProps = {
 };
 
 export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDetailsPageProps) {
-  const product = useMemo(() => getProductBySlug(productSlug), [productSlug]);
+  const { t } = useTranslation();
+  const product = useMemo(() => getLocalizedProductBySlug(productSlug, t), [productSlug, t]);
   const [openBenefitIndex, setOpenBenefitIndex] = useState(0);
 
   if (!product) {
     return (
       <div className="bg-[#ececf0] px-4 pb-12 pt-[6rem] sm:px-6">
         <div className="mx-auto w-[min(1120px,100%)] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)]">
-          <h1 className="text-[1.8rem] font-bold text-[#243242]">Product not found</h1>
-          <p className="mt-2 text-[#627489]">The product you are looking for is unavailable.</p>
+          <h1 className="text-[1.8rem] font-bold text-[#243242]">{t("productDetails.common.notFoundTitle")}</h1>
+          <p className="mt-2 text-[#627489]">{t("productDetails.common.notFoundMessage")}</p>
         </div>
       </div>
     );
@@ -98,7 +100,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                       onClick={() => onOpenNewsDetails?.(item.id)}
                       className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf]"
                     >
-                      Learn More -&gt;
+                      {t("productDetails.common.learnMore")} -&gt;
                     </button>
                   </div>
                 </article>
@@ -140,7 +142,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
 
       <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4">
         <div className="mx-auto w-[min(1120px,100%)]">
-          <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">Dampak untuk Bisnis</h2>
+          <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.businessImpactTitle")}</h2>
           <div className="mt-6 grid gap-0 lg:grid-cols-[1fr_340px]">
             <div className="max-h-[min(62vh,620px)] overflow-y-auto rounded-l-3xl bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
               {product.enterpriseBenefits.map((benefit, index) => {
@@ -169,13 +171,13 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             <div className="group overflow-hidden rounded-r-3xl shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
               <img
                 src={activeBenefitImage}
-                alt={product.enterpriseBenefits[activeBenefitIndex]?.title ?? "Enterprise benefit visual"}
+                alt={product.enterpriseBenefits[activeBenefitIndex]?.title ?? t("productDetails.common.benefitImageAltFallback")}
                 className="h-[clamp(240px,42vh,420px)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
               />
             </div>
           </div>
 
-          <h2 className="mt-12 text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">Contoh Penerapan {product.title}</h2>
+          <h2 className="mt-12 text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.useCasesTitle", { product: product.title })}</h2>
           <div className="mt-5 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {product.useCases.map((item) => (
               <article
@@ -199,7 +201,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                     type="button"
                     className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf]"
                   >
-                    Learn More -&gt;
+                    {t("productDetails.common.learnMore")} -&gt;
                   </button>
                 </div>
               </article>

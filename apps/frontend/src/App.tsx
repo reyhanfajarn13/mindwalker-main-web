@@ -309,9 +309,11 @@ function App() {
           </>
         )}
       </main>
+      {/*
       <Suspense fallback={null}>
         <FloatingChatbot />
       </Suspense>
+      */}
     </>
   );
 }

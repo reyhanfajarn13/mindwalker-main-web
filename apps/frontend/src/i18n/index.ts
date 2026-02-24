@@ -219,6 +219,192 @@ const resources = {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde recusandae asperiores repudiandae nisi id quas explicabo porro, deserunt sequi voluptas eligendi sint."
         }
       },
+      productDetails: {
+        common: {
+          notFoundTitle: "Produk tidak ditemukan",
+          notFoundMessage: "Produk yang Anda cari tidak tersedia.",
+          demoLabel: "Explore Demo",
+          learnMore: "Selengkapnya",
+          businessImpactTitle: "Dampak untuk Bisnis",
+          useCasesTitle: "Contoh Penerapan {{product}}",
+          benefitImageAltFallback: "Visual dampak bisnis"
+        },
+        products: {
+          mindOps: {
+            title: "Mind Ops",
+            label: "Operasional Sistem",
+            description: "From monitoring to resolution, IT operations must move with intelligence.",
+            heroDescription:
+              "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
+            featureHeading: "Mind Ops mempercepat keputusan operasional",
+            featureDescription:
+              "Dari observability hingga incident response, Mind Ops mengurangi waktu investigasi dan meningkatkan reliability layanan.",
+            featurePoints: [
+              "Prioritisasi Alert",
+              "Saran Akar Masalah",
+              "Otomasi Runbook",
+              "Kolaborasi Lintas Tim"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Penurunan Downtime Operasional",
+                description:
+                  "Mind Ops memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas."
+              },
+              {
+                title: "Efisiensi Tim Lintas Fungsi",
+                description:
+                  "Integrasi ke tool existing mengurangi kerja manual dan mempercepat kolaborasi DevOps, NOC, dan Support."
+              },
+              {
+                title: "Kecepatan Respon yang Konsisten",
+                description:
+                  "Otomasi runbook berbasis policy menjaga kualitas penanganan insiden tetap konsisten di berbagai skenario."
+              },
+              {
+                title: "Peningkatan Stabilitas Layanan",
+                description:
+                  "Pemantauan real-time membantu tim operasi mendeteksi degradasi performa lebih awal sebelum berdampak pada pengguna."
+              },
+              {
+                title: "Biaya Operasional Lebih Terkendali",
+                description:
+                  "Automasi prioritas insiden dan alur remediasi menekan eskalasi berulang sehingga penggunaan sumber daya lebih efisien."
+              }
+            ],
+            useCases: [
+              {
+                title: "Respon Insiden Lintas Tim",
+                excerpt: "Sinkronisasi DevOps, NOC, dan Security untuk menurunkan MTTR secara signifikan."
+              },
+              {
+                title: "Monitoring Proaktif Infrastruktur",
+                excerpt: "Deteksi dini anomali server untuk mencegah downtime layanan kritikal."
+              },
+              {
+                title: "Automasi Remediasi",
+                excerpt: "Eksekusi runbook otomatis pada kondisi tertentu untuk mempercepat recovery."
+              }
+            ]
+          },
+          mindSec: {
+            title: "Mind Sec",
+            label: "Analisis Ancaman",
+            description: "Detect risks early and orchestrate faster response across security workflows.",
+            heroDescription:
+              "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
+            featureHeading: "Mind Sec mengurangi risiko kebocoran data",
+            featureDescription:
+              "Platform ini menyatukan telemetry keamanan, policy engine, dan workflow investigasi dalam satu dashboard operasional.",
+            featurePoints: [
+              "Korelasi Ancaman",
+              "Visibilitas Attack Surface",
+              "Playbook Respons",
+              "Pelaporan Kepatuhan"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Visibilitas Risiko Lebih Menyeluruh",
+                description:
+                  "Mind Sec mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas."
+              },
+              {
+                title: "Kesiapan Audit & Kepatuhan",
+                description:
+                  "Pelaporan keamanan otomatis membantu organisasi memenuhi kebutuhan audit dan kepatuhan lebih cepat."
+              },
+              {
+                title: "Penanganan Insiden Lebih Terkendali",
+                description:
+                  "Orkestrasi respons terintegrasi SIEM mempercepat containment insiden sekaligus menurunkan potensi dampak."
+              },
+              {
+                title: "Reduksi Risiko Kebocoran Data",
+                description:
+                  "Deteksi ancaman lebih dini dan korelasi alert lintas sumber membantu mencegah eksfiltrasi data sensitif."
+              },
+              {
+                title: "Pengambilan Keputusan Security Lebih Cepat",
+                description:
+                  "Konteks ancaman yang terpusat mempercepat triage alert dan membantu SOC menentukan tindakan paling efektif."
+              }
+            ],
+            useCases: [
+              {
+                title: "Deteksi Akses Anomali",
+                excerpt: "Identifikasi pola akses tidak wajar sebelum berdampak ke layanan produksi."
+              },
+              {
+                title: "Incident Triage Otomatis",
+                excerpt: "Prioritas alert berdasarkan severity dan konteks bisnis untuk SOC."
+              },
+              {
+                title: "Enrichment Intel Ancaman",
+                excerpt: "Perkaya indikator serangan dengan threat intelligence eksternal."
+              }
+            ]
+          },
+          visioncraft: {
+            title: "VisionCraft",
+            label: "Kecerdasan AI",
+            description: "Build insight pipelines that turn data signals into real operational impact.",
+            heroDescription:
+              "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",
+            featureHeading: "VisionCraft mengubah ide menjadi realita",
+            featureDescription:
+              "Dari prompt cerdas hingga kolaborasi lintas tim, VisionCraft membantu perusahaan menciptakan visual autentik dengan kualitas premium.",
+            featurePoints: [
+              "Peningkatan Prompt",
+              "Integrasi Multi-Provider",
+              "Brand Pack Intelligence",
+              "Workflow Kolaboratif"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Produksi Konten Lebih Cepat",
+                description:
+                  "VisionCraft mempercepat alur produksi konten visual dari ide hingga hasil final untuk berbagai kebutuhan bisnis."
+              },
+              {
+                title: "Skalabilitas untuk Proyek Besar",
+                description:
+                  "Pipeline modular mendukung eksekusi paralel antar tim sehingga kapasitas produksi meningkat signifikan."
+              },
+              {
+                title: "Kontrol Brand yang Konsisten",
+                description:
+                  "Aturan brand pack memastikan setiap output visual tetap selaras dengan identitas perusahaan."
+              },
+              {
+                title: "Kolaborasi Tim Lebih Efektif",
+                description:
+                  "Workspace kolaboratif mempercepat review, approval, dan distribusi konten lintas departemen."
+              },
+              {
+                title: "Governance dan Keamanan Output",
+                description:
+                  "Audit trail dan kontrol akses membantu organisasi menjaga keamanan aset kreatif dan kepatuhan internal."
+              }
+            ],
+            useCases: [
+              {
+                title: "Kesadaran Keselamatan Berbasis AI",
+                excerpt:
+                  "Membuat video edukasi HSSE yang autentik dan konsisten dengan brand perusahaan."
+              },
+              {
+                title: "Konten Visual Operasional",
+                excerpt: "Membantu tim operasi membuat konten visual instruksional dengan cepat."
+              },
+              {
+                title: "Brand Visual Consistency",
+                excerpt:
+                  "Menjaga gaya visual lintas channel agar tetap seragam untuk kebutuhan kampanye."
+              }
+            ]
+          }
+        }
+      },
       footer: {
         title: "Siap untuk Menjelajah?",
         subtitle: "Butuh detail? Tinggalkan email Anda, dan kami akan menghubungi.",
@@ -452,6 +638,198 @@ const resources = {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ex nisi reprehenderit aliquam voluptatibus in, beatae odio ab iste facere, quisquam excepturi perspiciatis cupiditate.",
           paragraph2:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde recusandae asperiores repudiandae nisi id quas explicabo porro, deserunt sequi voluptas eligendi sint."
+        }
+      },
+      productDetails: {
+        common: {
+          notFoundTitle: "Product not found",
+          notFoundMessage: "The product you are looking for is unavailable.",
+          demoLabel: "Explore Demo",
+          learnMore: "Learn More",
+          businessImpactTitle: "Business Impact",
+          useCasesTitle: "{{product}} Use Cases",
+          benefitImageAltFallback: "Business impact visual"
+        },
+        products: {
+          mindOps: {
+            title: "Mind Ops",
+            label: "System Operations",
+            description: "From monitoring to resolution, IT operations must move with intelligence.",
+            heroDescription:
+              "Mind Ops helps operations teams monitor incidents, analyze root causes, and automate response in real time.",
+            featureHeading: "Mind Ops accelerates operational decisions",
+            featureDescription:
+              "From observability to incident response, Mind Ops reduces investigation time and improves service reliability.",
+            featurePoints: [
+              "Alert Prioritization",
+              "Root Cause Suggestions",
+              "Runbook Automation",
+              "Cross-team Collaboration"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Reduced Operational Downtime",
+                description:
+                  "Mind Ops prioritizes critical incidents faster so service disruptions can be handled before wider impact."
+              },
+              {
+                title: "Cross-Functional Team Efficiency",
+                description:
+                  "Integration with existing tools reduces manual work and speeds up collaboration across DevOps, NOC, and Support."
+              },
+              {
+                title: "Consistent Response Speed",
+                description:
+                  "Policy-based runbook automation keeps incident handling quality consistent across scenarios."
+              },
+              {
+                title: "Improved Service Stability",
+                description:
+                  "Real-time monitoring helps operations teams detect performance degradation earlier before it impacts users."
+              },
+              {
+                title: "Better Operational Cost Control",
+                description:
+                  "Automated incident prioritization and remediation workflows reduce repeated escalation and improve resource efficiency."
+              }
+            ],
+            useCases: [
+              {
+                title: "Cross-Team Incident Response",
+                excerpt:
+                  "Synchronize DevOps, NOC, and Security workflows to reduce MTTR significantly."
+              },
+              {
+                title: "Proactive Infrastructure Monitoring",
+                excerpt:
+                  "Early detection of server anomalies to prevent downtime in critical services."
+              },
+              {
+                title: "Automated Remediation",
+                excerpt: "Execute automated runbooks under defined conditions to speed up recovery."
+              }
+            ]
+          },
+          mindSec: {
+            title: "Mind Sec",
+            label: "Threat Analysis",
+            description: "Detect risks early and orchestrate faster response across security workflows.",
+            heroDescription:
+              "Mind Sec strengthens security operation centers with earlier threat detection and measurable response orchestration.",
+            featureHeading: "Mind Sec reduces data breach risk",
+            featureDescription:
+              "The platform unifies security telemetry, policy engines, and investigation workflows into one operational dashboard.",
+            featurePoints: [
+              "Threat Correlation",
+              "Attack Surface Visibility",
+              "Response Playbooks",
+              "Compliance Reporting"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Broader Risk Visibility",
+                description:
+                  "Mind Sec correlates threat signals so security teams can see risk priorities more clearly."
+              },
+              {
+                title: "Audit & Compliance Readiness",
+                description:
+                  "Automated security reporting helps organizations meet audit and compliance requirements faster."
+              },
+              {
+                title: "More Controlled Incident Handling",
+                description:
+                  "SIEM-integrated response orchestration speeds up containment while reducing potential impact."
+              },
+              {
+                title: "Lower Data Leakage Risk",
+                description:
+                  "Early threat detection and cross-source alert correlation help prevent sensitive data exfiltration."
+              },
+              {
+                title: "Faster Security Decisions",
+                description:
+                  "Centralized threat context accelerates alert triage and helps SOC teams choose the most effective action."
+              }
+            ],
+            useCases: [
+              {
+                title: "Anomalous Access Detection",
+                excerpt:
+                  "Identify unusual access patterns before they impact production services."
+              },
+              {
+                title: "Automated Incident Triage",
+                excerpt:
+                  "Prioritize alerts based on severity and business context for SOC teams."
+              },
+              {
+                title: "Threat Intel Enrichment",
+                excerpt:
+                  "Enrich attack indicators with external threat intelligence sources."
+              }
+            ]
+          },
+          visioncraft: {
+            title: "VisionCraft",
+            label: "AI Intelligence",
+            description: "Build insight pipelines that turn data signals into real operational impact.",
+            heroDescription:
+              "A multimodal AI platform that turns ideas into visual output and content automation quickly for enterprise needs.",
+            featureHeading: "VisionCraft turns ideas into reality",
+            featureDescription:
+              "From smart prompts to cross-team collaboration, VisionCraft helps organizations create authentic visuals with premium quality.",
+            featurePoints: [
+              "Prompt Enhancement",
+              "Multi-Provider Integration",
+              "Brand Pack Intelligence",
+              "Collaborative Workflows"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Faster Content Production",
+                description:
+                  "VisionCraft speeds up visual content production from idea to final output for multiple business needs."
+              },
+              {
+                title: "Scalability for Large Projects",
+                description:
+                  "A modular pipeline supports parallel execution across teams, significantly increasing production capacity."
+              },
+              {
+                title: "Consistent Brand Control",
+                description:
+                  "Brand-pack rules ensure every visual output stays aligned with company identity."
+              },
+              {
+                title: "More Effective Team Collaboration",
+                description:
+                  "Collaborative workspaces speed up review, approval, and content distribution across departments."
+              },
+              {
+                title: "Output Governance and Security",
+                description:
+                  "Audit trails and access control help organizations secure creative assets and maintain internal compliance."
+              }
+            ],
+            useCases: [
+              {
+                title: "AI-Based Safety Awareness",
+                excerpt:
+                  "Create HSSE educational videos that stay authentic and consistent with the corporate brand."
+              },
+              {
+                title: "Operational Visual Content",
+                excerpt:
+                  "Help operations teams produce instructional visual content faster."
+              },
+              {
+                title: "Brand Visual Consistency",
+                excerpt:
+                  "Maintain consistent visual style across channels for campaign needs."
+              }
+            ]
+          }
         }
       },
       footer: {

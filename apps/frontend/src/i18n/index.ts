@@ -427,6 +427,13 @@ const resources = {
         emailPlaceholder: "Masukkan email Anda",
         send: "Kirim",
         technologyPartners: "Mitra Teknologi",
+        form: {
+          invalidEmail: "Format email belum valid.",
+          configMissing: "Integrasi formulir belum dikonfigurasi.",
+          sending: "Mengirim...",
+          success: "Terima kasih. Email Anda berhasil dikirim.",
+          failed: "Gagal mengirim email. Silakan coba lagi."
+        },
         groups: {
           company: "Mindwalker.ai",
           line1: "Sebagai pemimpin tepercaya dalam transformasi digital",
@@ -870,6 +877,13 @@ const resources = {
         emailPlaceholder: "Enter your email",
         send: "Send",
         technologyPartners: "Technology Partners",
+        form: {
+          invalidEmail: "Please enter a valid email format.",
+          configMissing: "Form integration is not configured yet.",
+          sending: "Sending...",
+          success: "Thank you. Your email has been submitted.",
+          failed: "Failed to submit email. Please try again."
+        },
         groups: {
           company: "Mindwalker.ai",
           line1: "As a trusted leader in digital transformation",

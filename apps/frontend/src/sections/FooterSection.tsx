@@ -1,4 +1,5 @@
 import LogoLoop from "../components/ui/LogoLoop";
+import { FormEvent, useState } from "react";
 import { Github, Instagram, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { industrialUsecaseData } from "./industrialUsecaseData";
@@ -23,7 +24,13 @@ const techLogos = [
 ];
 
 export function FooterSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
+
+  const gsheetsWebhookUrl = import.meta.env.VITE_GSHEETS_WEBHOOK_URL as string | undefined;
 
   const footerGroups = [
     {
@@ -43,6 +50,52 @@ export function FooterSection() {
       items: industrialUsecaseData.map((industry) => t(industry.labelKey))
     }
   ];
+
+  const handleSubmitEmail = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitError(null);
+    setSubmitSuccess(null);
+
+    const normalizedEmail = email.trim();
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
+
+    if (!isValidEmail) {
+      setSubmitError(t("footer.form.invalidEmail"));
+      return;
+    }
+
+    if (!gsheetsWebhookUrl) {
+      setSubmitError(t("footer.form.configMissing"));
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await fetch(gsheetsWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: new URLSearchParams({
+          email: normalizedEmail,
+          source: "mindwalker_web_footer",
+          locale: i18n.resolvedLanguage ?? i18n.language,
+          submittedAt: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Webhook request failed with status ${response.status}`);
+      }
+
+      setEmail("");
+      setSubmitSuccess(t("footer.form.success"));
+    } catch {
+      setSubmitError(t("footer.form.failed"));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer
@@ -68,18 +121,29 @@ export function FooterSection() {
               <p className="mx-auto mt-1 max-w-[52ch] text-[0.82rem] leading-relaxed text-[#95a2b3] sm:text-[0.9rem]">
                 {t("footer.subtitle")}
               </p>
-              <div className="mt-3.5 flex justify-center">
+              <form className="mt-3.5 flex flex-col items-center" onSubmit={handleSubmitEmail}>
                 <div className="flex w-full max-w-[560px] min-w-0 items-center overflow-hidden rounded-full border border-[#d6dbe5] bg-white">
                   <input
                     type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
                     placeholder={t("footer.emailPlaceholder")}
+                    autoComplete="email"
+                    required
+                    disabled={isSubmitting}
                     className="min-w-0 w-full px-3 py-2 text-[0.78rem] text-[#3f5062] outline-none placeholder:text-[#95a2b3] sm:px-4 sm:py-2.5 sm:text-[0.84rem]"
                   />
-                  <button className="shrink-0 cursor-pointer whitespace-nowrap border-0 bg-[#2a95f1] px-3 py-2 text-[0.78rem] font-bold text-[#f4faff] sm:px-4 sm:py-2.5 sm:text-[0.84rem]">
-                    {t("footer.send")}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="shrink-0 cursor-pointer whitespace-nowrap border-0 bg-[#2a95f1] px-3 py-2 text-[0.78rem] font-bold text-[#f4faff] disabled:cursor-not-allowed disabled:opacity-70 sm:px-4 sm:py-2.5 sm:text-[0.84rem]"
+                  >
+                    {isSubmitting ? t("footer.form.sending") : t("footer.send")}
                   </button>
                 </div>
-              </div>
+                {submitError ? <p className="mt-2 text-[0.74rem] text-[#d14f4f]">{submitError}</p> : null}
+                {submitSuccess ? <p className="mt-2 text-[0.74rem] text-[#2a8a53]">{submitSuccess}</p> : null}
+              </form>
             </div>
           </div>
 

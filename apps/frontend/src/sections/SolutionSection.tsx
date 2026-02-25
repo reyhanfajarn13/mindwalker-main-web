@@ -5,6 +5,8 @@ import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 
 export function SolutionSection() {
   const { t } = useTranslation();
+  const modelForgeHighlights = t("solutions.cards.modelForge.backHighlights", { returnObjects: true }) as string[];
+  const agenticAiHighlights = t("solutions.cards.agenticAi.backHighlights", { returnObjects: true }) as string[];
 
   return (
     <section
@@ -41,7 +43,13 @@ export function SolutionSection() {
             backButtonLabel={t("solutions.cards.back")}
             backTitle={t("solutions.cards.modelForge.backTitle")}
             backDescription={t("solutions.cards.modelForge.backDescription")}
-            backContent={t("solutions.cards.modelForge.backContent")}
+            backContent={
+              <ul className="ml-4 list-disc space-y-1.5">
+                {modelForgeHighlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            }
           />
 
           <InfoCard
@@ -59,7 +67,13 @@ export function SolutionSection() {
             backButtonLabel={t("solutions.cards.back")}
             backTitle={t("solutions.cards.agenticAi.backTitle")}
             backDescription={t("solutions.cards.agenticAi.backDescription")}
-            backContent={t("solutions.cards.agenticAi.backContent")}
+            backContent={
+              <ul className="ml-4 list-disc space-y-1.5">
+                {agenticAiHighlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            }
           />
         </div>
       </div>

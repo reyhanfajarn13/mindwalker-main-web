@@ -22,7 +22,7 @@ const AUTO_SLIDE_MS = 3200;
 const SWIPE_THRESHOLD = 56;
 
 export function HeroSection({
-  heroImageUrl = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+  heroImageUrl = "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772006530952-c67b62a6019e976d.jpeg",
   heroImageAlt = "Hero visual"
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export function HeroSection({
     () => [
       {
         id: 1,
-        title: "Mind Ops",
+        title: t("hero.slides.title1"),
         badge: t("hero.slides.news"),
         description: t("hero.slides.desc1"),
         imageUrl: heroImageUrl,
@@ -44,20 +44,20 @@ export function HeroSection({
       },
       {
         id: 2,
-        title: "Mind Secure",
+        title: t("hero.slides.title2"),
         badge: t("hero.slides.update"),
         description: t("hero.slides.desc2"),
         imageUrl:
-          "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1170&q=80",
+          "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772008733837-05e78978f79d21ef.jpeg",
         imageAlt: "Mountain valley"
       },
       {
         id: 3,
-        title: "Mind Vision",
+        title: t("hero.slides.title3"),
         badge: t("hero.slides.case"),
         description: t("hero.slides.desc3"),
         imageUrl:
-          "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1170&q=80",
+          "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772008923392-fc5a05e217798fa7.jpeg",
         imageAlt: "Forest lake"
       }
     ],

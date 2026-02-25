@@ -16,7 +16,6 @@ import {
 import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
 import { getLocalizedProductBySlug } from "./productData";
-import { allNews } from "../News/newsData";
 import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
 
 type ProductDetailsPageProps = {
@@ -40,22 +39,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
     );
   }
 
-  const heroNewsCards = useMemo(() => {
-    const matched = allNews.filter((item) =>
-      (item.tags ?? []).some((tag) => tag.toLowerCase() === product.title.toLowerCase())
-    );
-
-    const source = matched.length > 0 ? matched : allNews;
-    return source.slice(0, 4);
-  }, [product.title]);
-  const heroCardGridClass =
-    heroNewsCards.length <= 1
-      ? "grid-cols-1"
-      : heroNewsCards.length === 2
-        ? "grid-cols-1 sm:grid-cols-2"
-        : heroNewsCards.length === 3
-          ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
+  void onOpenNewsDetails;
   const featureIcons = useMemo(() => {
     if (product.slug === "mind-ops") {
       return [BellRing, SearchCheck, Lightbulb, UsersRound];
@@ -73,7 +57,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
 
   return (
     <div className="bg-[#ececf0]">
-      <section className="relative overflow-hidden px-4 pb-14 pt-[6rem] sm:px-6 sm:pb-16">
+      <section className="relative min-h-[calc(100vh-1.5rem)] overflow-hidden px-4 pb-14 pt-[6rem] sm:px-6 sm:pb-16">
         <div className="group/hero absolute inset-0">
           <img
             src={heroDetailsBackground}
@@ -83,21 +67,24 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
           />
           <div className="absolute inset-0 bg-[rgba(8,14,24,0.66)] transition-colors duration-500 group-hover/hero:bg-[rgba(8,14,24,0.48)]" />
         </div>
-        <div className="relative z-10 mx-auto w-[min(1120px,100%)]">
-          <h1 className="text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[1.05] text-[#2f92ff]">
-            <span className="text-white">{product.title.split(" ")[0]}</span>
-            {product.title.includes(" ") ? ` ${product.title.split(" ").slice(1).join(" ")}` : ""}
-          </h1>
-          <p className="mt-3 max-w-[78ch] text-[1rem] leading-[1.7] text-[rgba(231,241,255,0.92)]">
-            {product.heroDescription}
-          </p>
-          <button
-            type="button"
-            className="mt-4 rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-5 py-2 text-[0.88rem] font-semibold text-white"
-          >
-            {product.demoLabel}
-          </button>
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1120px,100%)] items-center">
+          <div className="max-w-[780px]">
+            <h1 className="text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]">
+              <span className="text-white">{product.title.split(" ")[0]}</span>
+              {product.title.includes(" ") ? ` ${product.title.split(" ").slice(1).join(" ")}` : ""}
+            </h1>
+            <p className="mt-4 max-w-[66ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.75] text-[rgba(231,241,255,0.94)]">
+              {product.heroDescription}
+            </p>
+            <button
+              type="button"
+              className="mt-6 inline-flex items-center rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-7 py-2.5 text-[0.95rem] font-semibold text-white shadow-[0_10px_28px_rgba(23,122,217,0.35)]"
+            >
+              {product.demoLabel}
+            </button>
+          </div>
 
+          {/* Temporary hidden hero news cards in ProductDetailsPage.
           <div className={`mt-8 grid gap-3 ${heroCardGridClass}`}>
             {heroNewsCards.map((item) => {
               return (
@@ -130,6 +117,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
               );
             })}
           </div>
+          */}
         </div>
       </section>
 

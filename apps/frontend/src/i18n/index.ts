@@ -23,15 +23,18 @@ const resources = {
         partOf: "Bagian dari",
         partner: "NVIDIA Inception Program",
         slides: {
-          news: "Berita",
-          update: "Update",
-          case: "Kasus",
+          news: "Rilis",
+          update: "Update AI",
+          case: "Kompatibilitas",
+          title1: "MindOps telah release v 1.0",
+          title2: "VisionCraft + SeeDance 4.5",
+          title3: "MindOps : Legacy Apps Supported",
           desc1:
-            "Lorem ipsum dolor sit amet consectetur. Elementum amet metus lorem id. Metus sem nam et platea quis dui aliquet.",
+            "MindOps dari Mindwalker.ai resmi dirilis untuk membantu tim operasi TI memantau insiden, memprioritaskan alert kritikal, dan mempercepat proses resolusi.",
           desc2:
-            "Lorem ipsum dolor sit amet consectetur. Nibh dictumst et volutpat fermentum, ornare lectus in tincidunt.",
+            "VisionCraft kini mengimplementasikan pembaruan SeeDream 4.5 untuk image generation, menghadirkan kualitas visual yang lebih tajam, konsisten, dan siap produksi.",
           desc3:
-            "Lorem ipsum dolor sit amet consectetur. Euismod interdum egestas ac nunc eu, sed lacus semper ultricies."
+            "MindOps sekarang mendukung skenario khusus pada legacy application, sehingga integrasi monitoring dan penanganan issue dapat berjalan lebih mulus pada sistem existing."
         }
       },
       product: {
@@ -73,9 +76,15 @@ const resources = {
               "Platform untuk membangun, menguji, dan deployment model AI enterprise dengan pipeline yang terukur dan cepat.",
             backTitle: "Detail Model Forge",
             backDescription:
-              "Model Forge membantu tim membangun, menguji, dan menerapkan model AI secara terstruktur.",
+              "Model Forge adalah workspace end-to-end untuk menyiapkan data, melatih model, evaluasi performa, hingga deployment produksi dalam satu alur yang rapi.",
             backContent:
-              "Seluruh pipeline dapat dipantau real-time untuk mempercepat iterasi dan menjaga kualitas."
+              "Dengan eksperimen yang terlacak, metrik yang terpusat, dan monitoring real-time, tim data dan engineering dapat beriterasi lebih cepat sambil menjaga kualitas model tetap konsisten.",
+            backHighlights: [
+              "Dataset versioning dan lineage untuk menjaga konsistensi data training.",
+              "Pipeline training, evaluasi, dan deployment yang bisa diotomasi end-to-end.",
+              "Monitoring drift dan performa model untuk deteksi penurunan akurasi lebih dini.",
+              "Governance, approval, dan audit trail agar implementasi AI tetap terkendali."
+            ]
           },
           agenticAi: {
             title: "Agentic AI",
@@ -83,9 +92,15 @@ const resources = {
               "Orkestrasi agent AI lintas workflow bisnis untuk otomatisasi keputusan, eksekusi tugas, dan kolaborasi tim.",
             backTitle: "Detail Agentic AI",
             backDescription:
-              "Satu platform untuk orkestrasi data, eksperimen, dan deployment model lintas use case.",
+              "Agentic AI memungkinkan organisasi membangun AI agent yang mampu memahami konteks, menentukan langkah, dan mengeksekusi tugas lintas sistem secara otomatis.",
             backContent:
-              "Dirancang agar kolaborasi tim data, engineering, dan bisnis menjadi lebih cepat dan konsisten."
+              "Setiap agent dapat diatur dengan guardrails, workflow approval, dan observabilitas penuh sehingga proses bisnis berjalan lebih cepat, akurat, dan tetap terkendali.",
+            backHighlights: [
+              "Agent dapat memecah tugas kompleks menjadi langkah kerja yang terstruktur.",
+              "Integrasi ke API dan aplikasi internal untuk eksekusi lintas sistem.",
+              "Human-in-the-loop untuk approval pada keputusan yang bersifat kritikal.",
+              "Jejak keputusan dan performa agent yang transparan untuk evaluasi berkelanjutan."
+            ]
           },
           learnMore: "Selengkapnya",
           back: "Kembali"
@@ -235,7 +250,7 @@ const resources = {
             label: "Operasional Sistem",
             description: "From monitoring to resolution, IT operations must move with intelligence.",
             heroDescription:
-              "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
+              "Mind Ops membantu tim operasional memonitor insiden secara menyeluruh, menganalisis akar masalah dengan konteks yang lebih jelas, dan menjalankan rekomendasi aksi prioritas agar proses pemulihan layanan berlangsung lebih cepat, konsisten, serta terukur di lingkungan operasional yang kompleks.",
             featureHeading: "Mind Ops mempercepat keputusan operasional",
             featureDescription:
               "Dari observability hingga incident response, Mind Ops mengurangi waktu investigasi dan meningkatkan reliability layanan.",
@@ -293,7 +308,7 @@ const resources = {
             label: "Analisis Ancaman",
             description: "Detect risks early and orchestrate faster response across security workflows.",
             heroDescription:
-              "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
+              "Mind Sec memperkuat security operation center melalui deteksi ancaman siber lebih dini, korelasi indikator serangan dari berbagai sumber, serta orkestrasi respons yang terukur sehingga tim keamanan dapat menekan risiko kebocoran data dan mempercepat pengambilan keputusan insiden.",
             featureHeading: "MindSec, tools pintar berbasis AI untuk deteksi serangan siber",
             featureDescription:
               "MindSec mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
@@ -350,7 +365,7 @@ const resources = {
             label: "Kecerdasan AI",
             description: "Build insight pipelines that turn data signals into real operational impact.",
             heroDescription:
-              "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",
+              "VisionCraft adalah platform AI multimodal yang membantu organisasi mengubah ide menjadi visual berkualitas tinggi dan automasi konten secara cepat, dengan alur kerja kolaboratif, kontrol brand yang konsisten, serta kesiapan produksi untuk kebutuhan komunikasi enterprise berskala besar.",
             featureHeading: "VisionCraft mengubah ide menjadi realita",
             featureDescription:
               "Dari prompt cerdas hingga kolaborasi lintas tim, VisionCraft membantu perusahaan menciptakan visual autentik dengan kualitas premium.",
@@ -398,9 +413,9 @@ const resources = {
                 excerpt: "Membantu tim operasi membuat konten visual instruksional dengan cepat."
               },
               {
-                title: "Brand Visual Consistency",
+                title: "Video Profil Perusahaan",
                 excerpt:
-                  "Menjaga gaya visual lintas channel agar tetap seragam untuk kebutuhan kampanye."
+                  "Membuat video profil perusahaan dan materi marketing yang lebih menarik, konsisten, dan siap publikasi."
               }
             ]
           }
@@ -445,15 +460,18 @@ const resources = {
         partOf: "Part of",
         partner: "NVIDIA Inception Program",
         slides: {
-          news: "News",
+          news: "Release",
           update: "Update",
-          case: "Case",
+          case: "Compatibility",
+          title1: "MindOps Released v1.0",
+          title2: "VisionCraft + SeeDance 4.5",
+          title3: "MindOps: Legacy Apps Supported",
           desc1:
-            "Lorem ipsum dolor sit amet consectetur. Elementum amet metus lorem id. Metus sem nam et platea quis dui aliquet.",
+            "MindOps by Mindwalker.ai has been officially released to help IT operations teams monitor incidents, prioritize critical alerts, and speed up resolution workflows.",
           desc2:
-            "Lorem ipsum dolor sit amet consectetur. Nibh dictumst et volutpat fermentum, ornare lectus in tincidunt.",
+            "VisionCraft has implemented the SeeDream 4.5 update for image generation, delivering sharper visuals, stronger consistency, and production-ready output.",
           desc3:
-            "Lorem ipsum dolor sit amet consectetur. Euismod interdum egestas ac nunc eu, sed lacus semper ultricies."
+            "MindOps now supports special cases for legacy applications, enabling smoother monitoring integration and issue handling across existing systems."
         }
       },
       product: {
@@ -495,9 +513,15 @@ const resources = {
               "A platform to build, test, and deploy enterprise AI models with fast, measurable pipelines.",
             backTitle: "Model Forge Details",
             backDescription:
-              "Model Forge helps teams build, test, and deploy AI models in a structured way.",
+              "Model Forge is an end-to-end workspace for data preparation, model training, performance evaluation, and production deployment in one structured flow.",
             backContent:
-              "The full pipeline can be monitored in real-time to accelerate iteration and maintain quality."
+              "With tracked experiments, centralized metrics, and real-time monitoring, data and engineering teams can iterate faster while keeping model quality consistent.",
+            backHighlights: [
+              "Dataset versioning and lineage to maintain reliable training data consistency.",
+              "Automated end-to-end pipelines for training, evaluation, and deployment.",
+              "Model drift and performance monitoring for earlier accuracy degradation detection.",
+              "Governance, approvals, and audit trails to keep AI delivery controlled."
+            ]
           },
           agenticAi: {
             title: "Agentic AI",
@@ -505,9 +529,15 @@ const resources = {
               "Orchestrate AI agents across business workflows for decision automation, task execution, and team collaboration.",
             backTitle: "Agentic AI Details",
             backDescription:
-              "A unified platform for orchestrating data, experimentation, and model deployment across use cases.",
+              "Agentic AI enables organizations to build AI agents that understand context, decide next actions, and execute tasks across systems automatically.",
             backContent:
-              "Designed to speed up and standardize collaboration between data, engineering, and business teams."
+              "Each agent can be configured with guardrails, approval workflows, and full observability so business processes run faster, more accurately, and with stronger control.",
+            backHighlights: [
+              "Agents can break complex goals into structured execution steps.",
+              "Integration with internal APIs and business apps for cross-system actions.",
+              "Human-in-the-loop approvals for high-impact or critical decisions.",
+              "Transparent decision traces and agent performance for continuous improvement."
+            ]
           },
           learnMore: "Learn More",
           back: "Back"
@@ -657,7 +687,7 @@ const resources = {
             label: "System Operations",
             description: "From monitoring to resolution, IT operations must move with intelligence.",
             heroDescription:
-              "Mind Ops helps operations teams monitor incidents, analyze root causes, and automate response in real time.",
+              "Mind Ops helps operations teams monitor incidents end-to-end, analyze root causes with clearer context, and execute prioritized action recommendations so service recovery can run faster, more consistently, and with measurable outcomes across complex operational environments.",
             featureHeading: "Mind Ops accelerates operational decisions",
             featureDescription:
               "From observability to incident response, Mind Ops reduces investigation time and improves service reliability.",
@@ -717,7 +747,7 @@ const resources = {
             label: "Threat Analysis",
             description: "Detect risks early and orchestrate faster response across security workflows.",
             heroDescription:
-              "Mind Sec strengthens security operation centers with earlier threat detection and measurable response orchestration.",
+              "Mind Sec strengthens security operation centers through earlier cyber threat detection, correlation of attack indicators across multiple sources, and measurable response orchestration so security teams can reduce data exposure risk and accelerate incident-level decision making.",
             featureHeading: "MindSec, an AI-powered tool for cyberattack detection",
             featureDescription:
               "MindSec detects cyber attacks earlier, correlates attack sources automatically, and helps security teams choose the most effective response in one integrated workflow.",
@@ -777,7 +807,7 @@ const resources = {
             label: "AI Intelligence",
             description: "Build insight pipelines that turn data signals into real operational impact.",
             heroDescription:
-              "A multimodal AI platform that turns ideas into visual output and content automation quickly for enterprise needs.",
+              "VisionCraft is a multimodal AI platform that enables organizations to turn ideas into high-quality visual output and rapid content automation, supported by collaborative workflows, consistent brand control, and production readiness for enterprise-scale communication needs.",
             featureHeading: "VisionCraft turns ideas into reality",
             featureDescription:
               "From smart prompts to cross-team collaboration, VisionCraft helps organizations create authentic visuals with premium quality.",
@@ -826,9 +856,9 @@ const resources = {
                   "Help operations teams produce instructional visual content faster."
               },
               {
-                title: "Brand Visual Consistency",
+                title: "Company Profile Video",
                 excerpt:
-                  "Maintain consistent visual style across channels for campaign needs."
+                  "Create company profile videos and marketing assets that are more engaging, consistent, and ready for publication."
               }
             ]
           }

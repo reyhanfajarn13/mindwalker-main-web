@@ -168,7 +168,7 @@ export const productData: ProductItem[] = [
         id: 203,
         title: "Enrichment Intel Ancaman",
         excerpt: "Perkaya indikator serangan dengan threat intelligence eksternal.",
-        imageUrl: "https://images.unsplash.com/photo-1544894079-e81a9eb1da8b?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772012246007-5f6bd65453e67f75.jpeg"
       }
     ]
   },
@@ -228,19 +228,19 @@ export const productData: ProductItem[] = [
         id: 301,
         title: "Kesadaran Keselamatan Berbasis AI",
         excerpt: "Membuat video edukasi HSSE yang autentik dan konsisten dengan brand perusahaan.",
-        imageUrl: "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772010766441-06c63eab914d3862.jpeg"
       },
       {
         id: 302,
         title: "Konten Visual Operasional",
         excerpt: "Membantu tim operasi membuat konten visual instruksional dengan cepat.",
-        imageUrl: "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772010865526-83bae3fc4e395831.jpeg"
       },
       {
         id: 303,
-        title: "Brand Visual Consistency",
-        excerpt: "Menjaga gaya visual lintas channel agar tetap seragam untuk kebutuhan kampanye.",
-        imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=700&q=80"
+        title: "Video Profil Perusahaan",
+        excerpt: "Membuat video profil perusahaan dan materi marketing yang lebih menarik, konsisten, dan siap publikasi.",
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772011530886-3936ec8e2a524d89.jpeg"
       }
     ]
   }

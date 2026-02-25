@@ -1,16 +1,17 @@
 import LogoLoop from "../components/ui/LogoLoop";
-import image3 from "../assets/image3.png";
-import image4 from "../assets/image4.png";
-import image5 from "../assets/image5.png";
-import image6 from "../assets/image6.png";
-import image7 from "../assets/image7.png";
-import image8 from "../assets/image8.png";
-import footerHand from "../assets/footerHand.png";
-import footerHandRobot from "../assets/footerHandRobot.png";
-import mindwalkerLogoFull from "../assets/logo/mindwalker_logo_full.png";
 import { Github, Instagram, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { industrialUsecaseData } from "./industrialUsecaseData";
+
+const image3 = "/assets/image3.png";
+const image4 = "/assets/image4.png";
+const image5 = "/assets/image5.png";
+const image6 = "/assets/image6.png";
+const image7 = "/assets/image7.png";
+const image8 = "/assets/image8.png";
+const footerHand = "/assets/footerHand.png";
+const footerHandRobot = "/assets/footerHandRobot.png";
+const mindwalkerLogoFull = "/assets/logo/mindwalker_logo_full.png";
 
 const techLogos = [
   { src: image3, alt: "Company 1" },

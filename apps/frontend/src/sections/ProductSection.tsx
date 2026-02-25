@@ -1,7 +1,8 @@
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
-import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 import { productData } from "../pages/Product/productData";
+
+const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
 
 type ProductSectionProps = {
   onOpenProductDetails?: (slug: string) => void;

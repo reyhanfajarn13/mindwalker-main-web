@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import type { NewsCard } from "./types";
 import ShinyText from "../../components/ui/ShinyText";
-import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
 import { useTranslation } from "react-i18next";
+import { useImagePreload } from "../../lib/useImagePreload";
+
+const heroDetailsBackground = "/assets/heroDetailsBackground.png";
 
 type HeroNewsSectionProps = {
   items: NewsCard[];
@@ -12,7 +14,12 @@ type HeroNewsSectionProps = {
 export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionProps) {
   const { t } = useTranslation();
   const carouselItems = useMemo(() => items.slice(0, 4), [items]);
+  const heroPreloadUrls = useMemo(
+    () => [heroDetailsBackground, ...carouselItems.map((item) => item.imageUrl)],
+    [carouselItems]
+  );
   const [activeIndex, setActiveIndex] = useState(0);
+  useImagePreload(heroPreloadUrls);
 
   useEffect(() => {
     if (carouselItems.length <= 1) {

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "../lib/utils";
-import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
 import { useTranslation } from "react-i18next";
 import { Check, ChevronDown } from "lucide-react";
 import { US, ID } from "country-flag-icons/react/3x2";
+
+const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
 
 const navItems = [
   { key: "home", target: "home", activeFor: ["home"] },

@@ -1,7 +1,8 @@
 import { InfoCard } from "../components/ui/InfoCard";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
-import mindwalkerLogo from "../assets/logo/mindwalker_logo.png";
+
+const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
 
 export function SolutionSection() {
   const { t } = useTranslation();

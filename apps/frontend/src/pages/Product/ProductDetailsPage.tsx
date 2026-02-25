@@ -16,7 +16,9 @@ import {
 import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
 import { getLocalizedProductBySlug } from "./productData";
-import heroDetailsBackground from "../../assets/heroDetailsBackground.png";
+import { useImagePreload } from "../../lib/useImagePreload";
+
+const heroDetailsBackground = "/assets/heroDetailsBackground.png";
 
 type ProductDetailsPageProps = {
   productSlug: string;
@@ -54,6 +56,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
   const activeBenefitIndex = openBenefitIndex >= 0 ? openBenefitIndex : 0;
   const activeBenefitImage =
     product.enterpriseBenefits[activeBenefitIndex]?.imageUrl || product.imageDetailsUrl || product.imageUrl;
+  useImagePreload([heroDetailsBackground]);
 
   return (
     <div className="bg-[#ececf0]">

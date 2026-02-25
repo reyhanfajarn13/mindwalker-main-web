@@ -1,5 +1,6 @@
-import visioncraftbasePict from "../../assets/visioncraftBasePict.png";
 import type { TFunction } from "i18next";
+
+const visioncraftbasePict = "/assets/visioncraftBasePict.png";
 
 export type ProductArticle = {
   id: number;

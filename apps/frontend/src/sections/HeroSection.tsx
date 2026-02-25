@@ -2,7 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { DecryptedText } from "../components/ui/DecryptedText";
 import FaultyTerminal from "../components/ui/FaultyTerminal";
 import { useTranslation } from "react-i18next";
-import nvidiaLogo from "../assets/logo/logoNvidia.png";
+import { useImagePreload } from "../lib/useImagePreload";
+
+const nvidiaLogo = "/assets/logo/logoNvidia.png";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
@@ -63,6 +65,8 @@ export function HeroSection({
     ],
     [heroImageUrl, heroImageAlt, t]
   );
+  const heroPreloadUrls = useMemo(() => heroCards.map((card) => card.imageUrl), [heroCards]);
+  useImagePreload(heroPreloadUrls);
 
   const totalSlides = heroCards.length;
 

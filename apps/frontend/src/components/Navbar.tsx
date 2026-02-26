@@ -11,8 +11,8 @@ const navItems = [
   { key: "home", target: "home", activeFor: ["home"] },
   { key: "product", target: "product", activeFor: ["product"] },
   { key: "solutions", target: "solutions", activeFor: ["solutions"] },
-  { key: "aboutUs", target: "footer", activeFor: ["footer"] },
-  { key: "news", target: "news", activeFor: ["news"] }
+  { key: "aboutUs", target: "industrial-usecases", activeFor: ["industrial-usecases"] },
+  // { key: "news", target: "news", activeFor: ["news"] }
 ];
 
 type NavbarProps = {
@@ -58,7 +58,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
 
   return (
     <div className={cn("relative", className)}>
-      <header className="mx-auto hidden w-[min(930px,calc(100vw-1.2rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.97)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
+      <header className="mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.97)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
         <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]">
           <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" />
         </div>

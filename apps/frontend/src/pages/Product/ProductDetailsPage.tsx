@@ -33,7 +33,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
   if (!product) {
     return (
       <div className="bg-[#ececf0] px-4 pb-12 pt-[6rem] sm:px-6">
-        <div className="mx-auto w-[min(1120px,100%)] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)]">
+        <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)] sm:w-[min(1600px,calc(100%-2rem))]">
           <h1 className="text-[1.8rem] font-bold text-[#243242]">{t("productDetails.common.notFoundTitle")}</h1>
           <p className="mt-2 text-[#627489]">{t("productDetails.common.notFoundMessage")}</p>
         </div>
@@ -70,7 +70,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
           />
           <div className="absolute inset-0 bg-[rgba(8,14,24,0.66)] transition-colors duration-500 group-hover/hero:bg-[rgba(8,14,24,0.48)]" />
         </div>
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1120px,100%)] items-center">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1500px,calc(100%-1.5rem))] items-center sm:w-[min(1600px,calc(100%-2rem))]">
           <div className="max-w-[780px]">
             <h1 className="text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]">
               <span className="text-white">{product.title.split(" ")[0]}</span>
@@ -125,7 +125,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
       </section>
 
       <section className="px-4 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto w-[min(1120px,100%)]">
+        <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
           <h2 className="text-center text-[clamp(1.8rem,3.2vw,2.6rem)] font-bold text-[#2490ef]">{product.featureHeading}</h2>
           <p className="mx-auto mt-2 max-w-[70ch] text-center text-[0.98rem] leading-[1.7] text-[#6a7b91]">
             {product.featureDescription}
@@ -155,7 +155,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
       </section>
 
       <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4">
-        <div className="mx-auto w-[min(1120px,100%)]">
+        <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
           <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.businessImpactTitle")}</h2>
           <div className="mt-6 grid gap-0 lg:grid-cols-[1fr_340px]">
             <div className="max-h-[min(62vh,620px)] overflow-y-auto rounded-l-3xl bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.12)]">

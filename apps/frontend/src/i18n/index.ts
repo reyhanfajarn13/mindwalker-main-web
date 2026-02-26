@@ -9,7 +9,7 @@ const resources = {
         home: "Beranda",
         product: "Produk",
         solutions: "Solusi",
-        aboutUs: "Tentang Kami",
+        aboutUs: "Penerapan",
         news: "Berita",
         contactUs: "Hubungi Kami",
         langId: "IDN",
@@ -71,35 +71,34 @@ const resources = {
           description:
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
           modelForge: {
-            title: "Model Forge",
+            title: "ModelForge (Pengembangan Model AI Kustom)",
             description:
               "Platform untuk membangun, menguji, dan deployment model AI enterprise dengan pipeline yang terukur dan cepat.",
-            backTitle: "Detail Model Forge",
+            backTitle: "ModelForge (Pengembangan Model AI Kustom)",
             backDescription:
               "Model Forge adalah workspace end-to-end untuk menyiapkan data, melatih model, evaluasi performa, hingga deployment produksi dalam satu alur yang rapi.",
             backContent:
               "Dengan eksperimen yang terlacak, metrik yang terpusat, dan monitoring real-time, tim data dan engineering dapat beriterasi lebih cepat sambil menjaga kualitas model tetap konsisten.",
             backHighlights: [
-              "Dataset versioning dan lineage untuk menjaga konsistensi data training.",
-              "Pipeline training, evaluasi, dan deployment yang bisa diotomasi end-to-end.",
-              "Monitoring drift dan performa model untuk deteksi penurunan akurasi lebih dini.",
-              "Governance, approval, dan audit trail agar implementasi AI tetap terkendali."
+              "Manajemen Siklus Hidup AI End-to-End",
+              "Model AI yang Bisa Dikustomisasi",
+              "Model AI dengan Kontrol & Keamanan Enterprise"
             ]
           },
           agenticAi: {
-            title: "Agentic AI",
+            title: "AgentForge (Pengembangan, Integrasi, dan Otomasi AI Agent)",
             description:
               "Orkestrasi agent AI lintas workflow bisnis untuk otomatisasi keputusan, eksekusi tugas, dan kolaborasi tim.",
-            backTitle: "Detail Agentic AI",
+            backTitle: "AgentForge (Pengembangan, Integrasi, dan Otomasi AI Agent)",
             backDescription:
               "Agentic AI memungkinkan organisasi membangun AI agent yang mampu memahami konteks, menentukan langkah, dan mengeksekusi tugas lintas sistem secara otomatis.",
             backContent:
               "Setiap agent dapat diatur dengan guardrails, workflow approval, dan observabilitas penuh sehingga proses bisnis berjalan lebih cepat, akurat, dan tetap terkendali.",
             backHighlights: [
-              "Agent dapat memecah tugas kompleks menjadi langkah kerja yang terstruktur.",
-              "Integrasi ke API dan aplikasi internal untuk eksekusi lintas sistem.",
-              "Human-in-the-loop untuk approval pada keputusan yang bersifat kritikal.",
-              "Jejak keputusan dan performa agent yang transparan untuk evaluasi berkelanjutan."
+              "AI Agent untuk automasi task",
+              "Orkestrasi Multi Agent",
+              "Platform AI Agent Enterprise yang Aman",
+              "Optimisasi AI Agent"
             ]
           },
           learnMore: "Selengkapnya",
@@ -453,7 +452,7 @@ const resources = {
         home: "Home",
         product: "Product",
         solutions: "Solutions",
-        aboutUs: "About Us",
+        aboutUs: "Use Case",
         news: "News",
         contactUs: "Contact Us",
         langId: "IDN",
@@ -515,35 +514,34 @@ const resources = {
           description:
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
           modelForge: {
-            title: "Model Forge",
+            title: "ModelForge (Custom AI Model Development)",
             description:
               "A platform to build, test, and deploy enterprise AI models with fast, measurable pipelines.",
-            backTitle: "Model Forge Details",
+            backTitle: "ModelForge (Custom AI Model Development)",
             backDescription:
               "Model Forge is an end-to-end workspace for data preparation, model training, performance evaluation, and production deployment in one structured flow.",
             backContent:
               "With tracked experiments, centralized metrics, and real-time monitoring, data and engineering teams can iterate faster while keeping model quality consistent.",
             backHighlights: [
-              "Dataset versioning and lineage to maintain reliable training data consistency.",
-              "Automated end-to-end pipelines for training, evaluation, and deployment.",
-              "Model drift and performance monitoring for earlier accuracy degradation detection.",
-              "Governance, approvals, and audit trails to keep AI delivery controlled."
+              "End-to-End AI Lifecycle Management",
+              "Customizable AI Models",
+              "Enterprise-Grade AI Control & Security"
             ]
           },
           agenticAi: {
-            title: "Agentic AI",
+            title: "AgentForge (AI Agent Development, Integration & Automation)",
             description:
               "Orchestrate AI agents across business workflows for decision automation, task execution, and team collaboration.",
-            backTitle: "Agentic AI Details",
+            backTitle: "AgentForge (AI Agent Development, Integration & Automation)",
             backDescription:
               "Agentic AI enables organizations to build AI agents that understand context, decide next actions, and execute tasks across systems automatically.",
             backContent:
               "Each agent can be configured with guardrails, approval workflows, and full observability so business processes run faster, more accurately, and with stronger control.",
             backHighlights: [
-              "Agents can break complex goals into structured execution steps.",
-              "Integration with internal APIs and business apps for cross-system actions.",
-              "Human-in-the-loop approvals for high-impact or critical decisions.",
-              "Transparent decision traces and agent performance for continuous improvement."
+              "AI Agents for Task Automation",
+              "Multi-Agent Orchestration",
+              "Secure Enterprise Agent Platform",
+              "AI Agent Optimization"
             ]
           },
           learnMore: "Learn More",

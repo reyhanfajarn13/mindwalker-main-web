@@ -41,10 +41,10 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
 
   return (
     <section
-      className="grid items-center bg-[#ececf0] px-0 py-12 lg:py-16"
+      className="grid items-center bg-white/20 px-0 py-12 backdrop-blur-lg lg:py-16"
       id="product"
     >
-      <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center">
+      <div className="mx-auto grid w-[min(1500px,calc(100%-1.5rem))] content-center sm:w-[min(1600px,calc(100%-2rem))]">
         <SectionHeading
           kicker={t("product.kicker")}
           kickerSlot={
@@ -60,7 +60,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
           {cards.map((item) => (
             <article
               key={item.id}
-              className="group relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-transform duration-400 ease-out hover:z-50 hover:scale-[1.05] sm:min-h-[460px] lg:min-h-[495px]"
+              className="group relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-400 ease-out hover:z-50 hover:scale-[1.05] hover:shadow-[0_22px_48px_rgba(47,153,255,0.32)] sm:min-h-[460px] lg:min-h-[495px]"
             >
               <img
                 src={item.imageUrl}
@@ -68,6 +68,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
                 className="absolute inset-0 h-full w-full scale-100 object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:saturate-100"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,19,0.92)_10%,rgba(5,10,19,0.5)_44%,rgba(5,10,19,0.28)_66%,rgba(5,10,19,0.18)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_22%,rgba(188,224,255,0.34)_0%,rgba(188,224,255,0)_48%),radial-gradient(circle_at_78%_18%,rgba(154,208,255,0.24)_0%,rgba(154,208,255,0)_44%),radial-gradient(circle_at_58%_74%,rgba(142,196,255,0.2)_0%,rgba(142,196,255,0)_46%)] opacity-95 blur-[16px] transition-all duration-500 group-hover:opacity-40 group-hover:blur-[8px]" />
 
               <div className="absolute left-5 top-5 z-10 rounded-full bg-[rgba(255,255,255,0.34)] px-4 py-2 text-[0.92rem] font-semibold leading-none text-white backdrop-blur-[1px]">
                 {item.label}

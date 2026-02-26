@@ -102,7 +102,7 @@ export function FooterSection() {
       className="grid items-center bg-white px-0 pb-8 pt-10 sm:pb-10 sm:pt-12"
       id="footer"
     >
-      <div className="mx-auto grid w-[min(1120px,calc(100%-2rem))] content-center gap-6 pt-2 max-[500px]:w-[calc(100%-1rem)] sm:gap-8 sm:pt-4 lg:grid-rows-[3fr_2fr]">
+      <div className="mx-auto grid w-[min(1500px,calc(100%-1.5rem))] content-center gap-6 pt-2 max-[500px]:w-[calc(100%-1rem)] sm:w-[min(1600px,calc(100%-2rem))] sm:gap-8 sm:pt-4 lg:grid-rows-[3fr_2fr]">
         <article className="group rounded-2xl border border-[#d6dbe5] bg-[linear-gradient(120deg,#f0f1f5,#fdfdff_48%,#f0f1f5)] px-3 pb-4 pt-4 shadow-[0_9px_24px_rgba(88,103,126,0.24)] sm:px-5 md:px-6">
           <div className="relative flex min-h-[clamp(180px,28vw,240px)] items-center justify-center py-4 text-center sm:py-5">
             <img

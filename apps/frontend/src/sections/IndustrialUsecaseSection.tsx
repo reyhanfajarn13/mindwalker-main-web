@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { industrialUsecaseData } from "./industrialUsecaseData";
 import { useTranslation } from "react-i18next";
@@ -6,43 +6,11 @@ import { useTranslation } from "react-i18next";
 export function IndustrialUsecaseSection() {
   const { t } = useTranslation();
   const [openIndustryId, setOpenIndustryId] = useState("");
-  const [isManualMode, setIsManualMode] = useState(false);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
-  const autoIndexRef = useRef(0);
-
-  useEffect(() => {
-    if (isManualMode || industrialUsecaseData.length === 0) return;
-
-    const collapseDelay = 300;
-    const expandedDelay = 3000;
-    let collapseTimer: number | null = null;
-    let nextTimer: number | null = null;
-
-    const runCycle = () => {
-      const current = industrialUsecaseData[autoIndexRef.current % industrialUsecaseData.length];
-      setOpenIndustryId(current.id);
-
-      collapseTimer = window.setTimeout(() => {
-        setOpenIndustryId("");
-
-        nextTimer = window.setTimeout(() => {
-          autoIndexRef.current = (autoIndexRef.current + 1) % industrialUsecaseData.length;
-          runCycle();
-        }, collapseDelay);
-      }, expandedDelay);
-    };
-
-    runCycle();
-
-    return () => {
-      if (collapseTimer !== null) window.clearTimeout(collapseTimer);
-      if (nextTimer !== null) window.clearTimeout(nextTimer);
-    };
-  }, [isManualMode]);
 
   return (
-    <section id="industrial-usecases" className="grid bg-[#ececf0] px-0 py-12 lg:py-16">
-      <div className="mx-auto w-[min(1120px,calc(100%-2rem))]">
+    <section id="industrial-usecases" className="grid bg-white/20 px-0 py-12 lg:py-16">
+      <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
         <h2 className="text-[clamp(2rem,5vw,2rem)] leading-[1.05] text-[#198ef3] font-semibold">
           {t("industrialUsecases.title")}
         </h2>
@@ -55,18 +23,28 @@ export function IndustrialUsecaseSection() {
                 <button
                   type="button"
                   onClick={() => {
-                    setIsManualMode(true);
-                    setOpenIndustryId(industry.id);
+                    setOpenIndustryId((current) => (current === industry.id ? "" : industry.id));
                   }}
-                  className={`group grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 px-3 py-4 text-left transition-colors duration-300 sm:grid-cols-[120px_1fr_auto] sm:px-5 sm:py-6 ${
-                    isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:bg-[#198ef3] hover:text-white"
+                  className={`group relative overflow-hidden grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 px-3 py-4 text-left transition-colors duration-500 ease-in sm:grid-cols-[120px_1fr_auto] sm:px-5 sm:py-6 ${
+                    isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white"
                   }`}
                 >
-                  <span className="text-[clamp(1.7rem,3.4vw,1.7rem)] leading-none">{industry.number}</span>
-                  <span className="text-[clamp(1.6rem,4.2vw,1.7rem)] leading-[1.06]">{t(industry.labelKey)}</span>
+                  <span
+                    className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
+                      isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                    }`}
+                  />
+                  <span
+                    className={`relative z-10 text-[clamp(1.7rem,3.4vw,1.7rem)] leading-none transition-transform duration-300 ease-in ${
+                      isOpen ? "translate-x-1" : "group-hover:translate-x-4"
+                    }`}
+                  >
+                    {industry.number}
+                  </span>
+                  <span className="relative z-10 text-[clamp(1.6rem,4.2vw,1.7rem)] leading-[1.06]">{t(industry.labelKey)}</span>
                   <ArrowRight
                     size={48}
-                    className={`transition-transform duration-300 ${isOpen ? "rotate-90" : "group-hover:translate-x-1"}`}
+                    className={`relative z-10 transition-transform duration-500 ease-in ${isOpen ? "rotate-90" : "group-hover:translate-x-3"}`}
                   />
                 </button>
 

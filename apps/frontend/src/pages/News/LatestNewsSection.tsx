@@ -64,7 +64,7 @@ export function LatestNewsSection({ items, onOpenNewsDetails }: LatestNewsSectio
 
   return (
     <section className="px-4 py-12 sm:px-6">
-      <div className="mx-auto w-[min(1120px,100%)]">
+      <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
         <h2 className="inline-flex items-center gap-2 text-[2rem] font-bold text-[#2b3644]">
           <Newspaper size={22} className="text-[#2792f0]" />
           {t("news.latestTitle")}

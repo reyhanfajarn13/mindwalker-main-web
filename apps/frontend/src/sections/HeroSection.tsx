@@ -141,17 +141,17 @@ export function HeroSection({
         />
       </div>
 
-      <div className="relative z-[3] mx-auto grid w-[min(1120px,calc(100%-2rem))] self-center gap-7 lg:grid-cols-[1.05fr_1fr]">
+      <div className="relative z-[3] mx-auto grid w-[min(1500px,calc(100%-1.5rem))] self-center gap-7 sm:w-[min(1600px,calc(100%-2rem))] lg:grid-cols-[1.05fr_1fr]">
         <div className="flex min-h-0 flex-col justify-center lg:min-h-[calc(100vh-7.75rem)]">
-          <div className="mt-5 mb-5 flex items-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+          <div className="mb-4 mt-5 flex items-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.78rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
               <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[rgba(159,232,112,0.35)] p-[1px]">
                 <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" />
               </span>
               <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
             </span>
           </div>
-          <h1 className="max-w-[12ch] text-[clamp(4.0rem,6.5vw,5.6rem)] leading-[1.02] tracking-[-0.02em] text-white max-[1023px]:max-w-none">
+          <h1 className="max-w-[12ch] text-[clamp(3.15rem,5.8vw,5rem)] leading-[1.03] tracking-[-0.02em] text-white max-[1023px]:max-w-none">
             <span className="block font-semibold text-white">
               {t("hero.from")} <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
             </span>
@@ -192,8 +192,8 @@ export function HeroSection({
                         {card.badge}
                       </span>
                     </div>
-                    <h2 className="mt-2 text-[clamp(1.2rem,3.4vw,1.5rem)] font-semibold leading-[1.15] text-white transition-colors duration-300 group-hover:text-[#2f99ff]">{card.title}</h2>
-                    <p className="mt-2 text-[0.8rem] leading-relaxed text-[#d9e3ef]">{card.description}</p>
+                    <h2 className="mt-2 text-[clamp(1.12rem,2.4vw,1.35rem)] font-semibold leading-[1.2] text-white transition-colors duration-300 group-hover:text-[#2f99ff]">{card.title}</h2>
+                    <p className="mt-2 text-[0.78rem] leading-relaxed text-[#d9e3ef]">{card.description}</p>
                   </div>
                 </article>
               ))}

@@ -15,7 +15,7 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
   if (!detail) {
     return (
       <div className="bg-[#ececf0] px-4 pb-12 pt-[6rem] sm:px-6">
-        <div className="mx-auto w-[min(1120px,100%)] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)]">
+        <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] rounded-2xl bg-white p-6 text-center shadow-[0_8px_24px_rgba(24,39,58,0.12)] sm:w-[min(1600px,calc(100%-2rem))]">
           <h1 className="text-[1.8rem] font-bold text-[#243242]">{t("news.details.notFoundTitle")}</h1>
           <p className="mt-2 text-[#627489]">{t("news.details.notFoundMessage")}</p>
         </div>
@@ -29,7 +29,7 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
   return (
     <div className="bg-[#ececf0]">
       <section className="px-4 pb-10 pt-[6rem] sm:px-6">
-        <div className="mx-auto w-[min(1120px,100%)]">
+        <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
           <p className="text-[0.94rem] text-[#6c7b8f]">
             {detail.date} | {t("news.details.authorName")}
           </p>

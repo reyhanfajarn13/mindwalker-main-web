@@ -47,7 +47,7 @@ export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionPro
         style={{ backgroundImage: `url(${heroDetailsBackground})` }}
       />
       <div className="absolute inset-0 opacity-30 [background:radial-gradient(circle_at_70%_30%,#2f7ddf_0%,transparent_45%),radial-gradient(circle_at_80%_80%,#1b4f93_0%,transparent_40%)]" />
-      <div className="relative mx-auto w-[min(1120px,100%)]">
+      <div className="relative mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
         <ShinyText
           text={t("news.pageTitle")}
           speed={2}

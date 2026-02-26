@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
 import {
   BellRing,
-  ChevronDown,
-  ChevronRight,
   FileCheck2,
   Lightbulb,
+  Plus,
   Radar,
   SearchCheck,
   ShieldAlert,
@@ -53,9 +52,6 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
 
     return [Sparkles, Workflow, Lightbulb, UsersRound];
   }, [product.slug]);
-  const activeBenefitIndex = openBenefitIndex >= 0 ? openBenefitIndex : 0;
-  const activeBenefitImage =
-    product.enterpriseBenefits[activeBenefitIndex]?.imageUrl || product.imageDetailsUrl || product.imageUrl;
   useImagePreload([heroDetailsBackground]);
 
   return (
@@ -124,7 +120,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 sm:py-16">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 bg-[rgba(255,255,255,0.95)]">
         <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
           <h2 className="text-center text-[clamp(1.8rem,3.2vw,2.6rem)] font-bold text-[#2490ef]">{product.featureHeading}</h2>
           <p className="mx-auto mt-2 max-w-[70ch] text-center text-[0.98rem] leading-[1.7] text-[#6a7b91]">
@@ -154,41 +150,61 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
         </div>
       </section>
 
-      <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4">
+      <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 bg-[rgba(255,255,255,0.95)]">
         <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
-          <h2 className="text-center text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.businessImpactTitle")}</h2>
-          <div className="mt-6 grid gap-0 lg:grid-cols-[1fr_340px]">
-            <div className="max-h-[min(62vh,620px)] overflow-y-auto rounded-l-3xl bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
+          <h2 className="text-center text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-[#2490ef]">{t("productDetails.common.businessImpactTitle")}</h2>
+          <div className="mt-6 overflow-hidden rounded-2xl border-y border-[#d8dee7] bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.08)]">
               {product.enterpriseBenefits.map((benefit, index) => {
                 const isOpen = openBenefitIndex === index;
+                const number = String(index + 1).padStart(2, "0");
                 return (
                   <div
                     key={benefit.title}
-                    className={`border-b border-[#d3dae5] transition-colors duration-300 last:border-b-0 ${
-                      isOpen ? "bg-white" : "bg-[#ececf0]"
-                    }`}
+                    className="border-b border-[#d8dee7] last:border-b-0"
                   >
                     <button
                       type="button"
                       onClick={() => setOpenBenefitIndex((current) => (current === index ? -1 : index))}
-                      className="flex w-full items-center justify-between px-4 py-3 text-left sm:px-5"
+                      className={`group relative grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 overflow-hidden px-4 py-4 text-left transition-colors duration-300 sm:grid-cols-[120px_1fr_auto] sm:px-6 sm:py-6 ${
+                        isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white"
+                      }`}
                     >
-                      <span className="text-[0.95rem] font-semibold text-[#2a3c51]">{benefit.title}</span>
-                      {isOpen ? <ChevronDown size={18} className="text-[#248cf0]" /> : <ChevronRight size={18} className="text-[#788ba3]" />}
+                      <span
+                        className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
+                          isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                        }`}
+                      />
+                      <span
+                        className={`relative z-10 text-[clamp(1.3rem,3.4vw,1.3rem)] leading-none transition-transform duration-300 ease-in ${
+                          isOpen ? "translate-x-1 text-white" : "text-[#101926] group-hover:translate-x-4 group-hover:text-white"
+                        }`}
+                      >
+                        {number}
+                      </span>
+                      <span className="relative z-10 text-[clamp(1.3rem,4.2vw,1.3rem)] font-medium leading-[1.08] transition-colors duration-300">
+                        {benefit.title}
+                      </span>
+                      <span className="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-[#8ac8ff] bg-[rgba(25,142,243,0.2)] transition-all duration-300 group-hover:bg-[rgba(255,255,255,0.26)] sm:h-11 sm:w-11">
+                        <Plus
+                          size={20}
+                          className={`transition-transform duration-300 ${isOpen ? "rotate-45 text-[#198ef3]" : "text-[#198ef3]"}`}
+                        />
+                      </span>
                     </button>
-                    {isOpen ? <p className="px-4 pb-4 text-[0.92rem] leading-[1.65] text-[#5f6f83] sm:px-5">{benefit.description}</p> : null}
+                    <div
+                      className={`grid transition-all duration-300 ease-out ${
+                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="bg-[#edf2f8] px-4 pb-5 pt-1 text-[1.1rem] leading-[1.7] text-[#4f6074] sm:px-6">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
-            </div>
-
-            <div className="group overflow-hidden rounded-r-3xl shadow-[0_10px_26px_rgba(28,45,66,0.12)]">
-              <img
-                src={activeBenefitImage}
-                alt={product.enterpriseBenefits[activeBenefitIndex]?.title ?? t("productDetails.common.benefitImageAltFallback")}
-                className="h-[clamp(240px,42vh,420px)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
-              />
-            </div>
           </div>
 
           <h2 className="mt-12 text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.useCasesTitle", { product: product.title })}</h2>
@@ -196,7 +212,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             {product.useCases.map((item) => (
               <article
                 key={item.id}
-                className="group relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.03] group-hover:bg-white group-hover:shadow-[0_14px_32px_rgba(24,39,58,0.2)]"
+                className="group relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(25,142,243,0.5)] hover:backdrop-blur-sm hover:shadow-[0_22px_46px_rgba(25,142,243,0.46)]"
               >
                 <img
                   src={item.imageUrl}
@@ -204,16 +220,16 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                   className="h-[clamp(140px,22vh,230px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-white group-hover:px-4 group-hover:pb-4 group-hover:pt-4">
-                  <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#0f1720] transition-colors duration-300">
+                <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4">
+                  <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-[0.88rem] text-[#3a4656] transition-colors duration-300">
+                  <p className="mt-1 line-clamp-2 text-[0.88rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,245,255,0.96)]">
                     {item.excerpt}
                   </p>
                   <button
                     type="button"
-                    className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf]"
+                    className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf] group-hover:text-white group-hover:hover:text-white"
                   >
                     {t("productDetails.common.learnMore")} -&gt;
                   </button>

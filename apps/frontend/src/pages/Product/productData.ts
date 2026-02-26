@@ -85,20 +85,20 @@ export const productData: ProductItem[] = [
         id: 101,
         title: "Respon Insiden Lintas Tim",
         excerpt: "Sinkronisasi DevOps, NOC, dan Security untuk menurunkan MTTR secara signifikan.",
-        imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772122574311-5d1bb2b0eac2f9cc.jpeg"
       },
       {
         id: 102,
         title: "Monitoring Proaktif Infrastruktur",
         excerpt: "Deteksi dini anomali server untuk mencegah downtime layanan kritikal.",
-        imageUrl: "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772122679878-6a9de8065a5b8a49.jpeg"
       },
       {
         id: 103,
         title: "Rekomendasi Aksi Berbasis Issue",
         excerpt:
           "Sistem merekomendasikan langkah penanganan berdasarkan konteks issue agar tim mempercepat recovery dengan keputusan yang tepat.",
-        imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772122789565-92050b7a3d0b290e.jpeg"
       }
     ]
   },
@@ -157,13 +157,13 @@ export const productData: ProductItem[] = [
         id: 201,
         title: "Deteksi Akses Anomali",
         excerpt: "Identifikasi pola akses tidak wajar sebelum berdampak ke layanan produksi.",
-        imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1772122231579-7c3a1ca9a07869a3.png"
       },
       {
         id: 202,
         title: "Incident Triage Otomatis",
         excerpt: "Prioritas alert berdasarkan severity dan konteks bisnis untuk SOC.",
-        imageUrl: "https://images.unsplash.com/photo-1510511233900-1982d92bd835?auto=format&fit=crop&w=700&q=80"
+        imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1772122456184-f4f635df92c1e309.png"
       },
       {
         id: 203,

@@ -144,7 +144,7 @@ export function HeroSection({
       <div className="relative z-[3] mx-auto grid w-[min(1500px,calc(100%-1.5rem))] self-center gap-7 sm:w-[min(1600px,calc(100%-2rem))] lg:grid-cols-[1.05fr_1fr]">
         <div className="flex min-h-0 flex-col justify-center lg:min-h-[calc(100vh-7.75rem)]">
           <div className="mb-4 mt-5 flex items-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(35,43,53,0.92)] px-3 py-2 text-[0.78rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+            <span className="inline-flex items-center gap-2 rounded-full border-0 bg-[rgba(160,186,214,0.16)] px-3 py-2 text-[0.78rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase backdrop-blur-xl shadow-[0_10px_24px_rgba(6,14,24,0.38)]">
               <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[rgba(159,232,112,0.35)] p-[1px]">
                 <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" />
               </span>

@@ -58,7 +58,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
 
   return (
     <div className={cn("relative", className)}>
-      <header className="relative mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.5)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] backdrop-blur-sm shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
+      <header className="relative mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.7)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] backdrop-blur-md shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
         <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]">
           <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" />
         </div>
@@ -73,7 +73,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
                     className={cn(
                       "inline-block cursor-pointer whitespace-nowrap rounded-full border-0 px-[0.88rem] py-[0.4rem] text-[0.9rem] font-semibold transition-all duration-200",
                       isActive
-                        ? "bg-[rgba(38,145,248,0.15)] text-[#1883eb] -translate-y-[1px] shadow-[inset_0_0_0_1px_rgba(36,138,241,0.12)]"
+                        ? "bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] text-[white] -translate-y-[1px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.42)]"
                         : "bg-transparent text-[#111111]"
                     )}
                     onClick={() => onNavigate?.(item.target)}
@@ -175,7 +175,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
                       type="button"
                       className={cn(
                         "rounded-2xl px-4 py-2.5 text-left text-[0.88rem] font-semibold transition-colors",
-                        isActive ? "bg-[rgba(38,145,248,0.15)] text-[#1883eb]" : "text-[#243749] hover:bg-[#eaf1fb]"
+                        isActive ? "bg-[rgba(38,145,248,0.8)] text-white" : "text-[#243749] hover:bg-[#eaf1fb]"
                       )}
                       onClick={() => {
                         onNavigate?.(item.target);

@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { HeroSection } from "./sections/HeroSection";
 import { Navbar } from "./components/Navbar";
+import { motion } from "motion/react";
 
 const ProductSection = lazy(() =>
   import("./sections/ProductSection").then((module) => ({ default: module.ProductSection }))
@@ -267,15 +268,30 @@ function App() {
 
   return (
     <>
-      <Navbar
-        className={`fixed left-1/2 top-[0.9rem] z-[140] -translate-x-1/2 transition-[transform,opacity] duration-300 max-[550px]:left-auto max-[550px]:right-4 max-[550px]:translate-x-0 ${
-          isNavbarVisible
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-[130%] opacity-0 pointer-events-none"
-        }`}
-        activeSection={currentPage === "news" ? "news" : currentPage === "product" ? "product" : activeSection}
-        onNavigate={handleNavbarNavigate}
-      />
+      <div className="fixed left-1/2 top-[0.9rem] z-[140] -translate-x-1/2 max-[550px]:left-auto max-[550px]:right-4 max-[550px]:translate-x-0">
+        <motion.div
+          initial={false}
+          animate={isNavbarVisible ? "shown" : "hidden"}
+          variants={{
+            shown: {
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+            },
+            hidden: {
+              y: "-130%",
+              opacity: 0,
+              transition: { duration: 0.55, delay: 0.1, ease: [0.4, 0, 0.2, 1] }
+            }
+          }}
+          className={isNavbarVisible ? "pointer-events-auto" : "pointer-events-none"}
+        >
+          <Navbar
+            activeSection={currentPage === "news" ? "news" : currentPage === "product" ? "product" : activeSection}
+            onNavigate={handleNavbarNavigate}
+          />
+        </motion.div>
+      </div>
       <main
         className="h-screen overflow-x-hidden overflow-y-auto scroll-smooth motion-reduce:scroll-auto"
         ref={scrollRootRef}

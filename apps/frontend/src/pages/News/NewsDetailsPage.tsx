@@ -45,7 +45,7 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
 
           <div className="mt-7 grid gap-6 lg:grid-cols-[1fr_300px]">
             <div>
-              <img src={detail.imageUrl} alt={detail.title} className="h-[clamp(260px,42vw,520px)] w-full rounded-2xl object-cover" />
+              <img src={detail.imageUrl} alt={detail.title} className="h-[clamp(260px,42vw,520px)] w-full rounded-2xl object-cover" loading="lazy" />
 
               <div className="mt-6 space-y-5 text-[1.02rem] leading-[1.8] text-[#3b4958]">
                 <p>{detail.excerpt}</p>
@@ -83,7 +83,7 @@ export function NewsDetailsPage({ newsId, onOpenNewsDetails }: NewsDetailsPagePr
                       onClick={() => onOpenNewsDetails?.(item.id)}
                       className="flex w-full items-start gap-3 rounded-xl bg-white p-2 text-left shadow-[0_5px_14px_rgba(22,37,58,0.1)]"
                     >
-                      <img src={item.imageUrl} alt={item.title} className="h-14 w-14 rounded-md object-cover" />
+                      <img src={item.imageUrl} alt={item.title} className="h-14 w-14 rounded-md object-cover" loading="lazy" />
                       <p className="line-clamp-3 text-[0.9rem] leading-[1.35] text-[#314254]">{item.title}</p>
                     </button>
                   ))}

@@ -63,6 +63,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             alt=""
             aria-hidden="true"
             className="h-full w-full object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover/hero:scale-[1.02] group-hover/hero:grayscale-0"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-[rgba(8,14,24,0.66)] transition-colors duration-500 group-hover/hero:bg-[rgba(8,14,24,0.48)]" />
         </div>
@@ -133,6 +134,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                 src={product.imageDetailsUrl}
                 alt={product.title}
                 className="h-[clamp(280px,56vh,74vh)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
+                loading="lazy"
               />
             </div>
             <div className="grid h-full content-between gap-4 py-2">
@@ -218,6 +220,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                   src={item.imageUrl}
                   alt={item.title}
                   className="h-[clamp(140px,22vh,230px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4">

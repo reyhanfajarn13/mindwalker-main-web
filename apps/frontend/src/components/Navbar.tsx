@@ -60,7 +60,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
     <div className={cn("relative", className)}>
       <header className="relative mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.7)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] backdrop-blur-md shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
         <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]">
-          <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" />
+          <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" loading="lazy" />
         </div>
         <nav className="pointer-events-none absolute left-1/2 -translate-x-1/2 px-1">
           <ul className="pointer-events-auto m-0 flex list-none items-center justify-center gap-1.5 p-0">

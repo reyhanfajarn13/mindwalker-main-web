@@ -66,6 +66,7 @@ export function InfoCard({
                   "h-[220px] w-full object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 group-hover:saturate-100",
                   mediaClassName
                 )}
+                loading="lazy"
               />
             ) : (
               <div className={cn("h-[220px]", mediaClassName)} />

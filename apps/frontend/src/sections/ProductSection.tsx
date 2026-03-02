@@ -49,7 +49,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
           kicker={t("product.kicker")}
           kickerSlot={
             <span className="inline-flex items-center gap-2 rounded-full bg-[rgba(255,255,255,0.95)] px-3 py-2 shadow-[0_5px_14px_rgba(12,28,44,0.12)]">
-              <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-auto object-contain" />
+              <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-auto object-contain" loading="lazy" />
               <span className="text-[0.96rem] font-semibold text-[#2f3e4f]">{t("product.kicker")}</span>
             </span>
           }
@@ -66,6 +66,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
                 src={item.imageUrl}
                 alt={item.title}
                 className="absolute inset-0 h-full w-full scale-100 object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:saturate-100"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,19,0.92)_10%,rgba(5,10,19,0.5)_44%,rgba(5,10,19,0.28)_66%,rgba(5,10,19,0.18)_100%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_22%,rgba(188,224,255,0.34)_0%,rgba(188,224,255,0)_48%),radial-gradient(circle_at_78%_18%,rgba(154,208,255,0.24)_0%,rgba(154,208,255,0)_44%),radial-gradient(circle_at_58%_74%,rgba(142,196,255,0.2)_0%,rgba(142,196,255,0)_46%)] opacity-95 blur-[16px] transition-all duration-500 group-hover:opacity-40 group-hover:blur-[8px]" />

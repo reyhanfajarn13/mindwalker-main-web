@@ -146,7 +146,7 @@ export function HeroSection({
           <div className="mb-4 mt-5 flex items-center">
             <span className="inline-flex items-center gap-2 rounded-full border-0 bg-[rgba(160,186,214,0.16)] px-3 py-2 text-[0.78rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase backdrop-blur-xl shadow-[0_10px_24px_rgba(6,14,24,0.38)]">
               <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[rgba(159,232,112,0.35)] p-[1px]">
-                <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" />
+                <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" loading="lazy" />
               </span>
               <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
             </span>
@@ -181,6 +181,7 @@ export function HeroSection({
                       src={card.imageUrl}
                       alt={card.imageAlt}
                       className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(255,255,255,0.85),rgba(190,197,207,0.76)),repeating-linear-gradient(-45deg,rgba(80,90,105,0.2)_0_16px,rgba(216,222,230,0.2)_16px_32px)]" />

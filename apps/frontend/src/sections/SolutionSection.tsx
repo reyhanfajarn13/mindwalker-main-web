@@ -15,7 +15,7 @@ export function SolutionSection() {
       headline: t("solutions.cards.modelForge.backTitle"),
       points: modelForgeHighlights,
       icons: [Database, Boxes, Binary, ShieldCheck],
-      imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771327240594-032f5461e9736c25.jpeg"
+      imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1772423775436-361afaca238036a6.png"
     },
     {
       key: "agentic-ai",
@@ -59,6 +59,7 @@ export function SolutionSection() {
                 src={card.imageUrl}
                 alt={card.title}
                 className="absolute inset-0 h-full w-full scale-[1.04] object-cover grayscale blur-[1.6px] transition-[filter,transform] duration-500 group-hover:scale-[1.06] group-hover:grayscale-0"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(108deg,rgba(8,17,31,0.78)_0%,rgba(8,17,31,0.56)_46%,rgba(8,17,31,0.76)_100%)]" />
               <div className="absolute inset-0 bg-[rgba(136,194,255,0.06)] backdrop-blur-[1.2px]" />

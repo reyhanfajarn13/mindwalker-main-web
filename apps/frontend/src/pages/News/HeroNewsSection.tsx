@@ -70,6 +70,7 @@ export function HeroNewsSection({ items, onOpenNewsDetails }: HeroNewsSectionPro
                   src={item.imageUrl}
                   alt={item.title}
                   className="h-full min-h-[260px] w-full object-cover grayscale brightness-[0.74] transition-[filter] duration-500 ease-out group-hover:grayscale-0 group-hover:brightness-100"
+                  loading="lazy"
                 />
                 <div className="p-5 sm:p-6">
                   <div className="flex flex-wrap gap-2">

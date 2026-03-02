@@ -109,11 +109,13 @@ export function FooterSection() {
               src={footerHand}
               alt="Human hand"
               className="pointer-events-none absolute -left-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain grayscale transition-[filter] duration-400 group-hover:grayscale-0 min-[700px]:block"
+              loading="lazy"
             />
             <img
               src={footerHandRobot}
               alt="Robot hand"
               className="pointer-events-none absolute -right-6 top-1/2 hidden w-[clamp(120px,20vw,260px)] -translate-y-1/2 object-contain grayscale transition-[filter] duration-400 group-hover:grayscale-0 min-[700px]:block"
+              loading="lazy"
             />
 
             <div className="w-full max-w-[560px] min-[700px]:max-w-[min(520px,58%)]">
@@ -175,6 +177,7 @@ export function FooterSection() {
                             ? "h-4 w-auto object-contain sm:h-5 md:h-6"
                             : "h-5 w-auto object-contain sm:h-6 md:h-7"
                         }
+                        loading="lazy"
                       />
                     );
                   }}
@@ -201,6 +204,7 @@ export function FooterSection() {
                         src={item.src}
                         alt={item.alt ?? "Technology partner"}
                         className={isImage3 ? "h-4 w-auto object-contain" : "h-5 w-auto object-contain"}
+                        loading="lazy"
                       />
                     );
                   }}
@@ -212,7 +216,7 @@ export function FooterSection() {
 
         <div className="self-end grid gap-7 border-t border-[#e2e7ef] pt-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.55fr_1fr_1fr_1fr]">
           <section className="text-center sm:text-left">
-            <img src={mindwalkerLogoFull} alt="Mindwalker.ai" className="mx-auto h-4 w-auto object-contain sm:mx-0" />
+            <img src={mindwalkerLogoFull} alt="Mindwalker.ai" className="mx-auto h-4 w-auto object-contain sm:mx-0" loading="lazy" />
             <p className="mt-3 text-[0.75rem] text-[#5f6d7c]">©2026 Mindwalker.ai | All Rights reserved.</p>
             <p className="mt-3 text-[0.75rem] leading-[1.5] text-[#5f6d7c]">
               Komplek Ruko Grand Centro Bintaro

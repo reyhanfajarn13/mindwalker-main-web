@@ -15,7 +15,7 @@ export function SolutionSection() {
       headline: t("solutions.cards.modelForge.backTitle"),
       points: modelForgeHighlights,
       icons: [Database, Boxes, Binary, ShieldCheck],
-      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.png"
+      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.webp?updatedAt=1772427231030"
     },
     {
       key: "agentic-ai",
@@ -23,7 +23,7 @@ export function SolutionSection() {
       headline: t("solutions.cards.agenticAi.backTitle"),
       points: agenticAiHighlights,
       icons: [GitBranch, PlugZap, UserCheck, BookCheck],
-      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.jpeg"
+      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.webp?updatedAt=1772427231045"
     }
   ];
 

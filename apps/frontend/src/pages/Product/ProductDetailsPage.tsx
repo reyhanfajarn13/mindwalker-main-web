@@ -17,7 +17,7 @@ import { FooterSection } from "../../sections/FooterSection";
 import { getLocalizedProductBySlug } from "./productData";
 import { useImagePreload } from "../../lib/useImagePreload";
 
-const heroDetailsBackground = "https://ik.imagekit.io/mindwalker/public/assets/heroDetailsBackground.png";
+const heroDetailsBackground = "https://ik.imagekit.io/mindwalker/public/assets/heroDetailsBackground.webp?updatedAt=1772427037701";
 
 type ProductDetailsPageProps = {
   productSlug: string;

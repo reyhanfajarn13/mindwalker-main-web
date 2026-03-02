@@ -1,6 +1,6 @@
 import type { TFunction } from "i18next";
 
-const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.png";
+const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.webp?updatedAt=1772427230672";
 
 export type ProductArticle = {
   id: number;
@@ -35,8 +35,8 @@ export const productData: ProductItem[] = [
     title: "Mind Ops",
     label: "System Operations",
     description: "From monitoring to resolution, IT operations must move with intelligence.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.jpeg",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.webp?updatedAt=1772427231020",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.webp?updatedAt=1772427038224",
     heroDescription:
       "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
     demoLabel: "Explore Demo",
@@ -109,8 +109,8 @@ export const productData: ProductItem[] = [
     title: "Mind Sec",
     label: "Threat Analysis",
     description: "Detect risks early and orchestrate faster response across security workflows.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.jpeg",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.webp?updatedAt=1772427230996",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.webp?updatedAt=1772427230829",
     heroDescription:
       "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
     demoLabel: "Explore Demo",
@@ -180,7 +180,7 @@ export const productData: ProductItem[] = [
     title: "VisionCraft",
     label: "AI Intelligence",
     description: "Build insight pipelines that turn data signals into real operational impact.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173",
     imageDetailsUrl: visioncraftbasePict,
     heroDescription:
       "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",

@@ -24,7 +24,7 @@ const AUTO_SLIDE_MS = 3200;
 const SWIPE_THRESHOLD = 56;
 
 export function HeroSection({
-  heroImageUrl = "https://ik.imagekit.io/mindwalker/mindOpsv.01HeroSection.jpeg",
+  heroImageUrl = "https://ik.imagekit.io/mindwalker/public/assets/mindOpsv.01HeroSection.webp",
   heroImageAlt = "Hero visual"
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -50,7 +50,7 @@ export function HeroSection({
         badge: t("hero.slides.update"),
         description: t("hero.slides.desc2"),
         imageUrl:
-          "https://ik.imagekit.io/mindwalker/visionCraftPoweredbySeedHero.jpeg",
+          "https://ik.imagekit.io/mindwalker/public/assets/visionCraftPoweredbySeedHero.webp",
         imageAlt: "Mountain valley"
       },
       {
@@ -59,7 +59,7 @@ export function HeroSection({
         badge: t("hero.slides.case"),
         description: t("hero.slides.desc3"),
         imageUrl:
-          "https://ik.imagekit.io/mindwalker/mindOpslegacyAppsHeroSection.jpeg",
+          "https://ik.imagekit.io/mindwalker/public/assets/mindOpslegacyAppsHeroSection.webp",
         imageAlt: "Forest lake"
       }
     ],

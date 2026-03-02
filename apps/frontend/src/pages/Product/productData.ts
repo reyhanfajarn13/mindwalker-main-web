@@ -1,6 +1,6 @@
 import type { TFunction } from "i18next";
 
-const visioncraftbasePict = "/assets/visioncraftBasePict.png";
+const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.png";
 
 export type ProductArticle = {
   id: number;
@@ -35,8 +35,8 @@ export const productData: ProductItem[] = [
     title: "Mind Ops",
     label: "System Operations",
     description: "From monitoring to resolution, IT operations must move with intelligence.",
-    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771973803680-0fca3e2a1c6d349d.jpeg",
-    imageDetailsUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771975136642-d786a96df15dbcaa.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.jpeg",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.png",
     heroDescription:
       "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
     demoLabel: "Explore Demo",
@@ -109,8 +109,8 @@ export const productData: ProductItem[] = [
     title: "Mind Sec",
     label: "Threat Analysis",
     description: "Detect risks early and orchestrate faster response across security workflows.",
-    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1771973696752-0dcd2bc6253e5e88.jpeg",
-    imageDetailsUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771974889163-8b9a17a531fe72dd.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.jpeg",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.png",
     heroDescription:
       "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
     demoLabel: "Explore Demo",
@@ -180,7 +180,7 @@ export const productData: ProductItem[] = [
     title: "VisionCraft",
     label: "AI Intelligence",
     description: "Build insight pipelines that turn data signals into real operational impact.",
-    imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/nano-banana/1771974630762-3b5e6f8acfa61f76.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.png",
     imageDetailsUrl: visioncraftbasePict,
     heroDescription:
       "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",

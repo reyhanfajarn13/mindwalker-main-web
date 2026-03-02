@@ -24,7 +24,7 @@ const AUTO_SLIDE_MS = 3200;
 const SWIPE_THRESHOLD = 56;
 
 export function HeroSection({
-  heroImageUrl = "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772006530952-c67b62a6019e976d.jpeg",
+  heroImageUrl = "https://ik.imagekit.io/mindwalker/mindOpsv.01HeroSection.jpeg",
   heroImageAlt = "Hero visual"
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -50,7 +50,7 @@ export function HeroSection({
         badge: t("hero.slides.update"),
         description: t("hero.slides.desc2"),
         imageUrl:
-          "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772008733837-05e78978f79d21ef.jpeg",
+          "https://ik.imagekit.io/mindwalker/visionCraftPoweredbySeedHero.jpeg",
         imageAlt: "Mountain valley"
       },
       {
@@ -59,7 +59,7 @@ export function HeroSection({
         badge: t("hero.slides.case"),
         description: t("hero.slides.desc3"),
         imageUrl:
-          "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772008923392-fc5a05e217798fa7.jpeg",
+          "https://ik.imagekit.io/mindwalker/mindOpslegacyAppsHeroSection.jpeg",
         imageAlt: "Forest lake"
       }
     ],

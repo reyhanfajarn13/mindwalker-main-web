@@ -14,5 +14,8 @@
     "backend:dev": "npm --prefix apps/backend run dev",
     "backend:build": "npm --prefix apps/backend run build",
     "backend:start": "npm --prefix apps/backend run start"
+  },
+  "dependencies": {
+    "@imagekit/react": "^5.0.2"
   }
 }

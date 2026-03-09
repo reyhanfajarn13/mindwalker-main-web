@@ -59,7 +59,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
   useImagePreload([heroDetailsBackground]);
 
   return (
-    <div className="bg-[#ececf0]">
+    <div className="bg-[#white]">
       <section className="relative min-h-[calc(100vh-1.5rem)] overflow-hidden px-4 pb-14 pt-[6rem] sm:px-6 sm:pb-16">
         <div className="group/hero absolute inset-0">
           <img

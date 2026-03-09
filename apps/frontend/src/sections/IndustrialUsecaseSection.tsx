@@ -7,6 +7,12 @@ export function IndustrialUsecaseSection() {
   const { t } = useTranslation();
   const [openIndustryId, setOpenIndustryId] = useState("");
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
+  const openIndustry = industrialUsecaseData.find((industry) => industry.id === openIndustryId) ?? null;
+  const openIndustryIndex = industrialUsecaseData.findIndex((industry) => industry.id === openIndustryId);
+  const firstRowIndustries = industrialUsecaseData.slice(0, 3);
+  const secondRowIndustries = industrialUsecaseData.slice(3, 6);
+  const openFirstRowIndustry = openIndustryIndex >= 0 && openIndustryIndex < 3 ? openIndustry : null;
+  const openSecondRowIndustry = openIndustryIndex >= 3 ? openIndustry : null;
 
   return (
     <section id="industrial-usecases" className="grid bg-white/20 px-0 py-12 lg:py-16">
@@ -15,7 +21,7 @@ export function IndustrialUsecaseSection() {
           {t("industrialUsecases.title")}
         </h2>
 
-        <div className="mt-6 border-y border-[#d8dee7]">
+        <div className="mt-6 border-y border-[#d8dee7] max-[999px]:block min-[1000px]:hidden">
           {industrialUsecaseData.map((industry) => {
             const isOpen = industry.id === openIndustryId;
             return (
@@ -91,6 +97,170 @@ export function IndustrialUsecaseSection() {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-6 hidden min-[1000px]:block">
+          <div className="grid grid-cols-3 border-x border-t border-white">
+            {firstRowIndustries.map((industry) => {
+              const isOpen = industry.id === openIndustryId;
+
+              return (
+                <button
+                  key={industry.id}
+                  type="button"
+                  onClick={() => {
+                    setOpenIndustryId((current) => (current === industry.id ? "" : industry.id));
+                  }}
+                  className={`group touch-hover-hold relative overflow-hidden border-r border-[#d8dee7] p-7 text-left transition-colors duration-500 ease-in last:border-r-0 min-h-[220px] ${
+                    isOpen
+                      ? "bg-[#198ef3] text-white"
+                      : "bg-[rgba(255,255,255,0.62)] text-[#101926] backdrop-blur-md hover:text-white"
+                  }`}
+                >
+                  <span
+                    className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
+                      isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                    }`}
+                  />
+                  <span className="relative z-10 text-[clamp(1.55rem,1.85vw,1.9rem)] font-medium leading-none tracking-[0.01em] opacity-95">
+                    {industry.number}
+                  </span>
+                  <h3 className="relative z-10 mt-8 max-w-[13ch] text-[clamp(2rem,2.5vw,2.5rem)] font-semibold leading-[1.06]">
+                    {t(industry.labelKey)}
+                  </h3>
+                  <ArrowRight
+                    size={34}
+                    className={`absolute bottom-7 right-7 z-10 transition-transform duration-500 ease-in ${
+                      isOpen ? "rotate-90" : "group-hover:translate-x-2"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            className={`grid transition-all duration-400 ease-out ${
+              openFirstRowIndustry ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="grid gap-4 bg-[#white] px-3 pb-5 pt-4 sm:grid-cols-2 sm:px-5 lg:flex lg:gap-5">
+                {(openFirstRowIndustry?.cards ?? []).map((card) => (
+                  <article
+                    key={card.id}
+                    onMouseEnter={() => setHoveredCardId(card.id)}
+                    onMouseLeave={() => setHoveredCardId(null)}
+                    className={`group touch-hover-hold relative h-[440px] overflow-hidden rounded-[28px] bg-[#071224] shadow-[0_14px_32px_rgba(24,39,58,0.2)] transition-[flex,transform,filter] duration-500 ease-out lg:basis-0 ${
+                      hoveredCardId === null
+                        ? "lg:flex-[1]"
+                        : hoveredCardId === card.id
+                          ? "lg:flex-[1.65]"
+                          : "lg:flex-[0.72]"
+                    }`}
+                  >
+                    <img
+                      src={card.imageUrl}
+                      alt={t(card.titleKey)}
+                      className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                    <div className="absolute inset-x-6 bottom-6">
+                      <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
+                        {t(card.titleKey)}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 max-w-[36ch] text-[0.75rem] text-[rgba(229,237,248,0.92)]">
+                        {t(card.excerptKey)}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="h-px bg-[#bcc8d8]" />
+
+          <div className="grid grid-cols-3 border-x border-b border-white">
+            {secondRowIndustries.map((industry) => {
+              const isOpen = industry.id === openIndustryId;
+
+              return (
+                <button
+                  key={industry.id}
+                  type="button"
+                  onClick={() => {
+                    setOpenIndustryId((current) => (current === industry.id ? "" : industry.id));
+                  }}
+                  className={`group touch-hover-hold relative overflow-hidden border-r border-[#d8dee7] p-7 text-left transition-colors duration-500 ease-in last:border-r-0 min-h-[220px] ${
+                    isOpen
+                      ? "bg-[#198ef3] text-white"
+                      : "bg-[rgba(255,255,255,0.62)] text-[#101926] backdrop-blur-md hover:text-white"
+                  }`}
+                >
+                  <span
+                    className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
+                      isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                    }`}
+                  />
+                  <span className="relative z-10 text-[clamp(1.55rem,1.85vw,1.9rem)] font-medium leading-none tracking-[0.01em] opacity-95">
+                    {industry.number}
+                  </span>
+                  <h3 className="relative z-10 mt-8 max-w-[13ch] text-[clamp(2rem,2.5vw,2.5rem)] font-semibold leading-[1.06]">
+                    {t(industry.labelKey)}
+                  </h3>
+                  <ArrowRight
+                    size={34}
+                    className={`absolute bottom-7 right-7 z-10 transition-transform duration-500 ease-in ${
+                      isOpen ? "rotate-90" : "group-hover:translate-x-2"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            className={`grid transition-all duration-400 ease-out ${
+              openSecondRowIndustry ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="grid gap-4 bg-[#white] px-3 pb-5 pt-4 sm:grid-cols-2 sm:px-5 lg:flex lg:gap-5">
+                {(openSecondRowIndustry?.cards ?? []).map((card) => (
+                  <article
+                    key={card.id}
+                    onMouseEnter={() => setHoveredCardId(card.id)}
+                    onMouseLeave={() => setHoveredCardId(null)}
+                    className={`group touch-hover-hold relative h-[440px] overflow-hidden rounded-[28px] bg-[#071224] shadow-[0_14px_32px_rgba(24,39,58,0.2)] transition-[flex,transform,filter] duration-500 ease-out lg:basis-0 ${
+                      hoveredCardId === null
+                        ? "lg:flex-[1]"
+                        : hoveredCardId === card.id
+                          ? "lg:flex-[1.65]"
+                          : "lg:flex-[0.72]"
+                    }`}
+                  >
+                    <img
+                      src={card.imageUrl}
+                      alt={t(card.titleKey)}
+                      className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                    <div className="absolute inset-x-6 bottom-6">
+                      <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
+                        {t(card.titleKey)}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 max-w-[36ch] text-[0.75rem] text-[rgba(229,237,248,0.92)]">
+                        {t(card.excerptKey)}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

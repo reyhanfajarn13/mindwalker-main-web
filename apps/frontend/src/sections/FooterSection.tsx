@@ -39,7 +39,12 @@ export function FooterSection() {
     },
     {
       title: t("footer.groups.ourProduct"),
-      items: [t("product.cards.ops.title"), t("product.cards.sec.title"), t("product.cards.vision.title")]
+      items: [
+        t("product.cards.gateway.title"),
+        t("product.cards.ops.title"),
+        t("product.cards.sec.title"),
+        t("product.cards.vision.title")
+      ]
     },
     {
       title: t("footer.groups.ourSolution"),

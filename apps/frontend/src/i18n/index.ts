@@ -56,7 +56,7 @@ const resources = {
           },
           vision: {
             title: "VisionCraft",
-            label: "Kecerdasan AI",
+            label: "Kreativitas Visual AI",
             description:
               "Hasilkan konten visual berbasis AI yang konsisten dengan brand untuk kebutuhan komunikasi dan kampanye."
           },
@@ -428,7 +428,7 @@ const resources = {
           },
           visioncraft: {
             title: "VisionCraft",
-            label: "Kecerdasan AI",
+            label: "Kreativitas Visual AI",
             description: "Build insight pipelines that turn data signals into real operational impact.",
             heroDescription:
               "VisionCraft adalah platform AI multimodal yang membantu organisasi mengubah ide menjadi visual berkualitas tinggi dan automasi konten secara cepat, dengan alur kerja kolaboratif, kontrol brand yang konsisten, serta kesiapan produksi untuk kebutuhan komunikasi enterprise berskala besar.",
@@ -566,7 +566,7 @@ const resources = {
           },
           vision: {
             title: "VisionCraft",
-            label: "AI Intelligence",
+            label: "AI Visual Creativity",
             description:
               "Generate AI-powered visual content with strong brand consistency for communications and campaign needs."
           },
@@ -943,7 +943,7 @@ const resources = {
           },
           visioncraft: {
             title: "VisionCraft",
-            label: "AI Intelligence",
+            label: "AI Visual Creativity",
             description: "Build insight pipelines that turn data signals into real operational impact.",
             heroDescription:
               "VisionCraft is a multimodal AI platform that enables organizations to turn ideas into high-quality visual output and rapid content automation, supported by collaborative workflows, consistent brand control, and production readiness for enterprise-scale communication needs.",

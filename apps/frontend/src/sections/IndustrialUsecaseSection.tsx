@@ -17,9 +17,9 @@ export function IndustrialUsecaseSection() {
   return (
     <section id="industrial-usecases" className="grid bg-white/20 px-0 py-12 lg:py-16">
       <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
-        <h2 className="text-[clamp(2rem,5vw,2rem)] leading-[1.05] text-[#198ef3] font-semibold">
+        <h1 className="text-[clamp(1.6rem,5vw,2.5rem)] leading-[1.05] text-[#198ef3] font-bold">
           {t("industrialUsecases.title")}
-        </h2>
+        </h1>
 
         <div className="mt-6 border-y border-[#d8dee7] max-[999px]:block min-[1000px]:hidden">
           {industrialUsecaseData.map((industry) => {

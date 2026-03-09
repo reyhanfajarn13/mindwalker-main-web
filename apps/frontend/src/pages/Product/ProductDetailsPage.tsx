@@ -66,7 +66,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             src={heroDetailsBackground}
             alt=""
             aria-hidden="true"
-            className="h-full w-full object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover/hero:scale-[1.02] group-hover/hero:grayscale-0"
+            className="h-full w-full object-cover min-[1000px]:grayscale transition-[filter,transform] duration-700 ease-out min-[1000px]:group-hover/hero:scale-[1.02] min-[1000px]:group-hover/hero:grayscale-0"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-[rgba(8,14,24,0.66)] transition-colors duration-500 group-hover/hero:bg-[rgba(8,14,24,0.48)]" />
@@ -99,7 +99,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                   <img
                     src={item.imageUrl}
                     alt={item.title}
-                    className="h-[clamp(140px,20vh,220px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
+                    className="h-[clamp(140px,20vh,220px)] w-full object-cover min-[1000px]:grayscale transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.08] min-[1000px]:group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] transition-colors duration-300" />
                   <div className="relative rounded-b-2xl bg-transparent p-3 transition-colors duration-300 group-hover:bg-white">
@@ -137,7 +137,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
               <img
                 src={product.imageDetailsUrl}
                 alt={product.title}
-                className="h-[clamp(280px,56vh,74vh)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0 max-[1000px]:grayscale-0"
+                className="h-[clamp(280px,56vh,74vh)] w-full object-cover min-[1000px]:grayscale transition-[filter] duration-500 ease-out min-[1000px]:group-hover:grayscale-0"
                 loading="lazy"
               />
             </div>
@@ -223,9 +223,10 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                 <img
                   src={item.imageUrl}
                   alt={item.title}
-                  className="h-[clamp(140px,22vh,230px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.08] max-[1000px]:group-active:grayscale-0"
+                  className="h-auto w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10] object-cover min-[1000px]:grayscale transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.08] min-[1000px]:group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.08]"
                   loading="lazy"
                 />
+                <div className="pointer-events-none absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.2px]" />
                 <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-[1000px]:group-active:opacity-100" />
                 <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4 max-[1000px]:group-active:bg-[rgba(173,218,255,0.14)] max-[1000px]:group-active:backdrop-blur-lg max-[1000px]:group-active:px-4 max-[1000px]:group-active:pb-4 max-[1000px]:group-active:pt-4">
                   <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white max-[1000px]:group-active:text-white">

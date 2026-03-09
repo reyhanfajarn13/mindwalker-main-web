@@ -82,10 +82,11 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className="absolute inset-0 h-full w-full scale-100 object-cover grayscale saturate-0 transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-hover:saturate-100"
+                className="absolute inset-0 h-full w-full scale-100 object-cover min-[1000px]:grayscale min-[1000px]:saturate-0 transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.03] min-[1000px]:group-hover:grayscale-0 min-[1000px]:group-hover:saturate-100"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,19,0.92)_10%,rgba(5,10,19,0.5)_44%,rgba(5,10,19,0.28)_66%,rgba(5,10,19,0.18)_100%)]" />
+              <div className="absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.1px]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_22%,rgba(188,224,255,0.34)_0%,rgba(188,224,255,0)_48%),radial-gradient(circle_at_78%_18%,rgba(154,208,255,0.24)_0%,rgba(154,208,255,0)_44%),radial-gradient(circle_at_58%_74%,rgba(142,196,255,0.2)_0%,rgba(142,196,255,0)_46%)] opacity-95 blur-[16px] transition-all duration-500 group-hover:opacity-40 group-hover:blur-[8px]" />
 
               <div className="absolute left-5 top-5 z-10 rounded-full bg-[rgba(255,255,255,0.34)] px-4 py-2 text-[0.92rem] font-semibold leading-none text-white backdrop-blur-[1px]">

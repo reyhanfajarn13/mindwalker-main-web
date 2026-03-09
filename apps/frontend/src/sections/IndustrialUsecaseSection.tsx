@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Factory,
+  HandCoins,
+  HeartPulse,
+  ShoppingCart,
+  Zap
+} from "lucide-react";
 import { industrialUsecaseData } from "./industrialUsecaseData";
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +21,14 @@ export function IndustrialUsecaseSection() {
   const secondRowIndustries = industrialUsecaseData.slice(3, 6);
   const openFirstRowIndustry = openIndustryIndex >= 0 && openIndustryIndex < 3 ? openIndustry : null;
   const openSecondRowIndustry = openIndustryIndex >= 3 ? openIndustry : null;
+  const getIndustryIcon = (industryId: string) => {
+    if (industryId === "governance") return Building2;
+    if (industryId === "financial-services") return HandCoins;
+    if (industryId === "manufacturing") return Factory;
+    if (industryId === "energy-utilities") return Zap;
+    if (industryId === "retail") return ShoppingCart;
+    return HeartPulse;
+  };
 
   return (
     <section id="industrial-usecases" className="grid bg-white/20 px-0 py-12 lg:py-16">
@@ -77,10 +93,11 @@ export function IndustrialUsecaseSection() {
                           <img
                             src={card.imageUrl}
                             alt={t(card.titleKey)}
-                            className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
+                            className="absolute inset-0 h-full w-full object-cover min-[1000px]:grayscale min-[1000px]:brightness-[0.72] max-[1000px]:blur-[0.8px] max-[1000px]:brightness-[0.96] max-[1000px]:saturate-[1.05] transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.04] min-[1000px]:group-hover:grayscale-0 min-[1000px]:group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04]"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                          <div className="absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.2px]" />
                           <div className="absolute inset-x-6 bottom-6">
                             <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
                               {t(card.titleKey)}
@@ -122,8 +139,17 @@ export function IndustrialUsecaseSection() {
                       isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
                     }`}
                   />
-                  <span className="relative z-10 text-[clamp(1.55rem,1.85vw,1.9rem)] font-medium leading-none tracking-[0.01em] opacity-95">
-                    {industry.number}
+                  <span
+                    className={`relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-sm ${
+                      isOpen
+                        ? "border-[rgba(214,237,255,0.7)] bg-[rgba(255,255,255,0.22)] text-white"
+                        : "border-[rgba(32,60,92,0.2)] bg-[rgba(255,255,255,0.7)] text-[#15283d] group-hover:border-[rgba(214,237,255,0.7)] group-hover:bg-[rgba(255,255,255,0.22)] group-hover:text-white"
+                    }`}
+                  >
+                    {(() => {
+                      const IndustryIcon = getIndustryIcon(industry.id);
+                      return <IndustryIcon size={22} strokeWidth={2.1} />;
+                    })()}
                   </span>
                   <h3 className="relative z-10 mt-8 max-w-[13ch] text-[clamp(2rem,2.5vw,2.5rem)] font-semibold leading-[1.06]">
                     {t(industry.labelKey)}
@@ -162,10 +188,11 @@ export function IndustrialUsecaseSection() {
                     <img
                       src={card.imageUrl}
                       alt={t(card.titleKey)}
-                      className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
+                      className="absolute inset-0 h-full w-full object-cover min-[1000px]:grayscale min-[1000px]:brightness-[0.72] max-[1000px]:blur-[0.8px] max-[1000px]:brightness-[0.96] max-[1000px]:saturate-[1.05] transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.04] min-[1000px]:group-hover:grayscale-0 min-[1000px]:group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04]"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                    <div className="absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.2px]" />
                     <div className="absolute inset-x-6 bottom-6">
                       <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
                         {t(card.titleKey)}
@@ -204,8 +231,17 @@ export function IndustrialUsecaseSection() {
                       isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
                     }`}
                   />
-                  <span className="relative z-10 text-[clamp(1.55rem,1.85vw,1.9rem)] font-medium leading-none tracking-[0.01em] opacity-95">
-                    {industry.number}
+                  <span
+                    className={`relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-sm ${
+                      isOpen
+                        ? "border-[rgba(214,237,255,0.7)] bg-[rgba(255,255,255,0.22)] text-white"
+                        : "border-[rgba(32,60,92,0.2)] bg-[rgba(255,255,255,0.7)] text-[#15283d] group-hover:border-[rgba(214,237,255,0.7)] group-hover:bg-[rgba(255,255,255,0.22)] group-hover:text-white"
+                    }`}
+                  >
+                    {(() => {
+                      const IndustryIcon = getIndustryIcon(industry.id);
+                      return <IndustryIcon size={22} strokeWidth={2.1} />;
+                    })()}
                   </span>
                   <h3 className="relative z-10 mt-8 max-w-[13ch] text-[clamp(2rem,2.5vw,2.5rem)] font-semibold leading-[1.06]">
                     {t(industry.labelKey)}
@@ -244,10 +280,11 @@ export function IndustrialUsecaseSection() {
                     <img
                       src={card.imageUrl}
                       alt={t(card.titleKey)}
-                      className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
+                      className="absolute inset-0 h-full w-full object-cover min-[1000px]:grayscale min-[1000px]:brightness-[0.72] max-[1000px]:blur-[0.9px] max-[1000px]:brightness-[0.96] transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.04] min-[1000px]:group-hover:grayscale-0 min-[1000px]:group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04]"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />
+                    <div className="absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.2px]" />
                     <div className="absolute inset-x-6 bottom-6">
                       <h3 className="mt-2 line-clamp-2 text-[clamp(1.2rem,2.5vw,1.2rem)] font-semibold leading-[1.04] text-white">
                         {t(card.titleKey)}

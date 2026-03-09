@@ -36,7 +36,23 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
       };
     }
 
+    if (item.slug === "mind-gateway") {
+      return {
+        ...item,
+        label: t("product.cards.gateway.label"),
+        description: t("product.cards.gateway.description")
+      };
+    }
+
     return item;
+  }).sort((a, b) => {
+    const order: Record<string, number> = {
+      "mind-gateway": 0,
+      "mind-ops": 1,
+      "mind-sec": 2,
+      visioncraft: 3
+    };
+    return (order[a.slug] ?? 999) - (order[b.slug] ?? 999);
   });
 
   return (
@@ -56,7 +72,7 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
           title={t("product.title")}
         />
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {cards.map((item) => (
             <article
               key={item.id}

@@ -50,6 +50,10 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
       return [ShieldAlert, Radar, ShieldCheck, FileCheck2];
     }
 
+    if (product.slug === "mind-gateway") {
+      return [ShieldCheck, SearchCheck, Workflow, FileCheck2];
+    }
+
     return [Sparkles, Workflow, Lightbulb, UsersRound];
   }, [product.slug]);
   useImagePreload([heroDetailsBackground]);

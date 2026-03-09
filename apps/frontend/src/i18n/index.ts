@@ -59,6 +59,12 @@ const resources = {
             label: "Kecerdasan AI",
             description:
               "Hasilkan konten visual berbasis AI yang konsisten dengan brand untuk kebutuhan komunikasi dan kampanye."
+          },
+          gateway: {
+            title: "MindGateway",
+            label: "LLM Firewall",
+            description:
+              "Firewall gateway untuk memeriksa input prompt dan output LLM dengan kontrol rule-based bertingkat di level enterprise."
           }
         }
       },
@@ -359,6 +365,67 @@ const resources = {
               }
             ]
           },
+          mindGateway: {
+            title: "MindGateway",
+            label: "LLM Firewall",
+            description:
+              "Gateway keamanan LLM untuk memvalidasi input prompting dan output model secara real-time.",
+            heroDescription:
+              "MindGateway adalah tools LLM Firewall yang memeriksa input prompt dan keluaran model sebelum digunakan lebih lanjut. Platform ini mendukung multimodal LLM serta policy rule-based bertingkat dari level global, department, hingga team agar implementasi AI enterprise tetap aman, patuh, dan terkendali.",
+            featureHeading: "MindGateway memperkuat governance AI enterprise",
+            featureDescription:
+              "Dari validasi prompt hingga inspeksi respons model, MindGateway menjaga kualitas interaksi LLM dengan kontrol keamanan yang dapat disesuaikan lintas organisasi.",
+            featurePoints: [
+              "Inspeksi Prompt dan Respons",
+              "Enforcement Kebijakan Multimodal",
+              "Manajemen Rule Hierarkis",
+              "Audit Trail dan Kepatuhan"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Perlindungan AI Berlapis",
+                description:
+                  "Setiap prompt dan respons diperiksa untuk mencegah prompt injection, data leakage, dan output berisiko sebelum sampai ke pengguna."
+              },
+              {
+                title: "Kebijakan Konsisten di Seluruh Organisasi",
+                description:
+                  "Rule dapat diterapkan bertingkat dari global hingga team level agar governance AI tetap seragam namun fleksibel sesuai kebutuhan unit kerja."
+              },
+              {
+                title: "Dukungan Multimodal yang Aman",
+                description:
+                  "Validasi teks, dokumen, dan media multimodal membantu enterprise menjaga kualitas serta keamanan interaksi lintas use case."
+              },
+              {
+                title: "Akselerasi Kepatuhan dan Audit",
+                description:
+                  "Logging terstruktur dan jejak keputusan policy memudahkan audit internal maupun regulasi eksternal dengan bukti yang dapat ditelusuri."
+              },
+              {
+                title: "Kontrol Risiko Operasional LLM",
+                description:
+                  "Penerapan guardrails terpusat menurunkan insiden AI misuse dan membantu tim merilis fitur LLM lebih cepat dengan risiko terukur."
+              }
+            ],
+            useCases: [
+              {
+                title: "Firewall Prompt di Asisten Internal",
+                excerpt:
+                  "Filter prompt sensitif dan terapkan kebijakan keamanan sebelum request masuk ke LLM produksi."
+              },
+              {
+                title: "Validasi Output untuk Customer Chat",
+                excerpt:
+                  "Validasi output LLM agar tetap selaras dengan kebijakan brand, regulasi, dan batasan konten perusahaan."
+              },
+              {
+                title: "Governance LLM Multi-Department",
+                excerpt:
+                  "Atur rule berbeda untuk legal, compliance, dan support tanpa kehilangan kontrol global enterprise."
+              }
+            ]
+          },
           visioncraft: {
             title: "VisionCraft",
             label: "Kecerdasan AI",
@@ -502,6 +569,12 @@ const resources = {
             label: "AI Intelligence",
             description:
               "Generate AI-powered visual content with strong brand consistency for communications and campaign needs."
+          },
+          gateway: {
+            title: "MindGateway",
+            label: "LLM Firewall",
+            description:
+              "An LLM firewall gateway that inspects prompt inputs and model outputs with enterprise-grade rule-based controls."
           }
         }
       },
@@ -804,6 +877,67 @@ const resources = {
                 title: "Threat Intel Enrichment",
                 excerpt:
                   "Enrich attack indicators with external threat intelligence sources."
+              }
+            ]
+          },
+          mindGateway: {
+            title: "MindGateway",
+            label: "LLM Firewall",
+            description:
+              "An LLM security gateway for real-time inspection of prompt inputs and model outputs.",
+            heroDescription:
+              "MindGateway is an LLM Firewall tool that inspects prompt inputs and model responses before they are consumed by users or downstream systems. It supports multimodal LLM interactions and rule-based policy layers at global, department, and team levels to keep enterprise AI deployments secure, compliant, and controlled.",
+            featureHeading: "MindGateway strengthens enterprise AI governance",
+            featureDescription:
+              "From prompt validation to response inspection, MindGateway protects LLM interactions with adaptive guardrails and organization-wide policy enforcement.",
+            featurePoints: [
+              "Prompt and Response Inspection",
+              "Multimodal Policy Enforcement",
+              "Hierarchical Rule Management",
+              "Audit Trail and Compliance"
+            ],
+            enterpriseBenefits: [
+              {
+                title: "Layered AI Protection",
+                description:
+                  "Every prompt and response is inspected to prevent prompt injection, data leakage, and risky output before it reaches end users."
+              },
+              {
+                title: "Consistent Policies Across the Organization",
+                description:
+                  "Rules can be enforced from global to team level, keeping AI governance consistent while allowing unit-specific flexibility."
+              },
+              {
+                title: "Secure Multimodal Support",
+                description:
+                  "Validation across text, documents, and multimodal content helps enterprises maintain safe and high-quality LLM interactions."
+              },
+              {
+                title: "Faster Compliance and Audit Readiness",
+                description:
+                  "Structured logging and policy decision trails simplify internal audits and external regulatory reporting."
+              },
+              {
+                title: "Lower Operational LLM Risk",
+                description:
+                  "Centralized guardrails reduce AI misuse incidents and help teams release LLM features faster with measurable risk control."
+              }
+            ],
+            useCases: [
+              {
+                title: "Prompt Firewall for Internal Assistants",
+                excerpt:
+                  "Filter sensitive prompts and enforce security policies before requests are sent to production LLMs."
+              },
+              {
+                title: "Output Validation for Customer Chat",
+                excerpt:
+                  "Validate LLM outputs to stay aligned with brand policy, regulatory rules, and enterprise content boundaries."
+              },
+              {
+                title: "Multi-Department LLM Governance",
+                excerpt:
+                  "Apply different rules for legal, compliance, and support teams without losing global enterprise control."
               }
             ]
           },

@@ -11,7 +11,7 @@ export type ProductArticle = {
 
 export type ProductItem = {
   id: number;
-  i18nKey: "mindOps" | "mindSec" | "visioncraft";
+  i18nKey: "mindOps" | "mindSec" | "mindGateway" | "visioncraft";
   slug: string;
   title: string;
   label: string;
@@ -175,6 +175,80 @@ export const productData: ProductItem[] = [
   },
   {
     id: 3,
+    i18nKey: "mindGateway",
+    slug: "mind-gateway",
+    title: "MindGateway",
+    label: "LLM Firewall",
+    description: "Gateway keamanan LLM untuk memvalidasi prompt input dan output model secara real-time.",
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
+    imageDetailsUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    heroDescription:
+      "MindGateway adalah tools LLM Firewall untuk inspeksi input prompting dan output model, mendukung multimodal LLM, serta rule-based policy di level global, department, dan team pada lingkungan enterprise.",
+    demoLabel: "Explore Demo",
+    featureHeading: "MindGateway memperkuat governance AI enterprise",
+    featureDescription:
+      "Lindungi interaksi LLM dengan guardrails adaptif, validasi konten dua arah, dan kebijakan berjenjang untuk menjaga keamanan serta kepatuhan.",
+    featurePoints: [
+      "Prompt & Response Inspection",
+      "Multimodal Policy Enforcement",
+      "Hierarchical Rule Management",
+      "Audit Trail & Compliance"
+    ],
+    enterpriseBenefits: [
+      {
+        title: "Perlindungan AI Berlapis",
+        description:
+          "Setiap prompt dan respons diperiksa untuk mencegah prompt injection, data leakage, dan output berisiko sebelum sampai ke user.",
+        imageUrl: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Kebijakan Konsisten di Seluruh Organisasi",
+        description:
+          "Rule dapat diterapkan bertingkat dari global hingga team level agar governance AI tetap seragam namun fleksibel sesuai kebutuhan unit kerja.",
+        imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Dukungan Multimodal yang Aman",
+        description:
+          "Validasi teks, dokumen, dan media multimodal membantu enterprise menjaga kualitas serta keamanan interaksi lintas use case.",
+        imageUrl: "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Akselerasi Kepatuhan dan Audit",
+        description:
+          "Logging terstruktur dan jejak keputusan policy memudahkan audit internal maupun regulasi eksternal dengan bukti yang dapat ditelusuri.",
+        imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        title: "Kontrol Risiko Operasional LLM",
+        description:
+          "Penerapan guardrails terpusat menurunkan insiden AI misuse dan membantu tim merilis fitur LLM lebih cepat dengan risiko terukur.",
+        imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+      }
+    ],
+    useCases: [
+      {
+        id: 401,
+        title: "Firewall Prompt di Asisten Internal",
+        excerpt: "Filter prompt sensitif dan enforce kebijakan keamanan sebelum request masuk ke LLM production.",
+        imageUrl: "https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: 402,
+        title: "Output Validation untuk Customer Chat",
+        excerpt: "Validasi output LLM agar sesuai kebijakan brand, regulasi, dan batasan konten perusahaan.",
+        imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: 403,
+        title: "Governance LLM Multi-Department",
+        excerpt: "Atur rule berbeda untuk legal, compliance, dan support tanpa kehilangan kontrol global enterprise.",
+        imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
+      }
+    ]
+  },
+  {
+    id: 4,
     i18nKey: "visioncraft",
     slug: "visioncraft",
     title: "VisionCraft",

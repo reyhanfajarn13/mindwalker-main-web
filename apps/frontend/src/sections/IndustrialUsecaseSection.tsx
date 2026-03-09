@@ -25,18 +25,18 @@ export function IndustrialUsecaseSection() {
                   onClick={() => {
                     setOpenIndustryId((current) => (current === industry.id ? "" : industry.id));
                   }}
-                  className={`group relative overflow-hidden grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 px-3 py-4 text-left transition-colors duration-500 ease-in sm:grid-cols-[120px_1fr_auto] sm:px-5 sm:py-6 ${
-                    isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white"
+                  className={`group touch-hover-hold relative overflow-hidden grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 px-3 py-4 text-left transition-colors duration-500 ease-in sm:grid-cols-[120px_1fr_auto] sm:px-5 sm:py-6 ${
+                    isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white max-[1000px]:active:text-white"
                   }`}
                 >
                   <span
                     className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
-                      isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                      isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0 max-[1000px]:group-active:translate-y-0"
                     }`}
                   />
                   <span
                     className={`relative z-10 text-[clamp(1.7rem,3.4vw,1.7rem)] leading-none transition-transform duration-300 ease-in ${
-                      isOpen ? "translate-x-1" : "group-hover:translate-x-4"
+                      isOpen ? "translate-x-1" : "group-hover:translate-x-4 max-[1000px]:group-active:translate-x-4"
                     }`}
                   >
                     {industry.number}
@@ -44,7 +44,7 @@ export function IndustrialUsecaseSection() {
                   <span className="relative z-10 text-[clamp(1.6rem,4.2vw,1.7rem)] leading-[1.06]">{t(industry.labelKey)}</span>
                   <ArrowRight
                     size={48}
-                    className={`relative z-10 transition-transform duration-500 ease-in ${isOpen ? "rotate-90" : "group-hover:translate-x-3"}`}
+                    className={`relative z-10 transition-transform duration-500 ease-in ${isOpen ? "rotate-90" : "group-hover:translate-x-3 max-[1000px]:group-active:translate-x-3"}`}
                   />
                 </button>
 
@@ -60,7 +60,7 @@ export function IndustrialUsecaseSection() {
                           key={card.id}
                           onMouseEnter={() => setHoveredCardId(card.id)}
                           onMouseLeave={() => setHoveredCardId(null)}
-                          className={`group relative h-[440px] overflow-hidden rounded-[28px] bg-[#071224] shadow-[0_14px_32px_rgba(24,39,58,0.2)] transition-[flex,transform,filter] duration-500 ease-out lg:basis-0 ${
+                          className={`group touch-hover-hold relative h-[440px] overflow-hidden rounded-[28px] bg-[#071224] shadow-[0_14px_32px_rgba(24,39,58,0.2)] transition-[flex,transform,filter] duration-500 ease-out lg:basis-0 ${
                             hoveredCardId === null
                               ? "lg:flex-[1]"
                               : hoveredCardId === card.id
@@ -71,7 +71,7 @@ export function IndustrialUsecaseSection() {
                           <img
                             src={card.imageUrl}
                             alt={t(card.titleKey)}
-                            className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100"
+                            className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.72] transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:brightness-100 max-[1000px]:group-active:scale-[1.04] max-[1000px]:group-active:grayscale-0 max-[1000px]:group-active:brightness-100"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(3,8,16,0.9)_0%,rgba(3,8,16,0.42)_45%,rgba(3,8,16,0.16)_100%)]" />

@@ -180,7 +180,7 @@ export function HeroSection({
                     <img
                       src={card.imageUrl}
                       alt={card.imageAlt}
-                      className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
+                      className="absolute inset-0 h-full w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.02] group-hover:grayscale-0 max-[1000px]:grayscale-0"
                       loading="lazy"
                     />
                   ) : (

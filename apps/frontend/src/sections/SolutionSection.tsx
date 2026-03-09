@@ -47,7 +47,7 @@ export function SolutionSection() {
               key={card.key}
               onMouseEnter={() => setHoveredCardKey(card.key)}
               onMouseLeave={() => setHoveredCardKey(null)}
-              className={`group relative overflow-hidden rounded-[30px] border-2 border-[rgba(255,255,255,0.28)] shadow-[0_18px_36px_rgba(11,25,45,0.28)] transition-all duration-500 ease-out hover:border-[3px] hover:border-white hover:shadow-[0_36px_76px_rgba(47,153,255,0.34),0_0_0_1px_rgba(255,255,255,0.62)_inset,0_0_40px_rgba(47,153,255,0.32)] xl:basis-0 ${
+              className={`group touch-hover-hold relative overflow-hidden rounded-[30px] border-2 border-[rgba(255,255,255,0.28)] shadow-[0_18px_36px_rgba(11,25,45,0.28)] transition-all duration-500 ease-out hover:border-[3px] hover:border-white hover:shadow-[0_36px_76px_rgba(47,153,255,0.34),0_0_0_1px_rgba(255,255,255,0.62)_inset,0_0_40px_rgba(47,153,255,0.32)] max-[1000px]:active:border-[3px] max-[1000px]:active:border-white max-[1000px]:active:shadow-[0_36px_76px_rgba(47,153,255,0.34),0_0_0_1px_rgba(255,255,255,0.62)_inset,0_0_40px_rgba(47,153,255,0.32)] xl:basis-0 ${
                 hoveredCardKey === null
                   ? "xl:flex-[1]"
                   : hoveredCardKey === card.key
@@ -58,7 +58,7 @@ export function SolutionSection() {
               <img
                 src={card.imageUrl}
                 alt={card.title}
-                className="absolute inset-0 h-full w-full scale-[1.04] object-cover grayscale blur-[1.6px] transition-[filter,transform] duration-500 group-hover:scale-[1.06] group-hover:grayscale-0"
+                className="absolute inset-0 h-full w-full scale-[1.04] object-cover grayscale blur-[1.6px] transition-[filter,transform] duration-500 group-hover:scale-[1.06] group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.06] max-[1000px]:group-active:grayscale-0"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[linear-gradient(108deg,rgba(8,17,31,0.78)_0%,rgba(8,17,31,0.56)_46%,rgba(8,17,31,0.76)_100%)]" />
@@ -73,7 +73,7 @@ export function SolutionSection() {
                   ) : null}
                 </h3>
 
-                <div className="rounded-2xl bg-[rgba(14,24,39,0.22)] p-4 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-[rgba(116,186,255,0.18)] group-hover:backdrop-blur-[7px] group-hover:shadow-[0_14px_34px_rgba(120,194,255,0.24),inset_0_0_0_1px_rgba(199,232,255,0.38)] sm:p-5">
+                <div className="rounded-2xl bg-[rgba(14,24,39,0.22)] p-4 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-[rgba(116,186,255,0.18)] group-hover:backdrop-blur-[7px] group-hover:shadow-[0_14px_34px_rgba(120,194,255,0.24),inset_0_0_0_1px_rgba(199,232,255,0.38)] max-[1000px]:group-active:bg-[rgba(116,186,255,0.18)] max-[1000px]:group-active:backdrop-blur-[7px] max-[1000px]:group-active:shadow-[0_14px_34px_rgba(120,194,255,0.24),inset_0_0_0_1px_rgba(199,232,255,0.38)] sm:p-5">
                   <ul className="space-y-4 sm:space-y-5">
                     {card.points.map((point, index) => {
                       const Icon = card.icons[index % card.icons.length];

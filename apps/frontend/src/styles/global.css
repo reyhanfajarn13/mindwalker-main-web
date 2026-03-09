@@ -23,6 +23,20 @@
 }
 
 @layer utilities {
+  .touch-hover-hold {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (max-width: 1000px) {
+    .touch-hover-hold {
+      transition-duration: 800ms !important;
+    }
+
+    .touch-hover-hold:active {
+      transition-duration: 140ms !important;
+    }
+  }
+
   .scroll-fade-in {
     opacity: 0;
     transform: translateY(28px) scale(0.992);

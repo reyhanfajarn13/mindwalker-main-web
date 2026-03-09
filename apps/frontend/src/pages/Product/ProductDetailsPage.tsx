@@ -137,7 +137,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
               <img
                 src={product.imageDetailsUrl}
                 alt={product.title}
-                className="h-[clamp(280px,56vh,74vh)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0"
+                className="h-[clamp(280px,56vh,74vh)] w-full object-cover grayscale transition-[filter] duration-500 ease-out group-hover:grayscale-0 max-[1000px]:grayscale-0"
                 loading="lazy"
               />
             </div>
@@ -171,18 +171,18 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                     <button
                       type="button"
                       onClick={() => setOpenBenefitIndex((current) => (current === index ? -1 : index))}
-                      className={`group relative grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 overflow-hidden px-4 py-4 text-left transition-colors duration-300 sm:grid-cols-[120px_1fr_auto] sm:px-6 sm:py-6 ${
-                        isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white"
+                      className={`group touch-hover-hold relative grid w-full grid-cols-[74px_1fr_auto] items-center gap-4 overflow-hidden px-4 py-4 text-left transition-colors duration-300 sm:grid-cols-[120px_1fr_auto] sm:px-6 sm:py-6 ${
+                        isOpen ? "bg-[#198ef3] text-white" : "bg-transparent text-[#101926] hover:text-white max-[1000px]:active:text-white"
                       }`}
                     >
                       <span
                         className={`pointer-events-none absolute inset-0 -z-0 bg-[#198ef3] transition-transform duration-300 ease-in ${
-                          isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
+                          isOpen ? "translate-y-0" : "translate-y-full group-hover:translate-y-0 max-[1000px]:group-active:translate-y-0"
                         }`}
                       />
                       <span
                         className={`relative z-10 text-[clamp(1.3rem,3.4vw,1.3rem)] leading-none transition-transform duration-300 ease-in ${
-                          isOpen ? "translate-x-1 text-white" : "text-[#101926] group-hover:translate-x-4 group-hover:text-white"
+                          isOpen ? "translate-x-1 text-white" : "text-[#101926] group-hover:translate-x-4 group-hover:text-white max-[1000px]:group-active:translate-x-4 max-[1000px]:group-active:text-white"
                         }`}
                       >
                         {number}
@@ -190,7 +190,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
                       <span className="relative z-10 text-[clamp(1.3rem,4.2vw,1.3rem)] font-medium leading-[1.08] transition-colors duration-300">
                         {benefit.title}
                       </span>
-                      <span className="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-[#8ac8ff] bg-[rgba(25,142,243,0.2)] transition-all duration-300 group-hover:bg-[rgba(255,255,255,0.26)] sm:h-11 sm:w-11">
+                      <span className="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-[#8ac8ff] bg-[rgba(25,142,243,0.2)] transition-all duration-300 group-hover:bg-[rgba(255,255,255,0.26)] max-[1000px]:group-active:bg-[rgba(255,255,255,0.26)] sm:h-11 sm:w-11">
                         <Plus
                           size={20}
                           className={`transition-transform duration-300 ${isOpen ? "rotate-45 text-[#198ef3]" : "text-[#198ef3]"}`}
@@ -218,25 +218,25 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             {product.useCases.map((item) => (
               <article
                 key={item.id}
-                className="group relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(25,142,243,0.5)] hover:backdrop-blur-sm hover:shadow-[0_22px_46px_rgba(25,142,243,0.46)]"
+                className="group touch-hover-hold relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(25,142,243,0.5)] hover:backdrop-blur-sm hover:shadow-[0_22px_46px_rgba(25,142,243,0.46)] max-[1000px]:active:scale-[1.02] max-[1000px]:active:bg-[rgba(25,142,243,0.5)] max-[1000px]:active:backdrop-blur-sm max-[1000px]:active:shadow-[0_22px_46px_rgba(25,142,243,0.46)]"
               >
                 <img
                   src={item.imageUrl}
                   alt={item.title}
-                  className="h-[clamp(140px,22vh,230px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0"
+                  className="h-[clamp(140px,22vh,230px)] w-full object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.08] group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.08] max-[1000px]:group-active:grayscale-0"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4">
-                  <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white">
+                <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-[1000px]:group-active:opacity-100" />
+                <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4 max-[1000px]:group-active:bg-[rgba(173,218,255,0.14)] max-[1000px]:group-active:backdrop-blur-lg max-[1000px]:group-active:px-4 max-[1000px]:group-active:pb-4 max-[1000px]:group-active:pt-4">
+                  <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#0f1720] transition-colors duration-300 group-hover:text-white max-[1000px]:group-active:text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-1 line-clamp-2 text-[0.88rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,245,255,0.96)]">
+                  <p className="mt-1 line-clamp-2 text-[0.88rem] text-[#3a4656] transition-colors duration-300 group-hover:text-[rgba(236,245,255,0.96)] max-[1000px]:group-active:text-[rgba(236,245,255,0.96)]">
                     {item.excerpt}
                   </p>
                   <button
                     type="button"
-                    className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf] group-hover:text-white group-hover:hover:text-white"
+                    className="mt-2 text-[0.8rem] font-semibold text-[#1d8cf0] transition-colors duration-300 hover:text-[#1173cf] group-hover:text-white group-hover:hover:text-white max-[1000px]:group-active:text-white"
                   >
                     {t("productDetails.common.learnMore")} -&gt;
                   </button>

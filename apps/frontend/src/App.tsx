@@ -179,6 +179,72 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const scrollRoot = scrollRootRef.current;
+    if (!scrollRoot) return;
+
+    const fadeTargets = Array.from(
+      new Set(
+        Array.from(
+          scrollRoot.querySelectorAll<HTMLElement>("section, footer, [data-scroll-fade]")
+        )
+      )
+    ).filter((el) => el.id !== "home");
+
+    const staggerNodes: HTMLElement[] = [];
+    fadeTargets.forEach((el) => el.classList.add("scroll-fade-in"));
+    fadeTargets.forEach((el) => {
+      const title = el.querySelector<HTMLElement>("h1, h2");
+      if (!title) return;
+
+      title.classList.add("scroll-stagger-title");
+      staggerNodes.push(title);
+
+      const parent = title.parentElement;
+      if (!parent) return;
+
+      const children = Array.from(parent.children) as HTMLElement[];
+      const titleIndex = children.indexOf(title);
+      if (titleIndex < 0) return;
+
+      children.slice(titleIndex + 1).forEach((child) => {
+        child.classList.add("scroll-stagger-body");
+        staggerNodes.push(child);
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      {
+        root: scrollRoot,
+        threshold: 0.3,
+        rootMargin: "0px 0px -15% 0px"
+      }
+    );
+
+    fadeTargets.forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+      fadeTargets.forEach((el) => {
+        el.classList.remove("scroll-fade-in");
+        el.classList.remove("is-visible");
+      });
+      staggerNodes.forEach((node) => {
+        node.classList.remove("scroll-stagger-title");
+        node.classList.remove("scroll-stagger-body");
+      });
+    };
+  }, [currentPage, selectedNewsId, selectedProductSlug]);
+
   const scrollToSection = (targetId: string) => {
     const scrollRoot = scrollRootRef.current;
     if (!scrollRoot) return;

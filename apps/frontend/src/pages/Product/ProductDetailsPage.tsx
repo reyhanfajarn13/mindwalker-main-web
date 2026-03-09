@@ -71,7 +71,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
           />
           <div className="absolute inset-0 bg-[rgba(8,14,24,0.66)] transition-colors duration-500 group-hover/hero:bg-[rgba(8,14,24,0.48)]" />
         </div>
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1500px,calc(100%-1.5rem))] items-center sm:w-[min(1600px,calc(100%-2rem))]">
+        <div data-scroll-fade className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1500px,calc(100%-1.5rem))] items-center sm:w-[min(1600px,calc(100%-2rem))]">
           <div className="max-w-[780px]">
             <h1 className="text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]">
               <span className="text-white">{product.title.split(" ")[0]}</span>
@@ -132,7 +132,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             {product.featureDescription}
           </p>
 
-          <div className="mt-8 grid items-stretch gap-6 lg:grid-cols-[1fr_280px] lg:gap-8">
+          <div data-scroll-fade className="mt-8 grid items-stretch gap-6 lg:grid-cols-[1fr_280px] lg:gap-8">
             <div className="group overflow-hidden rounded-3xl">
               <img
                 src={product.imageDetailsUrl}
@@ -159,7 +159,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
       <section className="px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 bg-[rgba(255,255,255,0.95)]">
         <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2rem))]">
           <h2 className="text-center text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-[#2490ef]">{t("productDetails.common.businessImpactTitle")}</h2>
-          <div className="mt-6 overflow-hidden rounded-2xl border-y border-[#d8dee7] bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.08)]">
+          <div data-scroll-fade className="mt-6 overflow-hidden rounded-2xl border-y border-[#d8dee7] bg-transparent shadow-[0_10px_26px_rgba(28,45,66,0.08)]">
               {product.enterpriseBenefits.map((benefit, index) => {
                 const isOpen = openBenefitIndex === index;
                 const number = String(index + 1).padStart(2, "0");
@@ -214,7 +214,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
           </div>
 
           <h2 className="mt-12 text-[clamp(1.7rem,3vw,2.4rem)] font-bold text-[#2490ef]">{t("productDetails.common.useCasesTitle", { product: product.title })}</h2>
-          <div className="mt-5 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div data-scroll-fade className="mt-5 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {product.useCases.map((item) => (
               <article
                 key={item.id}

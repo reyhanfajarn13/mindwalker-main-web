@@ -22,6 +22,65 @@
   }
 }
 
+@layer utilities {
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(28px) scale(0.992);
+    filter: blur(5px);
+    transition:
+      opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .scroll-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .scroll-stagger-title,
+  .scroll-stagger-body {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+    transition:
+      opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .scroll-fade-in.is-visible .scroll-stagger-title {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    transition-delay: 40ms;
+  }
+
+  .scroll-fade-in.is-visible .scroll-stagger-body {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    transition-delay: 220ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-fade-in,
+    .scroll-fade-in.is-visible,
+    .scroll-stagger-title,
+    .scroll-stagger-body,
+    .scroll-fade-in.is-visible .scroll-stagger-title,
+    .scroll-fade-in.is-visible .scroll-stagger-body {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

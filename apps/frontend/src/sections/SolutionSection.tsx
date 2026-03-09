@@ -1,31 +1,33 @@
-import { Binary, BookCheck, Boxes, Database, GitBranch, PlugZap, ShieldCheck, UserCheck } from "lucide-react";
-import { useState } from "react";
+import { Binary, BookCheck, Boxes, Database, GitBranch, GripVertical, PlugZap, ShieldCheck, UserCheck } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 export function SolutionSection() {
   const { t } = useTranslation();
-  const [hoveredCardKey, setHoveredCardKey] = useState<string | null>(null);
+  const comparisonRef = useRef<HTMLDivElement | null>(null);
+  const [inset, setInset] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHorizontalSplit, setIsHorizontalSplit] = useState(false);
+  const DESKTOP_MIN = 18;
+  const DESKTOP_MAX = 82;
+  const HORIZONTAL_MIN = 25;
+  const HORIZONTAL_MAX = 75;
+
   const modelForgeHighlights = t("solutions.cards.modelForge.backHighlights", { returnObjects: true }) as string[];
   const agenticAiHighlights = t("solutions.cards.agenticAi.backHighlights", { returnObjects: true }) as string[];
 
-  const cards = [
-    {
-      key: "model-forge",
-      title: t("solutions.cards.modelForge.title"),
-      headline: t("solutions.cards.modelForge.backTitle"),
-      points: modelForgeHighlights,
-      icons: [Database, Boxes, Binary, ShieldCheck],
-      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.webp?updatedAt=1772427231030"
-    },
-    {
-      key: "agentic-ai",
-      title: t("solutions.cards.agenticAi.title"),
-      headline: t("solutions.cards.agenticAi.backTitle"),
-      points: agenticAiHighlights,
-      icons: [GitBranch, PlugZap, UserCheck, BookCheck],
-      imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.webp?updatedAt=1772427231045"
-    }
-  ];
+  const modelForgeHeadline = t("solutions.cards.modelForge.backTitle");
+  const agenticAiHeadline = t("solutions.cards.agenticAi.backTitle");
+  const modelForgeDescription = t("solutions.cards.modelForge.description");
+  const agenticAiDescription = t("solutions.cards.agenticAi.description");
+
+  const modelForgeIcons = useMemo(() => [Database, Boxes, Binary, ShieldCheck], []);
+  const agenticAiIcons = useMemo(() => [GitBranch, PlugZap, UserCheck, BookCheck], []);
+
+  const modelForgeImage = "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.webp?updatedAt=1772427231030";
+  const agenticAiImage = "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.webp?updatedAt=1772427231045";
 
   const getHeadlineParts = (headline: string) => {
     const match = headline.match(/^(.*?)(\s*\(.*\))$/);
@@ -33,65 +35,209 @@ export function SolutionSection() {
     return { main: match[1].trim(), sub: match[2].trim() };
   };
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1000px)");
+    const handleMediaChange = () => setIsHorizontalSplit(mediaQuery.matches);
+    handleMediaChange();
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
+  useEffect(() => {
+    setInset((current) =>
+      clamp(current, isHorizontalSplit ? HORIZONTAL_MIN : DESKTOP_MIN, isHorizontalSplit ? HORIZONTAL_MAX : DESKTOP_MAX)
+    );
+  }, [isHorizontalSplit]);
+
+  const updateInset = (clientX: number, clientY: number, container: HTMLDivElement) => {
+    const rect = container.getBoundingClientRect();
+    const relativePosition = isHorizontalSplit ? clientY - rect.top : clientX - rect.left;
+    const totalSize = isHorizontalSplit ? rect.height : rect.width;
+    const ratio = (relativePosition / totalSize) * 100;
+    setInset(clamp(ratio, isHorizontalSplit ? HORIZONTAL_MIN : DESKTOP_MIN, isHorizontalSplit ? HORIZONTAL_MAX : DESKTOP_MAX));
+  };
+
+  const renderPanelContent = (
+    headline: string,
+    description: string,
+    highlights: string[],
+    icons: Array<typeof Database>,
+    isDark: boolean
+  ) => {
+    const parts = getHeadlineParts(headline);
+    return (
+      <>
+        <h3
+          className={`font-semibold tracking-[-0.02em] ${
+            isHorizontalSplit
+              ? "text-[clamp(1.5rem,4.8vw,2.35rem)] leading-[1.08]"
+              : "text-[clamp(2rem,4vw,3rem)] leading-[1.04]"
+          } ${isDark ? "text-white" : "text-[#132031]"}`}
+        >
+          <span className="block">{parts.main}</span>
+          {parts.sub ? (
+            <span
+              className={`mt-1 block ${
+                isHorizontalSplit
+                  ? "text-[clamp(0.95rem,2.9vw,1.3rem)] leading-[1.2]"
+                  : "text-[clamp(1rem,1.7vw,1.35rem)] leading-[1.16]"
+              } ${isDark ? "text-[rgba(230,239,250,0.92)]" : "text-[#41546a]"}`}
+            >
+              {parts.sub}
+            </span>
+          ) : null}
+        </h3>
+        <p
+          className={`max-w-[62ch] ${
+            isHorizontalSplit ? "mt-3 text-[clamp(0.92rem,2.3vw,1.03rem)] leading-[1.52]" : "mt-4 text-[clamp(0.95rem,1.05vw,1.1rem)] leading-[1.62]"
+          } ${isDark ? "text-[rgba(223,234,248,0.9)]" : "text-[#4a5d73]"}`}
+        >
+          {description}
+        </p>
+        <ul className={isHorizontalSplit ? "mt-4 space-y-3" : "mt-6 space-y-4"}>
+          {highlights.map((point, index) => {
+            const Icon = icons[index % icons.length];
+            return (
+              <li key={point} className={`flex items-start gap-3 ${isDark ? "text-white" : "text-[#1a2a3f]"}`}>
+                <span
+                  className={`mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full ${
+                    isDark
+                      ? "border border-[rgba(171,215,255,0.6)] bg-[rgba(41,143,243,0.16)]"
+                      : "border border-[#9bc8f4] bg-[rgba(41,143,243,0.09)]"
+                  }`}
+                >
+                  <Icon size={16} className={isDark ? "text-[#59adff]" : "text-[#248ef3]"} />
+                </span>
+                <span
+                  className={`${
+                    isHorizontalSplit ? "text-[clamp(0.9rem,2.35vw,1.05rem)] leading-[1.35]" : "text-[clamp(0.92rem,1.02vw,1.08rem)] leading-[1.4]"
+                  } ${isDark ? "text-[rgba(238,245,255,0.96)]" : ""}`}
+                >
+                  {point}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    );
+  };
+
   return (
     <section className="bg-white/20 px-0 py-10 lg:py-14" id="solutions">
       <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2.2rem))]">
-        <h2 className="text-center text-[clamp(2.2rem,4.3vw,3.9rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-[#2490ef]">{t("solutions.title")}</h2>
-        <p className="mx-auto mt-3 max-w-[78ch] text-center text-[clamp(0.92rem,1.25vw,1.32rem)] leading-[1.62] text-[#607186]">{t("solutions.description")}</p>
+        <h2 className="text-center text-[clamp(2.2rem,4.3vw,3.9rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-[#2490ef]">
+          {t("solutions.title")}
+        </h2>
+        <p className="mx-auto mt-3 max-w-[78ch] text-center text-[clamp(0.92rem,1.25vw,1.32rem)] leading-[1.62] text-[#607186]">
+          {t("solutions.description")}
+        </p>
 
-        <div className="mt-8 grid gap-5 xl:flex xl:items-stretch xl:gap-6">
-          {cards.map((card) => {
-            const headlineParts = getHeadlineParts(card.headline);
-            return (
-            <article
-              key={card.key}
-              onMouseEnter={() => setHoveredCardKey(card.key)}
-              onMouseLeave={() => setHoveredCardKey(null)}
-              className={`group touch-hover-hold relative overflow-hidden rounded-[30px] border-2 border-[rgba(255,255,255,0.28)] shadow-[0_18px_36px_rgba(11,25,45,0.28)] transition-all duration-500 ease-out hover:border-[3px] hover:border-white hover:shadow-[0_36px_76px_rgba(47,153,255,0.34),0_0_0_1px_rgba(255,255,255,0.62)_inset,0_0_40px_rgba(47,153,255,0.32)] max-[1000px]:active:border-[3px] max-[1000px]:active:border-white max-[1000px]:active:shadow-[0_36px_76px_rgba(47,153,255,0.34),0_0_0_1px_rgba(255,255,255,0.62)_inset,0_0_40px_rgba(47,153,255,0.32)] xl:basis-0 ${
-                hoveredCardKey === null
-                  ? "xl:flex-[1]"
-                  : hoveredCardKey === card.key
-                    ? "xl:flex-[1.24]"
-                    : "xl:flex-[0.82]"
-              }`}
-            >
-              <img
-                src={card.imageUrl}
-                alt={card.title}
-                className="absolute inset-0 h-full w-full scale-[1.04] object-cover grayscale blur-[1.6px] transition-[filter,transform] duration-500 group-hover:scale-[1.06] group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.06] max-[1000px]:group-active:grayscale-0"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(108deg,rgba(8,17,31,0.78)_0%,rgba(8,17,31,0.56)_46%,rgba(8,17,31,0.76)_100%)]" />
-              <div className="absolute inset-0 bg-[rgba(136,194,255,0.06)] backdrop-blur-[1.2px]" />
-              <div className="relative grid gap-7 px-6 py-7 sm:px-8 sm:py-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-10 lg:px-10 lg:py-9">
-                <h3 className="max-w-[9.2ch] self-center text-[clamp(2rem,4.4vw,2.7rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-white">
-                  <span className="block">{headlineParts.main}</span>
-                  {headlineParts.sub ? (
-                    <span className="mt-1 block text-[clamp(1.1rem,2.1vw,1.4rem)] leading-[1.12] text-[rgba(240,246,255,0.96)]">
-                      {headlineParts.sub}
-                    </span>
-                  ) : null}
-                </h3>
+        <div className="mt-8">
+          <div
+            ref={comparisonRef}
+            className="relative w-full overflow-hidden rounded-[26px] select-none"
+            onMouseMove={(event) => {
+              if (!isDragging) return;
+              updateInset(event.clientX, event.clientY, event.currentTarget);
+            }}
+            onMouseUp={() => setIsDragging(false)}
+            onMouseLeave={() => setIsDragging(false)}
+            onTouchMove={(event) => {
+              if (!isDragging || event.touches.length === 0) return;
+              updateInset(event.touches[0].clientX, event.touches[0].clientY, event.currentTarget);
+            }}
+            onTouchEnd={() => setIsDragging(false)}
+          >
+            <div className={`relative ${isHorizontalSplit ? "min-h-[780px] sm:min-h-[860px]" : "min-h-[480px] lg:min-h-[480px]"}`}>
+              <div className="absolute inset-0 z-0 bg-[#f7f9fc]">
+                <img
+                  src={agenticAiImage}
+                  alt={agenticAiHeadline}
+                  className="absolute inset-0 h-full w-full object-cover grayscale-[0.1] opacity-[0.2]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(255,255,255,0.5)_0%,rgba(248,251,255,0.5)_54%,rgba(245,249,255,0.5)_100%)]" />
+                {isHorizontalSplit ? (
+                  <div className="absolute inset-x-0 bottom-0 px-6 py-6 sm:px-8 sm:py-8 lg:px-12" style={{ top: `${inset}%` }}>
+                    <div className="mx-auto h-full w-full max-w-[900px] overflow-hidden">
+                      {renderPanelContent(agenticAiHeadline, agenticAiDescription, agenticAiHighlights, agenticAiIcons, false)}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative h-full px-6 py-8 sm:px-8 sm:py-10 lg:px-12">
+                    <div className="ml-auto h-full w-full max-w-[560px] overflow-hidden">
+                      {renderPanelContent(agenticAiHeadline, agenticAiDescription, agenticAiHighlights, agenticAiIcons, false)}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-                <div className="rounded-2xl bg-[rgba(14,24,39,0.22)] p-4 backdrop-blur-[2px] transition-all duration-500 group-hover:bg-[rgba(116,186,255,0.18)] group-hover:backdrop-blur-[7px] group-hover:shadow-[0_14px_34px_rgba(120,194,255,0.24),inset_0_0_0_1px_rgba(199,232,255,0.38)] max-[1000px]:group-active:bg-[rgba(116,186,255,0.18)] max-[1000px]:group-active:backdrop-blur-[7px] max-[1000px]:group-active:shadow-[0_14px_34px_rgba(120,194,255,0.24),inset_0_0_0_1px_rgba(199,232,255,0.38)] sm:p-5">
-                  <ul className="space-y-4 sm:space-y-5">
-                    {card.points.map((point, index) => {
-                      const Icon = card.icons[index % card.icons.length];
-                      return (
-                        <li key={point} className="flex items-start gap-4 text-white">
-                          <span className="mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[rgba(255,255,255,0.72)] bg-[rgba(47,153,255,0.14)] shadow-[inset_0_0_0_1px_rgba(47,153,255,0.15)]">
-                            <Icon size={18} className="text-[#2f99ff]" />
-                          </span>
-                          <span className="text-[clamp(0.96rem,1.05vw,1.2rem)] leading-[1.35] text-[rgba(241,246,255,0.98)]">{point}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
+              <div
+                className="absolute inset-0 z-20 overflow-hidden"
+                style={{
+                  clipPath: isHorizontalSplit
+                    ? `inset(0 0 ${100 - inset}% 0)`
+                    : `inset(0 ${100 - inset}% 0 0)`
+                }}
+              >
+                <div className="absolute inset-0 bg-[#1c6fbc]">
+                  <img
+                    src={modelForgeImage}
+                    alt={modelForgeHeadline}
+                    className="absolute inset-0 h-full w-full object-cover grayscale opacity-[0.42]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(104deg,rgba(36,144,239,0.7)_0%,rgba(24,120,214,0.7)_54%,rgba(15,92,176,0.7)_100%)]" />
+                  {isHorizontalSplit ? (
+                    <div className="absolute inset-x-0 top-0 px-6 py-6 sm:px-8 sm:py-8 lg:px-12" style={{ bottom: `${100 - inset}%` }}>
+                      <div className="mx-auto h-full w-full max-w-[900px] overflow-hidden">
+                        {renderPanelContent(modelForgeHeadline, modelForgeDescription, modelForgeHighlights, modelForgeIcons, true)}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative h-full px-6 py-8 sm:px-8 sm:py-10 lg:px-12">
+                      <div className="h-full w-full max-w-[560px] overflow-hidden">
+                        {renderPanelContent(modelForgeHeadline, modelForgeDescription, modelForgeHighlights, modelForgeIcons, true)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </article>
-            );
-          })}
+
+              <div
+                className={`absolute z-30 bg-[rgba(255,255,255,0.7)] ${
+                  isHorizontalSplit ? "inset-x-0 h-px" : "inset-y-0 w-px"
+                }`}
+                style={isHorizontalSplit ? { top: `${inset}%` } : { left: `${inset}%` }}
+              >
+                <button
+                  type="button"
+                  aria-label="Slide comparison"
+                  className={`absolute grid place-items-center rounded-md border border-[rgba(183,201,224,0.9)] bg-[rgba(246,250,255,0.93)] text-[#1f2e43] shadow-[0_10px_24px_rgba(16,30,48,0.24)] transition-transform duration-200 hover:scale-105 ${
+                    isHorizontalSplit
+                      ? "left-1/2 h-8 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ns-resize"
+                      : "top-1/2 h-12 w-8 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize"
+                  }`}
+                  style={isHorizontalSplit ? { top: `${inset}%` } : undefined}
+                  onMouseDown={(event) => {
+                    if (!comparisonRef.current) return;
+                    setIsDragging(true);
+                    updateInset(event.clientX, event.clientY, comparisonRef.current);
+                  }}
+                  onTouchStart={(event) => {
+                    if (!comparisonRef.current || event.touches.length === 0) return;
+                    setIsDragging(true);
+                    updateInset(event.touches[0].clientX, event.touches[0].clientY, comparisonRef.current);
+                  }}
+                  onMouseUp={() => setIsDragging(false)}
+                  onTouchEnd={() => setIsDragging(false)}
+                >
+                  <GripVertical size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

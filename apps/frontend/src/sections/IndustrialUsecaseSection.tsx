@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Building2,
@@ -13,7 +13,11 @@ import { useTranslation } from "react-i18next";
 
 export function IndustrialUsecaseSection() {
   const { t } = useTranslation();
-  const [openIndustryId, setOpenIndustryId] = useState("");
+  const getIndustryFromSearch = () => {
+    const industryId = new URLSearchParams(window.location.search).get("industry") ?? "";
+    return industrialUsecaseData.some((industry) => industry.id === industryId) ? industryId : "";
+  };
+  const [openIndustryId, setOpenIndustryId] = useState(getIndustryFromSearch);
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const openIndustry = industrialUsecaseData.find((industry) => industry.id === openIndustryId) ?? null;
   const openIndustryIndex = industrialUsecaseData.findIndex((industry) => industry.id === openIndustryId);
@@ -29,6 +33,19 @@ export function IndustrialUsecaseSection() {
     if (industryId === "retail") return ShoppingCart;
     return HeartPulse;
   };
+
+  useEffect(() => {
+    const syncOpenIndustryFromUrl = () => {
+      setOpenIndustryId(getIndustryFromSearch());
+    };
+
+    window.addEventListener("popstate", syncOpenIndustryFromUrl);
+    window.addEventListener("hashchange", syncOpenIndustryFromUrl);
+    return () => {
+      window.removeEventListener("popstate", syncOpenIndustryFromUrl);
+      window.removeEventListener("hashchange", syncOpenIndustryFromUrl);
+    };
+  }, []);
 
   return (
     <section id="industrial-usecases" className="grid bg-white/20 px-0 py-12 lg:py-16">

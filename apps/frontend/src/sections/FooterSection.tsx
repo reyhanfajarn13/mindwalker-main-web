@@ -1,6 +1,6 @@
 import LogoLoop from "../components/ui/LogoLoop";
 import { FormEvent, useState } from "react";
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { Github, Instagram, Linkedin, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { industrialUsecaseData } from "./industrialUsecaseData";
 
@@ -9,18 +9,18 @@ const image4 = "https://ik.imagekit.io/mindwalker/public/assets/image4.png";
 const image5 = "https://ik.imagekit.io/mindwalker/public/assets/image5.png";
 const image6 = "https://ik.imagekit.io/mindwalker/public/assets/image6.png";
 const image7 = "https://ik.imagekit.io/mindwalker/public/assets/image7.png";
-const image8 = "https://ik.imagekit.io/mindwalker/public/assets/image8.png";
+const image8 = "https://ik.imagekit.io/mindwalker/public/assets/byteplus-logo%201.png";
 const footerHand = "https://ik.imagekit.io/mindwalker/public/assets/footerHand.png";
 const footerHandRobot = "https://ik.imagekit.io/mindwalker/public/assets/footerHandRobot.png";
 const mindwalkerLogoFull = "https://ik.imagekit.io/mindwalker/public/assets/logo/mindwalker_logo_full.png";
 
 const techLogos = [
-  { src: image3, alt: "Company 1" },
-  { src: image4, alt: "Company 2" },
-  { src: image5, alt: "Company 3" },
-  { src: image6, alt: "Company 4" },
-  { src: image7, alt: "Company 5" },
-  { src: image8, alt: "Company 6" }
+  { src: image3, alt: "Company 1", width: 120, mobileWidth: 96 },
+  { src: image4, alt: "Company 2", width: 120, mobileWidth: 86 },
+  { src: image5, alt: "Company 3", width: 42, mobileWidth: 30 },
+  { src: image6, alt: "Company 4", width: 120, mobileWidth: 88 },
+  { src: image7, alt: "Company 5", width: 110, mobileWidth: 30 },
+  { src: image8, alt: "Company 6", width: 120, mobileWidth: 100 }
 ];
 
 export function FooterSection() {
@@ -35,24 +35,34 @@ export function FooterSection() {
   const footerGroups = [
     {
       title: t("footer.groups.company"),
-      items: [t("footer.groups.line1"), t("footer.groups.line2"), t("footer.groups.line3")]
+      items: [
+        { label: t("footer.groups.line1"), href: "#" },
+        { label: t("footer.groups.line2"), href: "#" },
+        { label: t("footer.groups.line3"), href: "#" }
+      ]
     },
     {
       title: t("footer.groups.ourProduct"),
       items: [
-        t("product.cards.gateway.title"),
-        t("product.cards.ops.title"),
-        t("product.cards.sec.title"),
-        t("product.cards.vision.title")
+        { label: t("product.cards.gateway.title"), href: "/product/mind-gateway" },
+        { label: t("product.cards.ops.title"), href: "/product/mind-ops" },
+        { label: t("product.cards.sec.title"), href: "/product/mind-sec" },
+        { label: t("product.cards.vision.title"), href: "/product/visioncraft" }
       ]
     },
     {
       title: t("footer.groups.ourSolution"),
-      items: [t("solutions.cards.modelForge.title"), t("solutions.cards.agenticAi.title")]
+      items: [
+        { label: t("solutions.cards.modelForge.title"), href: "/#solutions" },
+        { label: t("solutions.cards.agenticAi.title"), href: "/#solutions" }
+      ]
     },
     {
       title: t("footer.groups.aiFor"),
-      items: industrialUsecaseData.map((industry) => t(industry.labelKey))
+      items: industrialUsecaseData.map((industry) => ({
+        label: t(industry.labelKey),
+        href: `/?industry=${industry.id}#industrial-usecases`
+      }))
     }
   ];
 
@@ -171,19 +181,16 @@ export function FooterSection() {
                   ariaLabel="Technology partners"
                   renderItem={(item, key) => {
                     if (!("src" in item)) return null;
-                    const isImage3 = item.src === image3;
                     return (
-                      <img
-                        key={key}
-                        src={item.src}
-                        alt={item.alt ?? "Technology partner"}
-                        className={
-                          isImage3
-                            ? "h-4 w-auto object-contain sm:h-5 md:h-6"
-                            : "h-5 w-auto object-contain sm:h-6 md:h-7"
-                        }
-                        loading="lazy"
-                      />
+                      <span key={key} className="inline-flex h-8 w-[124px] items-center justify-center sm:h-9 sm:w-[132px] md:h-10 md:w-[140px]">
+                        <img
+                          src={item.src}
+                          alt={item.alt ?? "Technology partner"}
+                          className="h-auto max-h-full object-contain"
+                          style={{ width: `${"width" in item ? item.width : 90}px` }}
+                          loading="lazy"
+                        />
+                      </span>
                     );
                   }}
                 />
@@ -202,15 +209,16 @@ export function FooterSection() {
                   ariaLabel="Technology partners"
                   renderItem={(item, key) => {
                     if (!("src" in item)) return null;
-                    const isImage3 = item.src === image3;
                     return (
-                      <img
-                        key={key}
-                        src={item.src}
-                        alt={item.alt ?? "Technology partner"}
-                        className={isImage3 ? "h-4 w-auto object-contain" : "h-5 w-auto object-contain"}
-                        loading="lazy"
-                      />
+                      <span key={key} className="inline-flex items-center mx-[10px] justify-center">
+                        <img
+                          src={item.src}
+                          alt={item.alt ?? "Technology partner"}
+                          className="h-auto max-h-full object-contain"
+                          style={{ width: `${"mobileWidth" in item ? item.mobileWidth : 80}px` }}
+                          loading="lazy"
+                        />
+                      </span>
                     );
                   }}
                 />
@@ -219,46 +227,64 @@ export function FooterSection() {
           </div>
         </article>
 
-        <div className="self-end grid gap-7 border-t border-[#e2e7ef] pt-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.55fr_1fr_1fr_1fr]">
-          <section className="text-center sm:text-left">
-            <img src={mindwalkerLogoFull} alt="Mindwalker.ai" className="mx-auto h-4 w-auto object-contain sm:mx-0" loading="lazy" />
-            <p className="mt-3 text-[0.75rem] text-[#5f6d7c]">©2026 Mindwalker.ai | All Rights reserved.</p>
-            <p className="mt-3 text-[0.75rem] leading-[1.5] text-[#5f6d7c]">
-              Komplek Ruko Grand Centro Bintaro
-              <br />
-              JL. Raya Kodam bintaro No. A19
-              <br />
-              Pesanggrahan, Pesanggrahan
-              <br />
-              Jakarta Selatan
-              <br />
-              Jakarta 12320
-              <br />
-              Indonesia
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-3 text-[#8b97a6] sm:justify-start">
-              <a href="#" aria-label="Instagram" className="transition-colors hover:text-[#5e6e80]">
-                <Instagram size={16} />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="transition-colors hover:text-[#5e6e80]">
-                <Linkedin size={16} />
-              </a>
-              <a href="#" aria-label="Github" className="transition-colors hover:text-[#5e6e80]">
-                <Github size={16} />
-              </a>
+        <div className="self-end grid grid-cols-3 gap-5 border-t border-[#e2e7ef] pt-6 sm:gap-6 min-[1000px]:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] min-[1000px]:items-start min-[1000px]:gap-x-10 min-[1300px]:gap-x-14 min-[1000px]:gap-y-0">
+          <section className="col-span-3 text-left min-[1000px]:col-span-1 min-[1000px]:pr-4">
+            <div className="grid grid-cols-2 gap-4 min-[1000px]:grid-cols-1 min-[1000px]:gap-0">
+              <div>
+                <img src={mindwalkerLogoFull} alt="Mindwalker.ai" className="h-6 w-auto object-contain" loading="lazy" />
+                <p className="mt-3 text-[0.75rem] text-[#5f6d7c]">2026 Mindwalker.ai | All reserved</p>
+                <div className="mt-4 flex items-center justify-start gap-3 text-[#8b97a6]">
+                  <a href="#" aria-label="Instagram" className="transition-colors hover:text-[#5e6e80]">
+                    <Instagram size={16} />
+                  </a>
+                  <a href="#" aria-label="LinkedIn" className="transition-colors hover:text-[#5e6e80]">
+                    <Linkedin size={16} />
+                  </a>
+                  <a href="#" aria-label="Github" className="transition-colors hover:text-[#5e6e80]">
+                    <Github size={16} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="min-[1000px]:mt-3">
+                <div className="flex items-start gap-2">
+                  <MapPin size={16} className="mt-[2px] shrink-0 text-[#6e7f94]" />
+                  <p className="text-[0.75rem] leading-[1.5] text-[#5f6d7c]">
+                    Komplek Ruko Grand Centro Bintaro
+                    <br />
+                    JL. Raya Kodam bintaro No. A19
+                    <br />
+                    Pesanggrahan, Pesanggrahan
+                    <br />
+                    Jakarta Selatan
+                    <br />
+                    Jakarta 12320
+                    <br />
+                    Indonesia
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
           {footerGroups.slice(1).map((group, groupIndex) => (
-            <section key={`${group.title}-${groupIndex}`} className="text-center sm:text-left">
+            <section
+              key={`${group.title}-${groupIndex}`}
+              className={`col-span-1 text-left ${groupIndex === 0 ? "min-[1000px]:pl-1" : "min-[1000px]:pl-2"}`}
+            >
               <h3 className="text-[0.8rem] font-semibold text-[#3f546a]">{group.title}</h3>
-              <ul className="mt-2 list-none space-y-1.5">
-                {group.items.map((item, itemIndex) => (
-                  <li key={`${item}-${itemIndex}`} className="text-[0.72rem] leading-[1.45] text-[#7f8ea1]">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                  <ul className="mt-2 list-none space-y-1.5">
+                    {group.items.map((item, itemIndex) => (
+                      <li key={`${item.label}-${itemIndex}`} className="text-[0.72rem] leading-[1.45]">
+                        <a
+                          href={item.href}
+                          className="inline-block border-b border-transparent text-[#7f8ea1] transition-colors duration-200 hover:border-[#2490ef] hover:text-[#2490ef]"
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
             </section>
           ))}
         </div>

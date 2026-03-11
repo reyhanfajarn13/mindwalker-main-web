@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "../lib/utils";
 import { useTranslation } from "react-i18next";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Menu } from "lucide-react";
 import { US, ID } from "country-flag-icons/react/3x2";
 
 const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
+const mindwalkerLogoPhone = '/assets/logo/mindwalker_logo_full.png';
 
 const navItems = [
   { key: "home", target: "home", activeFor: ["home"] },
@@ -19,9 +20,10 @@ type NavbarProps = {
   className?: string;
   activeSection?: string;
   onNavigate?: (targetId: string) => void;
+  onGoRoot?: () => void;
 };
 
-export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
+export function Navbar({ className, activeSection, onNavigate, onGoRoot }: NavbarProps) {
   const { t, i18n } = useTranslation();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -58,10 +60,15 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
 
   return (
     <div className={cn("relative", className)}>
-      <header className="relative mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.7)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] backdrop-blur-md shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[551px]:flex">
-        <div className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]">
+      <header className="relative mx-auto hidden w-[min(1220px,calc(100vw-1rem))] items-center justify-between gap-3 rounded-full bg-[rgba(246,248,251,0.7)] px-[0.7rem] py-[0.42rem] text-[#1d2e40] backdrop-blur-md shadow-[0_6px_18px_rgba(0,0,0,0.16)] min-[1001px]:flex">
+        <button
+          type="button"
+          aria-label="Go to home"
+          onClick={onGoRoot}
+          className="grid h-7 w-7 place-items-center rounded-full bg-[linear-gradient(160deg,#ffffff,#dce5ee)]"
+        >
           <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" loading="lazy" />
-        </div>
+        </button>
         <nav className="pointer-events-none absolute left-1/2 -translate-x-1/2 px-1">
           <ul className="pointer-events-auto m-0 flex list-none items-center justify-center gap-1.5 p-0">
             {navItems.map((item) => {
@@ -144,18 +151,35 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
         </div>
       </header>
 
-      <div className="min-[551px]:hidden" ref={mobileMenuRef}>
-        <button
-          type="button"
-          aria-label="Open mobile menu"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          className="grid h-16 w-16 place-items-center rounded-full bg-white shadow-[0_14px_30px_rgba(0,0,0,0.28)]"
-        >
-          <span className="flex flex-col gap-[0.42rem]">
-            <span className="h-[0.16rem] w-9 rounded-full bg-[#1f2b38]" />
-            <span className="h-[0.16rem] w-9 rounded-full bg-[#1f2b38]" />
-          </span>
-        </button>
+      <div className="min-[1001px]:hidden" ref={mobileMenuRef}>
+        <div className="mx-auto flex w-[min(1120px,calc(100vw-1.6rem))] items-center justify-between rounded-2xl sm:w-[min(1120px,calc(100vw-2rem))]">
+          <div className="inline-flex items-center gap-2 rounded-2xl border border-[rgba(24,42,64,0.08)] bg-[rgba(255,255,255,0.9)] px-[0.7rem] py-2 text-[#111c2b] shadow-[0_6px_16px_rgba(15,27,42,0.12)]">
+            <button
+              type="button"
+              aria-label="Open mobile menu"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="grid h-7 w-7 place-items-center rounded-xl bg-[rgba(243,246,251,0.95)]"
+            >
+              <Menu size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Go to home"
+              onClick={onGoRoot}
+              className="inline-flex items-center"
+            >
+              <img src={mindwalkerLogo} alt="Mindwalker logo" className="h-5 w-5 object-contain" loading="lazy" />
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleContactClick}
+            className="cursor-pointer whitespace-nowrap rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-[1.05rem] py-[0.52rem] text-[0.82rem] font-bold text-white"
+          >
+            {t("nav.contactUs")}
+          </button>
+        </div>
 
         <AnimatePresence>
           {isMobileMenuOpen ? (
@@ -164,7 +188,7 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute right-0 top-[calc(100%+0.7rem)] z-[180] w-[min(320px,calc(100vw-1.4rem))] overflow-hidden rounded-3xl border border-[rgba(255,255,255,0.26)] bg-[rgba(246,248,251,0.98)] p-3 shadow-[0_20px_45px_rgba(0,0,0,0.28)]"
+              className="absolute left-1/2 top-[calc(100%+0.55rem)] z-[180] w-[min(1120px,calc(100vw-1.6rem))] -translate-x-1/2 overflow-hidden rounded-3xl border border-[rgba(255,255,255,0.26)] bg-[rgba(246,248,251,0.98)] p-3 shadow-[0_20px_45px_rgba(0,0,0,0.28)] sm:w-[min(1120px,calc(100vw-2rem))]"
             >
               <div className="grid gap-1.5">
                 {navItems.map((item) => {
@@ -210,14 +234,6 @@ export function Navbar({ className, activeSection, onNavigate }: NavbarProps) {
                   ENG
                 </button>
               </div>
-
-              <button
-                className="mt-3 w-full rounded-2xl border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-4 py-2.5 text-[0.88rem] font-bold text-white"
-                type="button"
-                onClick={handleContactClick}
-              >
-                {t("nav.contactUs")}
-              </button>
             </motion.div>
           ) : null}
         </AnimatePresence>

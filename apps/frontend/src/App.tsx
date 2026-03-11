@@ -74,13 +74,16 @@ function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPage(getPageFromPathname(window.location.pathname));
+      const nextPage = getPageFromPathname(window.location.pathname);
+      setCurrentPage(nextPage);
       setSelectedNewsId(getNewsIdFromPathname(window.location.pathname));
       setSelectedProductSlug(getProductSlugFromPathname(window.location.pathname));
-      if (getPageFromPathname(window.location.pathname) === "news") {
+      if (nextPage === "news") {
         setActiveSection("news");
-      } else if (getPageFromPathname(window.location.pathname) === "product") {
+      } else if (nextPage === "product") {
         setActiveSection("product");
+      } else {
+        setActiveSection("home");
       }
     };
 
@@ -278,7 +281,7 @@ function App() {
     if (currentPage !== "main") {
       pendingTargetRef.current = targetId;
       if (window.location.pathname !== "/") {
-        window.history.pushState({}, "", "/");
+        window.history.replaceState({}, "", "/");
       }
       setCurrentPage("main");
       setSelectedNewsId(null);
@@ -299,6 +302,32 @@ function App() {
     });
   }, [currentPage]);
 
+  useEffect(() => {
+    if (currentPage !== "main") return;
+
+    const hashTarget = window.location.hash.replace("#", "");
+    if (!hashTarget) return;
+
+    let attempts = 0;
+    const maxAttempts = 30;
+
+    const tryScrollToHash = () => {
+      const scrollRoot = scrollRootRef.current;
+      const targetSection = scrollRoot?.querySelector<HTMLElement>(`#${hashTarget}`);
+
+      if (targetSection) {
+        scrollToSection(hashTarget);
+        return;
+      }
+
+      if (attempts >= maxAttempts) return;
+      attempts += 1;
+      window.setTimeout(tryScrollToHash, 80);
+    };
+
+    tryScrollToHash();
+  }, [currentPage]);
+
   const handleOpenNewsDetails = (id: number) => {
     if (window.location.pathname !== `/news/${id}`) {
       window.history.pushState({}, "", `/news/${id}`);
@@ -317,6 +346,9 @@ function App() {
 
   const handleOpenProductDetails = (slug: string) => {
     const targetPath = `/product/${encodeURIComponent(slug)}`;
+    if (window.location.pathname !== "/" && window.location.pathname !== targetPath) {
+      window.history.replaceState({}, "", "/");
+    }
     if (window.location.pathname !== targetPath) {
       window.history.pushState({}, "", targetPath);
     }
@@ -328,6 +360,24 @@ function App() {
 
     const scrollRoot = scrollRootRef.current;
     if (scrollRoot) {
+      scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleGoRoot = () => {
+    pendingTargetRef.current = "home";
+
+    if (window.location.pathname !== "/" || window.location.search || window.location.hash) {
+      window.history.replaceState({}, "", "/");
+    }
+
+    setCurrentPage("main");
+    setSelectedNewsId(null);
+    setSelectedProductSlug(null);
+    setActiveSection("home");
+
+    const scrollRoot = scrollRootRef.current;
+    if (scrollRoot && currentPage === "main") {
       scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -355,6 +405,7 @@ function App() {
           <Navbar
             activeSection={currentPage === "news" ? "news" : currentPage === "product" ? "product" : activeSection}
             onNavigate={handleNavbarNavigate}
+            onGoRoot={handleGoRoot}
           />
         </motion.div>
       </div>

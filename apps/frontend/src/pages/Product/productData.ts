@@ -18,6 +18,8 @@ export type ProductItem = {
   description: string;
   imageUrl: string;
   imageDetailsUrl: string;
+  datasheetPdfUrl?: string;
+  brocurePDFUrl?: string;
   heroDescription: string;
   demoLabel: string;
   featureHeading: string;
@@ -37,6 +39,8 @@ export const productData: ProductItem[] = [
     description: "From monitoring to resolution, IT operations must move with intelligence.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.webp?updatedAt=1772427231020",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.webp?updatedAt=1772427038224",
+    datasheetPdfUrl: "/assets/datasheets/mindops-datasheet.pdf",
+    brocurePDFUrl: "/assets/brocure/mindops-product-overview.pdf",
     heroDescription:
       "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
     demoLabel: "Explore Demo",
@@ -106,6 +110,8 @@ export const productData: ProductItem[] = [
     description: "Detect risks early and orchestrate faster response across security workflows.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.webp?updatedAt=1772427230996",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.webp?updatedAt=1772427230829",
+    datasheetPdfUrl: "/assets/datasheets/mindsoc-datasheet.pdf",
+    brocurePDFUrl: "/assets/brocure/mindsoc-product-overview.pdf",
     heroDescription:
       "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
     demoLabel: "Explore Demo",
@@ -172,6 +178,8 @@ export const productData: ProductItem[] = [
     description: "Gateway keamanan LLM untuk memvalidasi prompt input dan output model secara real-time.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productsection%20(3).webp",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productDetails%20(1).webp",
+    datasheetPdfUrl: "/assets/datasheets/mindgateway-datasheet.pdf",
+    brocurePDFUrl: "/assets/brocure/mindgateway-datasheet.pdf",
     heroDescription:
       "MindGateway adalah tools LLM Firewall untuk inspeksi input prompting dan output model, mendukung multimodal LLM, serta rule-based policy di level global, department, dan team pada lingkungan enterprise.",
     demoLabel: "Explore Demo",
@@ -241,6 +249,8 @@ export const productData: ProductItem[] = [
     description: "Build insight pipelines that turn data signals into real operational impact.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173",
     imageDetailsUrl: visioncraftbasePict,
+    datasheetPdfUrl: "/assets/datasheets/visioncraft-datasheet.pdf",
+    brocurePDFUrl: "/assets/brocure/visioncraft-product-overview.pdf",
     heroDescription:
       "Platform AI multimodal yang mengubah ide menjadi visualisasi dan automasi konten secara cepat untuk kebutuhan enterprise.",
     demoLabel: "Explore Demo",

@@ -1,7 +1,9 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   BellRing,
+  Download,
   FileCheck2,
+  FileText,
   Lightbulb,
   Plus,
   Radar,
@@ -10,7 +12,8 @@ import {
   ShieldCheck,
   Sparkles,
   UsersRound,
-  Workflow
+  Workflow,
+  X
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
@@ -29,6 +32,30 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
   const { t } = useTranslation();
   const product = useMemo(() => getLocalizedProductBySlug(productSlug, t), [productSlug, t]);
   const [openBenefitIndex, setOpenBenefitIndex] = useState(0);
+  const [pdfViewerType, setPdfViewerType] = useState<"datasheet" | "brocure" | null>(null);
+  const isPdfViewerOpen = pdfViewerType !== null;
+  const activePdfUrl =
+    pdfViewerType === "brocure" ? product?.brocurePDFUrl : product?.datasheetPdfUrl;
+  const activePdfLabel = pdfViewerType === "brocure" ? "Product Brochure" : "Product Datasheet";
+
+  useEffect(() => {
+    if (!isPdfViewerOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setPdfViewerType(null);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [isPdfViewerOpen]);
 
   if (!product) {
     return (
@@ -42,6 +69,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
   }
 
   void onOpenNewsDetails;
+  void onOpenDemo;
   const featureIcons = useMemo(() => {
     if (product.slug === "mind-ops") {
       return [BellRing, SearchCheck, Lightbulb, UsersRound];
@@ -83,14 +111,10 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
             </p>
             <button
               type="button"
-              onClick={() => {
-                if (product.slug === "visioncraft") {
-                  onOpenDemo?.();
-                }
-              }}
+              onClick={() => setPdfViewerType(product.brocurePDFUrl ? "brocure" : null)}
               className="mt-6 inline-flex items-center rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-7 py-2.5 text-[0.95rem] font-semibold text-white shadow-[0_10px_28px_rgba(23,122,217,0.35)]"
             >
-              {product.demoLabel}
+              Product Overview
             </button>
           </div>
 
@@ -139,14 +163,23 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
           </p>
 
           <div data-scroll-fade className="mt-8 grid items-stretch gap-6 lg:grid-cols-[1fr_280px] lg:gap-8">
-            <div className="group overflow-hidden rounded-3xl">
+            <button
+              type="button"
+              onClick={() => setPdfViewerType(product.datasheetPdfUrl ? "datasheet" : null)}
+              className="group relative overflow-hidden rounded-3xl text-left"
+            >
               <img
                 src={product.imageDetailsUrl}
                 alt={product.title}
                 className="h-[clamp(280px,56vh,74vh)] w-full object-cover min-[1000px]:grayscale transition-[filter] duration-500 ease-out min-[1000px]:group-hover:grayscale-0"
                 loading="lazy"
               />
-            </div>
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(3,10,20,0.58)_0%,rgba(3,10,20,0.08)_50%,rgba(3,10,20,0)_100%)]" />
+              <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-[rgba(10,20,36,0.72)] px-4 py-2 text-[0.82rem] font-semibold text-white backdrop-blur-sm">
+                <FileText size={16} />
+                View Datasheet PDF
+              </div>
+            </button>
             <div className="grid h-full content-between gap-4 py-2">
               {product.featurePoints.map((point, index) => {
                 const Icon = featureIcons[index % featureIcons.length];
@@ -257,6 +290,55 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
       <div className="[&_footer]:min-h-0 [&_footer]:snap-none [&_footer]:items-start [&_footer>div]:pt-0 [&_footer>div]:lg:min-h-0 [&_footer>div]:lg:grid-rows-[auto]">
         <FooterSection />
       </div>
+
+      {isPdfViewerOpen && activePdfUrl ? (
+        <div
+          className="fixed inset-0 z-[220] grid place-items-center bg-[rgba(6,12,20,0.72)] p-4 backdrop-blur-[2px] sm:p-6"
+          onClick={() => setPdfViewerType(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${product.title} PDF viewer`}
+        >
+          <div
+            className="relative flex h-[min(92vh,980px)] w-[min(1200px,100%)] flex-col overflow-hidden rounded-2xl border border-[rgba(183,197,216,0.55)] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.38)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-[#d7deea] px-4 py-3 sm:px-5">
+              <div className="min-w-0">
+                  <p className="line-clamp-1 text-[0.8rem] text-[#6b7c92]">{activePdfLabel}</p>
+                <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#1d2c3f]">{product.title}</h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={activePdfUrl}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-3 py-2 text-[0.8rem] font-semibold text-white"
+                >
+                  <Download size={14} />
+                  Download
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPdfViewerType(null)}
+                  className="grid h-9 w-9 place-items-center rounded-full bg-[#eef2f8] text-[#3d4b5e] transition-colors hover:bg-[#dfe7f2]"
+                  aria-label="Close datasheet"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            </div>
+            <div className="h-full min-h-0 bg-[#eff2f6] p-2 sm:p-3">
+              <iframe
+                src={`${activePdfUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`}
+                title={`${product.title} PDF`}
+                className="h-full w-full rounded-lg border border-[#d6dee9] bg-white"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

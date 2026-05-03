@@ -22,6 +22,7 @@ export interface FaultyTerminalProps extends React.HTMLAttributes<HTMLDivElement
   dpr?: number;
   pageLoadAnimation?: boolean;
   brightness?: number;
+  maxFps?: number;
 }
 
 const vertexShader = `
@@ -260,6 +261,7 @@ export default function FaultyTerminal({
   dpr = Math.min(window.devicePixelRatio || 1, 2),
   pageLoadAnimation = true,
   brightness = 1,
+  maxFps = 36,
   className,
   style,
   ...rest
@@ -273,6 +275,9 @@ export default function FaultyTerminal({
   const rafRef = useRef<number>(0);
   const loadAnimationStartRef = useRef<number>(0);
   const timeOffsetRef = useRef<number>(Math.random() * 100);
+  const lastRenderAtRef = useRef<number>(0);
+  const isDocumentVisibleRef = useRef<boolean>(true);
+  const isInViewportRef = useRef<boolean>(true);
 
   const tintVec = useMemo(() => hexToRgb(tint), [tint]);
 
@@ -346,8 +351,36 @@ export default function FaultyTerminal({
     resizeObserver.observe(ctn);
     resize();
 
+    const handleVisibilityChange = () => {
+      isDocumentVisibleRef.current = !document.hidden;
+    };
+    handleVisibilityChange();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    const viewportObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        isInViewportRef.current = entry.isIntersecting && entry.intersectionRatio > 0;
+      },
+      { threshold: 0.01 }
+    );
+    viewportObserver.observe(ctn);
+
     const update = (t: number) => {
       rafRef.current = requestAnimationFrame(update);
+
+      if (!isDocumentVisibleRef.current || !isInViewportRef.current) {
+        return;
+      }
+
+      if (maxFps > 0) {
+        const minFrameDuration = 1000 / maxFps;
+        if (t - lastRenderAtRef.current < minFrameDuration) {
+          return;
+        }
+        lastRenderAtRef.current = t;
+      }
 
       if (pageLoadAnimation && loadAnimationStartRef.current === 0) {
         loadAnimationStartRef.current = t;
@@ -390,11 +423,14 @@ export default function FaultyTerminal({
     return () => {
       cancelAnimationFrame(rafRef.current);
       resizeObserver.disconnect();
+      viewportObserver.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (mouseReact) ctn.removeEventListener('mousemove', handleMouseMove);
       if (gl.canvas.parentElement === ctn) ctn.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       loadAnimationStartRef.current = 0;
       timeOffsetRef.current = Math.random() * 100;
+      lastRenderAtRef.current = 0;
     };
   }, [
     dpr,
@@ -415,6 +451,7 @@ export default function FaultyTerminal({
     mouseStrength,
     pageLoadAnimation,
     brightness,
+    maxFps,
     handleMouseMove
   ]);
 

@@ -136,6 +136,8 @@ export function HeroSection({
           tint="#464646"
           mouseReact
           mouseStrength={0.5}
+          dpr={1.35}
+          maxFps={36}
           pageLoadAnimation
           brightness={0.5}
         />

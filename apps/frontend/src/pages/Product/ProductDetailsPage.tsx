@@ -22,9 +22,10 @@ const heroDetailsBackground = "https://ik.imagekit.io/mindwalker/public/assets/h
 type ProductDetailsPageProps = {
   productSlug: string;
   onOpenNewsDetails?: (id: number) => void;
+  onOpenDemo?: () => void;
 };
 
-export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDetailsPageProps) {
+export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo }: ProductDetailsPageProps) {
   const { t } = useTranslation();
   const product = useMemo(() => getLocalizedProductBySlug(productSlug, t), [productSlug, t]);
   const [openBenefitIndex, setOpenBenefitIndex] = useState(0);
@@ -82,6 +83,11 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails }: ProductDe
             </p>
             <button
               type="button"
+              onClick={() => {
+                if (product.slug === "visioncraft") {
+                  onOpenDemo?.();
+                }
+              }}
               className="mt-6 inline-flex items-center rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-7 py-2.5 text-[0.95rem] font-semibold text-white shadow-[0_10px_28px_rgba(23,122,217,0.35)]"
             >
               {product.demoLabel}

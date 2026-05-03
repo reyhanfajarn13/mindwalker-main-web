@@ -27,6 +27,9 @@ const NewsDetailsPage = lazy(() =>
 const ProductDetailsPage = lazy(() =>
   import("./pages/Product/ProductDetailsPage").then((module) => ({ default: module.ProductDetailsPage }))
 );
+const VisionCraftDemo = lazy(() =>
+  import("./pages/Product/demo/visionCraftDemo").then((module) => ({ default: module.VisionCraftDemo }))
+);
 
 function SectionFallback() {
   return <div className="min-h-[48vh] w-full bg-transparent" />;
@@ -58,19 +61,43 @@ function App() {
   const scrollRootRef = useRef<HTMLElement | null>(null);
   const pendingTargetRef = useRef<string | null>(null);
   const lastScrollTopRef = useRef(0);
+  const latestScrollTopRef = useRef(0);
+  const scrollRafRef = useRef<number | null>(null);
   const idleTimerRef = useRef<number | null>(null);
-  const sectionRatiosRef = useRef<Record<string, number>>({});
+  const isNavbarVisibleRef = useRef(true);
+  const activeSectionRef = useRef("home");
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
   const [currentPage, setCurrentPage] = useState<"main" | "news" | "product">(() =>
     getPageFromPathname(window.location.pathname)
   );
+  const [isVisionCraftDemoOpen, setIsVisionCraftDemoOpen] = useState(false);
   const [selectedNewsId, setSelectedNewsId] = useState<number | null>(() =>
     getNewsIdFromPathname(window.location.pathname)
   );
   const [selectedProductSlug, setSelectedProductSlug] = useState<string | null>(() =>
     getProductSlugFromPathname(window.location.pathname)
   );
+
+  const setNavbarVisibility = (visible: boolean) => {
+    if (isNavbarVisibleRef.current === visible) return;
+    isNavbarVisibleRef.current = visible;
+    setIsNavbarVisible(visible);
+  };
+
+  const setActiveSectionSafe = (sectionId: string) => {
+    if (activeSectionRef.current === sectionId) return;
+    activeSectionRef.current = sectionId;
+    setActiveSection(sectionId);
+  };
+
+  useEffect(() => {
+    isNavbarVisibleRef.current = isNavbarVisible;
+  }, [isNavbarVisible]);
+
+  useEffect(() => {
+    activeSectionRef.current = activeSection;
+  }, [activeSection]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -79,16 +106,69 @@ function App() {
       setSelectedNewsId(getNewsIdFromPathname(window.location.pathname));
       setSelectedProductSlug(getProductSlugFromPathname(window.location.pathname));
       if (nextPage === "news") {
-        setActiveSection("news");
+        setActiveSectionSafe("news");
       } else if (nextPage === "product") {
-        setActiveSection("product");
+        setActiveSectionSafe("product");
       } else {
-        setActiveSection("home");
+        setActiveSectionSafe("home");
       }
+      setIsVisionCraftDemoOpen(false);
     };
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const scrollRoot = scrollRootRef.current;
+    if (!scrollRoot) return;
+
+    const scheduleIdleReveal = () => {
+      if (idleTimerRef.current !== null) window.clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = window.setTimeout(() => {
+        setNavbarVisibility(true);
+      }, 500);
+    };
+
+    const processScroll = () => {
+      scrollRafRef.current = null;
+
+      const currentTop = latestScrollTopRef.current;
+      const previousTop = lastScrollTopRef.current;
+      const delta = currentTop - previousTop;
+
+      if (Math.abs(delta) >= 4) {
+        if (delta > 0) {
+          setNavbarVisibility(true);
+        } else {
+          setNavbarVisibility(false);
+        }
+
+        lastScrollTopRef.current = currentTop;
+      }
+
+      scheduleIdleReveal();
+    };
+
+    latestScrollTopRef.current = scrollRoot.scrollTop;
+    lastScrollTopRef.current = latestScrollTopRef.current;
+    scheduleIdleReveal();
+
+    const handleScroll = () => {
+      latestScrollTopRef.current = scrollRoot.scrollTop;
+      if (scrollRafRef.current !== null) return;
+      scrollRafRef.current = window.requestAnimationFrame(processScroll);
+    };
+
+    scrollRoot.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      scrollRoot.removeEventListener("scroll", handleScroll);
+      if (scrollRafRef.current !== null) {
+        window.cancelAnimationFrame(scrollRafRef.current);
+        scrollRafRef.current = null;
+      }
+      if (idleTimerRef.current !== null) window.clearTimeout(idleTimerRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -97,95 +177,10 @@ function App() {
     const scrollRoot = scrollRootRef.current;
     if (!scrollRoot) return;
 
-    const sections = Array.from(
+    const sectionRatios: Record<string, number> = {};
+    const trackTargets = Array.from(
       scrollRoot.querySelectorAll<HTMLElement>("section, footer")
     );
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const sectionId = (entry.target as HTMLElement).id;
-          if (entry.isIntersecting) {
-            if (sectionId) {
-              sectionRatiosRef.current[sectionId] = entry.intersectionRatio;
-            }
-          } else if (sectionId) {
-            sectionRatiosRef.current[sectionId] = 0;
-          }
-        });
-
-        const topSection = Object.entries(sectionRatiosRef.current).reduce<{
-          id: string;
-          ratio: number;
-        }>(
-          (best, [id, ratio]) => (ratio > best.ratio ? { id, ratio } : best),
-          { id: "home", ratio: 0 }
-        );
-
-        if (topSection.id) {
-          setActiveSection(topSection.id);
-        }
-      },
-      {
-        root: scrollRoot,
-        threshold: [0.35, 0.5, 0.75]
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      observer.disconnect();
-      sectionRatiosRef.current = {};
-    };
-  }, [currentPage]);
-
-  useEffect(() => {
-    const scrollRoot = scrollRootRef.current;
-    if (!scrollRoot) return;
-
-    const scheduleIdleReveal = () => {
-      if (idleTimerRef.current !== null) {
-        window.clearTimeout(idleTimerRef.current);
-      }
-      idleTimerRef.current = window.setTimeout(() => {
-        setIsNavbarVisible(true);
-      }, 500);
-    };
-
-    scheduleIdleReveal();
-
-    const handleScroll = () => {
-      const currentTop = scrollRoot.scrollTop;
-      const previousTop = lastScrollTopRef.current;
-      const delta = currentTop - previousTop;
-
-      scheduleIdleReveal();
-
-      if (Math.abs(delta) < 4) return;
-
-      if (delta > 0) {
-        setIsNavbarVisible(true);
-      } else {
-        setIsNavbarVisible(false);
-      }
-
-      lastScrollTopRef.current = currentTop;
-    };
-
-    scrollRoot.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      scrollRoot.removeEventListener("scroll", handleScroll);
-      if (idleTimerRef.current !== null) {
-        window.clearTimeout(idleTimerRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const scrollRoot = scrollRootRef.current;
-    if (!scrollRoot) return;
-
     const fadeTargets = Array.from(
       new Set(
         Array.from(
@@ -193,6 +188,9 @@ function App() {
         )
       )
     ).filter((el) => el.id !== "home");
+    const fadeTargetSet = new Set(fadeTargets);
+    const trackTargetSet = new Set(trackTargets);
+    const observerTargets = new Set<HTMLElement>([...trackTargets, ...fadeTargets]);
 
     const staggerNodes: HTMLElement[] = [];
     fadeTargets.forEach((el) => el.classList.add("scroll-fade-in"));
@@ -218,22 +216,45 @@ function App() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        let shouldRecomputeTopSection = false;
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const sectionId = target.id;
+
+          if (trackTargetSet.has(target) && sectionId) {
+            sectionRatios[sectionId] = entry.isIntersecting ? entry.intersectionRatio : 0;
+            shouldRecomputeTopSection = true;
+          }
+
+          if (fadeTargetSet.has(target) && entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
+            observer.unobserve(entry.target);
           }
         });
+
+        if (!shouldRecomputeTopSection) return;
+
+        const topSection = Object.entries(sectionRatios).reduce<{
+          id: string;
+          ratio: number;
+        }>(
+          (best, [id, ratio]) => (ratio > best.ratio ? { id, ratio } : best),
+          { id: "home", ratio: 0 }
+        );
+
+        if (topSection.id) {
+          setActiveSectionSafe(topSection.id);
+        }
       },
       {
         root: scrollRoot,
-        threshold: 0.3,
+        threshold: [0.3, 0.35, 0.5, 0.75],
         rootMargin: "0px 0px -15% 0px"
       }
     );
 
-    fadeTargets.forEach((el) => observer.observe(el));
+    observerTargets.forEach((el) => observer.observe(el));
 
     return () => {
       observer.disconnect();
@@ -255,7 +276,7 @@ function App() {
     const targetSection = scrollRoot.querySelector<HTMLElement>(`#${targetId}`);
     if (!targetSection) return;
 
-    setActiveSection(targetId);
+    setActiveSectionSafe(targetId);
     scrollRoot.scrollTo({
       top: targetSection.offsetTop,
       behavior: "smooth"
@@ -270,7 +291,7 @@ function App() {
       setCurrentPage("news");
       setSelectedNewsId(null);
       setSelectedProductSlug(null);
-      setActiveSection("news");
+      setActiveSectionSafe("news");
       const scrollRoot = scrollRootRef.current;
       if (scrollRoot) {
         scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
@@ -336,7 +357,7 @@ function App() {
     setCurrentPage("news");
     setSelectedNewsId(id);
     setSelectedProductSlug(null);
-    setActiveSection("news");
+    setActiveSectionSafe("news");
 
     const scrollRoot = scrollRootRef.current;
     if (scrollRoot) {
@@ -356,12 +377,20 @@ function App() {
     setCurrentPage("product");
     setSelectedProductSlug(slug);
     setSelectedNewsId(null);
-    setActiveSection("product");
+    setActiveSectionSafe("product");
 
     const scrollRoot = scrollRootRef.current;
     if (scrollRoot) {
       scrollRoot.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  const handleOpenVisionCraftDemo = () => {
+    setIsVisionCraftDemoOpen(true);
+  };
+
+  const handleCloseVisionCraftDemo = () => {
+    setIsVisionCraftDemoOpen(false);
   };
 
   const handleGoRoot = () => {
@@ -374,7 +403,7 @@ function App() {
     setCurrentPage("main");
     setSelectedNewsId(null);
     setSelectedProductSlug(null);
-    setActiveSection("home");
+    setActiveSectionSafe("home");
 
     const scrollRoot = scrollRootRef.current;
     if (scrollRoot && currentPage === "main") {
@@ -427,6 +456,7 @@ function App() {
               <ProductDetailsPage
                 productSlug={selectedProductSlug}
                 onOpenNewsDetails={handleOpenNewsDetails}
+                onOpenDemo={handleOpenVisionCraftDemo}
               />
             ) : null}
           </Suspense>
@@ -442,6 +472,11 @@ function App() {
           </>
         )}
       </main>
+      {currentPage === "product" && selectedProductSlug === "visioncraft" && isVisionCraftDemoOpen ? (
+        <Suspense fallback={null}>
+          <VisionCraftDemo onClose={handleCloseVisionCraftDemo} />
+        </Suspense>
+      ) : null}
       {/*
       <Suspense fallback={null}>
         <FloatingChatbot />

@@ -33,10 +33,21 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
   const product = useMemo(() => getLocalizedProductBySlug(productSlug, t), [productSlug, t]);
   const [openBenefitIndex, setOpenBenefitIndex] = useState(0);
   const [pdfViewerType, setPdfViewerType] = useState<"datasheet" | "brocure" | null>(null);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const isPdfViewerOpen = pdfViewerType !== null;
   const activePdfUrl =
     pdfViewerType === "brocure" ? product?.brocurePDFUrl : product?.datasheetPdfUrl;
   const activePdfLabel = pdfViewerType === "brocure" ? "Product Brochure" : "Product Datasheet";
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 900px), (pointer: coarse)");
+    const syncViewportMode = () => setIsMobileViewport(mediaQuery.matches);
+
+    syncViewportMode();
+    mediaQuery.addEventListener("change", syncViewportMode);
+
+    return () => mediaQuery.removeEventListener("change", syncViewportMode);
+  }, []);
 
   useEffect(() => {
     if (!isPdfViewerOpen) return;
@@ -293,14 +304,18 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
 
       {isPdfViewerOpen && activePdfUrl ? (
         <div
-          className="fixed inset-0 z-[220] grid place-items-center bg-[rgba(6,12,20,0.72)] p-4 backdrop-blur-[2px] sm:p-6"
+          className="fixed inset-0 z-[220] grid place-items-center bg-[rgba(6,12,20,0.72)] p-0 backdrop-blur-[2px] sm:p-6"
           onClick={() => setPdfViewerType(null)}
           role="dialog"
           aria-modal="true"
           aria-label={`${product.title} PDF viewer`}
         >
           <div
-            className="relative flex h-[min(92vh,980px)] w-[min(1200px,100%)] flex-col overflow-hidden rounded-2xl border border-[rgba(183,197,216,0.55)] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.38)]"
+            className={`relative flex flex-col overflow-hidden border border-[rgba(183,197,216,0.55)] bg-white shadow-[0_24px_70px_rgba(0,0,0,0.38)] ${
+              isMobileViewport
+                ? "h-[100dvh] w-full rounded-none"
+                : "h-[min(92vh,980px)] w-[min(1200px,100%)] rounded-2xl"
+            }`}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-3 border-b border-[#d7deea] px-4 py-3 sm:px-5">
@@ -309,6 +324,15 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
                 <h3 className="line-clamp-1 text-[1rem] font-semibold text-[#1d2c3f]">{product.title}</h3>
               </div>
               <div className="flex items-center gap-2">
+                <a
+                  href={activePdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#b8c7da] bg-white px-3 py-2 text-[0.78rem] font-semibold text-[#32465e]"
+                >
+                  <FileText size={14} />
+                  Open
+                </a>
                 <a
                   href={activePdfUrl}
                   download
@@ -329,11 +353,14 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
                 </button>
               </div>
             </div>
-            <div className="h-full min-h-0 bg-[#eff2f6] p-2 sm:p-3">
+            <div className="h-full min-h-0 overflow-y-auto bg-[#eff2f6] p-2 sm:p-3" style={{ WebkitOverflowScrolling: "touch" }}>
               <iframe
-                src={`${activePdfUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`}
+                src={`${activePdfUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH&zoom=page-width`}
                 title={`${product.title} PDF`}
-                className="h-full w-full rounded-lg border border-[#d6dee9] bg-white"
+                className={`w-full rounded-lg border border-[#d6dee9] bg-white ${
+                  isMobileViewport ? "h-[calc(100dvh-10rem)] min-h-[70dvh]" : "h-full"
+                }`}
+                scrolling="yes"
               />
             </div>
           </div>

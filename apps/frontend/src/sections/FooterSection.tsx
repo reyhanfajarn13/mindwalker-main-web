@@ -250,17 +250,7 @@ export function FooterSection() {
                 <div className="flex items-start gap-2">
                   <MapPin size={16} className="mt-[2px] shrink-0 text-[#6e7f94]" />
                   <p className="text-[0.75rem] leading-[1.5] text-[#5f6d7c]">
-                    Komplek Ruko Grand Centro Bintaro
-                    <br />
-                    JL. Raya Kodam bintaro No. A19
-                    <br />
-                    Pesanggrahan, Pesanggrahan
-                    <br />
-                    Jakarta Selatan
-                    <br />
-                    Jakarta 12320
-                    <br />
-                    Indonesia
+                    Grand Centro Bintaro
                   </p>
                 </div>
               </div>

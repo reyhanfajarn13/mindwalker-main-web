@@ -22,6 +22,17 @@ const resources = {
         impact: "Dampak",
         partOf: "Bagian dari",
         partner: "NVIDIA Inception Program",
+        description:
+          "Kami membangun solusi cerdas yang menghubungkan data, sistem, dan alur kerja Anda. Mengubah kompleksitas enterprise menjadi keputusan yang lebih otomatis, operasional yang scalable, dan nilai bisnis yang terukur.",
+        stats: [
+          { value: "5", label: "produk, bisa dipakai terpisah" },
+          { value: "2", label: "jalur custom solution" },
+          { value: "6", label: "industri dengan use case siap pakai" },
+          { value: "0", label: "sistem existing yang harus dibongkar" }
+        ],
+        partnership: {
+          kicker: "Standar & Kemitraan"
+        },
         slides: {
           news: "Rilis",
           update: "Update AI",
@@ -39,17 +50,22 @@ const resources = {
       },
       product: {
         kicker: "Produk",
-        title: "Produk yang menyelesaikan tantangan bisnis terberat Anda.",
+        title: "Temukan produknya. Rasakan solusinya.",
+        description:
+          "Eksplor berbagai solusi digital dalam satu platform. Pilih produk yang sesuai kebutuhan Anda dan lihat bagaimana teknologi AI bekerja untuk bisnis Anda.",
         learnMore: "Selengkapnya",
+        bookDemo: "Book demo",
+        viewDetails: "Detail produk",
+        screenshotUnavailable: "Screenshot belum tersedia",
         cards: {
           ops: {
-            title: "Mind Ops",
+            title: "MindOps",
             label: "Operasional Sistem",
             description:
               "Pantau infrastruktur real-time, prioritaskan insiden kritikal, dan percepat resolusi operasional TI."
           },
           sec: {
-            title: "Mind Sec",
+            title: "MindSOC",
             label: "Analisis Ancaman",
             description:
               "Deteksi ancaman lebih dini, korelasikan alert keamanan, dan orkestrasi respons insiden secara terukur."
@@ -69,10 +85,10 @@ const resources = {
         }
       },
       solutions: {
-        kicker: "Solusi",
-        title: "Solusi Inovatif. Dampak Terukur.",
+        kicker: "Solusi Kustom",
+        title: "Sebagian besar yang kami kerjakan dibangun dari nol.",
         description:
-          "Kami memberdayakan organisasi dengan solusi berpikiran maju yang adaptif, skalabel, dan memberi nilai berkelanjutan di dunia digital yang cepat berubah.",
+          "Klien datang dengan masalah yang bentuknya tidak sama dengan produk mana pun, dan kami bangunkan — di atas ModelForge untuk model AI kustom dan AgentForge untuk agent, integrasi, dan otomasi untuk menjadi enterprise system yang utuh.",
         cards: {
           description:
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
@@ -109,6 +125,67 @@ const resources = {
           },
           learnMore: "Selengkapnya",
           back: "Kembali"
+        },
+        process: {
+          kicker: "Cara Kami Mengerjakannya",
+          steps: [
+            {
+              number: "01",
+              title: "Discovery, 1–2 minggu",
+              description:
+                "Kami duduk dengan tim Anda, lihat sistem yang ada, dan pilih satu masalah yang angkanya paling jelas. Keluarannya: ruang lingkup, perkiraan dampak, dan daftar risiko."
+            },
+            {
+              number: "02",
+              title: "Proof of concept, 4–6 minggu",
+              description:
+                "Dibangun di atas data Anda sendiri, bukan demo. Di akhir tahap ini Anda punya angka nyata untuk memutuskan lanjut atau berhenti — tanpa komitmen lanjutan."
+            },
+            {
+              number: "03",
+              title: "Produksi & integrasi",
+              description:
+                "Masuk ke sistem existing lewat konektor, bukan penggantian. Deployment on-premise, private cloud, atau hybrid, mengikuti aturan data Anda."
+            },
+            {
+              number: "04",
+              title: "Serah terima & pendampingan",
+              description:
+                "Dokumentasi, pelatihan tim internal, dan akses ke source code sesuai kesepakatan. Anda tidak terikat pada kami untuk menjalankannya."
+            }
+          ]
+        },
+        differentiators: {
+          kicker: "Yang Kami Bawa ke Setiap Pekerjaan Custom",
+          items: [
+            {
+              number: "01",
+              title: "Rapid Time-to-Value",
+              description:
+                "Mock-up fungsional dikirim dalam 1-2 minggu, bukan kuartal. Anda melihat bentuk nyatanya sebelum memutuskan lanjut."
+            },
+            {
+              number: "02",
+              title: "AI-Agnostic by Design",
+              description:
+                "Tidak terikat pada satu LLM. Kami pilih atau self-host model yang paling cocok untuk tiap pekerjaan, dan bisa diganti tanpa membangun ulang."
+            },
+            {
+              number: "03",
+              title: "On-Premise & Air-Gapped Ready",
+              description:
+                "Cloud, hybrid, atau sepenuhnya air-gapped untuk kedaulatan data. Bisa berjalan tanpa koneksi keluar sama sekali."
+            },
+            {
+              number: "04",
+              title: "AI Products & Custom Development",
+              description:
+                "Platform milik sendiri ditambah bespoke AI build: ModelForge dan AgentForge sebagai fondasi, bagian yang khas untuk Anda dibangun di atasnya."
+            }
+          ],
+          ctaPrefix: "Tertarik untuk konsultasi lebih lanjut? ",
+          ctaLink: "Ceritakan situasinya",
+          ctaSuffix: ""
         }
       },
       industrialUsecases: {
@@ -251,14 +328,15 @@ const resources = {
         },
         products: {
           mindOps: {
-            title: "Mind Ops",
-            label: "Operasional Sistem",
-            description: "From monitoring to resolution, IT operations must move with intelligence.",
+            title: "MindOps",
+            label: "Operasional TI",
+            description:
+              "MindOps adalah platform APM (application performance monitoring) yang didukung AI. MindOps menggabungkan metrics, logs, dan traces dalam satu tampilan agar tim mendapatkan gambaran menyeluruh tentang sistem TI mereka. MindOps memiliki AI agent bernama Mindy yang mendeteksi perilaku tidak wajar dan membantu mengidentifikasi akar masalah pada sistem. MindOps dapat berjalan sebagai platform monitoring lengkap atau berdampingan dengan tools APM yang sudah ada, secara on-premise maupun cloud, sambil menjaga data dan pemrosesan AI tetap berada di dalam jaringan Anda.",
             heroDescription:
-              "Mind Ops membantu tim operasional memonitor insiden secara menyeluruh, menganalisis akar masalah dengan konteks yang lebih jelas, dan menjalankan rekomendasi aksi prioritas agar proses pemulihan layanan berlangsung lebih cepat, konsisten, serta terukur di lingkungan operasional yang kompleks.",
-            featureHeading: "Mind Ops mempercepat keputusan operasional",
+              "MindOps membantu tim operasional memonitor insiden secara menyeluruh, menganalisis akar masalah dengan konteks yang lebih jelas, dan menjalankan rekomendasi aksi prioritas agar proses pemulihan layanan berlangsung lebih cepat, konsisten, serta terukur di lingkungan operasional yang kompleks.",
+            featureHeading: "MindOps mempercepat keputusan operasional",
             featureDescription:
-              "Dari observability hingga incident response, Mind Ops mengurangi waktu investigasi dan meningkatkan reliability layanan.",
+              "Dari observability hingga incident response, MindOps mengurangi waktu investigasi dan meningkatkan reliability layanan.",
             featurePoints: [
               "Prioritisasi Alert",
               "Saran Akar Masalah",
@@ -269,7 +347,7 @@ const resources = {
               {
                 title: "Penurunan Downtime Operasional",
                 description:
-                  "Mind Ops memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas."
+                  "MindOps memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas."
               },
               {
                 title: "Efisiensi Tim Lintas Fungsi",
@@ -309,14 +387,15 @@ const resources = {
             ]
           },
           mindSec: {
-            title: "Mind Sec",
-            label: "Analisis Ancaman",
-            description: "Detect risks early and orchestrate faster response across security workflows.",
+            title: "MindSOC",
+            label: "Keamanan",
+            description:
+              "MindSOC adalah platform keamanan berbasis AI yang mengumpulkan alert dari berbagai sistem keamanan ke dalam satu tempat dan membantu tim memahami potensi serangan. AI-nya secara otomatis menginvestigasi insiden, menghubungkan informasi dari berbagai sumber, dan mengidentifikasi kemungkinan akar masalah. MindSOC dapat mengirimkan hasil investigasi langsung ke sistem ticketing, membantu mengurangi waktu respons, false alarm, dan beban kerja manual, sambil tetap menjaga analis dalam kendali.",
             heroDescription:
-              "Mind Sec memperkuat security operation center melalui deteksi ancaman siber lebih dini, korelasi indikator serangan dari berbagai sumber, serta orkestrasi respons yang terukur sehingga tim keamanan dapat menekan risiko kebocoran data dan mempercepat pengambilan keputusan insiden.",
-            featureHeading: "MindSec, tools pintar berbasis AI untuk deteksi serangan siber",
+              "MindSOC memperkuat security operation center melalui deteksi ancaman siber lebih dini, korelasi indikator serangan dari berbagai sumber, serta orkestrasi respons yang terukur sehingga tim keamanan dapat menekan risiko kebocoran data dan mempercepat pengambilan keputusan insiden.",
+            featureHeading: "MindSOC, tools pintar berbasis AI untuk deteksi serangan siber",
             featureDescription:
-              "MindSec mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
+              "MindSOC mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
             featurePoints: [
               "Korelasi Ancaman",
               "Visibilitas Attack Surface",
@@ -327,7 +406,7 @@ const resources = {
               {
                 title: "Visibilitas Risiko Lebih Menyeluruh",
                 description:
-                  "Mind Sec mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas."
+                  "MindSOC mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas."
               },
               {
                 title: "Kesiapan Audit & Kepatuhan",
@@ -428,8 +507,9 @@ const resources = {
           },
           visioncraft: {
             title: "VisionCraft",
-            label: "Kreativitas Visual AI",
-            description: "Build insight pipelines that turn data signals into real operational impact.",
+            label: "Visual AI",
+            description:
+              "VisionCraft adalah platform AI untuk membuat gambar dan video, menggabungkan berbagai model AI untuk menghasilkan konten visual berkualitas tinggi. Mulai dari menuliskan ide awal dan menyusun storyboard hingga menghasilkan visual dan mengekspor video akhir, VisionCraft menghadirkan satu alur kerja sederhana dari konsep hingga hasil akhir.",
             heroDescription:
               "VisionCraft adalah platform AI multimodal yang membantu organisasi mengubah ide menjadi visual berkualitas tinggi dan automasi konten secara cepat, dengan alur kerja kolaboratif, kontrol brand yang konsisten, serta kesiapan produksi untuk kebutuhan komunikasi enterprise berskala besar.",
             featureHeading: "VisionCraft mengubah ide menjadi realita",
@@ -484,6 +564,42 @@ const resources = {
                   "Membuat video profil perusahaan dan materi marketing yang lebih menarik, konsisten, dan siap publikasi."
               }
             ]
+          },
+          mindGraph: {
+            title: "MindGraph",
+            label: "Data & Konteks",
+            description:
+              "MindGraph adalah AI Graph Intelligence Platform yang melampaui database tradisional, menggabungkan vector database dan graph database untuk memahami bagaimana informasi saling terhubung dan apa maknanya. MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti. MindGraph dapat berjalan berdampingan dengan tools AI dan analitik yang sudah ada atau sebagai platform mandiri, secara on-premise maupun cloud.",
+            heroDescription:
+              "MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti bagi tim data dan analitik.",
+            featureHeading: "MindGraph akan segera hadir",
+            featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
+            featurePoints: ["Fitur akan segera hadir"],
+            enterpriseBenefits: [
+              {
+                title: "Segera Hadir",
+                description: "Detail dampak bisnis MindGraph akan segera diperbarui."
+              }
+            ],
+            useCases: []
+          },
+          mindFlow: {
+            title: "MindFlow",
+            label: "Otomasi",
+            description:
+              "MindFlow adalah platform otomasi proses bisnis AI-native yang membantu perusahaan mendigitalisasi dan mengelola alur kerja mereka dalam satu tempat. Tim dapat menentukan proses bisnis mereka sendiri dan dengan mudah menyesuaikan segala hal mulai dari data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
+            heroDescription:
+              "Tim dapat menentukan proses bisnis mereka sendiri dan menyesuaikan data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
+            featureHeading: "MindFlow akan segera hadir",
+            featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
+            featurePoints: ["Fitur akan segera hadir"],
+            enterpriseBenefits: [
+              {
+                title: "Segera Hadir",
+                description: "Detail dampak bisnis MindFlow akan segera diperbarui."
+              }
+            ],
+            useCases: []
           }
         }
       },
@@ -532,6 +648,17 @@ const resources = {
         impact: "Impact",
         partOf: "Part of",
         partner: "NVIDIA Inception Program",
+        description:
+          "We build intelligent solutions that connect your data, systems, and workflows — turning enterprise complexity into more automated decisions, scalable operations, and measurable business value.",
+        stats: [
+          { value: "5", label: "products, usable standalone" },
+          { value: "2", label: "custom solution tracks" },
+          { value: "6", label: "industries with ready-to-use cases" },
+          { value: "0", label: "existing systems you need to tear down" }
+        ],
+        partnership: {
+          kicker: "Standards & Partnerships"
+        },
         slides: {
           news: "Release",
           update: "Update",
@@ -549,17 +676,22 @@ const resources = {
       },
       product: {
         kicker: "Product",
-        title: "The product that solves your toughest business problems.",
+        title: "Find the product. Feel the solution.",
+        description:
+          "Explore a range of digital solutions in one platform. Pick the product that fits your needs and see how AI technology works for your business.",
         learnMore: "Learn More",
+        bookDemo: "Book demo",
+        viewDetails: "Product details",
+        screenshotUnavailable: "Screenshot not available yet",
         cards: {
           ops: {
-            title: "Mind Ops",
+            title: "MindOps",
             label: "System Operations",
             description:
               "Monitor infrastructure in real time, prioritize critical incidents, and accelerate IT operations resolution."
           },
           sec: {
-            title: "Mind Sec",
+            title: "MindSOC",
             label: "Threat Analysis",
             description:
               "Detect threats earlier, correlate security alerts, and orchestrate incident response with better control."
@@ -579,10 +711,10 @@ const resources = {
         }
       },
       solutions: {
-        kicker: "Solutions",
-        title: "Innovative Solutions. Measurable Impact.",
+        kicker: "Custom Solutions",
+        title: "Most of what we build starts from scratch.",
         description:
-          "We empower organizations with forward-thinking solutions that adapt, scale, and deliver lasting value in a rapidly evolving digital world.",
+          "Clients come to us with problems that don't fit any off-the-shelf product, so we build on top of ModelForge for custom AI models and AgentForge for agents, integration, and automation — into one complete enterprise system.",
         cards: {
           description:
             "Lorem ipsum dolor sit amet consectetur. Nibh quam faucibus senectus at laoreet lacus velit. Gravida vitae tristique eget id pellentesque eu etiam pharetra scelerisque.",
@@ -619,6 +751,67 @@ const resources = {
           },
           learnMore: "Learn More",
           back: "Back"
+        },
+        process: {
+          kicker: "How We Work",
+          steps: [
+            {
+              number: "01",
+              title: "Discovery, 1–2 weeks",
+              description:
+                "We sit down with your team, review the existing system, and pick one problem with the clearest numbers. Output: scope, impact estimate, and risk list."
+            },
+            {
+              number: "02",
+              title: "Proof of concept, 4–6 weeks",
+              description:
+                "Built on your own data, not a demo. By the end of this phase you have real numbers to decide whether to continue — with no further commitment."
+            },
+            {
+              number: "03",
+              title: "Production & integration",
+              description:
+                "Plugs into your existing systems through connectors, not a replacement. Deployed on-premise, private cloud, or hybrid, following your data rules."
+            },
+            {
+              number: "04",
+              title: "Handover & support",
+              description:
+                "Documentation, internal team training, and source code access as agreed. You're not locked into us to keep it running."
+            }
+          ]
+        },
+        differentiators: {
+          kicker: "What We Bring to Every Custom Engagement",
+          items: [
+            {
+              number: "01",
+              title: "Rapid Time-to-Value",
+              description:
+                "Working mock-ups shipped in 1-2 weeks, not a quarter. You see the real shape of it before deciding to move forward."
+            },
+            {
+              number: "02",
+              title: "AI-Agnostic by Design",
+              description:
+                "Not locked into one LLM. We pick or self-host whichever model fits each job best, and can swap it out without rebuilding."
+            },
+            {
+              number: "03",
+              title: "On-Premise & Air-Gapped Ready",
+              description:
+                "Cloud, hybrid, or fully air-gapped for data sovereignty. Can run with zero outbound connections at all."
+            },
+            {
+              number: "04",
+              title: "AI Products & Custom Development",
+              description:
+                "Our own platforms plus bespoke AI builds: ModelForge and AgentForge as the foundation, with the custom parts built on top for you."
+            }
+          ],
+          ctaPrefix: "Interested in a deeper consultation? ",
+          ctaLink: "Tell us about it",
+          ctaSuffix: ""
         }
       },
       industrialUsecases: {
@@ -761,14 +954,15 @@ const resources = {
         },
         products: {
           mindOps: {
-            title: "Mind Ops",
-            label: "System Operations",
-            description: "From monitoring to resolution, IT operations must move with intelligence.",
+            title: "MindOps",
+            label: "IT Operations",
+            description:
+              "MindOps is an APM (application performance monitoring) platform powered by AI. It brings metrics, logs, and traces together to give teams a clear view of their IT systems. MindOps has an AI agent, Mindy, that detects unusual behavior and helps identify the root cause of system problems. It can run as a complete monitoring platform or alongside existing APM tools, on-premise or in the cloud, while keeping data and AI processing within your network.",
             heroDescription:
-              "Mind Ops helps operations teams monitor incidents end-to-end, analyze root causes with clearer context, and execute prioritized action recommendations so service recovery can run faster, more consistently, and with measurable outcomes across complex operational environments.",
-            featureHeading: "Mind Ops accelerates operational decisions",
+              "MindOps helps operations teams monitor incidents end-to-end, analyze root causes with clearer context, and execute prioritized action recommendations so service recovery can run faster, more consistently, and with measurable outcomes across complex operational environments.",
+            featureHeading: "MindOps accelerates operational decisions",
             featureDescription:
-              "From observability to incident response, Mind Ops reduces investigation time and improves service reliability.",
+              "From observability to incident response, MindOps reduces investigation time and improves service reliability.",
             featurePoints: [
               "Alert Prioritization",
               "Root Cause Suggestions",
@@ -779,7 +973,7 @@ const resources = {
               {
                 title: "Reduced Operational Downtime",
                 description:
-                  "Mind Ops prioritizes critical incidents faster so service disruptions can be handled before wider impact."
+                  "MindOps prioritizes critical incidents faster so service disruptions can be handled before wider impact."
               },
               {
                 title: "Cross-Functional Team Efficiency",
@@ -821,14 +1015,15 @@ const resources = {
             ]
           },
           mindSec: {
-            title: "Mind Sec",
-            label: "Threat Analysis",
-            description: "Detect risks early and orchestrate faster response across security workflows.",
+            title: "MindSOC",
+            label: "Security",
+            description:
+              "MindSOC is an AI-powered security platform that brings alerts from different security systems into one place and helps teams understand potential attacks. Its AI automatically investigates incidents, connects information from different sources, and identifies the likely root cause. MindSOC can send investigation results directly to ticketing systems, helping reduce response time, false alarms, and manual workload while keeping analysts in control.",
             heroDescription:
-              "Mind Sec strengthens security operation centers through earlier cyber threat detection, correlation of attack indicators across multiple sources, and measurable response orchestration so security teams can reduce data exposure risk and accelerate incident-level decision making.",
-            featureHeading: "MindSec, an AI-powered tool for cyberattack detection",
+              "MindSOC strengthens security operation centers through earlier cyber threat detection, correlation of attack indicators across multiple sources, and measurable response orchestration so security teams can reduce data exposure risk and accelerate incident-level decision making.",
+            featureHeading: "MindSOC, an AI-powered tool for cyberattack detection",
             featureDescription:
-              "MindSec detects cyber attacks earlier, correlates attack sources automatically, and helps security teams choose the most effective response in one integrated workflow.",
+              "MindSOC detects cyber attacks earlier, correlates attack sources automatically, and helps security teams choose the most effective response in one integrated workflow.",
             featurePoints: [
               "Threat Correlation",
               "Attack Surface Visibility",
@@ -839,7 +1034,7 @@ const resources = {
               {
                 title: "Broader Risk Visibility",
                 description:
-                  "Mind Sec correlates threat signals so security teams can see risk priorities more clearly."
+                  "MindSOC correlates threat signals so security teams can see risk priorities more clearly."
               },
               {
                 title: "Audit & Compliance Readiness",
@@ -943,8 +1138,9 @@ const resources = {
           },
           visioncraft: {
             title: "VisionCraft",
-            label: "AI Visual Creativity",
-            description: "Build insight pipelines that turn data signals into real operational impact.",
+            label: "Visual AI",
+            description:
+              "VisionCraft is an AI platform for creating images and videos, bringing multiple AI models together to produce high-quality visual content. From writing the initial idea and building the storyboard to generating visuals and exporting the final video, VisionCraft provides one simple workflow from concept to delivery.",
             heroDescription:
               "VisionCraft is a multimodal AI platform that enables organizations to turn ideas into high-quality visual output and rapid content automation, supported by collaborative workflows, consistent brand control, and production readiness for enterprise-scale communication needs.",
             featureHeading: "VisionCraft turns ideas into reality",
@@ -1000,6 +1196,42 @@ const resources = {
                   "Create company profile videos and marketing assets that are more engaging, consistent, and ready for publication."
               }
             ]
+          },
+          mindGraph: {
+            title: "MindGraph",
+            label: "Data & Context",
+            description:
+              "MindGraph is an AI Graph Intelligence Platform that goes beyond traditional databases, combining vector and graph databases to understand how information is connected and what it means. It connects data from different sources to uncover relationships, understand context, and provide actionable insights. MindGraph can run alongside existing AI and analytics tools or as a standalone platform, on-premise or in the cloud.",
+            heroDescription:
+              "MindGraph connects data from different sources to uncover relationships, understand context, and deliver actionable insight for data and analytics teams.",
+            featureHeading: "MindGraph is coming soon",
+            featureDescription: "MindGraph feature details will be updated soon.",
+            featurePoints: ["Features coming soon"],
+            enterpriseBenefits: [
+              {
+                title: "Coming Soon",
+                description: "MindGraph business impact details will be updated soon."
+              }
+            ],
+            useCases: []
+          },
+          mindFlow: {
+            title: "MindFlow",
+            label: "Automation",
+            description:
+              "MindFlow is an AI-native business process automation platform that helps businesses digitize and manage their workflows in one place. Teams can define their own business processes and easily customize everything from data, roles, dashboards, charts, and visual design to fit their needs.",
+            heroDescription:
+              "Teams can define their own business processes and customize data, roles, dashboards, charts, and visual design to fit their needs.",
+            featureHeading: "MindFlow is coming soon",
+            featureDescription: "MindFlow feature details will be updated soon.",
+            featurePoints: ["Features coming soon"],
+            enterpriseBenefits: [
+              {
+                title: "Coming Soon",
+                description: "MindFlow business impact details will be updated soon."
+              }
+            ],
+            useCases: []
           }
         }
       },

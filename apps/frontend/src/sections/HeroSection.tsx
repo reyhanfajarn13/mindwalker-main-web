@@ -1,10 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { BadgeCheck } from "lucide-react";
 import { DecryptedText } from "../components/ui/DecryptedText";
 import FaultyTerminal from "../components/ui/FaultyTerminal";
 import { useTranslation } from "react-i18next";
 import { useImagePreload } from "../lib/useImagePreload";
 
 const nvidiaLogo = "/assets/logo/logoNvidia.png";
+const redHatLogo = "/assets/logo/redhat-logo.svg";
+const redHatEcosystemBadge = "/assets/logo/redhat-ecosystem-catalog-badge.svg";
+const redHatCertifiedBadge = "/assets/logo/redhat-rhel-certified-badge.svg";
+
+// TODO: fill in the real certification logo URL here — leave empty ("") to keep the neutral badge icon.
+const iso27001Logo = "";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
@@ -19,6 +26,9 @@ type HeroCard = {
   imageUrl?: string;
   imageAlt: string;
 };
+
+type HeroStat = { value: string; label: string };
+type PartnerBadge = { label: string; logo?: string };
 
 const AUTO_SLIDE_MS = 3200;
 const SWIPE_THRESHOLD = 56;
@@ -67,6 +77,14 @@ export function HeroSection({
   );
   const heroPreloadUrls = useMemo(() => heroCards.map((card) => card.imageUrl), [heroCards]);
   useImagePreload(heroPreloadUrls);
+
+  const stats = t("hero.stats", { returnObjects: true }) as HeroStat[];
+
+  const partnerBadges: PartnerBadge[] = [
+    { label: "ISO 27001", logo: iso27001Logo },
+    { label: t("hero.partner"), logo: nvidiaLogo },
+    { label: "Red Hat Partner", logo: redHatLogo }
+  ];
 
   const totalSlides = heroCards.length;
 
@@ -144,16 +162,8 @@ export function HeroSection({
       </div>
 
       <div className="relative z-[3] mx-auto grid w-[min(1500px,calc(100%-2rem))] self-center gap-7 sm:w-[min(1600px,calc(100%-2.8rem))] lg:w-[min(1600px,calc(100%-4.4rem))] lg:grid-cols-[1.02fr_minmax(0,560px)] lg:gap-10 xl:w-[min(1600px,calc(100%-5.6rem))] xl:gap-14">
-        <div className="flex min-h-0 flex-col justify-center lg:min-h-[calc(100vh-7.75rem)]">
-          <div className="mb-4 mt-5 flex items-center">
-            <span className="inline-flex items-center gap-2 rounded-full border-0 bg-[rgba(160,186,214,0.16)] px-3 py-2 text-[0.78rem] font-semibold tracking-[0.08em] text-[#eef3f9] uppercase backdrop-blur-xl shadow-[0_10px_24px_rgba(6,14,24,0.38)]">
-              <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-full bg-[rgba(159,232,112,0.35)] p-[1px]">
-                <img src={nvidiaLogo} alt="NVIDIA logo" className="h-full w-full object-contain" loading="lazy" />
-              </span>
-              <span>{`${t("hero.partOf")} ${t("hero.partner")}`}</span>
-            </span>
-          </div>
-          <h1 className="max-w-[12ch] text-[clamp(3.15rem,5.8vw,5rem)] leading-[1.03] tracking-[-0.02em] text-white max-[1023px]:max-w-none">
+        <div className="flex min-h-0 flex-col justify-center gap-6 lg:min-h-[calc(100vh-7.75rem)]">
+          <h1 className="max-w-[14ch] text-[clamp(2.6rem,5.4vw,4.4rem)] leading-[1.04] tracking-[-0.02em] text-white">
             <span className="block font-semibold text-white">
               {t("hero.from")} <DecryptedText text={t("hero.insight")} className="font-extrabold text-[#2f99ff]" />
             </span>
@@ -161,6 +171,53 @@ export function HeroSection({
               {t("hero.to")} <DecryptedText text={t("hero.impact")} className="font-extrabold text-[#2f99ff]" />
             </span>
           </h1>
+
+          <p className="max-w-[62ch] text-[clamp(0.95rem,1.15vw,1.1rem)] leading-[1.6] text-[#a7b9cc]">
+            {t("hero.description")}
+          </p>
+
+          <div className="flex flex-wrap gap-x-8 gap-y-2.5 border-t border-[rgba(255,255,255,0.1)] pt-6">
+            {stats.map((stat) => (
+              <p key={stat.label} className="text-[0.86rem] text-[#c3d1e0]">
+                <span className="font-bold text-[#2f99ff]">{stat.value}</span> {stat.label}
+              </p>
+            ))}
+          </div>
+
+          <div className="border-t border-[rgba(255,255,255,0.1)] pt-6">
+            <p className="text-[0.72rem] font-bold uppercase tracking-[0.08em] text-[#7f93a8]">
+              {t("hero.partnership.kicker")}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2.5">
+              {partnerBadges.map((badge) => (
+                <span
+                  key={badge.label}
+                  className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.05)] px-3.5 py-2 text-[0.82rem] font-semibold text-[#eef3f9]"
+                >
+                  {badge.logo ? (
+                    <span className="grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-white/90">
+                      <img src={badge.logo} alt="" className="h-full w-full object-contain p-[2px]" loading="lazy" />
+                    </span>
+                  ) : (
+                    <BadgeCheck size={16} className="text-[#59adff]" />
+                  )}
+                  {badge.label}
+                </span>
+              ))}
+              <img
+                src={redHatEcosystemBadge}
+                alt="Listed on Red Hat Ecosystem Catalog"
+                className="h-9 w-auto"
+                loading="lazy"
+              />
+              <img
+                src={redHatCertifiedBadge}
+                alt="Certified for Red Hat Enterprise Linux"
+                className="h-9 w-auto"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="relative w-full self-center lg:justify-self-end lg:max-w-[560px] lg:pr-1">

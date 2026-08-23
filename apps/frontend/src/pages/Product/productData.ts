@@ -11,7 +11,7 @@ export type ProductArticle = {
 
 export type ProductItem = {
   id: number;
-  i18nKey: "mindOps" | "mindSec" | "mindGateway" | "visioncraft";
+  i18nKey: "mindOps" | "mindSec" | "mindGateway" | "visioncraft" | "mindGraph" | "mindFlow";
   slug: string;
   title: string;
   label: string;
@@ -27,6 +27,7 @@ export type ProductItem = {
   featurePoints: string[];
   enterpriseBenefits: Array<{ title: string; description: string }>;
   useCases: ProductArticle[];
+  isComingSoon?: boolean;
 };
 
 export const productData: ProductItem[] = [
@@ -34,19 +35,20 @@ export const productData: ProductItem[] = [
     id: 1,
     i18nKey: "mindOps",
     slug: "mind-ops",
-    title: "Mind Ops",
-    label: "System Operations",
-    description: "From monitoring to resolution, IT operations must move with intelligence.",
+    title: "MindOps",
+    label: "IT Operations",
+    description:
+      "MindOps is an APM (application performance monitoring) platform powered by AI. It brings metrics, logs, and traces together to give teams a clear view of their IT systems. MindOps has an AI agent, Mindy, that detects unusual behavior and helps identify the root cause of system problems. It can run as a complete monitoring platform or alongside existing APM tools, on-premise or in the cloud, while keeping data and AI processing within your network.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.webp?updatedAt=1772427231020",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.webp?updatedAt=1772427038224",
     datasheetPdfUrl: "/assets/datasheets/mindops-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindops-product-overview.pdf",
     heroDescription:
-      "Mind Ops membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
+      "MindOps membantu tim operasional memonitor insiden, menganalisis akar masalah, dan mengotomasi respons secara real-time.",
     demoLabel: "Explore Demo",
-    featureHeading: "Mind Ops mempercepat keputusan operasional",
+    featureHeading: "MindOps mempercepat keputusan operasional",
     featureDescription:
-      "Dari observability hingga incident response, Mind Ops mengurangi waktu investigasi dan meningkatkan reliability layanan.",
+      "Dari observability hingga incident response, MindOps mengurangi waktu investigasi dan meningkatkan reliability layanan.",
     featurePoints: [
       "Alert Prioritization",
       "Root Cause Suggestion",
@@ -57,7 +59,7 @@ export const productData: ProductItem[] = [
       {
         title: "Penurunan Downtime Operasional",
         description:
-          "Mind Ops memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas."
+          "MindOps memprioritaskan insiden kritikal lebih cepat sehingga gangguan layanan dapat ditangani sebelum berdampak luas."
       },
       {
         title: "Efisiensi Tim Lintas Fungsi",
@@ -105,19 +107,20 @@ export const productData: ProductItem[] = [
     id: 2,
     i18nKey: "mindSec",
     slug: "mind-sec",
-    title: "Mind Sec",
-    label: "Threat Analysis",
-    description: "Detect risks early and orchestrate faster response across security workflows.",
+    title: "MindSOC",
+    label: "Security",
+    description:
+      "MindSOC is an AI-powered security platform that brings alerts from different security systems into one place and helps teams understand potential attacks. Its AI automatically investigates incidents, connects information from different sources, and identifies the likely root cause. MindSOC can send investigation results directly to ticketing systems, helping reduce response time, false alarms, and manual workload while keeping analysts in control.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.webp?updatedAt=1772427230996",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.webp?updatedAt=1772427230829",
     datasheetPdfUrl: "/assets/datasheets/mindsoc-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindsoc-product-overview.pdf",
     heroDescription:
-      "Mind Sec memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
+      "MindSOC memperkuat security operation center dengan deteksi ancaman lebih dini dan orkestrasi respons yang terukur.",
     demoLabel: "Explore Demo",
-    featureHeading: "MindSec, tools pintar berbasis AI untuk deteksi serangan siber",
+    featureHeading: "MindSOC, tools pintar berbasis AI untuk deteksi serangan siber",
     featureDescription:
-      "MindSec mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
+      "MindSOC mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
     featurePoints: [
       "Threat Correlation",
       "Attack Surface Visibility",
@@ -127,7 +130,7 @@ export const productData: ProductItem[] = [
     enterpriseBenefits: [
       {
         title: "Visibilitas Risiko Lebih Menyeluruh",
-        description: "Mind Sec mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas."
+        description: "MindSOC mengkorelasikan sinyal ancaman agar tim security melihat prioritas risiko secara lebih jelas."
       },
       {
         title: "Kesiapan Audit & Kepatuhan",
@@ -245,8 +248,9 @@ export const productData: ProductItem[] = [
     i18nKey: "visioncraft",
     slug: "visioncraft",
     title: "VisionCraft",
-    label: "AI Intelligence",
-    description: "Build insight pipelines that turn data signals into real operational impact.",
+    label: "Visual AI",
+    description:
+      "VisionCraft is an AI platform for creating images and videos, bringing multiple AI models together to produce high-quality visual content. From writing the initial idea and building the storyboard to generating visuals and exporting the final video, VisionCraft provides one simple workflow from concept to delivery.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173",
     imageDetailsUrl: visioncraftbasePict,
     datasheetPdfUrl: "/assets/datasheets/visioncraft-datasheet.pdf",
@@ -308,6 +312,56 @@ export const productData: ProductItem[] = [
         imageUrl: "https://visioncraft.tos-ap-southeast-3.bytepluses.com/images/seedream/1772011530886-3936ec8e2a524d89.jpeg"
       }
     ]
+  },
+  // TODO: placeholder content, replace with real MindGraph copy/assets when available.
+  {
+    id: 5,
+    i18nKey: "mindGraph",
+    slug: "mind-graph",
+    title: "MindGraph",
+    label: "Data & Konteks",
+    description:
+      "MindGraph adalah AI Graph Intelligence Platform yang melampaui database tradisional, menggabungkan vector database dan graph database untuk memahami bagaimana informasi saling terhubung dan apa maknanya. MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti. MindGraph dapat berjalan berdampingan dengan tools AI dan analitik yang sudah ada atau sebagai platform mandiri, secara on-premise maupun cloud.",
+    imageUrl: "",
+    imageDetailsUrl: "",
+    heroDescription: "Detail produk MindGraph akan segera diperbarui.",
+    demoLabel: "Segera Hadir",
+    featureHeading: "MindGraph akan segera hadir",
+    featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
+    featurePoints: ["Fitur akan segera hadir"],
+    enterpriseBenefits: [
+      {
+        title: "Segera Hadir",
+        description: "Detail dampak bisnis MindGraph akan segera diperbarui."
+      }
+    ],
+    useCases: [],
+    isComingSoon: true
+  },
+  // TODO: placeholder content, replace with real MindFlow copy/assets when available.
+  {
+    id: 6,
+    i18nKey: "mindFlow",
+    slug: "mind-flow",
+    title: "MindFlow",
+    label: "Otomasi",
+    description:
+      "MindFlow adalah platform otomasi proses bisnis AI-native yang membantu perusahaan mendigitalisasi dan mengelola alur kerja mereka dalam satu tempat. Tim dapat menentukan proses bisnis mereka sendiri dan dengan mudah menyesuaikan segala hal mulai dari data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
+    imageUrl: "",
+    imageDetailsUrl: "",
+    heroDescription: "Detail produk MindFlow akan segera diperbarui.",
+    demoLabel: "Segera Hadir",
+    featureHeading: "MindFlow akan segera hadir",
+    featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
+    featurePoints: ["Fitur akan segera hadir"],
+    enterpriseBenefits: [
+      {
+        title: "Segera Hadir",
+        description: "Detail dampak bisnis MindFlow akan segera diperbarui."
+      }
+    ],
+    useCases: [],
+    isComingSoon: true
   }
 ];
 

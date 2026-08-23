@@ -464,8 +464,11 @@ function App() {
           <>
             <HeroSection />
             <Suspense fallback={<SectionFallback />}>
-              <ProductSection onOpenProductDetails={handleOpenProductDetails} />
-              <SolutionSection />
+              <ProductSection
+                onOpenProductDetails={handleOpenProductDetails}
+                onBookDemo={() => scrollToSection("footer")}
+              />
+              <SolutionSection onContactUs={() => scrollToSection("footer")} />
               <IndustrialUsecaseSection />
               <FooterSection />
             </Suspense>

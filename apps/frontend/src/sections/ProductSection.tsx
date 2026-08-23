@@ -1,59 +1,51 @@
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { Check, Image as ImageIcon } from "lucide-react";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
-import { productData } from "../pages/Product/productData";
+import { getLocalizedProductBySlug, getProductBySlug, type ProductItem } from "../pages/Product/productData";
 
 const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
 
-type ProductSectionProps = {
-  onOpenProductDetails?: (slug: string) => void;
+const sectionSlugs = ["mind-ops", "mind-sec", "mind-graph", "mind-flow", "visioncraft"];
+
+const mascotBySlug: Record<string, string> = {
+  "mind-ops": "/assets/mascots/mindops-mascot.png",
+  "mind-sec": "/assets/mascots/mindsoc-mascot.png",
+  "mind-graph": "/assets/mascots/mindgraph-mascot.png",
+  "mind-flow": "/assets/mascots/mindflow-mascot.png",
+  visioncraft: "/assets/mascots/visioncraft-mascot.png"
 };
 
-export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
+type ProductSectionProps = {
+  onOpenProductDetails?: (slug: string) => void;
+  onBookDemo?: () => void;
+};
+
+export function ProductSection({ onOpenProductDetails, onBookDemo }: ProductSectionProps) {
   const { t } = useTranslation();
+  const [activeSlug, setActiveSlug] = useState(sectionSlugs[0]);
 
-  const cards = productData.map((item) => {
-    if (item.slug === "mind-ops") {
-      return {
-        ...item,
-        label: t("product.cards.ops.label"),
-        description: t("product.cards.ops.description")
-      };
-    }
+  const tabs = useMemo(
+    () =>
+      sectionSlugs
+        .map((slug) => {
+          const rawItem = getProductBySlug(slug);
+          if (!rawItem) return undefined;
+          return getLocalizedProductBySlug(slug, t) ?? rawItem;
+        })
+        .filter((item): item is ProductItem => Boolean(item)),
+    [t]
+  );
 
-    if (item.slug === "mind-sec") {
-      return {
-        ...item,
-        label: t("product.cards.sec.label"),
-        description: t("product.cards.sec.description")
-      };
-    }
+  const activeItem = useMemo(() => {
+    const rawItem = getProductBySlug(activeSlug);
+    if (!rawItem) return undefined;
 
-    if (item.slug === "visioncraft") {
-      return {
-        ...item,
-        label: t("product.cards.vision.label"),
-        description: t("product.cards.vision.description")
-      };
-    }
+    return getLocalizedProductBySlug(activeSlug, t) ?? rawItem;
+  }, [activeSlug, t]);
 
-    if (item.slug === "mind-gateway") {
-      return {
-        ...item,
-        label: t("product.cards.gateway.label"),
-        description: t("product.cards.gateway.description")
-      };
-    }
-
-    return item;
-  }).sort((a, b) => {
-    const order: Record<string, number> = {
-      "mind-gateway": 0,
-      "mind-ops": 1,
-      "mind-sec": 2,
-      visioncraft: 3
-    };
-    return (order[a.slug] ?? 999) - (order[b.slug] ?? 999);
-  });
+  if (!activeItem) return null;
 
   return (
     <section
@@ -71,47 +63,114 @@ export function ProductSection({ onOpenProductDetails }: ProductSectionProps) {
             </span>
           }
           title={t("product.title")}
+          description={t("product.description")}
         />
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {cards.map((item) => (
-            <article
-              key={item.id}
-              className="group relative min-h-[430px] overflow-hidden rounded-[28px] bg-[#0b0f18] shadow-[0_14px_34px_rgba(8,15,28,0.26)] transition-all duration-400 ease-out hover:z-50 hover:scale-[1.05] hover:shadow-[0_22px_48px_rgba(47,153,255,0.32)] sm:min-h-[460px] lg:min-h-[495px]"
-            >
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className="absolute inset-0 h-full w-full scale-100 object-cover min-[1000px]:grayscale min-[1000px]:saturate-0 transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.03] min-[1000px]:group-hover:grayscale-0 min-[1000px]:group-hover:saturate-100"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,10,19,0.92)_10%,rgba(5,10,19,0.5)_44%,rgba(5,10,19,0.28)_66%,rgba(5,10,19,0.18)_100%)]" />
-              <div className="absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.1px]" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_22%,rgba(188,224,255,0.34)_0%,rgba(188,224,255,0)_48%),radial-gradient(circle_at_78%_18%,rgba(154,208,255,0.24)_0%,rgba(154,208,255,0)_44%),radial-gradient(circle_at_58%_74%,rgba(142,196,255,0.2)_0%,rgba(142,196,255,0)_46%)] opacity-95 blur-[16px] transition-all duration-500 group-hover:opacity-40 group-hover:blur-[8px]" />
-
-              <div className="absolute left-5 top-5 z-10 rounded-full bg-[rgba(255,255,255,0.34)] px-4 py-2 text-[0.92rem] font-semibold leading-none text-white backdrop-blur-[1px]">
-                {item.label}
-              </div>
-
-              <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-5 pt-4 sm:px-6 sm:pb-6 sm:pt-5">
-                <h3 className="text-[clamp(2rem,2.8vw,3rem)] font-semibold leading-[1.04] tracking-[-0.015em] text-white">
+        <div className="mt-6 flex flex-wrap gap-2">
+          {tabs.map((item) => {
+            const isActive = item.slug === activeSlug;
+            return (
+              <button
+                key={item.slug}
+                type="button"
+                onClick={() => setActiveSlug(item.slug)}
+                className={
+                  isActive
+                    ? "flex flex-col items-start gap-0.5 rounded-2xl bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-4 py-2.5 text-left shadow-[0_8px_18px_rgba(35,146,255,0.32)] transition-all duration-300"
+                    : "flex flex-col items-start gap-0.5 rounded-2xl border border-[rgba(15,27,42,0.06)] bg-[#f1f4f9] px-4 py-2.5 text-left transition-all duration-300 hover:border-[rgba(35,146,255,0.35)]"
+                }
+              >
+                <span
+                  className={`text-[0.64rem] font-bold uppercase tracking-[0.06em] ${
+                    isActive ? "text-white/85" : "text-[#8a97a8]"
+                  }`}
+                >
+                  {item.label}
+                </span>
+                <span className={`text-[0.95rem] font-bold ${isActive ? "text-white" : "text-[#132031]"}`}>
                   {item.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 overflow-visible rounded-[28px] border border-[rgba(15,27,42,0.08)] bg-white shadow-[0_14px_34px_rgba(8,15,28,0.1)]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeItem.slug}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="grid gap-6 p-6 lg:grid-cols-[1fr_1.1fr] lg:gap-8 lg:p-8"
+            >
+              <div className="flex flex-col">
+                <span className="inline-flex w-fit items-center rounded-full bg-[rgba(35,146,255,0.12)] px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.06em] text-[#1976c5]">
+                  {activeItem.label}
+                </span>
+                <h3 className="mt-3 text-[clamp(1.8rem,3vw,2.4rem)] font-bold leading-tight text-[#111c2b]">
+                  {activeItem.title}
                 </h3>
-                <p className="mt-2.5 max-w-[30ch] text-[clamp(1.06rem,1.15vw,1.26rem)] leading-[1.34] text-[rgba(236,244,255,0.94)]">
-                  {item.description}
-                </p>
-                <div className="mt-5 flex justify-end sm:mt-6">
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-[#5b6b80]">{activeItem.description}</p>
+
+                <hr className="my-5 border-[rgba(15,27,42,0.08)]" />
+
+                <ul className="flex flex-col gap-2.5">
+                  {activeItem.featurePoints.map((point) => (
+                    <li key={point} className="flex items-start gap-2.5 text-[0.9rem] text-[#2f3e4f]">
+                      <Check size={16} className="mt-0.5 shrink-0 text-[#2392ff]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-3">
                   <button
                     type="button"
-                    onClick={() => onOpenProductDetails?.(item.slug)}
-                    className="rounded-full border-0 bg-transparent px-5 py-2.5 text-[0.8rem] leading-none text-[rgba(236,244,255,0.94)] transition-colors duration-300 group-hover:bg-[rgba(240,247,255,0.95)] group-hover:text-[#1976c5]"
+                    onClick={onBookDemo}
+                    className="rounded-full border-0 bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-5 py-2.5 text-[0.85rem] font-bold text-white transition-transform duration-300 hover:scale-[1.03]"
                   >
-                    {t("product.learnMore")}
+                    {t("product.bookDemo")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onOpenProductDetails?.(activeItem.slug)}
+                    className="rounded-full border border-[rgba(15,27,42,0.14)] bg-transparent px-5 py-2.5 text-[0.85rem] font-semibold text-[#2f3e4f] transition-colors duration-300 hover:border-[rgba(35,146,255,0.4)] hover:text-[#1976c5]"
+                  >
+                    {t("product.viewDetails")} &rarr;
                   </button>
                 </div>
               </div>
-            </article>
-          ))}
+
+              <div className="relative min-h-[260px] sm:min-h-[320px] lg:min-h-[380px]">
+                <div className="absolute inset-0 overflow-hidden rounded-2xl border border-[rgba(15,27,42,0.08)] bg-[#f4f7fb]">
+                  {activeItem.isComingSoon || !activeItem.imageDetailsUrl ? (
+                    <div className="flex h-full w-full flex-col items-center justify-center gap-2 border-2 border-dashed border-[rgba(15,27,42,0.14)] text-[#8a97a8]">
+                      <ImageIcon size={28} strokeWidth={1.5} />
+                      <p className="px-4 text-center text-[0.85rem] font-medium">
+                        {t("product.screenshotUnavailable")}
+                      </p>
+                    </div>
+                  ) : (
+                    <img
+                      src={activeItem.imageDetailsUrl}
+                      alt={activeItem.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+                <img
+                  src={mascotBySlug[activeItem.slug]}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-8 -right-4 z-10 w-28 drop-shadow-xl sm:-top-10 sm:-right-6 sm:w-36 lg:-top-12 lg:-right-8 lg:w-40"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

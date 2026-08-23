@@ -4,7 +4,14 @@ import { useTranslation } from "react-i18next";
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-export function SolutionSection() {
+type ProcessStep = { number: string; title: string; description: string };
+type DifferentiatorItem = { number: string; title: string; description: string };
+
+type SolutionSectionProps = {
+  onContactUs?: () => void;
+};
+
+export function SolutionSection({ onContactUs }: SolutionSectionProps) {
   const { t } = useTranslation();
   const comparisonRef = useRef<HTMLDivElement | null>(null);
   const [inset, setInset] = useState(50);
@@ -22,6 +29,9 @@ export function SolutionSection() {
   const agenticAiHeadline = t("solutions.cards.agenticAi.backTitle");
   const modelForgeDescription = t("solutions.cards.modelForge.description");
   const agenticAiDescription = t("solutions.cards.agenticAi.description");
+
+  const processSteps = t("solutions.process.steps", { returnObjects: true }) as ProcessStep[];
+  const differentiatorItems = t("solutions.differentiators.items", { returnObjects: true }) as DifferentiatorItem[];
 
   const modelForgeIcons = useMemo(() => [Database, Boxes, Binary, ShieldCheck], []);
   const agenticAiIcons = useMemo(() => [GitBranch, PlugZap, UserCheck, BookCheck], []);
@@ -126,10 +136,13 @@ export function SolutionSection() {
   return (
     <section className="bg-white/20 px-0 py-10 lg:py-14" id="solutions">
       <div className="mx-auto w-[min(1500px,calc(100%-1.5rem))] sm:w-[min(1600px,calc(100%-2.2rem))]">
-        <h2 className="text-center text-[clamp(2.2rem,4.3vw,3.9rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-[#2490ef]">
+        <span className="block text-[0.78rem] font-bold uppercase tracking-[0.08em] text-[#2490ef]">
+          {t("solutions.kicker")}
+        </span>
+        <h2 className="mt-2 text-[clamp(1.9rem,4vw,3.1rem)] font-bold leading-[1.1] tracking-[-0.015em] text-[#2490ef]">
           {t("solutions.title")}
         </h2>
-        <p className="mx-auto mt-3 max-w-[78ch] text-center text-[clamp(0.92rem,1.25vw,1.32rem)] leading-[1.62] text-[#607186]">
+        <p className="mt-3 max-w-[62ch] text-[clamp(0.92rem,1.15vw,1.15rem)] leading-[1.62] text-[#607186]">
           {t("solutions.description")}
         </p>
 
@@ -238,6 +251,55 @@ export function SolutionSection() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-10">
+          <p className="text-[0.73rem] font-bold uppercase tracking-[0.06em] text-[#6f87a3]">
+            {t("solutions.process.kicker")}
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {processSteps.map((step) => (
+              <div
+                key={step.number}
+                className="rounded-2xl border border-[rgba(15,27,42,0.08)] bg-white p-5"
+              >
+                <span className="inline-flex items-center rounded-full bg-[rgba(35,146,255,0.12)] px-2.5 py-1 text-[0.78rem] font-bold text-[#2490ef]">
+                  {step.number}
+                </span>
+                <h3 className="mt-3 text-[1.02rem] font-bold leading-[1.3] text-[#132031]">{step.title}</h3>
+                <p className="mt-2 text-[0.88rem] leading-[1.55] text-[#4a5d73]">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <p className="text-[0.73rem] font-bold uppercase tracking-[0.06em] text-[#6f87a3]">
+            {t("solutions.differentiators.kicker")}
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {differentiatorItems.map((item) => (
+              <div key={item.number} className="rounded-2xl bg-[#f4f7fb] p-6">
+                <span className="inline-flex items-center rounded-full bg-[rgba(35,146,255,0.14)] px-2.5 py-1 text-[0.78rem] font-bold text-[#2490ef]">
+                  {item.number}
+                </span>
+                <h3 className="mt-3 text-[1.05rem] font-bold leading-[1.3] text-[#132031]">{item.title}</h3>
+                <p className="mt-2 max-w-[52ch] text-[0.9rem] leading-[1.6] text-[#4a5d73]">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-5 text-[0.9rem] text-[#4a5d73]">
+            {t("solutions.differentiators.ctaPrefix")}
+            <button
+              type="button"
+              onClick={onContactUs}
+              className="font-semibold text-[#2490ef] underline underline-offset-2 transition-colors duration-200 hover:text-[#1976c5]"
+            >
+              {t("solutions.differentiators.ctaLink")}
+            </button>
+            {t("solutions.differentiators.ctaSuffix")}
+          </p>
         </div>
       </div>
     </section>

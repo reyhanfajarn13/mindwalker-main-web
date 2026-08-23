@@ -182,7 +182,7 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
               <img
                 src={product.imageDetailsUrl}
                 alt={product.title}
-                className="h-[clamp(280px,56vh,74vh)] w-full object-cover min-[1000px]:grayscale transition-[filter] duration-500 ease-out min-[1000px]:group-hover:grayscale-0"
+                className="block h-auto max-h-[74vh] w-full object-contain min-[1000px]:grayscale transition-[filter] duration-500 ease-out min-[1000px]:group-hover:grayscale-0"
                 loading="lazy"
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(3,10,20,0.58)_0%,rgba(3,10,20,0.08)_50%,rgba(3,10,20,0)_100%)]" />

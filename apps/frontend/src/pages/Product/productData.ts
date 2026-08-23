@@ -39,8 +39,8 @@ export const productData: ProductItem[] = [
     label: "IT Operations",
     description:
       "MindOps is an APM (application performance monitoring) platform powered by AI. It brings metrics, logs, and traces together to give teams a clear view of their IT systems. MindOps has an AI agent, Mindy, that detects unusual behavior and helps identify the root cause of system problems. It can run as a complete monitoring platform or alongside existing APM tools, on-premise or in the cloud, while keeping data and AI processing within your network.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductSection.webp?updatedAt=1772427231020",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindOpsProductDetails.webp?updatedAt=1772427038224",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png",
     datasheetPdfUrl: "/assets/datasheets/mindops-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindops-product-overview.pdf",
     heroDescription:
@@ -111,8 +111,8 @@ export const productData: ProductItem[] = [
     label: "Security",
     description:
       "MindSOC is an AI-powered security platform that brings alerts from different security systems into one place and helps teams understand potential attacks. Its AI automatically investigates incidents, connects information from different sources, and identifies the likely root cause. MindSOC can send investigation results directly to ticketing systems, helping reduce response time, false alarms, and manual workload while keeping analysts in control.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductSection.webp?updatedAt=1772427230996",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindSecProductDetails.webp?updatedAt=1772427230829",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png",
     datasheetPdfUrl: "/assets/datasheets/mindsoc-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindsoc-product-overview.pdf",
     heroDescription:

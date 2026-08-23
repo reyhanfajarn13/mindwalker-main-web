@@ -3,6 +3,9 @@ import { FormEvent, useState } from "react";
 import { Github, Instagram, Linkedin, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { industrialUsecaseData } from "./industrialUsecaseData";
+import { getProductBySlug } from "../pages/Product/productData";
+
+const footerProductSlugs = ["mind-ops", "mind-sec", "mind-graph", "mind-flow", "visioncraft"];
 
 const image3 = "https://ik.imagekit.io/mindwalker/public/assets/image3.png";
 const image4 = "https://ik.imagekit.io/mindwalker/public/assets/image4.png";
@@ -43,12 +46,10 @@ export function FooterSection() {
     },
     {
       title: t("footer.groups.ourProduct"),
-      items: [
-        { label: t("product.cards.gateway.title"), href: "/product/mind-gateway" },
-        { label: t("product.cards.ops.title"), href: "/product/mind-ops" },
-        { label: t("product.cards.sec.title"), href: "/product/mind-sec" },
-        { label: t("product.cards.vision.title"), href: "/product/visioncraft" }
-      ]
+      items: footerProductSlugs
+        .map((slug) => getProductBySlug(slug))
+        .filter((item): item is NonNullable<typeof item> => Boolean(item))
+        .map((item) => ({ label: item.title, href: `/product/${item.slug}` }))
     },
     {
       title: t("footer.groups.ourSolution"),

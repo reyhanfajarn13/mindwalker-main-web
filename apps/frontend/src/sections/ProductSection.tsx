@@ -143,10 +143,10 @@ export function ProductSection({ onOpenProductDetails, onBookDemo }: ProductSect
                 </div>
               </div>
 
-              <div className="relative min-h-[260px] sm:min-h-[320px] lg:min-h-[380px]">
-                <div className="absolute inset-0 overflow-hidden rounded-2xl border border-[rgba(15,27,42,0.08)] bg-[#f4f7fb]">
+              <div className="relative">
+                <div className="overflow-hidden rounded-2xl border border-[rgba(15,27,42,0.08)] bg-[#f4f7fb]">
                   {activeItem.isComingSoon || !activeItem.imageDetailsUrl ? (
-                    <div className="flex h-full w-full flex-col items-center justify-center gap-2 border-2 border-dashed border-[rgba(15,27,42,0.14)] text-[#8a97a8]">
+                    <div className="flex min-h-[260px] w-full flex-col items-center justify-center gap-2 border-2 border-dashed border-[rgba(15,27,42,0.14)] text-[#8a97a8] sm:min-h-[320px] lg:min-h-[380px]">
                       <ImageIcon size={28} strokeWidth={1.5} />
                       <p className="px-4 text-center text-[0.85rem] font-medium">
                         {t("product.screenshotUnavailable")}
@@ -156,7 +156,7 @@ export function ProductSection({ onOpenProductDetails, onBookDemo }: ProductSect
                     <img
                       src={activeItem.imageDetailsUrl}
                       alt={activeItem.title}
-                      className="h-full w-full object-cover"
+                      className="block h-auto w-full object-contain"
                       loading="lazy"
                     />
                   )}

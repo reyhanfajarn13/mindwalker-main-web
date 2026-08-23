@@ -40,9 +40,18 @@ export function HeroSection({
   const { t } = useTranslation();
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isWebglBackgroundEnabled, setIsWebglBackgroundEnabled] = useState(false);
   const touchStartYRef = useRef<number | null>(null);
 
   const faultyGridMul = useMemo<[number, number]>(() => [2, 1], []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1001px)");
+    const handleMediaChange = () => setIsWebglBackgroundEnabled(mediaQuery.matches);
+    handleMediaChange();
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
 
   const heroCards = useMemo<HeroCard[]>(
     () => [
@@ -138,27 +147,31 @@ export function HeroSection({
       id="home"
     >
       <div className="absolute inset-0 -z-10">
-        <FaultyTerminal
-          scale={2.1}
-          gridMul={faultyGridMul}
-          digitSize={2}
-          timeScale={0.5}
-          pause={false}
-          scanlineIntensity={0.5}
-          glitchAmount={1}
-          flickerAmount={1}
-          noiseAmp={1}
-          chromaticAberration={0}
-          dither={0}
-          curvature={0.1}
-          tint="#464646"
-          mouseReact
-          mouseStrength={0.5}
-          dpr={1.35}
-          maxFps={36}
-          pageLoadAnimation
-          brightness={0.5}
-        />
+        {isWebglBackgroundEnabled ? (
+          <FaultyTerminal
+            scale={2.1}
+            gridMul={faultyGridMul}
+            digitSize={2}
+            timeScale={0.5}
+            pause={false}
+            scanlineIntensity={0.5}
+            glitchAmount={1}
+            flickerAmount={1}
+            noiseAmp={1}
+            chromaticAberration={0}
+            dither={0}
+            curvature={0.1}
+            tint="#464646"
+            mouseReact
+            mouseStrength={0.5}
+            dpr={1.35}
+            maxFps={36}
+            pageLoadAnimation
+            brightness={0.5}
+          />
+        ) : (
+          <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(47,153,255,0.14),transparent_55%),linear-gradient(160deg,#0b0f18_0%,#10151f_55%,#0b0f18_100%)]" />
+        )}
       </div>
 
       <div className="relative z-[3] mx-auto grid w-[min(1500px,calc(100%-2rem))] self-center gap-7 sm:w-[min(1600px,calc(100%-2.8rem))] lg:w-[min(1600px,calc(100%-4.4rem))] lg:grid-cols-[1.02fr_minmax(0,560px)] lg:gap-10 xl:w-[min(1600px,calc(100%-5.6rem))] xl:gap-14">

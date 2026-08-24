@@ -4,6 +4,7 @@ import {
   Download,
   FileCheck2,
   FileText,
+  Image as ImageIcon,
   Lightbulb,
   Plus,
   Radar,
@@ -17,7 +18,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { FooterSection } from "../../sections/FooterSection";
-import { getLocalizedProductBySlug } from "./productData";
+import { getLocalizedProductBySlug, productLogoBySlug } from "./productData";
 import { useImagePreload } from "../../lib/useImagePreload";
 
 const heroDetailsBackground = "https://ik.imagekit.io/mindwalker/public/assets/heroDetailsBackground.webp?updatedAt=1772427037701&tr=w-1600,q-72";
@@ -114,8 +115,20 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
         <div data-scroll-fade className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1500px,calc(100%-1.5rem))] items-center sm:w-[min(1600px,calc(100%-2rem))]">
           <div className="max-w-[780px]">
             <h1 className="text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]">
-              <span className="text-white">{product.title.split(" ")[0]}</span>
-              {product.title.includes(" ") ? ` ${product.title.split(" ").slice(1).join(" ")}` : ""}
+              {productLogoBySlug[product.slug] ? (
+                <span className="inline-flex items-center rounded-2xl bg-white px-5 py-3 shadow-[0_10px_28px_rgba(8,14,24,0.28)] sm:px-6 sm:py-3.5">
+                  <img
+                    src={productLogoBySlug[product.slug]}
+                    alt={product.title}
+                    className="h-[clamp(2rem,4vw,2.8rem)] w-auto object-contain"
+                  />
+                </span>
+              ) : (
+                <>
+                  <span className="text-white">{product.title.split(" ")[0]}</span>
+                  {product.title.includes(" ") ? ` ${product.title.split(" ").slice(1).join(" ")}` : ""}
+                </>
+              )}
             </h1>
             <p className="mt-4 max-w-[66ch] text-[clamp(1rem,1.4vw,1.1rem)] leading-[1.75] text-[rgba(231,241,255,0.94)]">
               {product.heroDescription}
@@ -270,12 +283,21 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
                 key={item.id}
                 className="group touch-hover-hold relative h-full overflow-hidden rounded-2xl bg-transparent transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(25,142,243,0.5)] hover:backdrop-blur-sm hover:shadow-[0_22px_46px_rgba(25,142,243,0.46)] max-[1000px]:active:scale-[1.02] max-[1000px]:active:bg-[rgba(25,142,243,0.5)] max-[1000px]:active:backdrop-blur-sm max-[1000px]:active:shadow-[0_22px_46px_rgba(25,142,243,0.46)]"
               >
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="h-auto w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10] object-cover min-[1000px]:grayscale transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.08] min-[1000px]:group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.08]"
-                  loading="lazy"
-                />
+                {item.imageUrl ? (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="h-auto w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10] object-cover min-[1000px]:grayscale transition-[filter,transform] duration-500 ease-out min-[1000px]:group-hover:scale-[1.08] min-[1000px]:group-hover:grayscale-0 max-[1000px]:group-active:scale-[1.08]"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 border-2 border-dashed border-[rgba(15,27,42,0.14)] bg-[#f4f7fb] text-[#8a97a8] sm:aspect-[4/3] lg:aspect-[16/10]">
+                    <ImageIcon size={24} strokeWidth={1.5} />
+                    <p className="px-4 text-center text-[0.78rem] font-medium">
+                      {t("product.screenshotUnavailable")}
+                    </p>
+                  </div>
+                )}
                 <div className="pointer-events-none absolute inset-0 max-[1000px]:bg-[rgba(255,255,255,0.12)] max-[1000px]:backdrop-blur-[1.2px]" />
                 <div className="absolute inset-0 bg-[rgba(4,10,22,0.2)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-[1000px]:group-active:opacity-100" />
                 <div className="relative bg-transparent px-0 pb-1 pt-3 transition-all duration-300 group-hover:bg-[rgba(173,218,255,0.14)] group-hover:backdrop-blur-lg group-hover:px-4 group-hover:pb-4 group-hover:pt-4 max-[1000px]:group-active:bg-[rgba(173,218,255,0.14)] max-[1000px]:group-active:backdrop-blur-lg max-[1000px]:group-active:px-4 max-[1000px]:group-active:pb-4 max-[1000px]:group-active:pt-4">

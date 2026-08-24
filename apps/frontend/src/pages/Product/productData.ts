@@ -2,6 +2,15 @@ import type { TFunction } from "i18next";
 
 const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.webp?updatedAt=1772427230672&tr=w-1100,q-75";
 
+// Wordmark logos to show in place of the plain-text product name. mind-ops intentionally has
+// no entry — it keeps the plain-text treatment since no logo asset exists for it yet.
+export const productLogoBySlug: Record<string, string> = {
+  "mind-sec": "/assets/logo/mindsoc-logo.webp",
+  "mind-graph": "/assets/logo/mindgraph-logo.webp",
+  "mind-flow": "/assets/logo/mindflow-logo.webp",
+  visioncraft: "/assets/logo/visioncraft-logo.png"
+};
+
 export type ProductArticle = {
   id: number;
   title: string;
@@ -313,7 +322,6 @@ export const productData: ProductItem[] = [
       }
     ]
   },
-  // TODO: placeholder content, replace with real MindGraph copy/assets when available.
   {
     id: 5,
     i18nKey: "mindGraph",
@@ -324,10 +332,12 @@ export const productData: ProductItem[] = [
       "MindGraph adalah AI Graph Intelligence Platform yang melampaui database tradisional, menggabungkan vector database dan graph database untuk memahami bagaimana informasi saling terhubung dan apa maknanya. MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti. MindGraph dapat berjalan berdampingan dengan tools AI dan analitik yang sudah ada atau sebagai platform mandiri, secara on-premise maupun cloud.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph%20-%20Platform%20-%20Overview.png?tr=w-1100,q-75",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph%20-%20Platform%20-%20Overview.png?tr=w-1100,q-75",
-    heroDescription: "Detail produk MindGraph akan segera diperbarui.",
-    demoLabel: "Segera Hadir",
-    featureHeading: "MindGraph akan segera hadir",
-    featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
+    heroDescription:
+      "MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti bagi tim data dan analitik.",
+    demoLabel: "Explore Demo",
+    featureHeading: "MindGraph mengungkap hubungan yang tersembunyi di balik data Anda",
+    featureDescription:
+      "MindGraph menyatukan graph database dan vector database untuk memetakan relasi data perusahaan yang tersebar di berbagai sistem secara real-time, sehingga tim dapat menemukan insight tersembunyi—seperti indikasi fraud, konteks pelanggan, atau ketergantungan supply chain—dan mengambil keputusan dengan konteks yang lebih utuh.",
     featurePoints: [
       "Unified Data Intelligence",
       "Graph-Based Context Understanding",
@@ -336,13 +346,62 @@ export const productData: ProductItem[] = [
     ],
     enterpriseBenefits: [
       {
-        title: "Segera Hadir",
-        description: "Detail dampak bisnis MindGraph akan segera diperbarui."
+        title: "Deteksi Fraud yang Lebih Akurat",
+        description:
+          "Memetakan relasi transaksi dan entitas secara graph membantu tim risk mendeteksi pola fraud dan pencucian uang yang sulit terlihat lewat analisis tabular biasa."
+      },
+      {
+        title: "AI Agent dengan Memori dan Penalaran Lebih Baik",
+        description:
+          "MindGraph memberikan AI agent akses ke konteks yang saling terhubung, membantu agent mengingat riwayat interaksi dan bernalar lintas sumber data secara lebih akurat."
+      },
+      {
+        title: "Pandangan Pelanggan yang Utuh",
+        description:
+          "Menyatukan data pelanggan dari berbagai sistem menjadi satu graph relasi, sehingga tim mendapatkan gambaran customer 360° yang konsisten untuk personalisasi dan retensi."
+      },
+      {
+        title: "Visibilitas Rantai Pasok yang Lebih Jelas",
+        description:
+          "Memetakan ketergantungan supply chain antar vendor, produk, dan lokasi membantu organisasi mengantisipasi risiko gangguan sebelum berdampak ke operasional."
+      },
+      {
+        title: "Pengambilan Keputusan yang Lebih Cepat dan Kontekstual",
+        description:
+          "Dengan insight yang sudah saling terhubung, tim data dan bisnis dapat mengambil keputusan lebih cepat tanpa perlu menggabungkan data secara manual dari berbagai sumber."
       }
     ],
-    useCases: []
+    useCases: [
+      {
+        id: 501,
+        title: "Fraud, Risk Detection & AML",
+        excerpt:
+          "Memetakan relasi transaksi dan entitas untuk mendeteksi pola fraud dan pencucian uang yang sulit terlihat lewat analisis data tabular biasa.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph/Fraud%20Detection%20&%20AML.png?tr=w-600,q-72"
+      },
+      {
+        id: 502,
+        title: "AI Agent Memory & Reasoning",
+        excerpt:
+          "Memberikan AI agent akses ke konteks yang saling terhubung, sehingga agent dapat mengingat riwayat interaksi dan bernalar lintas sumber data secara lebih akurat.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph/AI%20Agent%20Memory%20&%20Reasoning.png?tr=w-600,q-72"
+      },
+      {
+        id: 503,
+        title: "Customer 360°",
+        excerpt:
+          "Menyatukan data pelanggan dari berbagai sistem menjadi satu graph relasi untuk mendapatkan gambaran pelanggan yang lengkap dan konsisten.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph/Customer%20360%C2%B0.png?tr=w-600,q-72"
+      },
+      {
+        id: 504,
+        title: "Supply Chain & Dependency Mapping",
+        excerpt:
+          "Memetakan ketergantungan antar vendor, produk, dan lokasi untuk membantu organisasi mengantisipasi risiko gangguan rantai pasok lebih awal.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph/Supply%20Chain%20&%20Dependency%20Mapping.png?tr=w-600,q-72"
+      }
+    ]
   },
-  // TODO: placeholder content, replace with real MindFlow copy/assets when available.
   {
     id: 6,
     i18nKey: "mindFlow",
@@ -353,10 +412,12 @@ export const productData: ProductItem[] = [
       "MindFlow adalah platform otomasi proses bisnis AI-native yang membantu perusahaan mendigitalisasi dan mengelola alur kerja mereka dalam satu tempat. Tim dapat menentukan proses bisnis mereka sendiri dan dengan mudah menyesuaikan segala hal mulai dari data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
     imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindflow-platform-overview.png?tr=w-1100,q-75",
     imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindflow-platform-overview.png?tr=w-1100,q-75",
-    heroDescription: "Detail produk MindFlow akan segera diperbarui.",
-    demoLabel: "Segera Hadir",
-    featureHeading: "MindFlow akan segera hadir",
-    featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
+    heroDescription:
+      "Tim dapat menentukan proses bisnis mereka sendiri dan menyesuaikan data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
+    demoLabel: "Explore Demo",
+    featureHeading: "MindFlow menyesuaikan diri dengan cara bisnis Anda bekerja, bukan sebaliknya",
+    featureDescription:
+      "Setiap bisnis punya proses kerja yang berbeda, namun kebanyakan tools otomasi memaksa tim menyesuaikan diri dengan template yang kaku. MindFlow dibangun AI-native agar dapat mengikuti bentuk proses bisnis Anda apa adanya—mulai dari data, peran, hingga tampilan—sehingga setiap tim dapat mendigitalisasi dan mengotomasi alur kerja mereka tanpa harus mengubah cara kerja yang sudah berjalan.",
     featurePoints: [
       "Fits to Any Business Process",
       "Customize Everything",
@@ -365,11 +426,61 @@ export const productData: ProductItem[] = [
     ],
     enterpriseBenefits: [
       {
-        title: "Segera Hadir",
-        description: "Detail dampak bisnis MindFlow akan segera diperbarui."
+        title: "Implementasi Lebih Cepat, Tanpa Kode",
+        description:
+          "Tim dapat membangun dan menyesuaikan proses bisnis sendiri tanpa bergantung pada tim engineering, mempercepat waktu implementasi dari bulan menjadi minggu."
+      },
+      {
+        title: "Satu Platform untuk Semua Departemen",
+        description:
+          "Alih-alih menggunakan tools terpisah untuk tiap tim, MindFlow menyatukan seluruh proses bisnis—operasional, keuangan, HR, hingga customer service—dalam satu platform yang konsisten."
+      },
+      {
+        title: "Otomasi yang Mengurangi Pekerjaan Manual",
+        description:
+          "Kemampuan AI-native membantu mengotomasi tugas repetitif seperti persetujuan, notifikasi, dan pengisian data, sehingga tim bisa fokus pada pekerjaan bernilai tinggi."
+      },
+      {
+        title: "Visibilitas Proses secara Real-Time",
+        description:
+          "Dashboard dan pelaporan yang bisa disesuaikan memberikan visibilitas penuh atas status setiap proses bisnis, membantu manajemen mengambil keputusan lebih cepat."
+      },
+      {
+        title: "Skalabel Mengikuti Pertumbuhan Bisnis",
+        description:
+          "Karena setiap elemen proses—data, peran, hingga tampilan—dapat disesuaikan, MindFlow dapat berkembang mengikuti kompleksitas organisasi tanpa perlu migrasi platform."
       }
     ],
-    useCases: []
+    useCases: [
+      {
+        id: 601,
+        title: "Employee Onboarding & Offboarding",
+        excerpt:
+          "Mengotomasi proses onboarding dan offboarding karyawan lintas departemen—dari IT, HR, hingga akses sistem—agar lebih cepat dan konsisten.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindFlow/Employee%20Onboarding%20&%20Offboarding.png?tr=w-600,q-72"
+      },
+      {
+        id: 602,
+        title: "Procurement & Approval Workflows",
+        excerpt:
+          "Menyederhanakan alur permintaan pembelian dan persetujuan vendor dengan rule dan eskalasi yang dapat disesuaikan dengan kebijakan internal.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindFlow/Procurement%20&%20Approval%20Workflows.png?tr=w-600,q-72"
+      },
+      {
+        id: 603,
+        title: "Customer Service Case Management",
+        excerpt:
+          "Mengelola dan melacak tiket layanan pelanggan dari awal hingga selesai, memastikan setiap kasus ditangani sesuai SLA yang berlaku.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindFlow/Customer%20Service%20Case%20Management.png?tr=w-600,q-72"
+      },
+      {
+        id: 604,
+        title: "Finance Reconciliation & Reporting",
+        excerpt:
+          "Mengotomasi proses rekonsiliasi keuangan dan pelaporan rutin, mengurangi kerja manual dan risiko kesalahan input data.",
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindFlow/Finance.png?tr=w-600,q-72"
+      }
+    ]
   }
 ];
 

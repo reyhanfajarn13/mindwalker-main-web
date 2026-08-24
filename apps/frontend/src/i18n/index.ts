@@ -572,8 +572,9 @@ const resources = {
               "MindGraph adalah AI Graph Intelligence Platform yang melampaui database tradisional, menggabungkan vector database dan graph database untuk memahami bagaimana informasi saling terhubung dan apa maknanya. MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti. MindGraph dapat berjalan berdampingan dengan tools AI dan analitik yang sudah ada atau sebagai platform mandiri, secara on-premise maupun cloud.",
             heroDescription:
               "MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti bagi tim data dan analitik.",
-            featureHeading: "MindGraph akan segera hadir",
-            featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
+            featureHeading: "MindGraph mengungkap hubungan yang tersembunyi di balik data Anda",
+            featureDescription:
+              "MindGraph menyatukan graph database dan vector database untuk memetakan relasi data perusahaan yang tersebar di berbagai sistem secara real-time, sehingga tim dapat menemukan insight tersembunyi—seperti indikasi fraud, konteks pelanggan, atau ketergantungan supply chain—dan mengambil keputusan dengan konteks yang lebih utuh.",
             featurePoints: [
               "Intelijen Data Terpadu",
               "Pemahaman Konteks Berbasis Graph",
@@ -582,11 +583,53 @@ const resources = {
             ],
             enterpriseBenefits: [
               {
-                title: "Segera Hadir",
-                description: "Detail dampak bisnis MindGraph akan segera diperbarui."
+                title: "Deteksi Fraud yang Lebih Akurat",
+                description:
+                  "Memetakan relasi transaksi dan entitas secara graph membantu tim risk mendeteksi pola fraud dan pencucian uang yang sulit terlihat lewat analisis tabular biasa."
+              },
+              {
+                title: "AI Agent dengan Memori dan Penalaran Lebih Baik",
+                description:
+                  "MindGraph memberikan AI agent akses ke konteks yang saling terhubung, membantu agent mengingat riwayat interaksi dan bernalar lintas sumber data secara lebih akurat."
+              },
+              {
+                title: "Pandangan Pelanggan yang Utuh",
+                description:
+                  "Menyatukan data pelanggan dari berbagai sistem menjadi satu graph relasi, sehingga tim mendapatkan gambaran customer 360° yang konsisten untuk personalisasi dan retensi."
+              },
+              {
+                title: "Visibilitas Rantai Pasok yang Lebih Jelas",
+                description:
+                  "Memetakan ketergantungan supply chain antar vendor, produk, dan lokasi membantu organisasi mengantisipasi risiko gangguan sebelum berdampak ke operasional."
+              },
+              {
+                title: "Pengambilan Keputusan yang Lebih Cepat dan Kontekstual",
+                description:
+                  "Dengan insight yang sudah saling terhubung, tim data dan bisnis dapat mengambil keputusan lebih cepat tanpa perlu menggabungkan data secara manual dari berbagai sumber."
               }
             ],
-            useCases: []
+            useCases: [
+              {
+                title: "Fraud, Risk Detection & AML",
+                excerpt:
+                  "Memetakan relasi transaksi dan entitas untuk mendeteksi pola fraud dan pencucian uang yang sulit terlihat lewat analisis data tabular biasa."
+              },
+              {
+                title: "AI Agent Memory & Reasoning",
+                excerpt:
+                  "Memberikan AI agent akses ke konteks yang saling terhubung, sehingga agent dapat mengingat riwayat interaksi dan bernalar lintas sumber data secara lebih akurat."
+              },
+              {
+                title: "Customer 360°",
+                excerpt:
+                  "Menyatukan data pelanggan dari berbagai sistem menjadi satu graph relasi untuk mendapatkan gambaran pelanggan yang lengkap dan konsisten."
+              },
+              {
+                title: "Supply Chain & Dependency Mapping",
+                excerpt:
+                  "Memetakan ketergantungan antar vendor, produk, dan lokasi untuk membantu organisasi mengantisipasi risiko gangguan rantai pasok lebih awal."
+              }
+            ]
           },
           mindFlow: {
             title: "MindFlow",
@@ -595,8 +638,9 @@ const resources = {
               "MindFlow adalah platform otomasi proses bisnis AI-native yang membantu perusahaan mendigitalisasi dan mengelola alur kerja mereka dalam satu tempat. Tim dapat menentukan proses bisnis mereka sendiri dan dengan mudah menyesuaikan segala hal mulai dari data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
             heroDescription:
               "Tim dapat menentukan proses bisnis mereka sendiri dan menyesuaikan data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
-            featureHeading: "MindFlow akan segera hadir",
-            featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
+            featureHeading: "MindFlow menyesuaikan diri dengan cara bisnis Anda bekerja, bukan sebaliknya",
+            featureDescription:
+              "Setiap bisnis punya proses kerja yang berbeda, namun kebanyakan tools otomasi memaksa tim menyesuaikan diri dengan template yang kaku. MindFlow dibangun AI-native agar dapat mengikuti bentuk proses bisnis Anda apa adanya—mulai dari data, peran, hingga tampilan—sehingga setiap tim dapat mendigitalisasi dan mengotomasi alur kerja mereka tanpa harus mengubah cara kerja yang sudah berjalan.",
             featurePoints: [
               "Sesuai untuk Proses Bisnis Apa Pun",
               "Kustomisasi Semuanya",
@@ -605,11 +649,53 @@ const resources = {
             ],
             enterpriseBenefits: [
               {
-                title: "Segera Hadir",
-                description: "Detail dampak bisnis MindFlow akan segera diperbarui."
+                title: "Implementasi Lebih Cepat, Tanpa Kode",
+                description:
+                  "Tim dapat membangun dan menyesuaikan proses bisnis sendiri tanpa bergantung pada tim engineering, mempercepat waktu implementasi dari bulan menjadi minggu."
+              },
+              {
+                title: "Satu Platform untuk Semua Departemen",
+                description:
+                  "Alih-alih menggunakan tools terpisah untuk tiap tim, MindFlow menyatukan seluruh proses bisnis—operasional, keuangan, HR, hingga customer service—dalam satu platform yang konsisten."
+              },
+              {
+                title: "Otomasi yang Mengurangi Pekerjaan Manual",
+                description:
+                  "Kemampuan AI-native membantu mengotomasi tugas repetitif seperti persetujuan, notifikasi, dan pengisian data, sehingga tim bisa fokus pada pekerjaan bernilai tinggi."
+              },
+              {
+                title: "Visibilitas Proses secara Real-Time",
+                description:
+                  "Dashboard dan pelaporan yang bisa disesuaikan memberikan visibilitas penuh atas status setiap proses bisnis, membantu manajemen mengambil keputusan lebih cepat."
+              },
+              {
+                title: "Skalabel Mengikuti Pertumbuhan Bisnis",
+                description:
+                  "Karena setiap elemen proses—data, peran, hingga tampilan—dapat disesuaikan, MindFlow dapat berkembang mengikuti kompleksitas organisasi tanpa perlu migrasi platform."
               }
             ],
-            useCases: []
+            useCases: [
+              {
+                title: "Employee Onboarding & Offboarding",
+                excerpt:
+                  "Mengotomasi proses onboarding dan offboarding karyawan lintas departemen—dari IT, HR, hingga akses sistem—agar lebih cepat dan konsisten."
+              },
+              {
+                title: "Procurement & Approval Workflows",
+                excerpt:
+                  "Menyederhanakan alur permintaan pembelian dan persetujuan vendor dengan rule dan eskalasi yang dapat disesuaikan dengan kebijakan internal."
+              },
+              {
+                title: "Customer Service Case Management",
+                excerpt:
+                  "Mengelola dan melacak tiket layanan pelanggan dari awal hingga selesai, memastikan setiap kasus ditangani sesuai SLA yang berlaku."
+              },
+              {
+                title: "Finance Reconciliation & Reporting",
+                excerpt:
+                  "Mengotomasi proses rekonsiliasi keuangan dan pelaporan rutin, mengurangi kerja manual dan risiko kesalahan input data."
+              }
+            ]
           }
         }
       },
@@ -1214,8 +1300,9 @@ const resources = {
               "MindGraph is an AI Graph Intelligence Platform that goes beyond traditional databases, combining vector and graph databases to understand how information is connected and what it means. It connects data from different sources to uncover relationships, understand context, and provide actionable insights. MindGraph can run alongside existing AI and analytics tools or as a standalone platform, on-premise or in the cloud.",
             heroDescription:
               "MindGraph connects data from different sources to uncover relationships, understand context, and deliver actionable insight for data and analytics teams.",
-            featureHeading: "MindGraph is coming soon",
-            featureDescription: "MindGraph feature details will be updated soon.",
+            featureHeading: "MindGraph uncovers the hidden connections behind your data",
+            featureDescription:
+              "MindGraph combines graph and vector databases to map relationships across enterprise data scattered throughout your systems in real time, helping teams surface hidden insights—like fraud signals, customer context, or supply chain dependencies—and make decisions with fuller context.",
             featurePoints: [
               "Unified Data Intelligence",
               "Graph-Based Context Understanding",
@@ -1224,11 +1311,53 @@ const resources = {
             ],
             enterpriseBenefits: [
               {
-                title: "Coming Soon",
-                description: "MindGraph business impact details will be updated soon."
+                title: "More Accurate Fraud Detection",
+                description:
+                  "Mapping transaction and entity relationships as a graph helps risk teams detect fraud and money-laundering patterns that are hard to see through standard tabular analysis."
+              },
+              {
+                title: "AI Agents with Better Memory and Reasoning",
+                description:
+                  "MindGraph gives AI agents access to interconnected context, helping them recall interaction history and reason across data sources more accurately."
+              },
+              {
+                title: "A Complete View of Every Customer",
+                description:
+                  "Unifying customer data from different systems into one relationship graph gives teams a consistent 360° view for personalization and retention."
+              },
+              {
+                title: "Clearer Supply Chain Visibility",
+                description:
+                  "Mapping dependencies across vendors, products, and locations helps organizations anticipate disruption risks before they impact operations."
+              },
+              {
+                title: "Faster, More Contextual Decision-Making",
+                description:
+                  "With insights already connected, data and business teams can make faster decisions without manually stitching data together from multiple sources."
               }
             ],
-            useCases: []
+            useCases: [
+              {
+                title: "Fraud, Risk Detection & AML",
+                excerpt:
+                  "Maps transaction and entity relationships to detect fraud and money-laundering patterns that are hard to spot with standard tabular analysis."
+              },
+              {
+                title: "AI Agent Memory & Reasoning",
+                excerpt:
+                  "Gives AI agents access to interconnected context so they can recall interaction history and reason across data sources more accurately."
+              },
+              {
+                title: "Customer 360°",
+                excerpt:
+                  "Unifies customer data from different systems into one relationship graph for a complete, consistent view of every customer."
+              },
+              {
+                title: "Supply Chain & Dependency Mapping",
+                excerpt:
+                  "Maps dependencies across vendors, products, and locations to help organizations anticipate supply chain disruption risks earlier."
+              }
+            ]
           },
           mindFlow: {
             title: "MindFlow",
@@ -1237,8 +1366,9 @@ const resources = {
               "MindFlow is an AI-native business process automation platform that helps businesses digitize and manage their workflows in one place. Teams can define their own business processes and easily customize everything from data, roles, dashboards, charts, and visual design to fit their needs.",
             heroDescription:
               "Teams can define their own business processes and customize data, roles, dashboards, charts, and visual design to fit their needs.",
-            featureHeading: "MindFlow is coming soon",
-            featureDescription: "MindFlow feature details will be updated soon.",
+            featureHeading: "MindFlow adapts to how your business works, not the other way around",
+            featureDescription:
+              "Every business runs on a different process, yet most automation tools force teams into a rigid template. MindFlow is built AI-native to fit your business process as it is—from data and roles to how it looks—so every team can digitize and automate their workflows without changing the way they already work.",
             featurePoints: [
               "Fits to Any Business Process",
               "Customize Everything",
@@ -1247,11 +1377,53 @@ const resources = {
             ],
             enterpriseBenefits: [
               {
-                title: "Coming Soon",
-                description: "MindFlow business impact details will be updated soon."
+                title: "Faster, No-Code Implementation",
+                description:
+                  "Teams can build and adjust their own business processes without relying on engineering, cutting implementation time from months to weeks."
+              },
+              {
+                title: "One Platform Across Every Department",
+                description:
+                  "Instead of separate tools for every team, MindFlow brings operations, finance, HR, and customer service processes together in one consistent platform."
+              },
+              {
+                title: "Automation That Cuts Manual Work",
+                description:
+                  "AI-native capabilities help automate repetitive tasks like approvals, notifications, and data entry, freeing teams to focus on higher-value work."
+              },
+              {
+                title: "Real-Time Process Visibility",
+                description:
+                  "Customizable dashboards and reporting give full visibility into the status of every business process, helping leadership make faster decisions."
+              },
+              {
+                title: "Scales With Your Business",
+                description:
+                  "Because every part of the process—data, roles, and design—can be customized, MindFlow grows alongside your organization's complexity without needing a platform migration."
               }
             ],
-            useCases: []
+            useCases: [
+              {
+                title: "Employee Onboarding & Offboarding",
+                excerpt:
+                  "Automates employee onboarding and offboarding across departments—IT, HR, and system access—for a faster, more consistent process."
+              },
+              {
+                title: "Procurement & Approval Workflows",
+                excerpt:
+                  "Streamlines purchase requests and vendor approvals with rules and escalations tailored to your internal policies."
+              },
+              {
+                title: "Customer Service Case Management",
+                excerpt:
+                  "Manages and tracks customer service tickets end-to-end, ensuring every case is handled within the applicable SLA."
+              },
+              {
+                title: "Finance Reconciliation & Reporting",
+                excerpt:
+                  "Automates routine financial reconciliation and reporting, reducing manual work and the risk of data entry errors."
+              }
+            ]
           }
         }
       },

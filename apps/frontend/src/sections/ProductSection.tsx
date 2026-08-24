@@ -3,7 +3,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, Image as ImageIcon } from "lucide-react";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { useTranslation } from "react-i18next";
-import { getLocalizedProductBySlug, getProductBySlug, type ProductItem } from "../pages/Product/productData";
+import {
+  getLocalizedProductBySlug,
+  getProductBySlug,
+  productLogoBySlug,
+  type ProductItem
+} from "../pages/Product/productData";
 
 const mindwalkerLogo = "/assets/logo/mindwalker_logo.png";
 
@@ -116,27 +121,48 @@ export function ProductSection({ onOpenProductDetails, onBookDemo }: ProductSect
             {tabs.map((item) => {
               const isActive = item.slug === activeSlug;
               return (
-                <button
+                <motion.button
                   key={item.slug}
                   type="button"
                   onClick={() => handleSelectTab(item.slug)}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   className={
                     isActive
-                      ? "flex flex-col items-start gap-0.5 rounded-2xl bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] px-4 py-2.5 text-left shadow-[0_8px_18px_rgba(35,146,255,0.32)] transition-all duration-300"
-                      : "flex flex-col items-start gap-0.5 rounded-2xl border border-[rgba(15,27,42,0.06)] bg-[#f1f4f9] px-4 py-2.5 text-left transition-all duration-300 hover:border-[rgba(35,146,255,0.35)]"
+                      ? "relative flex flex-col items-start gap-0.5 overflow-hidden rounded-2xl px-4 py-2.5 text-left"
+                      : "relative flex flex-col items-start gap-0.5 overflow-hidden rounded-2xl border border-[rgba(15,27,42,0.06)] bg-[#f1f4f9] px-4 py-2.5 text-left transition-colors duration-300 hover:border-[rgba(35,146,255,0.35)] hover:bg-[#eaf3ff]"
                   }
                 >
+                  {isActive ? (
+                    <motion.span
+                      layoutId="activeProductTab"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      className="absolute inset-0 rounded-2xl bg-[linear-gradient(125deg,#2392ff,#3ab1ff)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_24px_-4px_rgba(35,146,255,0.45)]"
+                    />
+                  ) : null}
                   <span
-                    className={`text-[0.64rem] font-bold uppercase tracking-[0.06em] ${
+                    className={`relative z-10 text-[0.64rem] font-bold uppercase tracking-[0.06em] ${
                       isActive ? "text-white/85" : "text-[#8a97a8]"
                     }`}
                   >
                     {item.label}
                   </span>
-                  <span className={`text-[0.95rem] font-bold ${isActive ? "text-white" : "text-[#132031]"}`}>
-                    {item.title}
-                  </span>
-                </button>
+                  {productLogoBySlug[item.slug] ? (
+                    <span className="relative z-10 mt-0.5 inline-flex items-center rounded-md bg-white px-2 py-1 shadow-[0_1px_3px_rgba(15,27,42,0.12)]">
+                      <img
+                        src={productLogoBySlug[item.slug]}
+                        alt={item.title}
+                        className="h-3.5 w-auto object-contain"
+                        loading="lazy"
+                      />
+                    </span>
+                  ) : (
+                    <span className={`relative z-10 text-[0.95rem] font-bold ${isActive ? "text-white" : "text-[#132031]"}`}>
+                      {item.title}
+                    </span>
+                  )}
+                </motion.button>
               );
             })}
           </div>

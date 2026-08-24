@@ -114,15 +114,13 @@ export function ProductDetailsPage({ productSlug, onOpenNewsDetails, onOpenDemo 
         </div>
         <div data-scroll-fade className="relative z-10 mx-auto flex min-h-[calc(100vh-8rem)] w-[min(1500px,calc(100%-1.5rem))] items-center sm:w-[min(1600px,calc(100%-2rem))]">
           <div className="max-w-[780px]">
-            <h1 className="text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]">
+            <h1 className={productLogoBySlug[product.slug] ? "leading-none" : "text-[clamp(2.2rem,5.2vw,3.9rem)] font-bold leading-[1.02] text-[#2f92ff]"}>
               {productLogoBySlug[product.slug] ? (
-                <span className="inline-flex items-center rounded-2xl bg-white px-5 py-3 shadow-[0_10px_28px_rgba(8,14,24,0.28)] sm:px-6 sm:py-3.5">
-                  <img
-                    src={productLogoBySlug[product.slug]}
-                    alt={product.title}
-                    className="h-[clamp(2rem,4vw,2.8rem)] w-auto object-contain"
-                  />
-                </span>
+                <img
+                  src={productLogoBySlug[product.slug]}
+                  alt={product.title}
+                  className="h-[clamp(3.2rem,7.5vw,5.5rem)] w-auto object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
+                />
               ) : (
                 <>
                   <span className="text-white">{product.title.split(" ")[0]}</span>

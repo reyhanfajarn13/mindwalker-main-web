@@ -1,4 +1,16 @@
-import { Binary, BookCheck, Boxes, Database, GitBranch, GripVertical, PlugZap, ShieldCheck, UserCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Binary,
+  BookCheck,
+  Boxes,
+  Database,
+  GitBranch,
+  GripVertical,
+  PlugZap,
+  ShieldCheck,
+  UserCheck
+} from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -6,6 +18,22 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 
 type ProcessStep = { number: string; title: string; description: string };
 type DifferentiatorItem = { number: string; title: string; description: string };
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } }
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 220, damping: 24 }
+  }
+};
+
+const cardHover = { y: -6, transition: { type: "spring" as const, stiffness: 320, damping: 22 } };
 
 type SolutionSectionProps = {
   onContactUs?: () => void;
@@ -257,46 +285,73 @@ export function SolutionSection({ onContactUs }: SolutionSectionProps) {
           <p className="text-[0.73rem] font-bold uppercase tracking-[0.06em] text-[#6f87a3]">
             {t("solutions.process.kicker")}
           </p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <motion.div
+            className="relative mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[2.85rem] right-[12.5%] left-[12.5%] hidden h-px bg-[linear-gradient(90deg,rgba(35,146,255,0.35),rgba(35,146,255,0.08)_92%,transparent)] xl:block"
+            />
             {processSteps.map((step) => (
-              <div
+              <motion.div
                 key={step.number}
-                className="rounded-2xl border border-[rgba(15,27,42,0.08)] bg-white p-5"
+                variants={staggerItem}
+                whileHover={cardHover}
+                className="group relative rounded-2xl border border-[rgba(15,27,42,0.07)] bg-white p-5 shadow-[0_1px_2px_rgba(15,27,42,0.04)] transition-[box-shadow,border-color] duration-300 hover:border-[rgba(35,146,255,0.28)] hover:shadow-[0_26px_46px_-20px_rgba(35,146,255,0.4)]"
               >
-                <span className="inline-flex items-center rounded-full bg-[rgba(35,146,255,0.12)] px-2.5 py-1 text-[0.78rem] font-bold text-[#2490ef]">
+                <span className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[linear-gradient(135deg,#2392ff,#3ab1ff)] text-[0.82rem] font-bold text-white shadow-[0_6px_14px_-2px_rgba(35,146,255,0.5)]">
                   {step.number}
                 </span>
                 <h3 className="mt-3 text-[1.02rem] font-bold leading-[1.3] text-[#132031]">{step.title}</h3>
                 <p className="mt-2 text-[0.88rem] leading-[1.55] text-[#4a5d73]">{step.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-10">
           <p className="text-[0.73rem] font-bold uppercase tracking-[0.06em] text-[#6f87a3]">
             {t("solutions.differentiators.kicker")}
           </p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <motion.div
+            className="mt-4 grid gap-4 sm:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+          >
             {differentiatorItems.map((item) => (
-              <div key={item.number} className="rounded-2xl bg-[#f4f7fb] p-6">
+              <motion.div
+                key={item.number}
+                variants={staggerItem}
+                whileHover={cardHover}
+                className="rounded-2xl bg-[#f4f7fb] p-6 shadow-[0_1px_2px_rgba(15,27,42,0.03)] transition-shadow duration-300 hover:shadow-[0_26px_46px_-20px_rgba(35,146,255,0.32)]"
+              >
                 <span className="inline-flex items-center rounded-full bg-[rgba(35,146,255,0.14)] px-2.5 py-1 text-[0.78rem] font-bold text-[#2490ef]">
                   {item.number}
                 </span>
                 <h3 className="mt-3 text-[1.05rem] font-bold leading-[1.3] text-[#132031]">{item.title}</h3>
                 <p className="mt-2 max-w-[52ch] text-[0.9rem] leading-[1.6] text-[#4a5d73]">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <p className="mt-5 text-[0.9rem] text-[#4a5d73]">
             {t("solutions.differentiators.ctaPrefix")}
             <button
               type="button"
               onClick={onContactUs}
-              className="font-semibold text-[#2490ef] underline underline-offset-2 transition-colors duration-200 hover:text-[#1976c5]"
+              className="group/cta inline-flex items-center gap-1 align-baseline font-semibold text-[#2490ef] underline underline-offset-2 transition-colors duration-200 hover:text-[#1976c5]"
             >
               {t("solutions.differentiators.ctaLink")}
+              <ArrowRight
+                size={14}
+                className="transition-transform duration-200 group-hover/cta:translate-x-1"
+              />
             </button>
             {t("solutions.differentiators.ctaSuffix")}
           </p>

@@ -35,6 +35,8 @@ function SectionFallback() {
   return <div className="min-h-[48vh] w-full bg-transparent" />;
 }
 
+const BELOW_FOLD_REVEAL_VIEWPORT_RATIO = 0.35;
+
 const getPageFromPathname = (pathname: string): "main" | "news" | "product" => {
   const normalized = pathname.toLowerCase();
   if (normalized.startsWith("/news")) return "news";
@@ -66,8 +68,10 @@ function App() {
   const idleTimerRef = useRef<number | null>(null);
   const isNavbarVisibleRef = useRef(true);
   const activeSectionRef = useRef("home");
+  const belowFoldRevealedRef = useRef(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [belowFoldRevealed, setBelowFoldRevealed] = useState(false);
   const [currentPage, setCurrentPage] = useState<"main" | "news" | "product">(() =>
     getPageFromPathname(window.location.pathname)
   );
@@ -89,6 +93,12 @@ function App() {
     if (activeSectionRef.current === sectionId) return;
     activeSectionRef.current = sectionId;
     setActiveSection(sectionId);
+  };
+
+  const revealBelowFold = () => {
+    if (belowFoldRevealedRef.current) return;
+    belowFoldRevealedRef.current = true;
+    setBelowFoldRevealed(true);
   };
 
   useEffect(() => {
@@ -136,6 +146,10 @@ function App() {
       const currentTop = latestScrollTopRef.current;
       const previousTop = lastScrollTopRef.current;
       const delta = currentTop - previousTop;
+
+      if (!belowFoldRevealedRef.current && currentTop > window.innerHeight * BELOW_FOLD_REVEAL_VIEWPORT_RATIO) {
+        revealBelowFold();
+      }
 
       if (Math.abs(delta) >= 4) {
         if (delta > 0) {
@@ -267,14 +281,20 @@ function App() {
         node.classList.remove("scroll-stagger-body");
       });
     };
-  }, [currentPage, selectedNewsId, selectedProductSlug]);
+  }, [currentPage, selectedNewsId, selectedProductSlug, belowFoldRevealed]);
 
   const scrollToSection = (targetId: string) => {
     const scrollRoot = scrollRootRef.current;
     if (!scrollRoot) return;
 
     const targetSection = scrollRoot.querySelector<HTMLElement>(`#${targetId}`);
-    if (!targetSection) return;
+    if (!targetSection) {
+      if (targetId !== "home" && !belowFoldRevealedRef.current) {
+        pendingTargetRef.current = targetId;
+        revealBelowFold();
+      }
+      return;
+    }
 
     setActiveSectionSafe(targetId);
     scrollRoot.scrollTo({
@@ -324,10 +344,38 @@ function App() {
   }, [currentPage]);
 
   useEffect(() => {
+    if (!belowFoldRevealed || !pendingTargetRef.current) return;
+
+    const targetId = pendingTargetRef.current;
+    pendingTargetRef.current = null;
+
+    let attempts = 0;
+    const maxAttempts = 30;
+
+    const tryScrollToRevealedSection = () => {
+      const scrollRoot = scrollRootRef.current;
+      const targetSection = scrollRoot?.querySelector<HTMLElement>(`#${targetId}`);
+
+      if (targetSection) {
+        scrollToSection(targetId);
+        return;
+      }
+
+      if (attempts >= maxAttempts) return;
+      attempts += 1;
+      window.setTimeout(tryScrollToRevealedSection, 80);
+    };
+
+    tryScrollToRevealedSection();
+  }, [belowFoldRevealed]);
+
+  useEffect(() => {
     if (currentPage !== "main") return;
 
     const hashTarget = window.location.hash.replace("#", "");
     if (!hashTarget) return;
+
+    if (hashTarget !== "home") revealBelowFold();
 
     let attempts = 0;
     const maxAttempts = 30;
@@ -463,15 +511,19 @@ function App() {
         ) : (
           <>
             <HeroSection />
-            <Suspense fallback={<SectionFallback />}>
-              <ProductSection
-                onOpenProductDetails={handleOpenProductDetails}
-                onBookDemo={() => scrollToSection("footer")}
-              />
-              <SolutionSection onContactUs={() => scrollToSection("footer")} />
-              <IndustrialUsecaseSection />
-              <FooterSection />
-            </Suspense>
+            {belowFoldRevealed ? (
+              <Suspense fallback={<SectionFallback />}>
+                <ProductSection
+                  onOpenProductDetails={handleOpenProductDetails}
+                  onBookDemo={() => scrollToSection("footer")}
+                />
+                <SolutionSection onContactUs={() => scrollToSection("footer")} />
+                <IndustrialUsecaseSection />
+                <FooterSection />
+              </Suspense>
+            ) : (
+              <div className="min-h-[200vh] w-full" aria-hidden="true" />
+            )}
           </>
         )}
       </main>

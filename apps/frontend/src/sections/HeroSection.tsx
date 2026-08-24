@@ -28,13 +28,13 @@ type HeroCard = {
 };
 
 type HeroStat = { value: string; label: string };
-type PartnerBadge = { label: string; logo?: string };
+type PartnerBadge = { label: string; logo?: string; href?: string };
 
 const AUTO_SLIDE_MS = 3200;
 const SWIPE_THRESHOLD = 56;
 
 export function HeroSection({
-  heroImageUrl = "https://ik.imagekit.io/mindwalker/public/assets/mindOpsv.01HeroSection.webp",
+  heroImageUrl = "https://ik.imagekit.io/mindwalker/public/assets/mindOpsv.01HeroSection.webp?tr=w-900,q-75",
   heroImageAlt = "Hero visual"
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -69,7 +69,7 @@ export function HeroSection({
         badge: t("hero.slides.update"),
         description: t("hero.slides.desc2"),
         imageUrl:
-          "https://ik.imagekit.io/mindwalker/public/assets/visionCraftPoweredbySeedHero.webp",
+          "https://ik.imagekit.io/mindwalker/public/assets/visionCraftPoweredbySeedHero.webp?tr=w-900,q-75",
         imageAlt: "Mountain valley"
       },
       {
@@ -78,7 +78,7 @@ export function HeroSection({
         badge: t("hero.slides.case"),
         description: t("hero.slides.desc3"),
         imageUrl:
-          "https://ik.imagekit.io/mindwalker/public/assets/mindOpslegacyAppsHeroSection.webp",
+          "https://ik.imagekit.io/mindwalker/public/assets/mindOpslegacyAppsHeroSection.webp?tr=w-900,q-75",
         imageAlt: "Forest lake"
       }
     ],
@@ -90,7 +90,7 @@ export function HeroSection({
   const stats = t("hero.stats", { returnObjects: true }) as HeroStat[];
 
   const partnerBadges: PartnerBadge[] = [
-    { label: "ISO 27001", logo: iso27001Logo },
+    { label: "ISO 27001", logo: iso27001Logo, href: "https://jsi-certification.com/certificate/ims26310573" },
     { label: t("hero.partner"), logo: nvidiaLogo },
     { label: "Red Hat Partner", logo: redHatLogo }
   ];
@@ -202,21 +202,39 @@ export function HeroSection({
               {t("hero.partnership.kicker")}
             </p>
             <div className="mt-3 flex flex-wrap gap-2.5">
-              {partnerBadges.map((badge) => (
-                <span
-                  key={badge.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.05)] px-3.5 py-2 text-[0.82rem] font-semibold text-[#eef3f9]"
-                >
-                  {badge.logo ? (
-                    <span className="grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-white/90">
-                      <img src={badge.logo} alt="" className="h-full w-full object-contain p-[2px]" loading="lazy" />
-                    </span>
-                  ) : (
-                    <BadgeCheck size={16} className="text-[#59adff]" />
-                  )}
-                  {badge.label}
-                </span>
-              ))}
+              {partnerBadges.map((badge) => {
+                const badgeContent = (
+                  <>
+                    {badge.logo ? (
+                      <span className="grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-white/90">
+                        <img src={badge.logo} alt="" className="h-full w-full object-contain p-[2px]" loading="lazy" />
+                      </span>
+                    ) : (
+                      <BadgeCheck size={16} className="text-[#59adff]" />
+                    )}
+                    {badge.label}
+                  </>
+                );
+
+                const badgeClassName =
+                  "inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.05)] px-3.5 py-2 text-[0.82rem] font-semibold text-[#eef3f9]";
+
+                return badge.href ? (
+                  <a
+                    key={badge.label}
+                    href={badge.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${badgeClassName} transition-colors duration-300 hover:border-[rgba(89,173,255,0.5)] hover:bg-[rgba(255,255,255,0.1)]`}
+                  >
+                    {badgeContent}
+                  </a>
+                ) : (
+                  <span key={badge.label} className={badgeClassName}>
+                    {badgeContent}
+                  </span>
+                );
+              })}
               <img
                 src={redHatEcosystemBadge}
                 alt="Listed on Red Hat Ecosystem Catalog"

@@ -25,7 +25,7 @@ const resources = {
         description:
           "Kami membangun solusi cerdas yang menghubungkan data, sistem, dan alur kerja Anda. Mengubah kompleksitas enterprise menjadi keputusan yang lebih otomatis, operasional yang scalable, dan nilai bisnis yang terukur.",
         stats: [
-          { value: "5", label: "produk, bisa dipakai terpisah" },
+          { value: "5", label: "produk untuk solusi bisnis Anda" },
           { value: "2", label: "jalur custom solution" },
           { value: "6", label: "industri dengan use case siap pakai" },
           { value: "0", label: "sistem existing yang harus dibongkar" }
@@ -133,25 +133,25 @@ const resources = {
               number: "01",
               title: "Discovery, 1–2 minggu",
               description:
-                "Kami duduk dengan tim Anda, lihat sistem yang ada, dan pilih satu masalah yang angkanya paling jelas. Keluarannya: ruang lingkup, perkiraan dampak, dan daftar risiko."
+                "Kami memahami proses, sistem, dan pain point bisnis Anda untuk menentukan use case dengan dampak paling nyata. Output: ruang lingkup, estimasi manfaat, dan prioritas implementasi."
             },
             {
               number: "02",
-              title: "Proof of concept, 4–6 minggu",
+              title: "Proof of Concept, 2–3 minggu",
               description:
-                "Dibangun di atas data Anda sendiri, bukan demo. Di akhir tahap ini Anda punya angka nyata untuk memutuskan lanjut atau berhenti — tanpa komitmen lanjutan."
+                "Kami membangun solusi langsung menggunakan data dan environment Anda. Dalam 2–3 minggu, Anda dapat memvalidasi solusi melalui prototype yang terukur sebelum masuk ke tahap implementasi lebih lanjut."
             },
             {
               number: "03",
-              title: "Produksi & integrasi",
+              title: "Production & Integration",
               description:
-                "Masuk ke sistem existing lewat konektor, bukan penggantian. Deployment on-premise, private cloud, atau hybrid, mengikuti aturan data Anda."
+                "Solusi diintegrasikan dengan sistem yang sudah ada melalui konektor dan arsitektur yang sesuai—tanpa perlu mengganti sistem utama. Deployment dapat disesuaikan dengan kebutuhan on-premise, private cloud, maupun hybrid."
             },
             {
               number: "04",
-              title: "Serah terima & pendampingan",
+              title: "Handover & Enablement",
               description:
-                "Dokumentasi, pelatihan tim internal, dan akses ke source code sesuai kesepakatan. Anda tidak terikat pada kami untuk menjalankannya."
+                "Kami memastikan solusi siap digunakan melalui dokumentasi, knowledge transfer, dan pendampingan tim internal. Source code dan akses teknis diberikan sesuai kesepakatan, sehingga tim Anda siap mengoperasikan dan mengembangkannya secara mandiri."
             }
           ]
         },
@@ -397,10 +397,10 @@ const resources = {
             featureDescription:
               "MindSOC mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
             featurePoints: [
-              "Korelasi Ancaman",
-              "Visibilitas Attack Surface",
-              "Playbook Respons",
-              "Pelaporan Kepatuhan"
+              "Manajemen Insiden Terpadu",
+              "AI SOC Analyst",
+              "Threat Hunter Agent",
+              "Graf Investigasi"
             ],
             enterpriseBenefits: [
               {
@@ -516,10 +516,10 @@ const resources = {
             featureDescription:
               "Dari prompt cerdas hingga kolaborasi lintas tim, VisionCraft membantu perusahaan menciptakan visual autentik dengan kualitas premium.",
             featurePoints: [
-              "Peningkatan Prompt",
-              "Integrasi Multi-Provider",
-              "Brand Pack Intelligence",
-              "Workflow Kolaboratif"
+              "Multi-AI dalam Satu Platform",
+              "Storyboard Berbasis AI",
+              "AI Visual Studio On-Premise",
+              "Brand Pack Intelligence"
             ],
             enterpriseBenefits: [
               {
@@ -574,7 +574,12 @@ const resources = {
               "MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti bagi tim data dan analitik.",
             featureHeading: "MindGraph akan segera hadir",
             featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
-            featurePoints: ["Fitur akan segera hadir"],
+            featurePoints: [
+              "Intelijen Data Terpadu",
+              "Pemahaman Konteks Berbasis Graph",
+              "Intelijen Semantik Berbasis AI",
+              "Integrasi Siap Enterprise"
+            ],
             enterpriseBenefits: [
               {
                 title: "Segera Hadir",
@@ -592,7 +597,12 @@ const resources = {
               "Tim dapat menentukan proses bisnis mereka sendiri dan menyesuaikan data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
             featureHeading: "MindFlow akan segera hadir",
             featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
-            featurePoints: ["Fitur akan segera hadir"],
+            featurePoints: [
+              "Sesuai untuk Proses Bisnis Apa Pun",
+              "Kustomisasi Semuanya",
+              "Satu Platform, Semua Peran",
+              "Otomasi AI-Native"
+            ],
             enterpriseBenefits: [
               {
                 title: "Segera Hadir",
@@ -651,7 +661,7 @@ const resources = {
         description:
           "We build intelligent solutions that connect your data, systems, and workflows — turning enterprise complexity into more automated decisions, scalable operations, and measurable business value.",
         stats: [
-          { value: "5", label: "products, usable standalone" },
+          { value: "5", label: "products for your business solutions" },
           { value: "2", label: "custom solution tracks" },
           { value: "6", label: "industries with ready-to-use cases" },
           { value: "0", label: "existing systems you need to tear down" }
@@ -759,25 +769,25 @@ const resources = {
               number: "01",
               title: "Discovery, 1–2 weeks",
               description:
-                "We sit down with your team, review the existing system, and pick one problem with the clearest numbers. Output: scope, impact estimate, and risk list."
+                "We get to know your business processes, systems, and pain points to identify the use case with the clearest impact. Output: scope, benefit estimate, and implementation priority."
             },
             {
               number: "02",
-              title: "Proof of concept, 4–6 weeks",
+              title: "Proof of Concept, 2–3 weeks",
               description:
-                "Built on your own data, not a demo. By the end of this phase you have real numbers to decide whether to continue — with no further commitment."
+                "We build the solution directly using your own data and environment. Within 2–3 weeks, you can validate it through a measurable prototype before moving into full implementation."
             },
             {
               number: "03",
-              title: "Production & integration",
+              title: "Production & Integration",
               description:
-                "Plugs into your existing systems through connectors, not a replacement. Deployed on-premise, private cloud, or hybrid, following your data rules."
+                "The solution is integrated into your existing systems through connectors and a fitting architecture — no need to replace your core systems. Deployment can be tailored to on-premise, private cloud, or hybrid needs."
             },
             {
               number: "04",
-              title: "Handover & support",
+              title: "Handover & Enablement",
               description:
-                "Documentation, internal team training, and source code access as agreed. You're not locked into us to keep it running."
+                "We make sure the solution is ready to use through documentation, knowledge transfer, and hands-on support for your internal team. Source code and technical access are provided as agreed, so your team is ready to operate and evolve it independently."
             }
           ]
         },
@@ -1025,10 +1035,10 @@ const resources = {
             featureDescription:
               "MindSOC detects cyber attacks earlier, correlates attack sources automatically, and helps security teams choose the most effective response in one integrated workflow.",
             featurePoints: [
-              "Threat Correlation",
-              "Attack Surface Visibility",
-              "Response Playbooks",
-              "Compliance Reporting"
+              "Unified Incident Management",
+              "AI SOC Analyst",
+              "Threat Hunter Agent",
+              "Investigation Graph"
             ],
             enterpriseBenefits: [
               {
@@ -1147,10 +1157,10 @@ const resources = {
             featureDescription:
               "From smart prompts to cross-team collaboration, VisionCraft helps organizations create authentic visuals with premium quality.",
             featurePoints: [
-              "Prompt Enhancement",
-              "Multi-Provider Integration",
-              "Brand Pack Intelligence",
-              "Collaborative Workflows"
+              "Multi-AI in One Platform",
+              "AI Powered Storyboard",
+              "On Prem AI Visual Studio",
+              "Brand Pack Intelligence"
             ],
             enterpriseBenefits: [
               {
@@ -1206,7 +1216,12 @@ const resources = {
               "MindGraph connects data from different sources to uncover relationships, understand context, and deliver actionable insight for data and analytics teams.",
             featureHeading: "MindGraph is coming soon",
             featureDescription: "MindGraph feature details will be updated soon.",
-            featurePoints: ["Features coming soon"],
+            featurePoints: [
+              "Unified Data Intelligence",
+              "Graph-Based Context Understanding",
+              "AI-Powered Semantic Intelligence",
+              "Enterprise-Ready Integration"
+            ],
             enterpriseBenefits: [
               {
                 title: "Coming Soon",
@@ -1224,7 +1239,12 @@ const resources = {
               "Teams can define their own business processes and customize data, roles, dashboards, charts, and visual design to fit their needs.",
             featureHeading: "MindFlow is coming soon",
             featureDescription: "MindFlow feature details will be updated soon.",
-            featurePoints: ["Features coming soon"],
+            featurePoints: [
+              "Fits to Any Business Process",
+              "Customize Everything",
+              "One Platform, Every Role",
+              "AI-Native Automation"
+            ],
             enterpriseBenefits: [
               {
                 title: "Coming Soon",

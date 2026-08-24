@@ -13,8 +13,9 @@ const image5 = "https://ik.imagekit.io/mindwalker/public/assets/image5.png";
 const image6 = "https://ik.imagekit.io/mindwalker/public/assets/image6.png";
 const image7 = "https://ik.imagekit.io/mindwalker/public/assets/image7.png";
 const image8 = "https://ik.imagekit.io/mindwalker/public/assets/byteplus-logo%201.png";
-const footerHand = "https://ik.imagekit.io/mindwalker/public/assets/footerHand.png";
-const footerHandRobot = "https://ik.imagekit.io/mindwalker/public/assets/footerHandRobot.png";
+const redHatLogo = "/assets/logo/Logo-Red_Hat-B-Black-RGB.svg";
+const footerHand = "https://ik.imagekit.io/mindwalker/public/assets/footerHand.png?tr=w-500,q-75";
+const footerHandRobot = "https://ik.imagekit.io/mindwalker/public/assets/footerHandRobot.png?tr=w-500,q-75";
 const mindwalkerLogoFull = "https://ik.imagekit.io/mindwalker/public/assets/logo/mindwalker_logo_full.png";
 
 const techLogos = [
@@ -23,7 +24,8 @@ const techLogos = [
   { src: image5, alt: "Company 3", width: 42, mobileWidth: 30 },
   { src: image6, alt: "Company 4", width: 120, mobileWidth: 88 },
   { src: image7, alt: "Company 5", width: 110, mobileWidth: 30 },
-  { src: image8, alt: "Company 6", width: 120, mobileWidth: 100 }
+  { src: image8, alt: "Company 6", width: 120, mobileWidth: 100 },
+  { src: redHatLogo, alt: "Red Hat", width: 100, mobileWidth: 76 }
 ];
 
 export function FooterSection() {

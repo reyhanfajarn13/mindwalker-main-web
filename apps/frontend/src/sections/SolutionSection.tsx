@@ -36,8 +36,8 @@ export function SolutionSection({ onContactUs }: SolutionSectionProps) {
   const modelForgeIcons = useMemo(() => [Database, Boxes, Binary, ShieldCheck], []);
   const agenticAiIcons = useMemo(() => [GitBranch, PlugZap, UserCheck, BookCheck], []);
 
-  const modelForgeImage = "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.webp?updatedAt=1772427231030";
-  const agenticAiImage = "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.webp?updatedAt=1772427231045";
+  const modelForgeImage = "https://ik.imagekit.io/mindwalker/public/assets/modelForgeSolutionSection.webp?updatedAt=1772427231030&tr=w-1200,q-72";
+  const agenticAiImage = "https://ik.imagekit.io/mindwalker/public/assets/agenticAISolutionSection.webp?updatedAt=1772427231045&tr=w-1200,q-72";
 
   const getHeadlineParts = (headline: string) => {
     const match = headline.match(/^(.*?)(\s*\(.*\))$/);
@@ -142,7 +142,7 @@ export function SolutionSection({ onContactUs }: SolutionSectionProps) {
         <h2 className="mt-2 text-[clamp(1.9rem,4vw,3.1rem)] font-bold leading-[1.1] tracking-[-0.015em] text-[#2490ef]">
           {t("solutions.title")}
         </h2>
-        <p className="mt-3 max-w-[62ch] text-[clamp(0.92rem,1.15vw,1.15rem)] leading-[1.62] text-[#607186]">
+        <p className="mt-3 text-[clamp(0.92rem,1.15vw,1.15rem)] leading-[1.62] text-[#607186]">
           {t("solutions.description")}
         </p>
 

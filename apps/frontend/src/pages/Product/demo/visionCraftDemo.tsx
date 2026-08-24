@@ -6,7 +6,7 @@ type VisionCraftDemoProps = {
 };
 
 const DUMMY_RESULT_IMAGE =
-  "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173";
+  "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173&tr=w-900,q-75";
 
 type DemoModel = {
   id: "nano-banana" | "seedream-45";

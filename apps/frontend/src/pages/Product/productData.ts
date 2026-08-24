@@ -1,6 +1,6 @@
 import type { TFunction } from "i18next";
 
-const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.webp?updatedAt=1772427230672";
+const visioncraftbasePict = "https://ik.imagekit.io/mindwalker/public/assets/visioncraftBasePict.webp?updatedAt=1772427230672&tr=w-1100,q-75";
 
 export type ProductArticle = {
   id: number;
@@ -39,8 +39,8 @@ export const productData: ProductItem[] = [
     label: "IT Operations",
     description:
       "MindOps is an APM (application performance monitoring) platform powered by AI. It brings metrics, logs, and traces together to give teams a clear view of their IT systems. MindOps has an AI agent, Mindy, that detects unusual behavior and helps identify the root cause of system problems. It can run as a complete monitoring platform or alongside existing APM tools, on-premise or in the cloud, while keeping data and AI processing within your network.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png?tr=w-1100,q-75",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindops-platform-overview.png?tr=w-1100,q-75",
     datasheetPdfUrl: "/assets/datasheets/mindops-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindops-product-overview.pdf",
     heroDescription:
@@ -111,8 +111,8 @@ export const productData: ProductItem[] = [
     label: "Security",
     description:
       "MindSOC is an AI-powered security platform that brings alerts from different security systems into one place and helps teams understand potential attacks. Its AI automatically investigates incidents, connects information from different sources, and identifies the likely root cause. MindSOC can send investigation results directly to ticketing systems, helping reduce response time, false alarms, and manual workload while keeping analysts in control.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png?tr=w-1100,q-75",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindsoc-platform-overview.png?tr=w-1100,q-75",
     datasheetPdfUrl: "/assets/datasheets/mindsoc-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindsoc-product-overview.pdf",
     heroDescription:
@@ -122,10 +122,10 @@ export const productData: ProductItem[] = [
     featureDescription:
       "MindSOC mendeteksi cyber attacks lebih dini, mengkorelasikan sumber serangan secara otomatis, dan membantu tim security menentukan respons paling tepat dalam satu alur kerja terintegrasi.",
     featurePoints: [
-      "Threat Correlation",
-      "Attack Surface Visibility",
-      "Response Playbooks",
-      "Compliance Reporting"
+      "Unified Incident Management",
+      "AI SOC Analyst",
+      "Threat Hunter Agent",
+      "Investigation Graph"
     ],
     enterpriseBenefits: [
       {
@@ -179,8 +179,8 @@ export const productData: ProductItem[] = [
     title: "MindGateway",
     label: "LLM Firewall",
     description: "Gateway keamanan LLM untuk memvalidasi prompt input dan output model secara real-time.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productsection%20(3).webp",
-    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productDetails%20(1).webp",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productsection%20(3).webp?tr=w-900,q-75",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-productDetails%20(1).webp?tr=w-1100,q-75",
     datasheetPdfUrl: "/assets/datasheets/mindgateway-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/mindgateway-datasheet.pdf",
     heroDescription:
@@ -227,19 +227,19 @@ export const productData: ProductItem[] = [
         id: 401,
         title: "Firewall Prompt di Asisten Internal",
         excerpt: "Filter prompt sensitif dan enforce kebijakan keamanan sebelum request masuk ke LLM production.",
-        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-1.webp"
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-1.webp?tr=w-600,q-72"
       },
       {
         id: 402,
         title: "Output Validation untuk Customer Chat",
         excerpt: "Validasi output LLM agar sesuai kebijakan brand, regulasi, dan batasan konten perusahaan.",
-        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-2.webp"
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-2.webp?tr=w-600,q-72"
       },
       {
         id: 403,
         title: "Governance LLM Multi-Department",
         excerpt: "Atur rule berbeda untuk legal, compliance, dan support tanpa kehilangan kontrol global enterprise.",
-        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-3.webp"
+        imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindGateway-usecase-3.webp?tr=w-600,q-72"
       }
     ]
   },
@@ -251,7 +251,7 @@ export const productData: ProductItem[] = [
     label: "Visual AI",
     description:
       "VisionCraft is an AI platform for creating images and videos, bringing multiple AI models together to produce high-quality visual content. From writing the initial idea and building the storyboard to generating visuals and exporting the final video, VisionCraft provides one simple workflow from concept to delivery.",
-    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/visioncraftProductSection.webp?updatedAt=1772427038173&tr=w-900,q-75",
     imageDetailsUrl: visioncraftbasePict,
     datasheetPdfUrl: "/assets/datasheets/visioncraft-datasheet.pdf",
     brocurePDFUrl: "/assets/brocure/visioncraft-product-overview.pdf",
@@ -262,10 +262,10 @@ export const productData: ProductItem[] = [
     featureDescription:
       "Dari prompt cerdas hingga kolaborasi lintas tim, VisionCraft membantu perusahaan menciptakan visual autentik dengan kualitas premium.",
     featurePoints: [
-      "Prompts Enhancement",
-      "Multi-Provider Integration",
-      "Brand Pack Intelligence",
-      "Collaborative Workflows"
+      "Multi-AI in One Platform",
+      "AI Powered Storyboard",
+      "On Prem AI Visual Studio",
+      "Brand Pack Intelligence"
     ],
     enterpriseBenefits: [
       {
@@ -322,21 +322,25 @@ export const productData: ProductItem[] = [
     label: "Data & Konteks",
     description:
       "MindGraph adalah AI Graph Intelligence Platform yang melampaui database tradisional, menggabungkan vector database dan graph database untuk memahami bagaimana informasi saling terhubung dan apa maknanya. MindGraph menghubungkan data dari berbagai sumber untuk mengungkap relasi, memahami konteks, dan memberikan insight yang dapat ditindaklanjuti. MindGraph dapat berjalan berdampingan dengan tools AI dan analitik yang sudah ada atau sebagai platform mandiri, secara on-premise maupun cloud.",
-    imageUrl: "",
-    imageDetailsUrl: "",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph%20-%20Platform%20-%20Overview.png?tr=w-1100,q-75",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/MindGraph%20-%20Platform%20-%20Overview.png?tr=w-1100,q-75",
     heroDescription: "Detail produk MindGraph akan segera diperbarui.",
     demoLabel: "Segera Hadir",
     featureHeading: "MindGraph akan segera hadir",
     featureDescription: "Detail fitur MindGraph akan segera diperbarui.",
-    featurePoints: ["Fitur akan segera hadir"],
+    featurePoints: [
+      "Unified Data Intelligence",
+      "Graph-Based Context Understanding",
+      "AI-Powered Semantic Intelligence",
+      "Enterprise-Ready Integration"
+    ],
     enterpriseBenefits: [
       {
         title: "Segera Hadir",
         description: "Detail dampak bisnis MindGraph akan segera diperbarui."
       }
     ],
-    useCases: [],
-    isComingSoon: true
+    useCases: []
   },
   // TODO: placeholder content, replace with real MindFlow copy/assets when available.
   {
@@ -347,21 +351,25 @@ export const productData: ProductItem[] = [
     label: "Otomasi",
     description:
       "MindFlow adalah platform otomasi proses bisnis AI-native yang membantu perusahaan mendigitalisasi dan mengelola alur kerja mereka dalam satu tempat. Tim dapat menentukan proses bisnis mereka sendiri dan dengan mudah menyesuaikan segala hal mulai dari data, peran, dashboard, chart, hingga desain visual sesuai kebutuhan.",
-    imageUrl: "",
-    imageDetailsUrl: "",
+    imageUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindflow-platform-overview.png?tr=w-1100,q-75",
+    imageDetailsUrl: "https://ik.imagekit.io/mindwalker/public/assets/mindflow-platform-overview.png?tr=w-1100,q-75",
     heroDescription: "Detail produk MindFlow akan segera diperbarui.",
     demoLabel: "Segera Hadir",
     featureHeading: "MindFlow akan segera hadir",
     featureDescription: "Detail fitur MindFlow akan segera diperbarui.",
-    featurePoints: ["Fitur akan segera hadir"],
+    featurePoints: [
+      "Fits to Any Business Process",
+      "Customize Everything",
+      "One Platform, Every Role",
+      "AI-Native Automation"
+    ],
     enterpriseBenefits: [
       {
         title: "Segera Hadir",
         description: "Detail dampak bisnis MindFlow akan segera diperbarui."
       }
     ],
-    useCases: [],
-    isComingSoon: true
+    useCases: []
   }
 ];
 
